@@ -10,8 +10,15 @@
 
 class TuileDominos final: protected Tuile<int[3]> {
 
+private:
+    void swapTab(int tab[], int tab2[]);
+
 public:
     ~TuileDominos();
+
+    void rotate();
+    bool operator==(const int[3]);
+    bool operator!=(const int[3]);
 
 };
 

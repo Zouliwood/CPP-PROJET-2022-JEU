@@ -10,7 +10,7 @@
 #include "joueurs/Player.hpp"
 #include "tuile/Tuile.hpp"
 
-template <typename T, typename std::enable_if<std::is_base_of<Tuile<T>, T>::value>::type* = nullptr>
+template <typename T>
 //TODO:https://stackoverflow.com/a/30687399/16440965
 class Plateau {
 
