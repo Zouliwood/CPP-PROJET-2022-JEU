@@ -14,13 +14,20 @@ template <typename T>
 //TODO:https://stackoverflow.com/a/30687399/16440965
 class Plateau {
 
-
 private:
-    vector<vector<Player &>> listPlayer;
-    vector<vector<Tuile<T> &>> listTuile;
+    vector<const Player *> listPlayer;
+    vector<vector<const Tuile<T> &>> listTuile;
+    int current_player = 0;
 
+public:
+    bool placeTuile(Tuile<T> t, int x, int y);
+    int calculPoint(Tuile <T> t, int x, int y);
+    void nextPlayer();
+    const Player * getPlayerCourant() const;
+    Tuile<T> const getTuileAt(int x, int y) const;
 
 };
+
 
 
 #endif //CPP_PROJET_2022_JEU_PLATEAU_HPP

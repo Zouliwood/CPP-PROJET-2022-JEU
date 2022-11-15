@@ -7,6 +7,9 @@
 
 
 #include "Tuile.hpp"
+#include "../enum/directionTuile.hpp"
+
+#define LEN_TUILE 3
 
 class TuileDominos final: protected Tuile<int[3]> {
 
