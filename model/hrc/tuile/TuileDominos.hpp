@@ -8,20 +8,18 @@
 
 #include "Tuile.hpp"
 #include "../enum/directionTuile.hpp"
-
+#include "fragment/FragmentTriple.hpp"
 #define LEN_TUILE 3
 
-class TuileDominos final: protected Tuile<int[3]> {
+template<typename T>
+class TuileDominos final: protected Tuile<FragmentTriple<T>> {//ici
 
 private:
     void swapTab(FragmentTriple<int> &, FragmentTriple<int> &);
 
 public:
     ~TuileDominos();
-
     void rotate();
-    bool operator==(const int[3]);
-    bool operator!=(const int[3]);
 
 };
 

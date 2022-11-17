@@ -7,14 +7,16 @@
 
 //TODO: constant de condition
 
-bool Plateau<T>::placeTuile(Tuile<T> t, int x, int y){
+template <typename T>
+bool Plateau<T>::placeTuile(const Tuile<FragmentTuile<T>> t, int x, int y){
+
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
         return false;
     }
-    Tuile<T> up = getTuileAt(x,y+1);
-    Tuile<T> down = getTuileAt(x,y-1);
-    Tuile<T> right= getTuileAt(x+1,y);
-    Tuile<T> left= getTuileAt(x-1,y);
+    Tuile<FragmentTuile<T>> up = getTuileAt(x,y+1);
+    Tuile<FragmentTuile<T>> down = getTuileAt(x,y-1);
+    Tuile<FragmentTuile<T>> right= getTuileAt(x+1,y);
+    Tuile<FragmentTuile<T>> left= getTuileAt(x-1,y);
 
     if(up == nullptr && down == nullptr && right == nullptr && left == nullptr){
             return false;
@@ -65,10 +67,10 @@ int Plateau<T>::calculPoint(const Tuile<FragmentTuile<T>> t, int x, int y) {
     Tuile<FragmentTuile<T>> tuileRight= getTuileAt(x+1,y);
     Tuile<FragmentTuile<T>> tuileLeft= getTuileAt(x-1,y);
     int somme = 0;
-    if(up)somme+=t.getPoint();
-    if(down)somme+=t.getPoint();
-    if(right)somme+=t.getPoint();
-    if(left)somme+=t.getPoint();
+    if(tuileUp.up == t.down)somme+=t.getPoint();
+    if(tuileDown.down == t.up)somme+=t.getPoint();
+    if(tuileRight.right == t.left)somme+=t.getPoint();
+    if(tuileLeft.left == t.left)somme+=t.getPoint();
 
     return somme;
 }
