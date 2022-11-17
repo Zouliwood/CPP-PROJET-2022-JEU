@@ -5,8 +5,6 @@
 #include "../hrc/Plateau.hpp"
 #include "../hrc/tuile/Tuile.hpp"
 
-template <typename T>
-
 //TODO: constant de condition
 
 bool Plateau<T>::placeTuile(Tuile<T> t, int x, int y){
@@ -42,7 +40,7 @@ bool Plateau<T>::placeTuile(Tuile<T> t, int x, int y){
 
 
 template <typename T>
-const Tuile<T> Plateau<T>::getTuileAt(int x, int y) const{
+const Tuile<FragmentTuile<T>> Plateau<T>::getTuileAt(int x, int y) const{
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
         return nullptr;
     }else return listTuile.at(x).at(y);
@@ -58,12 +56,14 @@ const Player* Plateau<T>::getPlayerCourant() const{
     return  listPlayer.at(current_player);
 }
 
+//TODO: https://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
+// pour calculer les points en fonction du type de l'objet
 template<typename T>
-int Plateau<T>::calculPoint(Tuile<T> t, int x, int y) {
-    Tuile<T> up = getTuileAt(x,y+1);
-    Tuile<T> down = getTuileAt(x,y-1);
-    Tuile<T> right= getTuileAt(x+1,y);
-    Tuile<T> left= getTuileAt(x-1,y);
+int Plateau<T>::calculPoint(const Tuile<FragmentTuile<T>> t, int x, int y) {
+    Tuile<FragmentTuile<T>> tuileUp = getTuileAt(x,y+1);
+    Tuile<FragmentTuile<T>> tuileDown = getTuileAt(x,y-1);
+    Tuile<FragmentTuile<T>> tuileRight= getTuileAt(x+1,y);
+    Tuile<FragmentTuile<T>> tuileLeft= getTuileAt(x-1,y);
     int somme = 0;
     if(up)somme+=t.getPoint();
     if(down)somme+=t.getPoint();

@@ -16,15 +16,15 @@ class Plateau {
 
 private:
     vector<const Player *> listPlayer;
-    vector<vector<const Tuile<T> &>> listTuile;
+    vector<vector<const Tuile<FragmentTuile<T>> &>> listTuile;
     int current_player = 0;
 
 public:
-    bool placeTuile(Tuile<T> t, int x, int y);
-    int calculPoint(Tuile <T> t, int x, int y);
+    bool placeTuile(const Tuile<FragmentTuile<T>> t, int x, int y);
+    int calculPoint(const Tuile<FragmentTuile<T>> t, int x, int y);
     void nextPlayer();
     const Player * getPlayerCourant() const;
-    Tuile<T> const getTuileAt(int x, int y) const;
+    Tuile<FragmentTuile<T>> const getTuileAt(int x, int y) const;
 
 };
 

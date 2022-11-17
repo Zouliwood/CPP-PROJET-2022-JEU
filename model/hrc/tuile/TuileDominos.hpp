@@ -14,7 +14,7 @@
 class TuileDominos final: protected Tuile<int[3]> {
 
 private:
-    void swapTab(int tab[], int tab2[]);
+    void swapTab(FragmentTriple<int> &, FragmentTriple<int> &);
 
 public:
     ~TuileDominos();

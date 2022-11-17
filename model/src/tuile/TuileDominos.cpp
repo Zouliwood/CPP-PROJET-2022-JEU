@@ -4,17 +4,20 @@
 
 #include "../../hrc/tuile/TuileDominos.hpp"
 
-void TuileDominos::rotate() {
-    int tmp[3];
-    swapTab(tmp, up);
-    swapTab(up, left);
-    swapTab(left, down);
-    swapTab(down, right);
-    swapTab(right, tmp);
+template<typename T>
+void TuileDominos<T>::rotate() {
+    FragmentTriple<int> & tmp = *(this->up);
+    swapTab(this->up, this->left);
+    swapTab(this->left, this->down);
+    swapTab(this->down, this->right);
+    swapTab(this->right, tmp);
 }
 
-void TuileDominos::swapTab(int tab[], int tab2[]){
-    for(int i = 0; i < LEN_TUILE; i++) tab[i] = tab2[i];
+template<typename T>
+void TuileDominos<T>::swapTab(FragmentTriple<int> & first , FragmentTriple<int> & second) {
+    first.setFragmentDroit(second.getFragmentDroit());
+    first.setFragmentGauche(second.getFragmentGauche());
+    first.setFragmentCentre(second.getFragmentCentre());
 }
 
 /*
@@ -25,15 +28,3 @@ bool TuileDominos::isValide(TuileDominos, enum directionTuile) {
     return equals(up., ) || equals(right, tuile.left) || equals(down, tuile.up) || equals(left, tuile.right);
 }
 */
-
-bool TuileDominos::operator==(const int arr[]){
-    bool flag = true;
-    for (int i = 0; i < LEN_TUILE; ++i) {
-        if(up[i] != arr[i]) flag = false;
-    }
-    return flag;
-}
-
-bool TuileDominos::operator!=(const int arr[]){
-    return !(up == arr); //!(down == arr); !(right == arr); !(left == arr);
-}
