@@ -15,19 +15,17 @@ template <typename T>
 class Plateau {
 
 private:
-    vector<const Player *> listPlayer;
+    vector<const Player<Tuile<FragmentTuile<T>>> *> listPlayer;
     vector<vector<const Tuile<FragmentTuile<T>> &>> listTuile;
     int current_player = 0;
 
 public:
     bool placeTuile(const Tuile<FragmentTuile<T>> t, int x, int y);
-    int calculPoint(const Tuile<FragmentTuile<T>> t, int x, int y);
     void nextPlayer();
-    const Player * getPlayerCourant() const;
-    Tuile<FragmentTuile<T>> const getTuileAt(int x, int y) const;
+    const Player<Tuile<FragmentTuile<T>>> * getPlayerCourant() const;
+    virtual ostream & operator<<(ostream& os) const =0;//TODO: virtual??
+    const Tuile<FragmentTuile<T>> getTuileAt(int x, int y) const;
 
 };
-
-
 
 #endif //CPP_PROJET_2022_JEU_PLATEAU_HPP

@@ -44,3 +44,8 @@ template<typename T>
 void FragmentTriple<T>::setFragmentCentre(const T &fragment) const {
     this->centreFragment=fragment;
 }
+
+template<typename T>
+int FragmentTriple<T>::getPoint(){
+    return this->gaucheFragment + this->centreFragment + this->droitFragment;
+}

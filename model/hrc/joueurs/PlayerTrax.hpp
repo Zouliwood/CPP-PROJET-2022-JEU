@@ -8,7 +8,8 @@
 
 #include "Player.hpp"
 
-class PlayerTrax  final: protected Player{
+template<typename T>
+class PlayerTrax  final: protected Player<T>{
 
 public:
     ~PlayerTrax();

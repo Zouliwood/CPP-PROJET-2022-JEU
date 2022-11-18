@@ -2,7 +2,6 @@
 #define CPP_PROJET_2022_JEU_FRAGMENTTUILE_HPP
 
 template<typename T>
-
 class FragmentTuile {
 
 protected:

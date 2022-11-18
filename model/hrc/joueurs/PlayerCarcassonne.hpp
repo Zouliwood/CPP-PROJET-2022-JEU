@@ -7,7 +7,10 @@
 
 #include "Player.hpp"
 
-class PlayerCarcassonne final: protected Player{
+template<typename T>
+class PlayerCarcassonne final: protected Player<T>{
+
+private:
 
 public:
     ~PlayerCarcassonne();

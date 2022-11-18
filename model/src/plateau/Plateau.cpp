@@ -54,23 +54,23 @@ void Plateau<T>::nextPlayer() {
 }
 
 template<typename T>
-const Player* Plateau<T>::getPlayerCourant() const{
+const Player<Tuile<FragmentTuile<T>>>* Plateau<T>::getPlayerCourant() const{
     return  listPlayer.at(current_player);
 }
 
-//TODO: https://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
-// pour calculer les points en fonction du type de l'objet
 template<typename T>
-int Plateau<T>::calculPoint(const Tuile<FragmentTuile<T>> t, int x, int y) {
-    Tuile<FragmentTuile<T>> tuileUp = getTuileAt(x,y+1);
-    Tuile<FragmentTuile<T>> tuileDown = getTuileAt(x,y-1);
-    Tuile<FragmentTuile<T>> tuileRight= getTuileAt(x+1,y);
-    Tuile<FragmentTuile<T>> tuileLeft= getTuileAt(x-1,y);
-    int somme = 0;
-    if(tuileUp.up == t.down)somme+=t.getPoint();
-    if(tuileDown.down == t.up)somme+=t.getPoint();
-    if(tuileRight.right == t.left)somme+=t.getPoint();
-    if(tuileLeft.left == t.left)somme+=t.getPoint();
+ostream &operator<<(ostream &os, Plateau<Tuile<T>> &plateau) {
+    string res;
 
-    return somme;
+    for (int i = 0; i < plateau.listTuile.size(); ++i) {
+        for (int j = 0; j < plateau.listTuile.at(i).size(); ++j) {
+            res+="[" + plateau.getTuileAt(i, j).up + ", ";
+            res+=plateau.getTuileAt(i, j).right + ", ";
+            res+=plateau.getTuileAt(i, j).down + ", ";
+            res+=plateau.getTuileAt(i, j).left + "]";
+        }
+        res+="\n";
+    }
+
+    return os << res;
 }
