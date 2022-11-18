@@ -2,8 +2,8 @@
 // Created by david on 13/11/22.
 //
 
-#include "../hrc/Plateau.hpp"
-#include "../hrc/tuile/Tuile.hpp"
+#include "../../hrc/plateau/Plateau.hpp"
+#include "../../hrc/tuile/Tuile.hpp"
 
 //TODO: constant de condition
 

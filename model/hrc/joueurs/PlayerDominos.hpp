@@ -7,7 +7,8 @@
 
 #include "Player.hpp"
 
-class PlayerDominos  final: protected Player{
+template<typename T>
+class PlayerDominos  final: protected Player<T>{
 
 public:
     ~PlayerDominos();

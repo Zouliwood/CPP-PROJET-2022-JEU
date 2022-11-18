@@ -15,7 +15,8 @@ class FragmentSolo final: protected FragmentTuile<T> {
 public:
     bool operator==(const FragmentSolo<T> & );
     bool operator!=(const FragmentSolo<T> & );
-
+    //redifinition de getpoint() = 0; ?
+    int getPoint();
 };
 
 

@@ -19,6 +19,8 @@ public:
     void setFragmentDroit(const T &fragment) const;
     void setFragmentGauche(const T &fragment) const;
     void setFragmentCentre(const T &fragment) const;
+    int getPoint();
+
 
 };
 

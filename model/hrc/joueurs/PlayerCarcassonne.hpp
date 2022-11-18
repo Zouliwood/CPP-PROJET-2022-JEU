@@ -7,6 +7,7 @@
 
 #include "Player.hpp"
 
+
 template<typename T>
 class PlayerCarcassonne final: protected Player<T>{
 
