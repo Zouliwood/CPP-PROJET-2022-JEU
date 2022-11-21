@@ -10,7 +10,7 @@
 #include "../tuile/fragment/FragmentTriple.hpp"
 
 template<typename T>
-class PlateauDominos final: Plateau<T>{//PLateauDominos<FragmentTriple<T>> plateau;
+class PlateauDominos final: public Plateau<T>{//PLateauDominos<FragmentTriple<T>> plateau;
 
     int calculPoint(const Tuile<T> &t, int x, int y);
     ostream & operator<<(ostream& os);

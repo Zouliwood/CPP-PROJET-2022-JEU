@@ -1,5 +1,4 @@
 #include "../../hrc/plateau/Plateau.hpp"
-#include "../../hrc/tuile/Tuile.hpp"
 
 //TODO: constant de condition
 
@@ -58,12 +57,17 @@ void Plateau<T>::init(int l, int L){
 template<typename T>
 ostream &operator<<(ostream &os, Plateau<Tuile<T>> &plateau) {
     string res;
-    for (int i = 0; i < plateau.listTuile.size(); ++i) {
-        for (int j = 0; j < plateau.listTuile.at(i).size(); ++j) {
-            res+="[" + plateau.getTuileAt(i, j).up + ", ";
-            res+=plateau.getTuileAt(i, j).right + ", ";
-            res+=plateau.getTuileAt(i, j).down + ", ";
-            res+=plateau.getTuileAt(i, j).left + "]";
+    for (int i = 0; i < this->listTuile.size(); ++i) {
+        for (int j = 0; j < this->listTuile.at(i).size(); ++j) {
+            if(this->getTuileAt(i,j) != nullptr){
+                res+="[" + this->getTuileAt(i, j).up + ", ";
+                res+=this->getTuileAt(i, j).right + ", ";
+                res+=this->getTuileAt(i, j).down + ", ";
+                res+=this->getTuileAt(i, j).left + "]";
+            }else{
+                res+="[]";
+            }
+
         }
         res+="\n";
     }

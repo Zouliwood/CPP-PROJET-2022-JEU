@@ -18,7 +18,8 @@ int PlateauDominos<T>::calculPoint(const Tuile<T> & t, int x, int y) {
     return somme;
 }
 
-template<typename T>
-ostream &PlateauDominos<T>::operator<<(ostream &os) {
-    return os << "TODO";
-}
+
+/*template<typename T>
+PlateauDominos<T>::PlateauDominos(){
+
+}*/
