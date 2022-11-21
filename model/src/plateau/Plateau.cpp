@@ -13,29 +13,20 @@ bool Plateau<T>::placeTuile(const Tuile<FragmentTuile<T>> t, int x, int y){
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
         return false;
     }
-    Tuile<FragmentTuile<T>> up = getTuileAt(x,y+1);
-    Tuile<FragmentTuile<T>> down = getTuileAt(x,y-1);
-    Tuile<FragmentTuile<T>> right= getTuileAt(x+1,y);
-    Tuile<FragmentTuile<T>> left= getTuileAt(x-1,y);
+    Tuile<FragmentTuile<T>> tuileUp = getTuileAt(x,y+1);
+    Tuile<FragmentTuile<T>> tuileDown = getTuileAt(x,y-1);
+    Tuile<FragmentTuile<T>> tuileRight= getTuileAt(x+1,y);
+    Tuile<FragmentTuile<T>> tuileLeft= getTuileAt(x-1,y);
 
-    if(up == nullptr && down == nullptr && right == nullptr && left == nullptr){
+    if(tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr){
             return false;
     }
-    bool flag = false;
+
     /* Redefinition de l'operateur '==' */
-    if(!up || t.up == up.down){
-        flag = true;
-    }
-    if(!right || t.right ==  right.left){
-        flag = true;
-    }
-    if(!left || t.left ==  left.right){
-        flag = true;
-    }
-    if(!down || t.down ==  down.up){
-        flag = true;
-    }
-    this->listTuile.at(x).at(y) = t;
+    bool flag = (!tuileUp || t.up == tuileUp.down) || (!tuileRight || t.right ==  tuileRight.left)
+                || (!tuileLeft || t.left ==  tuileRight.right) || (!tuileDown || t.down ==  tuileDown.up);
+
+    if(flag) this->listTuile.at(x).at(y) = t;
     return flag;
 }
 

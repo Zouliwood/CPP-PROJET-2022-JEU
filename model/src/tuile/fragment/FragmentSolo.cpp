@@ -14,3 +14,9 @@ template<typename T>
 bool FragmentSolo<T>::operator!=(const FragmentSolo<T> & fragment) {
     return this->centreFragment!=fragment->centreFragment;
 }
+
+template<typename T>
+FragmentSolo<T> & FragmentSolo<T>::operator=(const FragmentSolo<T> & fragment) {
+    this->centreFragment=fragment->centreFragment;
+    return *this;
+}

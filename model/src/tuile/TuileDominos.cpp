@@ -7,18 +7,16 @@
 template<typename T>
 void TuileDominos<T>::rotate() {
     FragmentTriple<int> & tmp = *(this->up);
-    swapTab(this->up, this->left);
-    swapTab(this->left, this->down);
-    swapTab(this->down, this->right);
-    swapTab(this->right, tmp);
+    this->up=*(this->left);
+    this->left=*(this->down);
+    this->down=*(this->right);
+    this->right=tmp;
 }
 
-template<typename T>
+/*template<typename T>
 void TuileDominos<T>::swapTab(FragmentTriple<int> & first , FragmentTriple<int> & second) {
-    first.setFragmentDroit(second.getFragmentDroit());
-    first.setFragmentGauche(second.getFragmentGauche());
-    first.setFragmentCentre(second.getFragmentCentre());
-}
+    first=second;
+}*/
 
 /*
 bool TuileDominos::isValide(TuileDominos, enum directionTuile) {

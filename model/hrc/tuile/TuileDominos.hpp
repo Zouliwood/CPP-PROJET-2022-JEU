@@ -15,7 +15,7 @@ template<typename T>
 class TuileDominos final: protected Tuile<FragmentTriple<T>> {//ici
 
 private:
-    void swapTab(FragmentTriple<int> &, FragmentTriple<int> &);
+    //void swapTab(FragmentTriple<int> &, FragmentTriple<int> &);
 
 public:
     ~TuileDominos();

@@ -11,6 +11,7 @@ class  FragmentTriple final : FragmentTuile<T>{
 public:
     bool operator==(const FragmentTriple<T> &);
     bool operator!=(const FragmentTriple<T> &);
+    FragmentTriple<T> & operator=(const FragmentTriple<T> &);
 
     const T & getFragmentGauche()const;
     const T & getFragmentDroit()const;
