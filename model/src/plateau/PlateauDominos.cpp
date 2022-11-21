@@ -1,11 +1,9 @@
-//
-// Created by david on 18/11/22.
-//
-
 #include "../../hrc/plateau/PlateauDominos.hpp"
 
 //TODO: https://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
 // pour calculer les points en fonction du type de l'objet
+
+
 template<typename T>
 int PlateauDominos<T>::calculPoint(const Tuile<T> & t, int x, int y) {
     Tuile<FragmentTuile<T>> & tuileUp = this->getTuileAt(x,y+1);

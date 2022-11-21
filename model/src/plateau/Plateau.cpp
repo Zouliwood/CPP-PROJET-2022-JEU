@@ -1,7 +1,3 @@
-//
-// Created by david on 13/11/22.
-//
-
 #include "../../hrc/plateau/Plateau.hpp"
 #include "../../hrc/tuile/Tuile.hpp"
 
@@ -31,7 +27,6 @@ bool Plateau<T>::placeTuile(const Tuile<FragmentTuile<T>> t, int x, int y){
 }
 
 
-
 template <typename T>
 const Tuile<FragmentTuile<T>> Plateau<T>::getTuileAt(int x, int y) const{
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
@@ -50,9 +45,19 @@ const Player<Tuile<FragmentTuile<T>>>* Plateau<T>::getPlayerCourant() const{
 }
 
 template<typename T>
+void Plateau<T>::init(int l, int L){
+    for (int i = 0; i < l; ++i) {
+        vector<const T &> ligne;
+        for (int j = 0; j < L; ++j) {
+            ligne.push_back(nullptr);
+        }
+        listTuile.push_back(ligne);
+    }
+}
+
+template<typename T>
 ostream &operator<<(ostream &os, Plateau<Tuile<T>> &plateau) {
     string res;
-
     for (int i = 0; i < plateau.listTuile.size(); ++i) {
         for (int j = 0; j < plateau.listTuile.at(i).size(); ++j) {
             res+="[" + plateau.getTuileAt(i, j).up + ", ";

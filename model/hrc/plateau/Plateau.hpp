@@ -24,6 +24,7 @@ protected:
     virtual int calculPoint(const Tuile<FragmentTuile<T>> & t, int x, int y)=0;
 
 public:
+    void init(int l, int L);
     bool placeTuile(const Tuile<FragmentTuile<T>> t, int x, int y);
     void nextPlayer();
     const Player<Tuile<FragmentTuile<T>>> * getPlayerCourant() const;

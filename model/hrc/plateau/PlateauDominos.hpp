@@ -15,6 +15,9 @@ class PlateauDominos final: Plateau<T>{//PLateauDominos<FragmentTriple<T>> plate
     int calculPoint(const Tuile<T> &t, int x, int y);
     ostream & operator<<(ostream& os);
 
+public:
+    PlateauDominos();
+
 };
 
 
