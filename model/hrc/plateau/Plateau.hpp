@@ -15,21 +15,19 @@ template <typename T>
 //TODO:https://stackoverflow.com/a/30687399/16440965
 class Plateau {
 
-private:
-    vector<const Player<Tuile<FragmentTuile<T>>> *> listPlayer;
-    vector<vector<const Tuile<FragmentTuile<T>> &>> listTuile;
+protected:
+    vector<const Player<T>&> listPlayer;
+    vector<vector<const T &>> listTuile;
     int current_player = 0;
 
-protected:
-    virtual int calculPoint(const Tuile<FragmentTuile<T>> & t, int x, int y)=0;
-
 public:
-    void init(int l, int L);
-    bool placeTuile(const Tuile<FragmentTuile<T>> t, int x, int y);
+    //virtual int calculPoint(const Tuile<FragmentTuile<T>> & t, int x, int y)=0;
     void nextPlayer();
-    const Player<Tuile<FragmentTuile<T>>> * getPlayerCourant() const;
-    virtual ostream & operator<<(ostream& os) const =0;//TODO: virtual??
-    const Tuile<FragmentTuile<T>> getTuileAt(int x, int y) const;
+    const Player<T> * getPlayerCourant() const;
+    ostream & operator<<(ostream& os) const; // =0;//TODO: virtual??
+    const T getTuileAt(int x, int y) const;
+    bool placeTuile(const T t, int x, int y);
+    void init(int l, int L);
 
 };
 

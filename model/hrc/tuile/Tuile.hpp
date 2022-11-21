@@ -23,10 +23,10 @@ protected:
 public:
 
     //https://stackoverflow.com/a/9782100/16440965
-    FragmentTuile<T> & up;
-    FragmentTuile<T> & right;
-    FragmentTuile<T> & left;
-    FragmentTuile<T> & down;
+    T & up;
+    T & right;
+    T & left;
+    T & down;
 
 };
 

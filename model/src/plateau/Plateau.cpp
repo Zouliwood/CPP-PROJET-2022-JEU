@@ -3,13 +3,13 @@
 //TODO: constant de condition
 
 template <typename T>
-bool Plateau<T>::placeTuile(const Tuile<FragmentTuile<T>> t, int x, int y){
+bool Plateau<T>::placeTuile(const T t, int x, int y){
 
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
         return false;
     }
-    Tuile<FragmentTuile<T>> tuileUp = getTuileAt(x,y+1);
-    Tuile<FragmentTuile<T>> tuileDown = getTuileAt(x,y-1);
+    T tuileUp = getTuileAt(x,y+1);
+    T tuileDown = getTuileAt(x,y-1);
     Tuile<FragmentTuile<T>> tuileRight= getTuileAt(x+1,y);
     Tuile<FragmentTuile<T>> tuileLeft= getTuileAt(x-1,y);
 
@@ -27,7 +27,7 @@ bool Plateau<T>::placeTuile(const Tuile<FragmentTuile<T>> t, int x, int y){
 
 
 template <typename T>
-const Tuile<FragmentTuile<T>> Plateau<T>::getTuileAt(int x, int y) const{
+const T Plateau<T>::getTuileAt(int x, int y) const{
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
         return nullptr;
     }else return listTuile.at(x).at(y);
@@ -39,7 +39,7 @@ void Plateau<T>::nextPlayer() {
 }
 
 template<typename T>
-const Player<Tuile<FragmentTuile<T>>>* Plateau<T>::getPlayerCourant() const{
+const Player<T>* Plateau<T>::getPlayerCourant() const{
     return  listPlayer.at(current_player);
 }
 
@@ -55,7 +55,7 @@ void Plateau<T>::init(int l, int L){
 }
 
 template<typename T>
-ostream &operator<<(ostream &os, Plateau<Tuile<T>> &plateau) {
+ostream &Plateau<T>::operator<<(ostream &os) const {
     string res;
     for (int i = 0; i < this->listTuile.size(); ++i) {
         for (int j = 0; j < this->listTuile.at(i).size(); ++j) {

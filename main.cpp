@@ -11,14 +11,20 @@ using namespace sf;
 
 int main(){
 
-    PlateauDominos<TuileDominos<int>> & plateau = new PlateauDominos<TuileDominos<int>>();
+    Plateau<Tuile<FragmentTuile<int>>> plateau() ;
+    plateau.init(2,2);
 
-    plateau.init(5,5);
-    plateau.firstPos(); //place l'element;
+    /*
 
-    while(!plateau.victory()){
-        //demande au joueur de joueur;
-        RenderWindow app(VideoMode(800, 600, 32), "Test ");
+    PlateauDominos<TuileDominos<FragmentTriple<int>>> & plateau ();
+
+    cout << "hheohohoho" << &plateau() << "hohoohoh" <<endl;
+
+    //init(0, 0);
+
+//    plateau.firstPos(); //place l'element;
+     //demande au joueur de joueur;
+ /*    RenderWindow app(VideoMode(800, 600, 32), "Test ");
 
         while (app.isOpen()){
             Event event;
@@ -35,7 +41,7 @@ int main(){
 
     //fin de partie;
 
-
+*/
 /*
 
     } // fermeture de la fenêtre

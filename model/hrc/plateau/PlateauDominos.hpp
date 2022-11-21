@@ -13,10 +13,10 @@ template<typename T>
 class PlateauDominos final: public Plateau<T>{//PLateauDominos<FragmentTriple<T>> plateau;
 
     int calculPoint(const Tuile<T> &t, int x, int y);
-    ostream & operator<<(ostream& os);
+    //ostream & operator<<(ostream& os);
 
 public:
-    PlateauDominos();
+    //PlateauDominos();
 
 };
 
