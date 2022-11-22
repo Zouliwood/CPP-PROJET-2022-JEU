@@ -7,9 +7,10 @@
 
 
 #include "Player.hpp"
+#include "../tuile/TuileTrax.hpp"
+#include "../../src/joueurs/PlayerTrax.cpp"
 
-template<typename T>
-class PlayerTrax  final: protected Player<T>{
+class PlayerTrax  final: protected Player<TuileTrax>{
 
 public:
     ~PlayerTrax();

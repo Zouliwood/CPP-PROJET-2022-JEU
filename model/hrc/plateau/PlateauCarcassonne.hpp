@@ -6,11 +6,12 @@
 #define CPP_PROJET_2022_JEU_PLATEAUCARCASSONNE_HPP
 
 #include "Plateau.hpp"
+#include "../tuile/TuileCarcassonne.hpp"
 
-template<typename T>
-class PlateauCarcassonne final: Plateau<T> {
+template<typename TF>
+class PlateauCarcassonne final: Plateau<TF, TF> {
 
-    int calculPoint(const Tuile<T> &t, int x, int y);
+    //  int calculPoint(const Tuile<TF> &t, int x, int y);
     ostream & operator<<(ostream& os);
 
 };

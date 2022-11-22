@@ -11,10 +11,10 @@ using namespace sf;
 
 int main(){
 
-    PlateauDominos<TuileDominos<int>> & plateau = new PlateauDominos<TuileDominos<int>>();
+    /*PlateauDominos<TuileDominos<int>> & plateau = new PlateauDominos<TuileDominos<int>>();
 
-    plateau.init(5,5);
-    plateau.firstPos(); //place l'element;
+    plateau->init(5,5);
+    //plateau.firstPos(); //place l'element;
 
     while(!plateau.victory()){
         //demande au joueur de joueur;
@@ -31,7 +31,7 @@ int main(){
             app.clear(); // Remplissage en noir
             app.display(); // Affichage effectif
 
-    }
+    }*/
 
     //fin de partie;
 

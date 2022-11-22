@@ -19,6 +19,6 @@ public:
     //redifinition de getpoint() = 0; ?
     int getPoint();
 };
-
+#include "../../../src/tuile/fragment/FragmentSolo.tpp"
 
 #endif

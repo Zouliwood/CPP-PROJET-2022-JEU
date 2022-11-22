@@ -7,17 +7,17 @@
 
 #include "Player.hpp"
 
-
-template<typename T>
-class PlayerCarcassonne final: protected Player<T>{
-
-private:
+//FRAGMENT TF
+//TUILE T
+template<typename TF>
+class PlayerCarcassonne final: protected Player<TF>{
 
 public:
     ~PlayerCarcassonne();
 
-
 };
+
+#include "../../src/joueurs/PlayerCarcassonne.tpp"
 
 
 #endif //CPP_PROJET_2022_JEU_PLAYERCARCASSONNE_HPP

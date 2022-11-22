@@ -11,7 +11,7 @@ class  FragmentTriple final : FragmentTuile<T>{
 public:
     bool operator==(const FragmentTriple<T> &);
     bool operator!=(const FragmentTriple<T> &);
-    FragmentTriple<T> & operator=(const FragmentTriple<T> &);
+    const FragmentTriple<int> operator=(const FragmentTriple<T> &);
 
     const T & getFragmentGauche()const;
     const T & getFragmentDroit()const;
@@ -24,6 +24,7 @@ public:
 
 
 };
+#include "../../../src/tuile/fragment/FragmentTriple.tpp"
 
 
 #endif //CPP_PROJET_2022_JEU_FRAGMENTTRIPLE_HPP

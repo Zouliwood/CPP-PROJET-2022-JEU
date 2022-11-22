@@ -1,7 +1,3 @@
-//
-// Created by david on 13/11/22.
-//
-
 #ifndef CPP_PROJET_2022_JEU_PLAYER_HPP
 #define CPP_PROJET_2022_JEU_PLAYER_HPP
 
@@ -10,7 +6,7 @@
 
 using namespace std;
 
-template<typename T>
+template<typename TF>
 class Player { //TODO: abstract class
 
 private:
@@ -21,8 +17,11 @@ private:
 protected:
     const string pseudo;
     const int points;
-    const Tuile<T> tuilecourante;
-};
+    const Tuile<TF> tuilecourante;
 
+public:
+    void getTuile();
+};
+#include "../../src/joueurs/Player.tpp"
 
 #endif //CPP_PROJET_2022_JEU_PLAYER_HPP

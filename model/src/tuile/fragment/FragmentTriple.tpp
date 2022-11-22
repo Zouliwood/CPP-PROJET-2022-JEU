@@ -51,7 +51,7 @@ int FragmentTriple<T>::getPoint(){
 }
 
 template<typename T>
-FragmentTriple<T> & FragmentTriple<T>::operator=(const FragmentTriple<T> & fragment) {
+const FragmentTriple<int> FragmentTriple<T>::operator=(const FragmentTriple<T> & fragment) {
     this->gaucheFragment=fragment->gaucheFragment;
     this->centreFragment=fragment->centreFragment;
     this->droitFragment=fragment->droitFragment;

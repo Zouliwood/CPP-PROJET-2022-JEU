@@ -6,13 +6,13 @@
 #define CPP_PROJET_2022_JEU_PLAYERDOMINOS_HPP
 
 #include "Player.hpp"
+#include "../tuile/TuileDominos.hpp"
 
-template<typename T>
-class PlayerDominos  final: protected Player<T>{
+class PlayerDominos  final: protected Player<TuileDominos>{
 
 public:
     ~PlayerDominos();
 };
-
+#include "../../src/joueurs/PlayerDominos.cpp"
 
 #endif //CPP_PROJET_2022_JEU_PLAYERDOMINOS_HPP

@@ -1,4 +1,4 @@
-//
+    //
 // Created by david on 13/11/22.
 //
 
@@ -7,8 +7,9 @@
 
 #include "../enum/colorTrax.hpp"
 #include "Tuile.hpp"
+#include "fragment/FragmentSolo.hpp"
 
-class TuileTrax final: protected Tuile<colorTrax>{
+class TuileTrax final: protected Tuile<FragmentSolo<colorTrax>>{
 
 public:
     ~TuileTrax();

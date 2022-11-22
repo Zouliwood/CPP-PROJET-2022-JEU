@@ -10,8 +10,8 @@
 #include "Tuile.hpp"
 #include "../enum/environment.hpp"
 
-template <typename T>
-class TuileCarcassonne final: protected Tuile<FragmentTuile<T>>{
+template <typename TF>
+    class TuileCarcassonne final: protected Tuile<TF>{
 
 public:
     ~TuileCarcassonne();

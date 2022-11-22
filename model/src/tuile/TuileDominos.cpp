@@ -4,12 +4,11 @@
 
 #include "../../hrc/tuile/TuileDominos.hpp"
 
-template<typename T>
-void TuileDominos<T>::rotate() {
-    FragmentTriple<int> & tmp = *(this->up);
-    this->up=*(this->left);
-    this->left=*(this->down);
-    this->down=*(this->right);
+void TuileDominos::rotate() {
+    FragmentTriple<int> & tmp = this->up;
+    this->up= (this->left);
+    this->left= (this->down);
+    this->down= (this->right);
     this->right=tmp;
 }
 

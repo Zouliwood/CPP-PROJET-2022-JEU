@@ -8,11 +8,11 @@
 
 #include "Plateau.hpp"
 #include "../tuile/fragment/FragmentTriple.hpp"
+#include "../tuile/TuileDominos.hpp"
 
-template<typename T>
-class PlateauDominos final: Plateau<T>{//PLateauDominos<FragmentTriple<T>> plateau;
+class PlateauDominos final: Plateau<int, FragmentTriple<int>>{//PLateauDominos<FragmentTriple<T>> plateau;
 
-    int calculPoint(const Tuile<T> &t, int x, int y);
+    //int calculPoint(const TuileDominos<FragmentTriple<int>> &t, int x, int y);
     ostream & operator<<(ostream& os);
 
 public:

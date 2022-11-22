@@ -20,3 +20,4 @@ FragmentSolo<T> & FragmentSolo<T>::operator=(const FragmentSolo<T> & fragment) {
     this->centreFragment=fragment->centreFragment;
     return *this;
 }
+

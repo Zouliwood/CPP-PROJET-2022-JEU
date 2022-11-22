@@ -8,7 +8,7 @@
 #include "../enum/directionTuile.hpp"
 #include "fragment/FragmentTuile.hpp"
 
-template <typename T>
+template <typename TF>
 class Tuile { //TODO: cacher les constructions juste pour leur fils
 
 private:
@@ -23,10 +23,10 @@ protected:
 public:
 
     //https://stackoverflow.com/a/9782100/16440965
-    FragmentTuile<T> & up;
-    FragmentTuile<T> & right;
-    FragmentTuile<T> & left;
-    FragmentTuile<T> & down;
+    TF & up;
+    TF & right;
+    TF & left;
+    TF & down;
 
 };
 
