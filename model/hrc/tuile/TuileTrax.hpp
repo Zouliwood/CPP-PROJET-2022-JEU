@@ -5,12 +5,12 @@
 #include "Tuile.hpp"
 #include "fragment/FragmentSolo.hpp"
 
-class TuileTrax final: public Tuile<colorTrax>{
+class TuileTrax final: public Tuile<FragmentSolo<colorTrax>>{
 
 public:
     /* Constructeur & Destructeur*/
     TuileTrax();
-    ~TuileTrax();
+    ~TuileTrax() override;
 
     /*function override*/
     void rotate() override;

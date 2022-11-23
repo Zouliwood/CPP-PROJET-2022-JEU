@@ -8,8 +8,8 @@
 
 #include "FragmentTuile.hpp"
 
-template<typename T>
-class FragmentSolo final: public FragmentTuile<T> {
+template<typename V>
+class FragmentSolo final: public FragmentTuile<V> {
 
 public:
     /* Constructeur & Destructeur */
@@ -17,9 +17,9 @@ public:
     ~FragmentSolo();
 
     /* override functions */
-    bool operator==(const FragmentSolo<T> & );
-    bool operator!=(const FragmentSolo<T> & );
-    FragmentSolo<T> & operator=(const FragmentSolo<T> &);
+    bool operator==(const FragmentSolo<V> & );
+    bool operator!=(const FragmentSolo<V> & );
+    FragmentSolo<V> & operator=(const FragmentSolo<V> &);
     int getPoint();
 
 };

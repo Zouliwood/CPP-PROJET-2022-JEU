@@ -4,8 +4,8 @@
 #include "Plateau.hpp"
 #include "../tuile/TuileCarcassonne.hpp"
 
-template<typename V>
-class PlateauCarcassonne final: Plateau<V> {
+template<typename F>
+class PlateauCarcassonne final: Plateau<TuileCarcassonne<F>> {
 
 
     ostream & operator<<(ostream& os);
@@ -18,7 +18,7 @@ public:
     virtual bool placeFirstTuile() = 0;
 
     /* override function */
-    int calculPoint(const Tuile<FragmentTuile<V>> & t, int x, int y);
+    int calculPoint(const F & t, int x, int y);
 
 };
 #include "../../src/plateau/PlateauCarcassonne.tpp"

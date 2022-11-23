@@ -7,14 +7,13 @@
 #include "../joueurs/Player.hpp"
 #include "../tuile/Tuile.hpp"
 
-template <typename V>
-
+template <typename TF>
 class Plateau {
 
 protected:
     /* attributs */
-    vector<const Player<V> *> listPlayer;
-    vector<vector<Tuile<FragmentTuile<V>> *>> listTuile;
+    vector<const Player<TF> *> listPlayer;
+    vector<vector<TF *>> listTuile;
     int current_player;
 
 public:
@@ -23,11 +22,12 @@ public:
     virtual ~Plateau();
 
     /* to override function */
-    virtual int calculPoint(const Tuile<FragmentTuile<V>> & value, int x, int y)=0;
+    virtual int calculPoint(const TF & value, int x, int y)=0;
+    virtual bool placeFirstTuile() = 0;
 
     /* define function */
     void init(int l, int L);
-    bool placeTuile(const Tuile<FragmentTuile<V>> & t, int x, int y);
+    bool placeTuile(const TF & t, int x, int y);
     void nextPlayer();
     const Player<TF> * getPlayerCourant() const;
     const TF & getTuileAt(int x, int y) const;

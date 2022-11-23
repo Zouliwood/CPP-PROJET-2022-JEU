@@ -5,12 +5,13 @@
 #include "Player.hpp"
 #include "../tuile/TuileDominos.hpp"
 
-class PlayerDominos final: public Player<TuileDominos>{
+class PlayerDominos final: public Player<TuileDominos> {
 
 public:
     /* Constructeur & Destructeur */
     PlayerDominos();
     ~PlayerDominos() override;
+
 };
 
 #endif //CPP_PROJET_2022_JEU_PLAYERDOMINOS_HPP

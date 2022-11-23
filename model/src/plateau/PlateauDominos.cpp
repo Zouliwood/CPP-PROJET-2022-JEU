@@ -1,11 +1,7 @@
 #include "../../hrc/plateau/PlateauDominos.hpp"
 
 
-ostream &PlateauDominos::operator<<(ostream &os) {
-    return os << "TODO";
-}
-
-int PlateauDominos::calculPoint(const Tuile<FragmentTuile<int>> & t, int x, int y) {
+int PlateauDominos::calculPoint(const TuileDominos & t, int x, int y) {
     return 0;
 }
 
@@ -16,6 +12,27 @@ PlateauDominos::PlateauDominos(){
 PlateauDominos::~PlateauDominos(){
     cout << "destructeur Plateau domino " << endl;
 }
+
+bool PlateauDominos::placeFirstTuile(){
+    int middle = listTuile.size()/2;
+    auto fragment = new FragmentTriple<int>(5,5,5);//TODO : à revoir
+    listTuile.at(middle).at(middle) = new TuileDominos(fragment,fragment,fragment,fragment);
+    return (listTuile.at(middle).at(middle) != nullptr);
+}
+
+ostream &operator<<(ostream &os, PlateauDominos & plateauDominos){
+    string res;
+    for (int i = 0; i < plateauDominos.getListTuile().size(); ++i) {
+        for (int j = 0; j < plateauDominos.getListTuile().at(i).size(); ++j) {
+                if(plateauDominos.getListTuile().at(i).at(j) == nullptr){
+                    res+="[X]";
+                }else res+="[ T ]";
+        }
+        res+="\n";
+    }
+    return os << res << endl;
+}
+
 
 
 /*

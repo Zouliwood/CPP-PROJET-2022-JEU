@@ -7,14 +7,14 @@ template<typename V>
 class FragmentTuile {
 
 protected:
-    /* Constructeur & Destructeur */
-    FragmentTuile();
-    virtual ~FragmentTuile();
-
     /* attributs partage */
     V centreFragment;
 
 public:
+    /* Constructeur & Destructeur */
+    FragmentTuile(V centreFragment);
+    virtual ~FragmentTuile();
+
     /* function to override */
     virtual bool operator==(const FragmentTuile<V> &)=0;
     virtual bool operator!=(const FragmentTuile<V> &)=0;

@@ -6,7 +6,7 @@
 #include "../tuile/fragment/FragmentSolo.hpp"
 #include "../tuile/TuileTrax.hpp"
 
-class PlateauTrax final: Plateau<colorTrax> {
+class PlateauTrax final: Plateau<TuileTrax> {
 
     ostream & operator<<(ostream& os);
 
@@ -18,7 +18,7 @@ public:
     virtual bool placeFirstTuile() = 0;
 
     /* override function */
-    int calculPoint(const Tuile<FragmentTuile<colorTrax>> & t, int x, int y);
+    int calculPoint(const TuileTrax & t, int x, int y);
 
 };
 

@@ -60,7 +60,7 @@ bool FragmentTriple<T>::operator!=(const FragmentTriple<T> & fragment) {
 }
 
 template<typename T>
-FragmentTriple<T>::FragmentTriple() = default;
+FragmentTriple<T>::FragmentTriple(T droitFragment,T centreFragment, T gaucheFragment) : FragmentTuile<int>(centreFragment), gaucheFragment{gaucheFragment}, droitFragment{droitFragment} {};
 
 template<typename T>
 FragmentTriple<T>::~FragmentTriple() = default;

@@ -10,12 +10,14 @@
 
 using namespace std;
 
-class TuileDominos final: public Tuile<int> {//ici
+class TuileDominos final: public Tuile<FragmentTriple<int>> {//ici
 
 public:
     /* Constructeur & Destructeur*/
-    TuileDominos();
-    ~TuileDominos();
+    TuileDominos(FragmentTriple<int> up,FragmentTriple<int> right,FragmentTriple<int> down ,FragmentTriple<int> left);
+    ~TuileDominos() override;
+
+    ostream & operator<<(ostream &os);
 
     /*function override*/
     void rotate() override;

@@ -9,8 +9,8 @@ Tuile<TF>::~Tuile() {
 
 }
 
-template<typename V>
-void Tuile<V>::rotate() {
+template<typename TF>
+void Tuile<TF>::rotate() {
 
 }
 

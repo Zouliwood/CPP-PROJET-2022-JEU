@@ -6,9 +6,7 @@
 #include "../tuile/fragment/FragmentTriple.hpp"
 #include "../tuile/TuileDominos.hpp"
 
-class PlateauDominos final: public Plateau<int>{
-
-    ostream & operator<<(ostream& os);
+class PlateauDominos final: public Plateau<TuileDominos>{
 
 public:
     /* Constructeur & Destructeur */
@@ -18,11 +16,13 @@ public:
     bool placeFirstTuile();
 
     /* define function */
-
+    void toprint();
     /* override function */
-    int calculPoint(const Tuile<FragmentTuile<int>> & t, int x, int y);
+    int calculPoint(const TuileDominos & t, int x, int y);
 
 };
 
+ostream &operator<<(ostream &os, PlateauDominos & plateauDominos);
 
 #endif
+
