@@ -3,8 +3,16 @@
 
 //TODO: constant de condition
 
-template <typename V, typename TF>
-bool Plateau<V, TF>::placeTuile(const Tuile<FragmentTuile<V>> & t, int x, int y){
+template <typename V>
+Plateau<V>::Plateau(): current_player{0}{}
+
+template <typename V>
+Plateau<V>::~Plateau(){
+    cout << "destructeur plateau " << endl;
+}
+
+template <typename V>
+bool Plateau<V>::placeTuile(const Tuile<FragmentTuile<V>> & t, int x, int y){
 
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
         return false;
@@ -26,20 +34,20 @@ bool Plateau<V, TF>::placeTuile(const Tuile<FragmentTuile<V>> & t, int x, int y)
     return flag;
 }
 
-template<typename T, typename V>
-void Plateau<T, V>::nextPlayer() {
+template<typename V>
+void Plateau<V>::nextPlayer() {
     current_player= (current_player+1)%listPlayer.size();
 }
 
-template<typename V, typename TF>
-const Player<TF>* Plateau<V, TF>::getPlayerCourant() const{
+template<typename V>
+const Player<V>* Plateau<V>::getPlayerCourant() const{
     return  listPlayer.at(current_player);
 }
 
-template<typename T, typename V>
-void Plateau<T, V>::init(int l, int L){
+template<typename V>
+void Plateau<V>::init(int l, int L){
     for (int i = 0; i < l; ++i) {
-        vector<const T &> ligne;
+        vector<Tuile<FragmentTuile<V>> *> ligne;
         for (int j = 0; j < L; ++j) {
             ligne.push_back(nullptr);
         }
@@ -47,15 +55,15 @@ void Plateau<T, V>::init(int l, int L){
     }
 }
 
-template<typename V, typename TF>
-const Tuile<FragmentTuile<V>> Plateau<V, TF>::getTuileAt(int x, int y) const {
+template<typename V>
+Tuile<FragmentTuile<V>> Plateau<V>::getTuileAt(int x, int y) const {
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
         return nullptr;
     }else return listTuile.at(x).at(y);
 }
 
-template<typename T, typename V>
-ostream &operator<<(ostream &os, Plateau<T,Tuile<FragmentTuile<V>>> &plateau) {
+template<typename V>
+ostream &operator<<(ostream &os, Plateau<Tuile<FragmentTuile<V>>> &plateau) {
     string res;
     for (int i = 0; i < plateau.listTuile.size(); ++i) {
         for (int j = 0; j < plateau.listTuile.at(i).size(); ++j) {
@@ -66,6 +74,5 @@ ostream &operator<<(ostream &os, Plateau<T,Tuile<FragmentTuile<V>>> &plateau) {
         }
         res+="\n";
     }
-
     return os << res;
 }

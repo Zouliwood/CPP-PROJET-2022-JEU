@@ -9,16 +9,19 @@
 #include "FragmentTuile.hpp"
 
 template<typename T>
-class FragmentSolo final: protected FragmentTuile<T> {
+class FragmentSolo final: public FragmentTuile<T> {
 
-//REDEFINTION DE L'OPERATEUR == ;
 public:
+    /* Constructeur & Destructeur */
+    FragmentSolo();
+    ~FragmentSolo() override;
+
+    /* override functions */
     bool operator==(const FragmentSolo<T> & );
     bool operator!=(const FragmentSolo<T> & );
     FragmentSolo<T> & operator=(const FragmentSolo<T> &);
-    //redifinition de getpoint() = 0; ?
     int getPoint();
+
 };
 #include "../../../src/tuile/fragment/FragmentSolo.tpp"
-
 #endif

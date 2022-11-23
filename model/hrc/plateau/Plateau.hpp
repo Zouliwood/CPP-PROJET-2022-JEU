@@ -1,7 +1,3 @@
-//
-// Created by david on 13/11/22.
-//
-
 #ifndef CPP_PROJET_2022_JEU_PLATEAU_HPP
 #define CPP_PROJET_2022_JEU_PLATEAU_HPP
 
@@ -10,28 +6,24 @@
 #include <iostream>
 #include "../joueurs/Player.hpp"
 #include "../tuile/Tuile.hpp"
-//VALUE = value ou enum
-template <typename V, typename TF>
-//TODO:https://stackoverflow.com/a/30687399/16440965
+
+template <typename V>
+
 class Plateau {
 
-private:
-    vector<const Player<TF> *> listPlayer;
-    vector<vector<const Tuile<FragmentTuile<V>> &>> listTuile;
-    int current_player = 0;
-
 protected:
-    virtual int calculPoint(const Tuile<FragmentTuile<V>> & value, int x, int y)=0;
+    /* attributs */
+    vector<const Player<V> *> listPlayer;
+    vector<vector<Tuile<FragmentTuile<V>> *>> listTuile;
+    int current_player;
 
 public:
-    void init(int l, int L);
-    bool placeTuile(const Tuile<FragmentTuile<V>> & v , int x, int y);
+    /* Constructeur & Destructeur */
+    Plateau();
+    virtual ~Plateau();
 
-    void nextPlayer();
-    const Player<TF> * getPlayerCourant() const;
-
-    // virtual ostream & operator<<(ostream& os) const =0;//TODO: virtual??
-    const Tuile<FragmentTuile<V>> getTuileAt(int x, int y) const;
+    /* to override function */
+    virtual int calculPoint(const Tuile<FragmentTuile<V>> & value, int x, int y)=0;
 
     /* define function */
     void init(int l, int L);
@@ -44,3 +36,4 @@ public:
 #include "../../src/plateau/Plateau.tpp"
 
 #endif //CPP_PROJET_2022_JEU_PLATEAU_HPP
+// virtual ostream & operator<<(ostream& os) const =0;//TODO: virtual??

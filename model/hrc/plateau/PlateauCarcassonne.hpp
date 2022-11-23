@@ -1,20 +1,25 @@
-//
-// Created by david on 18/11/22.
-//
-
 #ifndef CPP_PROJET_2022_JEU_PLATEAUCARCASSONNE_HPP
 #define CPP_PROJET_2022_JEU_PLATEAUCARCASSONNE_HPP
 
 #include "Plateau.hpp"
 #include "../tuile/TuileCarcassonne.hpp"
 
-template<typename TF>
-class PlateauCarcassonne final: Plateau<TF, TF> {
+template<typename V>
+class PlateauCarcassonne final: Plateau<V> {
 
-    //  int calculPoint(const Tuile<TF> &t, int x, int y);
+
     ostream & operator<<(ostream& os);
 
-};
+public:
+    /* Constructeur & Destructeur */
+    PlateauCarcassonne();
+    ~PlateauCarcassonne();
+    /* define function */
 
+    /* override function */
+    int calculPoint(const Tuile<FragmentTuile<V>> & t, int x, int y);
+
+};
+#include "../../src/plateau/PlateauCarcassonne.tpp"
 
 #endif //CPP_PROJET_2022_JEU_PLATEAUCARCASSONNE_HPP

@@ -1,7 +1,3 @@
-//
-// Created by david on 13/11/22.
-//
-
 #ifndef CPP_PROJET_2022_JEU_TUILEDOMINOS_HPP
 #define CPP_PROJET_2022_JEU_TUILEDOMINOS_HPP
 
@@ -11,17 +7,17 @@
 #include "fragment/FragmentTriple.hpp"
 #define LEN_TUILE 3
 
-
-class TuileDominos final: public Tuile<FragmentTriple<int>> {//ici
-
-private:
-    //void swapTab(FragmentTriple<int> &, FragmentTriple<int> &);
+class TuileDominos final: public Tuile<int> {//ici
 
 public:
+    /* Constructeur & Destructeur*/
+    TuileDominos();
     ~TuileDominos();
-    void rotate();
 
+    /*function override*/
+    void rotate() override;
+    //void swapTab(FragmentTriple<int> &, FragmentTriple<int> &);
 };
 
 
-#endif //CPP_PROJET_2022_JEU_TUILEDOMINOS_HPP
+#endif

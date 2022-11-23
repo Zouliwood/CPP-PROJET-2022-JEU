@@ -1,7 +1,3 @@
-//
-// Created by david on 13/11/22.
-//
-
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "model/hrc/plateau/PlateauDominos.hpp"
@@ -11,9 +7,11 @@ using namespace sf;
 
 int main(){
 
-    /*PlateauDominos<TuileDominos<int>> & plateau = new PlateauDominos<TuileDominos<int>>();
+    auto * plateau = new PlateauDominos();
 
     plateau->init(5,5);
+
+    /*
     //plateau.firstPos(); //place l'element;
 
     while(!plateau.victory()){

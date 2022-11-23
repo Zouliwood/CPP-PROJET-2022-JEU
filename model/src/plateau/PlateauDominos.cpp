@@ -1,9 +1,5 @@
 #include "../../hrc/plateau/PlateauDominos.hpp"
 
-//TODO: https://stackoverflow.com/questions/351845/finding-the-type-of-an-object-in-c
-// pour calculer les points en fonction du type de l'objet
-
-
 
 ostream &PlateauDominos::operator<<(ostream &os) {
     return os << "TODO";

@@ -4,14 +4,25 @@
 #include "FragmentTuile.hpp"
 
 template<typename T>
-class  FragmentTriple final : FragmentTuile<T>{
-    //REDEFINTION DE L'OPERATEUR == ;
+class FragmentTriple final : public FragmentTuile<T>{
+
+private:
+    /* attributs de la classe */
     T gaucheFragment;
     T droitFragment;
+
 public:
+    /* Constructeur & Destructeur */
+    FragmentTriple();
+    ~FragmentTriple() override;
+
+    /* override functions */
     bool operator==(const FragmentTriple<T> &);
     bool operator!=(const FragmentTriple<T> &);
     FragmentTriple<T> & operator=(const FragmentTriple<T> *) const;
+    int getPoint();
+
+    /* other functions */
 
     const T & getFragmentGauche()const;
     const T & getFragmentDroit()const;
@@ -20,10 +31,6 @@ public:
     void setFragmentDroit(const T &fragment) const;
     void setFragmentGauche(const T &fragment) const;
     void setFragmentCentre(const T &fragment) const;
-
-
-    int getPoint();
-
 
 };
 #include "../../../src/tuile/fragment/FragmentTriple.tpp"

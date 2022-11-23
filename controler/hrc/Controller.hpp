@@ -11,7 +11,7 @@ template<typename T>
 class Controller {
 
 private:
-    Plateau<Tuile<T>, Tuile<T>> plateauCourant;
+    Plateau<T> plateauCourant;
 
 public:
     void init();

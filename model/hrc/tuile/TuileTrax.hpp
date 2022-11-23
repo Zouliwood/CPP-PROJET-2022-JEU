@@ -1,7 +1,3 @@
-    //
-// Created by david on 13/11/22.
-//
-
 #ifndef CPP_PROJET_2022_JEU_TUILETRAX_HPP
 #define CPP_PROJET_2022_JEU_TUILETRAX_HPP
 
@@ -9,11 +5,15 @@
 #include "Tuile.hpp"
 #include "fragment/FragmentSolo.hpp"
 
-class TuileTrax final: protected Tuile<FragmentSolo<colorTrax>>{
+class TuileTrax final: public Tuile<colorTrax>{
 
 public:
+    /* Constructeur & Destructeur*/
+    TuileTrax();
     ~TuileTrax();
+
+    /*function override*/
+    void rotate() override;
 };
 
-
-#endif //CPP_PROJET_2022_JEU_TUILETRAX_HPP
+#endif

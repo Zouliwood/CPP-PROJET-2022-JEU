@@ -7,20 +7,23 @@
 
 using namespace std;
 
-template<typename TF>
-class Player { //TODO: abstract class
+template<typename V>
+class Player {
 
-private:
-    Player();
-    Player(const Player &);
 protected:
-
-    const string pseudo;
-    const int points;
-    const Tuile<TF> tuilecourante;
-public:
+    /* Constructeur & Destructeur */
+    Player();
     virtual ~Player();
-    Tuile<TF> getTuile();
+
+    /* attributs */
+    const string pseudo;
+    mutable int points;
+    //mutable Tuile<FragmentTuile<V>> tuilecourante ;
+
+public:
+    int getPoints();
+    Tuile<FragmentTuile<V>> getTuile() const;
+
 };
 #include "../../src/joueurs/Player.tpp"
 

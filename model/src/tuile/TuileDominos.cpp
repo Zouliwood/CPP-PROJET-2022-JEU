@@ -1,8 +1,5 @@
-//
-// Created by david on 13/11/22.
-//
-
 #include "../../hrc/tuile/TuileDominos.hpp"
+
 
 void TuileDominos::rotate() {
     FragmentTuile<int> & tmp = this->up;
