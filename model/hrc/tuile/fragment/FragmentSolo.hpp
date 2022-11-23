@@ -14,7 +14,7 @@ class FragmentSolo final: public FragmentTuile<T> {
 public:
     /* Constructeur & Destructeur */
     FragmentSolo();
-    ~FragmentSolo() override;
+    ~FragmentSolo();
 
     /* override functions */
     bool operator==(const FragmentSolo<T> & );

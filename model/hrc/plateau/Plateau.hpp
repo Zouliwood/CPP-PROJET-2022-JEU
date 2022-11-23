@@ -29,8 +29,15 @@ public:
     void init(int l, int L);
     bool placeTuile(const Tuile<FragmentTuile<V>> & t, int x, int y);
     void nextPlayer();
-    const Player<V> * getPlayerCourant() const;
-    Tuile<FragmentTuile<V>> getTuileAt(int x, int y) const;
+    const Player<TF> * getPlayerCourant() const;
+    const TF & getTuileAt(int x, int y) const;
+    vector<const Player<TF> *> getListPlayer() const;
+    vector<vector<TF *>> getListTuile() const;
+    int getCurrentPlayer();
+
+    ostream & operator<<(ostream &os);
+ //   string print();
+
 
 };
 #include "../../src/plateau/Plateau.tpp"

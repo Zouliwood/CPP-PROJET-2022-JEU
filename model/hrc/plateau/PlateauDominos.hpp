@@ -15,6 +15,8 @@ public:
     PlateauDominos();
     ~PlateauDominos();
 
+    bool placeFirstTuile();
+
     /* define function */
 
     /* override function */

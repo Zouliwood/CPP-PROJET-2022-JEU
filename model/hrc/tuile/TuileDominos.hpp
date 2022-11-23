@@ -5,7 +5,10 @@
 #include "Tuile.hpp"
 #include "../enum/directionTuile.hpp"
 #include "fragment/FragmentTriple.hpp"
+#include <ostream>
 #define LEN_TUILE 3
+
+using namespace std;
 
 class TuileDominos final: public Tuile<int> {//ici
 

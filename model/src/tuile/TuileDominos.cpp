@@ -2,11 +2,24 @@
 
 
 void TuileDominos::rotate() {
-    FragmentTuile<int> & tmp = this->up;
+    FragmentTriple<int> & tmp = this->up;
     this->up = this->left;
     this->left = this->down;
     this->down = this->right;
     this->right = tmp;
+}
+
+ostream &TuileDominos::operator<<(ostream &os) {
+    return os << "[TUILE DOMINOS]" <<endl;
+}
+
+//TODO: revoir
+TuileDominos::TuileDominos(FragmentTriple<int> up,FragmentTriple<int> right,FragmentTriple<int> down ,FragmentTriple<int> left): Tuile(up, down, right, left) {
+    cout << "TuileDominos " << endl;
+}
+
+TuileDominos::~TuileDominos() {
+    cout << " destructeur TuileDominos " << endl;
 }
 
 /*template<typename T>

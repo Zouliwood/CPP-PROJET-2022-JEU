@@ -15,6 +15,7 @@ public:
     PlateauCarcassonne();
     ~PlateauCarcassonne();
     /* define function */
+    virtual bool placeFirstTuile() = 0;
 
     /* override function */
     int calculPoint(const Tuile<FragmentTuile<V>> & t, int x, int y);

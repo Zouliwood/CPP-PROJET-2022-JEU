@@ -1,4 +1,4 @@
-#include "../../hrc/plateau/Plateau.hpp"
+ #include "../../hrc/plateau/Plateau.hpp"
 #include "../../hrc/tuile/Tuile.hpp"
 
 //TODO: constant de condition
@@ -74,5 +74,5 @@ ostream &operator<<(ostream &os, Plateau<Tuile<FragmentTuile<V>>> &plateau) {
         }
         res+="\n";
     }
-    return os << res;
+    return os << "blalalalalla" << endl;
 }

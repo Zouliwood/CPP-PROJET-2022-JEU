@@ -1,19 +1,21 @@
 #include "../../hrc/plateau/PlateauCarcassonne.hpp"
 
-template<typename T>
-
-
-ostream &PlateauCarcassonne<T>::operator<<(ostream &os) {
+template<typename TF>
+ostream &PlateauCarcassonne<TF>::operator<<(ostream &os) {
     return os << "TODO";
 }
 
-template<typename V>
-PlateauCarcassonne<V>::PlateauCarcassonne() = default;
+template<typename TF>
+PlateauCarcassonne<TF>::PlateauCarcassonne() = default;
 
-template<typename V>
-int PlateauCarcassonne<V>::calculPoint(const Tuile<FragmentTuile<V>> & t, int x, int y){
+template<typename TF>
+int PlateauCarcassonne<TF>::calculPoint(const TF & t, int x, int y){
     return 0;
 }
+template<typename TF>
+bool PlateauCarcassonne<TF>::placeFirstTuile() {
+    return true;
+}
 
-template<typename V>
-PlateauCarcassonne<V>::~PlateauCarcassonne() = default;
+template<typename TF>
+PlateauCarcassonne<TF>::~PlateauCarcassonne() = default;

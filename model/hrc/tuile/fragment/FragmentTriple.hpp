@@ -24,9 +24,9 @@ public:
 
     /* other functions */
 
-    const T & getFragmentGauche()const;
-    const T & getFragmentDroit()const;
-    const T & getFragmentCentre()const;
+    const V & getFragmentGauche()const;
+    const V & getFragmentDroit()const;
+    const V & getFragmentCentre()const;
 
     void setFragmentDroit(const T &fragment) const;
     void setFragmentGauche(const T &fragment) const;
