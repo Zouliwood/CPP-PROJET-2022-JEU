@@ -17,7 +17,7 @@ class PlateauDominos final: Plateau<int, FragmentTriple<int>>{//PLateauDominos<F
 
 public:
     PlateauDominos();
-
+    //TODO: int calculPoint(const Tuile<FragmentTriple<int>> &t, int x, int y);
 };
 
 

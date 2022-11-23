@@ -9,11 +9,10 @@
 #include "../tuile/TuileDominos.hpp"
 
 
-class PlayerDominos  final: protected Player<TuileDominos>{
+class PlayerDominos final: protected Player<TuileDominos>{
 
 public:
     ~PlayerDominos();
 };
-#include "../../src/joueurs/PlayerDominos.cpp"
 
 #endif //CPP_PROJET_2022_JEU_PLAYERDOMINOS_HPP

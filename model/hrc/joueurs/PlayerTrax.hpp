@@ -9,7 +9,7 @@
 #include "Player.hpp"
 #include "../tuile/TuileTrax.hpp"
 
-class PlayerTrax  final: protected Player<TuileTrax>{
+class PlayerTrax final: protected Player<TuileTrax>{
 
 public:
     ~PlayerTrax();

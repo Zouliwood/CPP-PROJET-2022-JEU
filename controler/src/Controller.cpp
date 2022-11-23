@@ -6,7 +6,7 @@
 
 template<typename T>
 void Controller<T>::init() {
-    this->plateauCourant = new Plateau<Tuile<T>>; // pas oublie de faire une fonction free()
+    this->plateauCourant = new Plateau<Tuile<T>, Tuile<T>>; // pas oublie de faire une fonction free()
     for(int x = 0; x < 10; x++){
         vector<Tuile<T>> ligne = new vector<Tuile<T>>;
         for(int y = 0; y < 10; y++){

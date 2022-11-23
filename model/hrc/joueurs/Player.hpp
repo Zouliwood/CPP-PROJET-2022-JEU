@@ -2,6 +2,7 @@
 #define CPP_PROJET_2022_JEU_PLAYER_HPP
 
 #include <string>
+#include <iostream>
 #include "../tuile/Tuile.hpp"
 
 using namespace std;

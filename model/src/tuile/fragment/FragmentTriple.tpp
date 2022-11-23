@@ -1,19 +1,6 @@
 #include "../../../hrc/tuile/fragment/FragmentTriple.hpp"
 
-template<typename T>
 
-bool FragmentTriple<T>::operator==(const FragmentTriple<T> & fragment) {
-    return this->gaucheFragment==fragment->gaucheFragment &&
-           this->centreFragment==fragment->elementCentre &&
-           this->droitFragment==fragment->droitFragment;
-}
-
-template<typename T>
-bool FragmentTriple<T>::operator!=(const FragmentTriple<T> & fragment) {
-    return this->gaucheFragment!=fragment->gaucheFragment ||
-           this->centreFragment!=fragment->elementCentre ||
-           this->droitFragment!=fragment->droitFragment;
-}
 
 template<typename T>
 const T & FragmentTriple<T>::getFragmentGauche() const{
@@ -51,9 +38,23 @@ int FragmentTriple<T>::getPoint(){
 }
 
 template<typename T>
-const FragmentTriple<int> FragmentTriple<T>::operator=(const FragmentTriple<T> & fragment) {
+FragmentTriple<T> & FragmentTriple<T>::operator=(const FragmentTriple<T> * fragment) const{
     this->gaucheFragment=fragment->gaucheFragment;
     this->centreFragment=fragment->centreFragment;
     this->droitFragment=fragment->droitFragment;
-    return *this;
+    return this;
+}
+
+template<typename T>
+bool FragmentTriple<T>::operator==(const FragmentTriple<T> & fragment) {
+    return this->gaucheFragment==fragment->gaucheFragment &&
+           this->centreFragment==fragment->elementCentre &&
+           this->droitFragment==fragment->droitFragment;
+}
+
+template<typename T>
+bool FragmentTriple<T>::operator!=(const FragmentTriple<T> & fragment) {
+    return this->gaucheFragment!=fragment->gaucheFragment ||
+           this->centreFragment!=fragment->elementCentre ||
+           this->droitFragment!=fragment->droitFragment;
 }

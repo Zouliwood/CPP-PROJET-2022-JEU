@@ -15,9 +15,8 @@ private:
     Tuile();
     Tuile(const Tuile &);
 protected:
-
-    virtual void rotate();//TODO: on verra = 0 necessaire
-    virtual int getPoint();
+    void rotate();//TODO: on verra = 0 necessair
+    int getPoint();
 public:
     virtual ~Tuile();
 
