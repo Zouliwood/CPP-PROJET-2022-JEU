@@ -6,8 +6,22 @@
 
 
 ostream &PlateauDominos::operator<<(ostream &os) {
-    return os << "TODO";;
+    return os << "TODO";
 }
+
+int PlateauDominos::calculPoint(const Tuile<FragmentTuile<int>> & t, int x, int y) {
+    return 0;
+}
+
+PlateauDominos::PlateauDominos(){
+    cout << "Plateau domino " << endl;
+}
+
+PlateauDominos::~PlateauDominos(){
+    cout << "destructeur Plateau domino " << endl;
+}
+
+
 /*
 int PlateauDominos::calculPoint(const Tuile<FragmentTriple<int>> &t, int x, int y) {
     const TuileDominos & tuileUp = this->getTuileAt(x,y+1);

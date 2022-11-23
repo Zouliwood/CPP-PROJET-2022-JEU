@@ -5,10 +5,10 @@
 #include "../../hrc/tuile/TuileDominos.hpp"
 
 void TuileDominos::rotate() {
-    FragmentTriple<int> & tmp = this->up;
-    (this->up) = (this->left);
-    this->left = (this->down);
-    this->down = (this->right);
+    FragmentTuile<int> & tmp = this->up;
+    this->up = this->left;
+    this->left = this->down;
+    this->down = this->right;
     this->right = tmp;
 }
 

@@ -58,3 +58,9 @@ bool FragmentTriple<T>::operator!=(const FragmentTriple<T> & fragment) {
            this->centreFragment!=fragment->elementCentre ||
            this->droitFragment!=fragment->droitFragment;
 }
+
+template<typename T>
+FragmentTriple<T>::FragmentTriple() = default;
+
+template<typename T>
+FragmentTriple<T>::~FragmentTriple() = default;

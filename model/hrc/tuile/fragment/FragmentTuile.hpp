@@ -15,6 +15,7 @@ public:
     //TODO: virtual FragmentTuile<T> & operator=(const FragmentTuile<T> &)=0;
     virtual int getPoint()=0;
 };
+
 #include "../../../src/tuile/fragment/FragmentTuile.tpp"
 
 

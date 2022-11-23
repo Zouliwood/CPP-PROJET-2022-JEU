@@ -1,13 +1,20 @@
 #include "../../hrc/joueurs/Player.hpp"
 
-template<typename TF>
-Tuile<TF> Player<TF>::getTuile(){
-    return tuilecourante;
+
+template<typename V>
+Player<V>::~Player() = default;
+
+template<typename V>
+Tuile<FragmentTuile<V>> Player<V>::getTuile() const {
+    return Tuile<FragmentTuile<V>>();
 }
 
-template<typename TF>
-Player<TF>::~Player() {
-
+template<typename V>
+int Player<V>::getPoints() {
+    return points;
 }
+
+template<typename V>
+Player<V>::Player(){}
 
 

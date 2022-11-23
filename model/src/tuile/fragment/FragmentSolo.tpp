@@ -21,3 +21,11 @@ FragmentSolo<T> & FragmentSolo<T>::operator=(const FragmentSolo<T> & fragment) {
     return *this;
 }
 
+template<typename T>
+int FragmentSolo<T>::getPoint() {
+    return 0;
+}
+
+template<typename T>
+FragmentSolo<T>::FragmentSolo() = default;
+

@@ -3,3 +3,14 @@
 //
 
 #include "../../hrc/tuile/Tuile.hpp"
+
+template<typename V>
+Tuile<V>::~Tuile() = default;
+
+template<typename V>
+void Tuile<V>::rotate() {
+
+}
+
+template<typename V>
+Tuile<V>::Tuile() = default;

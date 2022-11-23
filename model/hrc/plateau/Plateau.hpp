@@ -33,6 +33,13 @@ public:
     // virtual ostream & operator<<(ostream& os) const =0;//TODO: virtual??
     const Tuile<FragmentTuile<V>> getTuileAt(int x, int y) const;
 
+    /* define function */
+    void init(int l, int L);
+    bool placeTuile(const Tuile<FragmentTuile<V>> & t, int x, int y);
+    void nextPlayer();
+    const Player<V> * getPlayerCourant() const;
+    Tuile<FragmentTuile<V>> getTuileAt(int x, int y) const;
+
 };
 #include "../../src/plateau/Plateau.tpp"
 
