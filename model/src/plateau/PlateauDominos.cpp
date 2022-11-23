@@ -23,10 +23,10 @@ ostream &PlateauDominos::operator<<(ostream &os) {
 }
 
 int PlateauDominos::calculPoint(const Tuile<FragmentTriple<int>> &t, int x, int y) {
-    TuileD<FragmentTriple<int>> & tuileUp = this->getTuileAt(x,y+1);
-    Tuile<FragmentTuile<T>> & tuileDown = this->getTuileAt(x,y-1);
-    Tuile<FragmentTuile<T>> & tuileRight= this->getTuileAt(x+1,y);
-    Tuile<FragmentTuile<T>> & tuileLeft= this->getTuileAt(x-1,y);
+    const TuileDominos & tuileUp = this->getTuileAt(x,y+1);
+    const TuileDominos & tuileDown = this->getTuileAt(x,y-1);
+    const TuileDominos & tuileRight= this->getTuileAt(x+1,y);
+    const TuileDominos & tuileLeft= this->getTuileAt(x-1,y);
     int somme = 0;
     if(tuileUp->up == t->down)somme+=t->up.getPoint();
     if(tuileDown->down == t->up)somme+=t->down.getPoint();

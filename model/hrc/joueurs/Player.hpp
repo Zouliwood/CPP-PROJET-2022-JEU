@@ -12,15 +12,14 @@ class Player { //TODO: abstract class
 private:
     Player();
     Player(const Player &);
-    virtual ~Player();
-
 protected:
+
     const string pseudo;
     const int points;
     const Tuile<TF> tuilecourante;
-
 public:
-    void getTuile();
+    virtual ~Player();
+    Tuile<TF> getTuile();
 };
 #include "../../src/joueurs/Player.tpp"
 

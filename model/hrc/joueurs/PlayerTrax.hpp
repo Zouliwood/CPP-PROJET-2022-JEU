@@ -8,7 +8,6 @@
 
 #include "Player.hpp"
 #include "../tuile/TuileTrax.hpp"
-#include "../../src/joueurs/PlayerTrax.cpp"
 
 class PlayerTrax  final: protected Player<TuileTrax>{
 

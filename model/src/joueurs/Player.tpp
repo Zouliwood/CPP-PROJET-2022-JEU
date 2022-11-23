@@ -1,6 +1,6 @@
 #include "../../hrc/joueurs/Player.hpp"
 
-template<typename T>
-void Player<T>::getTuile(){
+template<typename TF>
+Tuile<TF> Player<TF>::getTuile(){
     return tuilecourante;
 }

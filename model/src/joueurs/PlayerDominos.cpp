@@ -3,3 +3,7 @@
 //
 
 #include "../../hrc/joueurs/PlayerDominos.hpp"
+
+PlayerDominos::~PlayerDominos() {
+   std::cout << "TODO : destructeur Player Dominos" << std::endl;
+}
