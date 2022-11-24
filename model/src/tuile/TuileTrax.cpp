@@ -4,9 +4,8 @@ void TuileTrax::rotate() {
 
 }
 
-TuileTrax::TuileTrax() {//TODO : à revoir
+TuileTrax::TuileTrax(FragmentSolo<colorTrax> & up,FragmentSolo<colorTrax> & right,FragmentSolo<colorTrax> & down ,FragmentSolo<colorTrax> & left): Tuile(up, right, down, left) {//TODO : à revoir
     cout << "TuileTrax " << endl;
-
 }
 
 TuileTrax::~TuileTrax() {

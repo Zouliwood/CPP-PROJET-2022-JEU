@@ -24,32 +24,6 @@ void Controller<T>::deletePlateau() {
     delete plateauCourant;
 }
 
-template<typename T>
-bool Controller<T>::placerTuileDomino(const Tuile<T> t,int x, int y){
-    if(this->plateauCourant.placeTuile(t, x,y)){
-        //calcul point
-    }
-    //passer le joueur et passer au suivant
-    return false;
-}
-
-template<typename T>
-bool Controller<T>::placerTuileCarcasonne(const Tuile<T> t,int x, int y){
-    if(this->plateauCourant.placeTuile(t, x,y)){
-        //proposition de Placer ses pions
-    }
-    //passer joueur et passer au suivant
-    return false;
-}
-
-template<typename T>
-bool Controller<T>::placerTuileTrax(const Tuile<T> t,int x, int y){
-    if(this->plateauCourant.placeTuile(t, x,y)){
-        //Verifier s'il ça ne forme pas un circuit ou une ligne droite de bout en bout
-    }
-    //passer joueur et passer au suivant
-    return false;
-}
 
 template<typename T>
 void Controller<T>::suivantJoueur(){

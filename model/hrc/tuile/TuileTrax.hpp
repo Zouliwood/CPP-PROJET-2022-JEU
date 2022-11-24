@@ -9,7 +9,7 @@ class TuileTrax final: public Tuile<FragmentSolo<colorTrax>>{
 
 public:
     /* Constructeur & Destructeur*/
-    TuileTrax();
+    TuileTrax(FragmentSolo<colorTrax> & up,FragmentSolo<colorTrax> & right,FragmentSolo<colorTrax> & down ,FragmentSolo<colorTrax> & left);
     ~TuileTrax() override;
 
     /*function override*/

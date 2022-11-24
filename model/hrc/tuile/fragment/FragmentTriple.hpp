@@ -13,16 +13,16 @@ private:
 
 public:
     /* Constructeur & Destructeur */
-    FragmentTriple(V droitFragment,V centreFragment,  V gaucheFragment);
+    FragmentTriple(V droitFragment,V centreFragment, V gaucheFragment);
     ~FragmentTriple() override;
 
     /* override functions */
-    bool operator==(const FragmentTriple<V> &);
-    bool operator!=(const FragmentTriple<V> &);
-    FragmentTriple<V> & operator=(const FragmentTriple<V> *) const;
-    int getPoint();
+    int getPoint() override;
 
     /* other functions */
+    bool operator==(const FragmentTriple<V> &); //override;
+    bool operator!=(const FragmentTriple<V> &); //override;
+    FragmentTriple<V> & operator=(const FragmentTriple<V> *) const;// override;
 
     const V & getFragmentGauche()const;
     const V & getFragmentDroit()const;

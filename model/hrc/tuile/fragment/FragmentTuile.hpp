@@ -16,9 +16,9 @@ public:
     virtual ~FragmentTuile();
 
     /* function to override */
-    virtual bool operator==(const FragmentTuile<V> &)=0;
-    virtual bool operator!=(const FragmentTuile<V> &)=0;
-    virtual FragmentTuile<V> & operator=(const FragmentTuile<V> *) const = 0;
+     //TODO: virtual bool operator==(const FragmentTuile<V> &)=0;
+     //TODO: virtual bool operator!=(const FragmentTuile<V> &)=0;
+     //TODO: virtual FragmentTuile<V> & operator=(const FragmentTuile<V> *) const = 0;
     virtual int getPoint()=0;
 };
 

@@ -17,9 +17,9 @@ public:
     ~FragmentSolo();
 
     /* override functions */
-    bool operator==(const FragmentSolo<V> & );
-    bool operator!=(const FragmentSolo<V> & );
-    FragmentSolo<V> & operator=(const FragmentSolo<V> &);
+    bool operator==(const FragmentSolo<V> & );// override;
+    bool operator!=(const FragmentSolo<V> & );// override;
+    FragmentSolo<V> & operator=(const FragmentSolo<V> &);// override;
     int getPoint();
 
 };
