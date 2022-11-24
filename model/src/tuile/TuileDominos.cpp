@@ -1,21 +1,31 @@
-//
-// Created by david on 13/11/22.
-//
-
 #include "../../hrc/tuile/TuileDominos.hpp"
 
+
 void TuileDominos::rotate() {
-    int tmp[3];
-    swapTab(tmp, up);
-    swapTab(up, left);
-    swapTab(left, down);
-    swapTab(down, right);
-    swapTab(right, tmp);
+    FragmentTriple<int> & tmp = this->up;
+    this->up = this->left;
+    this->left = this->down;
+    this->down = this->right;
+    this->right = tmp;
 }
 
-void TuileDominos::swapTab(int tab[], int tab2[]){
-    for(int i = 0; i < LEN_TUILE; i++) tab[i] = tab2[i];
+ostream &TuileDominos::operator<<(ostream &os) {
+    return os << "[TUILE DOMINOS]" <<endl;
 }
+
+//TODO: revoir
+TuileDominos::TuileDominos(FragmentTriple<int> & up,FragmentTriple<int> & right,FragmentTriple<int> & down ,FragmentTriple<int> & left): Tuile(up, down, right, left) {
+    cout << "TuileDominos " << endl;
+}
+
+TuileDominos::~TuileDominos() {
+    cout << " destructeur TuileDominos " << endl;
+}
+
+/*template<typename T>
+void TuileDominos<T>::swapTab(FragmentTriple<int> & first , FragmentTriple<int> & second) {
+    first=second;
+}*/
 
 /*
 bool TuileDominos::isValide(TuileDominos, enum directionTuile) {
@@ -25,15 +35,3 @@ bool TuileDominos::isValide(TuileDominos, enum directionTuile) {
     return equals(up., ) || equals(right, tuile.left) || equals(down, tuile.up) || equals(left, tuile.right);
 }
 */
-
-bool TuileDominos::operator==(const int arr[]){
-    bool flag = true;
-    for (int i = 0; i < LEN_TUILE; ++i) {
-        if(up[i] != arr[i]) flag = false;
-    }
-    return flag;
-}
-
-bool TuileDominos::operator!=(const int arr[]){
-    return !(up == arr); //!(down == arr); !(right == arr); !(left == arr);
-}

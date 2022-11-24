@@ -1,35 +1,34 @@
-//
-// Created by david on 13/11/22.
-//
-
 #ifndef CPP_PROJET_2022_JEU_TUILE_HPP
 #define CPP_PROJET_2022_JEU_TUILE_HPP
 
 #include "../enum/directionTuile.hpp"
+#include "../enum/colorTrax.hpp"
+#include "../enum/environment.hpp"
+#include "fragment/FragmentTuile.hpp"
+#include "fragment/FragmentTriple.hpp"
+#include "fragment/FragmentSolo.hpp"
+#include <iostream>
 
-template <typename T>
+using namespace std;
 
-class Tuile { //TODO: cacher les constructions juste pour leur fils
-
-private:
-    Tuile();
-    Tuile(const Tuile &);
-    virtual ~Tuile();
+template <typename TF>
+class Tuile {
 
 protected:
+    /* attributs de la classe */
+    TF & up;
+    TF & right;
+    TF & left;
+    TF & down;
 
-    virtual void rotate();//TODO: on verra = 0 necessaire
-    virtual int getPoint();
 public:
+    /* Constructeur & Destructeur */
+    Tuile(TF & up, TF & down, TF & right, TF & left);
+    virtual ~Tuile();
 
-    T up;
-    T right;
-    T left;
-    T down;
+    /* functions to override */
+    virtual void rotate()=0;
 
-    //  virtual bool isValide(T, enum directionTuile) ;
-    virtual bool operator==(const T) = 0;
-    virtual bool operator!=(const T) = 0;
 
 };
 

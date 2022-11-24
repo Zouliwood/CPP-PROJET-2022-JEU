@@ -5,7 +5,7 @@
 #ifndef CPP_PROJET_2022_JEU_PION_HPP
 #define CPP_PROJET_2022_JEU_PION_HPP
 
-#include "enum/roleCarcassonne.hpp"
+#include "../enum/roleCarcassonne.hpp"
 
 class Pion {
 

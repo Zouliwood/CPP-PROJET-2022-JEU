@@ -7,12 +7,21 @@
 
 
 #include "Player.hpp"
+#include "../tuile/TuileTrax.hpp"
 
-class PlayerTrax  final: protected Player{
+class PlayerTrax final: public Player<TuileTrax>{
+
+private:
+    /* attributs */
+    colorTrax couleur;
 
 public:
-    ~PlayerTrax();
+    /* Constructeur & Destructeur */
+    PlayerTrax();
+    ~PlayerTrax() override;
 
+    /* function */
+    colorTrax getColor();
 };
 
 
