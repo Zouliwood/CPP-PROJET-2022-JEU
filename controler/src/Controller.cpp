@@ -1,6 +1,3 @@
-//
-// Created by david on 18/11/22.
-//
 
 #include "../hrc/Controller.hpp"
 

@@ -24,4 +24,3 @@ public:
 
 #include "../../../src/tuile/fragment/FragmentTuile.tpp"
 #endif
-//TODO: virtual FragmentTuile<T> & operator=(const FragmentTuile<T> &)=0;

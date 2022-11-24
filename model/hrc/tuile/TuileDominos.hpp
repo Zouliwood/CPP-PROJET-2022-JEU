@@ -14,7 +14,7 @@ class TuileDominos final: public Tuile<FragmentTriple<int>> {//ici
 
 public:
     /* Constructeur & Destructeur*/
-    TuileDominos(FragmentTriple<int> up,FragmentTriple<int> right,FragmentTriple<int> down ,FragmentTriple<int> left);
+    TuileDominos(FragmentTriple<int> & up, FragmentTriple<int> & right, FragmentTriple<int> & down, FragmentTriple<int> & left);
     ~TuileDominos() override;
 
     ostream & operator<<(ostream &os);

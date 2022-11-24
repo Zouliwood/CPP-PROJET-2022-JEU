@@ -15,7 +15,7 @@ PlateauDominos::~PlateauDominos(){
 
 bool PlateauDominos::placeFirstTuile(){
     int middle = listTuile.size()/2;
-    auto fragment = new FragmentTriple<int>(5,5,5);//TODO : à revoir
+    FragmentTriple<int> fragment = FragmentTriple<int>(5,5,5);//TODO : à revoir
     listTuile.at(middle).at(middle) = new TuileDominos(fragment,fragment,fragment,fragment);
     return (listTuile.at(middle).at(middle) != nullptr);
 }

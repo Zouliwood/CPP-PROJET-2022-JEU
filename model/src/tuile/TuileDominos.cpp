@@ -14,7 +14,7 @@ ostream &TuileDominos::operator<<(ostream &os) {
 }
 
 //TODO: revoir
-TuileDominos::TuileDominos(FragmentTriple<int> up,FragmentTriple<int> right,FragmentTriple<int> down ,FragmentTriple<int> left): Tuile(up, down, right, left) {
+TuileDominos::TuileDominos(FragmentTriple<int> & up,FragmentTriple<int> & right,FragmentTriple<int> & down ,FragmentTriple<int> & left): Tuile(up, down, right, left) {
     cout << "TuileDominos " << endl;
 }
 
