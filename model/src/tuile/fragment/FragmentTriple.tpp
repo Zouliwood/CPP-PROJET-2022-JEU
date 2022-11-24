@@ -42,25 +42,28 @@ FragmentTriple<T> & FragmentTriple<T>::operator=(const FragmentTriple<T> * fragm
     this->gaucheFragment=fragment->gaucheFragment;
     this->centreFragment=fragment->centreFragment;
     this->droitFragment=fragment->droitFragment;
-    return this;
+    return *this;
 }
 
 template<typename T>
 bool FragmentTriple<T>::operator==(const FragmentTriple<T> & fragment) {
-    return this->gaucheFragment==fragment->gaucheFragment &&
-           this->centreFragment==fragment->elementCentre &&
-           this->droitFragment==fragment->droitFragment;
+    return this->gaucheFragment==fragment.centreFragment &&
+           this->centreFragment==fragment.elementCentre &&
+           this->droitFragment==fragment.droitFragment;
 }
 
 template<typename T>
 bool FragmentTriple<T>::operator!=(const FragmentTriple<T> & fragment) {
-    return this->gaucheFragment!=fragment->gaucheFragment ||
-           this->centreFragment!=fragment->elementCentre ||
-           this->droitFragment!=fragment->droitFragment;
+    return this->gaucheFragment!=fragment.gaucheFragment ||
+           this->centreFragment!=fragment.elementCentre ||
+           this->droitFragment!=fragment.droitFragment;
 }
 
 template<typename T>
-FragmentTriple<T>::FragmentTriple() = default;
+FragmentTriple<T>::FragmentTriple(T droitFragment,T centreFragment, T gaucheFragment):
+        FragmentTuile<T>(centreFragment),
+        gaucheFragment{gaucheFragment},
+        droitFragment{droitFragment} {}
 
 template<typename T>
 FragmentTriple<T>::~FragmentTriple() = default;

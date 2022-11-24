@@ -3,34 +3,34 @@
 
 #include "FragmentTuile.hpp"
 
-template<typename T>
-class FragmentTriple final : public FragmentTuile<T>{
+template<typename V>
+class FragmentTriple final : public FragmentTuile<V>{
 
 private:
     /* attributs de la classe */
-    T gaucheFragment;
-    T droitFragment;
+    V gaucheFragment;
+    V droitFragment;
 
 public:
     /* Constructeur & Destructeur */
-    FragmentTriple();
+    FragmentTriple(V droitFragment,V centreFragment, V gaucheFragment);
     ~FragmentTriple() override;
 
     /* override functions */
-    bool operator==(const FragmentTriple<T> &);
-    bool operator!=(const FragmentTriple<T> &);
-    FragmentTriple<T> & operator=(const FragmentTriple<T> *) const;
-    int getPoint();
+    int getPoint() override;
 
     /* other functions */
+    bool operator==(const FragmentTriple<V> &); //override;
+    bool operator!=(const FragmentTriple<V> &); //override;
+    FragmentTriple<V> & operator=(const FragmentTriple<V> *) const;// override;
 
-    const T & getFragmentGauche()const;
-    const T & getFragmentDroit()const;
-    const T & getFragmentCentre()const;
+    const V & getFragmentGauche()const;
+    const V & getFragmentDroit()const;
+    const V & getFragmentCentre()const;
 
-    void setFragmentDroit(const T &fragment) const;
-    void setFragmentGauche(const T &fragment) const;
-    void setFragmentCentre(const T &fragment) const;
+    void setFragmentDroit(const V &fragment) const;
+    void setFragmentGauche(const V &fragment) const;
+    void setFragmentCentre(const V &fragment) const;
 
 };
 #include "../../../src/tuile/fragment/FragmentTriple.tpp"

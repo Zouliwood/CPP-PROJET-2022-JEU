@@ -26,6 +26,11 @@ int FragmentSolo<T>::getPoint() {
     return 0;
 }
 
+template<typename V>
+FragmentSolo<V>::~FragmentSolo() {
+
+}
+
 template<typename T>
 FragmentSolo<T>::FragmentSolo() = default;
 

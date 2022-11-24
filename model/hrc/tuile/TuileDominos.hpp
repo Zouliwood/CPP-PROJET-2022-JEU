@@ -5,14 +5,19 @@
 #include "Tuile.hpp"
 #include "../enum/directionTuile.hpp"
 #include "fragment/FragmentTriple.hpp"
+#include <ostream>
 #define LEN_TUILE 3
 
-class TuileDominos final: public Tuile<int> {//ici
+using namespace std;
+
+class TuileDominos final: public Tuile<FragmentTriple<int>> {//ici
 
 public:
     /* Constructeur & Destructeur*/
-    TuileDominos();
-    ~TuileDominos();
+    TuileDominos(FragmentTriple<int> & up, FragmentTriple<int> & right, FragmentTriple<int> & down, FragmentTriple<int> & left);
+    ~TuileDominos() override;
+
+    ostream & operator<<(ostream &os);
 
     /*function override*/
     void rotate() override;

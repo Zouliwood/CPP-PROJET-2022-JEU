@@ -7,7 +7,7 @@
 
 using namespace std;
 
-template<typename V>
+template<typename TF>
 class Player {
 
 protected:
@@ -22,7 +22,7 @@ protected:
 
 public:
     int getPoints();
-    Tuile<FragmentTuile<V>> getTuile() const;
+    TF getTuile() const;
 
 };
 #include "../../src/joueurs/Player.tpp"

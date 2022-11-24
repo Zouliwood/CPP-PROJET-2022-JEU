@@ -1,26 +1,26 @@
-#include "../../hrc/plateau/Plateau.hpp"
+ #include "../../hrc/plateau/Plateau.hpp"
 #include "../../hrc/tuile/Tuile.hpp"
 
 //TODO: constant de condition
 
-template <typename V>
-Plateau<V>::Plateau(): current_player{0}{}
+template <typename TF>
+Plateau<TF>::Plateau(): current_player{0}{}
 
-template <typename V>
-Plateau<V>::~Plateau(){
+template <typename TF>
+Plateau<TF>::~Plateau(){
     cout << "destructeur plateau " << endl;
 }
 
-template <typename V>
-bool Plateau<V>::placeTuile(const Tuile<FragmentTuile<V>> & t, int x, int y){
+template <typename TF>
+bool Plateau<TF>::placeTuile(const TF & t, int x, int y){
 
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
         return false;
     }
-    Tuile<FragmentTuile<V>> tuileUp = getTuileAt(x,y+1);
-    Tuile<FragmentTuile<V>> tuileDown = getTuileAt(x,y-1);
-    Tuile<FragmentTuile<V>> tuileRight= getTuileAt(x+1,y);
-    Tuile<FragmentTuile<V>> tuileLeft= getTuileAt(x-1,y);
+    TF tuileUp = getTuileAt(x,y+1);
+    TF tuileDown = getTuileAt(x,y-1);
+    TF tuileRight= getTuileAt(x+1,y);
+    TF tuileLeft= getTuileAt(x-1,y);
 
     if(tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr){
             return false;
@@ -34,20 +34,20 @@ bool Plateau<V>::placeTuile(const Tuile<FragmentTuile<V>> & t, int x, int y){
     return flag;
 }
 
-template<typename V>
-void Plateau<V>::nextPlayer() {
+template<typename TF>
+void Plateau<TF>::nextPlayer() {
     current_player= (current_player+1)%listPlayer.size();
 }
 
-template<typename V>
-const Player<V>* Plateau<V>::getPlayerCourant() const{
+template<typename TF>
+const Player<TF>* Plateau<TF>::getPlayerCourant() const{
     return  listPlayer.at(current_player);
 }
 
-template<typename V>
-void Plateau<V>::init(int l, int L){
+template<typename TF>
+void Plateau<TF>::init(int l, int L){
     for (int i = 0; i < l; ++i) {
-        vector<Tuile<FragmentTuile<V>> *> ligne;
+        vector<TF *> ligne;
         for (int j = 0; j < L; ++j) {
             ligne.push_back(nullptr);
         }
@@ -55,24 +55,37 @@ void Plateau<V>::init(int l, int L){
     }
 }
 
-template<typename V>
-Tuile<FragmentTuile<V>> Plateau<V>::getTuileAt(int x, int y) const {
+template<typename TF>
+const TF & Plateau<TF>::getTuileAt(int x, int y) const {
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
         return nullptr;
     }else return listTuile.at(x).at(y);
 }
 
-template<typename V>
-ostream &operator<<(ostream &os, Plateau<Tuile<FragmentTuile<V>>> &plateau) {
+template<typename TF>
+ostream & Plateau<TF>::operator<<(ostream &os) {
     string res;
-    for (int i = 0; i < plateau.listTuile.size(); ++i) {
-        for (int j = 0; j < plateau.listTuile.at(i).size(); ++j) {
-            res+="[" + plateau.getTuileAt(i, j).up + ", ";
-            res+=plateau.getTuileAt(i, j).right + ", ";
-            res+=plateau.getTuileAt(i, j).down + ", ";
-            res+=plateau.getTuileAt(i, j).left + "]";
+    for (int i = 0; i < listTuile.size(); ++i) {
+        for (int j = 0; j < listTuile.at(i).size(); ++j) {
+             res+="[X,X,X,X]";
         }
         res+="\n";
     }
-    return os << res;
+    return os << "blalalalalla" << endl;
 }
+
+ template<typename TF>
+ vector<const Player<TF> *> Plateau<TF>::getListPlayer() const {
+     return this->listPlayer;
+ }
+
+ template<typename TF>
+ vector<vector<TF *>> Plateau<TF>::getListTuile() const {
+     return this->listTuile;
+ }
+
+ template<typename TF>
+ int Plateau<TF>::getCurrentPlayer() {
+     return this->current_player;
+ }
+

@@ -7,9 +7,18 @@ using namespace sf;
 
 int main(){
 
-    auto * plateau = new PlateauDominos();
+    /*PlateauDominos plateau {};
 
-    plateau->init(5,5);
+    plateau.init(5,5);
+
+    plateau.toprint();
+    cout << plateau <<endl;*/
+
+    auto el = PlateauDominos();
+    el.init(5,5);
+    cout << el << endl;
+    el.placeFirstTuile();
+    cout << el << endl;
 
     /*
     //plateau.firstPos(); //place l'element;

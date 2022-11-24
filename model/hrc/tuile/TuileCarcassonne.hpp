@@ -6,17 +6,18 @@
 #include "Tuile.hpp"
 #include "../enum/environment.hpp"
 
-template <typename V>
-class TuileCarcassonne final: public Tuile<V>{
+template <typename TF>
+class TuileCarcassonne final: public Tuile<TF>{
 
 private:
     /* attributs de la classe */
-    FragmentTuile<V> & centre;
+    TF & centre;
 
 public:
     /* Constructeur & Destructeur */
     TuileCarcassonne();
-    virtual ~TuileCarcassonne();
+    ~TuileCarcassonne();
+
 
     /*function override*/
     void rotate();

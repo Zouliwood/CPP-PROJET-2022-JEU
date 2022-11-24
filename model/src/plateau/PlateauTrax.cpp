@@ -1,13 +1,18 @@
 #include "../../hrc/plateau/PlateauTrax.hpp"
 
-int PlateauTrax::calculPoint(const Tuile<FragmentTuile<colorTrax>> & t, int x, int y) {
+int PlateauTrax::calculPoint(const TuileTrax & t, int x, int y) {
     return 0;
 }
 
-//PlateauTrax::PlateauTrax() = default;
+bool PlateauTrax::placeFirstTuile() {
+    return true;
+}
+
+PlateauTrax::PlateauTrax() = default;
 
 ostream &PlateauTrax::operator<<(ostream &os) {
     return os;
 }
 
-//PlateauTrax::~PlateauTrax() = default;
+
+PlateauTrax::~PlateauTrax() = default;
