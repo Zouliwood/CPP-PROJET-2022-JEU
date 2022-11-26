@@ -1,4 +1,4 @@
- #include "../../hrc/plateau/Plateau.hpp"
+#include "../../hrc/plateau/Plateau.hpp"
 #include "../../hrc/tuile/Tuile.hpp"
 
 //TODO: constant de condition
@@ -12,25 +12,27 @@ Plateau<TF>::~Plateau(){
 }
 
 template <typename TF>
-bool Plateau<TF>::placeTuile(const TF & t, int x, int y){
+bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
 
-    if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
+    if (x > this->listTuile.size() || y > this->listTuile.at(0).size() || x < 0 || y < 0) {
         return false;
     }
-    TF tuileUp = getTuileAt(x,y+1);
-    TF tuileDown = getTuileAt(x,y-1);
-    TF tuileRight= getTuileAt(x+1,y);
-    TF tuileLeft= getTuileAt(x-1,y);
+    const TF * tuileUp = getTuileAt(x, y + 1);
+    const TF * tuileDown = getTuileAt(x, y - 1);
+    const TF * tuileRight = getTuileAt(x + 1, y);
+    const TF * tuileLeft = getTuileAt(x - 1, y);
 
-    if(tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr){
-            return false;
+    if (tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr) {
+        return false;
     }
 
-    /* Redefinition de l'operateur '==' */
-    bool flag = (!tuileUp || t.up == tuileUp.down) || (!tuileRight || t.right ==  tuileRight.left)
-                || (!tuileLeft || t.left ==  tuileRight.right) || (!tuileDown || t.down ==  tuileDown.up);
+    bool b = is_base_of<FragmentTriple<int>, TF>(t)!=nullptr;
 
-    if(flag) this->listTuile.at(x).at(y) = t;
+    /* Redefinition de l'operateur '==' */
+    bool flag = (!tuileUp || t-> == tuileUp->down); // || (!tuileRight || t->right == tuileRight->left)
+              //  || (!tuileLeft || t->left == tuileRight->right) || (!tuileDown || t->down == tuileDown->up);
+
+    if (flag) this->listTuile.at(x).at(y) = t;
     return flag;
 }
 
@@ -56,7 +58,7 @@ void Plateau<TF>::init(int l, int L){
 }
 
 template<typename TF>
-const TF & Plateau<TF>::getTuileAt(int x, int y) const {
+const TF * Plateau<TF>::getTuileAt(int x, int y) const{
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
         return nullptr;
     }else return listTuile.at(x).at(y);

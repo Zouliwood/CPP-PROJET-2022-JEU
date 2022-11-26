@@ -9,7 +9,7 @@ template<typename TF>
 PlateauCarcassonne<TF>::PlateauCarcassonne() = default;
 
 template<typename TF>
-int PlateauCarcassonne<TF>::calculPoint(const TF & t, int x, int y){
+int PlateauCarcassonne<TF>::calculPoint(const TF * t, int x, int y){
     return 0;
 }
 template<typename TF>

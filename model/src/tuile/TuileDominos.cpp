@@ -9,12 +9,20 @@ void TuileDominos::rotate() {
     this->right = tmp;
 }
 
-ostream &TuileDominos::operator<<(ostream &os) {
-    return os << "[TUILE DOMINOS]" <<endl;
+string TuileDominos::toString(){
+    return ((FragmentTriple<int> &) (this->getLeft())).toString()
+    + ((FragmentTriple<int> &) (this->getDown())).toString()
+    + ((FragmentTriple<int> &) (this->getUp())).toString()
+    + ((FragmentTriple<int> &) (this->getRight())).toString();
+}
+
+ostream & operator<<(ostream &os, TuileDominos & tdomino) {
+    return os << "[Up: "<< (FragmentTriple<int> &)(tdomino.getUp()) << ", Right: " << (FragmentTriple<int> &)tdomino.getRight() << ", Down:" << (FragmentTriple<int> &)tdomino.getDown() <<
+    ", Left:" << (FragmentTriple<int> &)tdomino.getLeft() << "]" << endl;
 }
 
 //TODO: revoir
-TuileDominos::TuileDominos(FragmentTriple<int> & up,FragmentTriple<int> & right,FragmentTriple<int> & down ,FragmentTriple<int> & left): Tuile(up, down, right, left) {
+TuileDominos::TuileDominos(FragmentTriple<int> & up, FragmentTriple<int> & right, FragmentTriple<int> & down , FragmentTriple<int> & left): Tuile(up, down, right, left) {
     cout << "TuileDominos " << endl;
 }
 

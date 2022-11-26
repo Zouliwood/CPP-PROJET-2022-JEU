@@ -20,9 +20,10 @@ public:
     int getPoint() override;
 
     /* other functions */
-    bool operator==(const FragmentTriple<V> &); //override;
-    bool operator!=(const FragmentTriple<V> &); //override;
+    bool operator==(const FragmentTriple<V> *); //override;
+    bool operator!=(const FragmentTriple<V> *); //override;
     FragmentTriple<V> & operator=(const FragmentTriple<V> *) const;// override;
+    string toString();
 
     const V & getFragmentGauche()const;
     const V & getFragmentDroit()const;
@@ -33,7 +34,10 @@ public:
     void setFragmentCentre(const V &fragment) const;
 
 };
-#include "../../../src/tuile/fragment/FragmentTriple.tpp"
 
+template<typename V>
+ostream & operator<<(ostream &out, FragmentTriple<V> & fragment);
+
+#include "../../../src/tuile/fragment/FragmentTriple.tpp"
 
 #endif //CPP_PROJET_2022_JEU_FRAGMENTTRIPLE_HPP

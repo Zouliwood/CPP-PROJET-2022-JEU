@@ -18,7 +18,8 @@ public:
     virtual bool placeFirstTuile() = 0;
 
     /* override function */
-    int calculPoint(const F & t, int x, int y);
+    int calculPoint(const F * t, int x, int y) override;
+   // virtual const TuileCarcassonne<F> & generateRandomTuile() const override;
 
 };
 #include "../../src/plateau/PlateauCarcassonne.tpp"

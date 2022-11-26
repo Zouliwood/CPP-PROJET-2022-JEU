@@ -14,15 +14,16 @@ public:
     ~PlateauDominos();
 
     bool placeFirstTuile();
+    TuileDominos * generateRandomTuile() const;
 
     /* define function */
     void toprint();
     /* override function */
-    int calculPoint(const TuileDominos & t, int x, int y);
+    //TODO: https://stackoverflow.com/questions/6969020/overriding-virtual-function-return-type-differs-and-is-not-covariant
+    int calculPoint(const TuileDominos * t, int x, int y) override;
 
 };
 
 ostream &operator<<(ostream &os, PlateauDominos & plateauDominos);
 
 #endif
-

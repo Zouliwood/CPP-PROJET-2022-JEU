@@ -20,11 +20,17 @@ protected:
     TF & right;
     TF & left;
     TF & down;
+    //pas const car rotate
 
 public:
     /* Constructeur & Destructeur */
     Tuile(TF & up, TF & down, TF & right, TF & left);
     virtual ~Tuile();
+
+    const TF & getUp() const;
+    const TF & getRight() const;
+    const TF & getLeft() const;
+    const TF & getDown() const;
 
     /* functions to override */
     virtual void rotate()=0;

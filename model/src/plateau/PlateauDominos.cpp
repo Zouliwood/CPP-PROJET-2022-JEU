@@ -1,7 +1,7 @@
 #include "../../hrc/plateau/PlateauDominos.hpp"
 
 
-int PlateauDominos::calculPoint(const TuileDominos & t, int x, int y) {
+int PlateauDominos::calculPoint(const TuileDominos * t, int x, int y) {
     return 0;
 }
 
@@ -15,9 +15,19 @@ PlateauDominos::~PlateauDominos(){
 
 bool PlateauDominos::placeFirstTuile(){
     int middle = listTuile.size()/2;
-    FragmentTriple<int> fragment = FragmentTriple<int>(5,5,5);//TODO : à revoir
-    listTuile.at(middle).at(middle) = new TuileDominos(fragment,fragment,fragment,fragment);
+    TuileDominos * domino =  generateRandomTuile();
+    listTuile.at(middle).at(middle) = domino;
     return (listTuile.at(middle).at(middle) != nullptr);
+}
+
+
+TuileDominos * PlateauDominos::generateRandomTuile() const{
+    return new TuileDominos(
+            *new FragmentTriple<int>(rand()%5,rand()%5,rand()%5),
+            *new FragmentTriple<int>(rand()%5,rand()%5,rand()%5),
+            *new FragmentTriple<int>(rand()%5,rand()%5,rand()%5),
+            *new FragmentTriple<int>(rand()%5,rand()%5,rand()%5)
+    );
 }
 
 ostream &operator<<(ostream &os, PlateauDominos & plateauDominos){
@@ -25,12 +35,14 @@ ostream &operator<<(ostream &os, PlateauDominos & plateauDominos){
     for (int i = 0; i < plateauDominos.getListTuile().size(); ++i) {
         for (int j = 0; j < plateauDominos.getListTuile().at(i).size(); ++j) {
                 if(plateauDominos.getListTuile().at(i).at(j) == nullptr){
-                    res+="[X]";
-                }else res+="[ T ]";
+                    os << "[Up : 0.0.0, Right: 0.0.0, Down: 0.0.0, Left: 0.0.0";
+                }else {
+                    os << *plateauDominos.getListTuile().at(i).at(j);
+                }
         }
-        res+="\n";
+        os << "\n";
     }
-    return os << res << endl;
+    return os << endl;
 }
 
 

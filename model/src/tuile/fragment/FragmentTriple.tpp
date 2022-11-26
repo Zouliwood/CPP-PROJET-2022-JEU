@@ -46,17 +46,17 @@ FragmentTriple<T> & FragmentTriple<T>::operator=(const FragmentTriple<T> * fragm
 }
 
 template<typename T>
-bool FragmentTriple<T>::operator==(const FragmentTriple<T> & fragment) {
-    return this->gaucheFragment==fragment.centreFragment &&
-           this->centreFragment==fragment.elementCentre &&
-           this->droitFragment==fragment.droitFragment;
+bool FragmentTriple<T>::operator==(const FragmentTriple<T> * fragment) {
+    return this->gaucheFragment==fragment->centreFragment &&
+           this->centreFragment==fragment->elementCentre &&
+           this->droitFragment==fragment->droitFragment;
 }
 
 template<typename T>
-bool FragmentTriple<T>::operator!=(const FragmentTriple<T> & fragment) {
-    return this->gaucheFragment!=fragment.gaucheFragment ||
-           this->centreFragment!=fragment.elementCentre ||
-           this->droitFragment!=fragment.droitFragment;
+bool FragmentTriple<T>::operator!=(const FragmentTriple<T> * fragment) {
+    return this->gaucheFragment!=fragment->gaucheFragment ||
+           this->centreFragment!=fragment->elementCentre ||
+           this->droitFragment!=fragment->droitFragment;
 }
 
 template<typename T>
@@ -67,3 +67,14 @@ FragmentTriple<T>::FragmentTriple(T droitFragment,T centreFragment, T gaucheFrag
 
 template<typename T>
 FragmentTriple<T>::~FragmentTriple() = default;
+
+
+template<typename V>
+ostream & operator<<(ostream &out, FragmentTriple<V> & fragment){
+    return out << fragment.getFragmentGauche() << fragment.getFragmentCentre() << fragment.getFragmentDroit()<< endl;
+}
+
+template<typename V>
+string FragmentTriple<V>::toString(){
+    return to_string(getFragmentGauche()) + to_string(getFragmentCentre()) + to_string(getFragmentDroit());
+}

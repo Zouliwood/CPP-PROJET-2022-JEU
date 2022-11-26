@@ -1,6 +1,6 @@
 #include "../../hrc/plateau/PlateauTrax.hpp"
 
-int PlateauTrax::calculPoint(const TuileTrax & t, int x, int y) {
+int PlateauTrax::calculPoint(const TuileTrax * t, int x, int y) {
     return 0;
 }
 

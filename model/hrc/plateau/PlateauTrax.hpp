@@ -18,7 +18,8 @@ public:
     virtual bool placeFirstTuile() = 0;
 
     /* override function */
-    int calculPoint(const TuileTrax & t, int x, int y);
+    int calculPoint(const TuileTrax * t, int x, int y) override;
+   // virtual const TuileTrax & generateRandomTuile() const override;
 
 };
 
