@@ -29,10 +29,10 @@ TuileDominos * PlateauDominos::generateRandomTuile() const{
             *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2)
     );*/
     return new TuileDominos(
-            *new FragmentTriple<int>(5,5,5),
             *new FragmentTriple<int>(1,1,1),
-            *new FragmentTriple<int>(5,5,5),
-            *new FragmentTriple<int>(5,5,5)
+            *new FragmentTriple<int>(2,2,2),
+            *new FragmentTriple<int>(3,3,3),
+            *new FragmentTriple<int>(4,4,4)
     );
 }
 
