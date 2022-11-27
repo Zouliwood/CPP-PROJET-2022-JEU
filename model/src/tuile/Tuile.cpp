@@ -12,7 +12,7 @@ template<typename TF>
 void Tuile<TF>::rotate() {}
 
 template<typename TF>
-const TF &Tuile<TF>::getUp() const {
+const TF & Tuile<TF>::getUp() const {
     return this->up;
 }
 

@@ -71,7 +71,7 @@ FragmentTriple<T>::~FragmentTriple() = default;
 
 template<typename V>
 ostream & operator<<(ostream &out, FragmentTriple<V> & fragment){
-    return out << fragment.getFragmentGauche() << fragment.getFragmentCentre() << fragment.getFragmentDroit()<< endl;
+    return out << fragment.getFragmentGauche() << "." << fragment.getFragmentCentre()<<"." << fragment.getFragmentDroit();
 }
 
 template<typename V>

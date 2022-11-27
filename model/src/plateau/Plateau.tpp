@@ -12,7 +12,7 @@ Plateau<TF>::~Plateau(){
 }
 
 template <typename TF>
-bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
+bool Plateau<TF>::placeTuile(TF * t, int x, int y, bool(* fun)(const TF * courant, const TF *up, const TF * down, const TF * right, const TF * left)) {
 
     if (x > this->listTuile.size() || y > this->listTuile.at(0).size() || x < 0 || y < 0) {
         return false;
