@@ -26,10 +26,8 @@ bool Plateau<TF>::placeTuile(TF * t, int x, int y, bool(* fun)(const TF * couran
         return false;
     }
 
-    bool b = is_base_of<FragmentTriple<int>, TF>(t)!=nullptr;
-
     /* Redefinition de l'operateur '==' */
-    bool flag = (!tuileUp || t-> == tuileUp->down); // || (!tuileRight || t->right == tuileRight->left)
+    bool flag = fun(t, tuileUp, tuileDown, tuileRight, tuileLeft);// (!tuileUp || t-> == tuileUp->down); // || (!tuileRight || t->right == tuileRight->left)
               //  || (!tuileLeft || t->left == tuileRight->right) || (!tuileDown || t->down == tuileDown->up);
 
     if (flag) this->listTuile.at(x).at(y) = t;
@@ -69,11 +67,11 @@ ostream & Plateau<TF>::operator<<(ostream &os) {
     string res;
     for (int i = 0; i < listTuile.size(); ++i) {
         for (int j = 0; j < listTuile.at(i).size(); ++j) {
-             res+="[X,X,X,X]";
+            os << "[X,X,X,X]";
         }
-        res+="\n";
+        os << "\n";
     }
-    return os << "blalalalalla" << endl;
+    return os << endl;
 }
 
  template<typename TF>

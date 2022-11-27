@@ -5,46 +5,56 @@
 
 using namespace sf;
 
+
+bool compareTuile(const TuileDominos * courant, const TuileDominos * tuileUp, const TuileDominos * tuileDown, const TuileDominos * tuileRight, const TuileDominos * tuileLeft){
+    return     (!tuileUp || &(courant->getUp()) == &(tuileUp->getDown()))
+            || (!tuileRight || &(courant->getRight()) == &(tuileRight->getLeft()))
+            || (!tuileLeft || &(courant->getLeft()) == &(tuileRight->getRight()))
+            || (!tuileDown || &(courant->getDown()) == &(tuileDown->getUp()));
+/*
+ *  (!tuileUp || t-> == tuileUp->down); // || (!tuileRight || t->right == tuileRight->left)
+              //  || (!tuileLeft || t->left == tuileRight->right) || (!tuileDown || t->down == tuileDown->up);
+
+ */
+}
 int main(){
 
-    PlateauDominos plateau {};
-
+    auto plateau = PlateauDominos();
     plateau.init(5,5);
+    plateau.placeFirstTuile();
 
-    cout << plateau <<endl;
-
-    auto el = PlateauDominos();
-    el.init(5,5);
-    cout << el << endl;
-    el.placeFirstTuile();
-    cout << el << endl;
-
-    auto frag = FragmentTriple<int>(1, 2, 3);
-
-    cout << frag << endl;
-
-    auto Tuiled = TuileDominos(frag, frag, frag, frag);
-    cout << Tuiled.toString() << endl;
     TuileDominos * tuile = plateau.generateRandomTuile();
 
     while(1){
+        cout << plateau << endl;
         cout << "Votre tuile en main : " << endl;
 
         cout << tuile->toString() << endl;
 
-        cout << "1 - Jouer " << " 2 - defausser "<<endl;
+        cout << "1 - Jouer " << "2- Rotate ma tuile " <<" 3 - defausser " <<endl;
         int rep;
         cin >> rep;
-        if(rep == 1){
-            int x, y;
-            cout << "entrez vos coordonnées" << endl;
-            cout << "x: " << endl;
-            cin >> x;
-            cout << "y: " << endl;
-            cin >> y;
-            plateau.placeTuile(tuile, x,y);
-        }else{
-            tuile = plateau.generateRandomTuile();
+
+        switch(rep){
+            case 1:
+                int x, y;
+                cout << "entrez vos coordonnées" << endl;
+                cout << "x: " << endl;
+                cin >> x;
+                cout << "y: " << endl;
+                cin >> y;
+                if(!plateau.placeTuile(tuile, y, x, compareTuile)){
+                    cout << "Placement impossible ressayer !" << endl;
+                }
+                break;
+            case 2:
+                tuile->rotate();
+                continue;
+            case 3:
+                tuile = plateau.generateRandomTuile();
+                break;
+            default:
+                continue;
         }
 
     }

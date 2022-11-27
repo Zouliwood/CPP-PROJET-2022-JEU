@@ -22,11 +22,17 @@ bool PlateauDominos::placeFirstTuile(){
 
 
 TuileDominos * PlateauDominos::generateRandomTuile() const{
+    /*return new TuileDominos(
+            *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2),
+            *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2),
+            *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2),
+            *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2)
+    );*/
     return new TuileDominos(
-            *new FragmentTriple<int>(rand()%5,rand()%5,rand()%5),
-            *new FragmentTriple<int>(rand()%5,rand()%5,rand()%5),
-            *new FragmentTriple<int>(rand()%5,rand()%5,rand()%5),
-            *new FragmentTriple<int>(rand()%5,rand()%5,rand()%5)
+            *new FragmentTriple<int>(5,5,5),
+            *new FragmentTriple<int>(1,1,1),
+            *new FragmentTriple<int>(5,5,5),
+            *new FragmentTriple<int>(5,5,5)
     );
 }
 
@@ -35,7 +41,7 @@ ostream &operator<<(ostream &os, PlateauDominos & plateauDominos){
     for (int i = 0; i < plateauDominos.getListTuile().size(); ++i) {
         for (int j = 0; j < plateauDominos.getListTuile().at(i).size(); ++j) {
                 if(plateauDominos.getListTuile().at(i).at(j) == nullptr){
-                    os << "[Up : 0.0.0, Right: 0.0.0, Down: 0.0.0, Left: 0.0.0";
+                    os << "[U:0.0.0, R:0.0.0, D:0.0.0, L:0.0.0]";
                 }else {
                     os << *plateauDominos.getListTuile().at(i).at(j);
                 }
@@ -44,8 +50,6 @@ ostream &operator<<(ostream &os, PlateauDominos & plateauDominos){
     }
     return os << endl;
 }
-
-
 
 /*
 int PlateauDominos::calculPoint(const Tuile<FragmentTriple<int>> &t, int x, int y) {

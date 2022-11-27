@@ -28,7 +28,7 @@ public:
 
     /* define function */
     void init(int l, int L);
-    bool placeTuile(TF * t, int x, int y);
+    bool placeTuile(TF * t, int x, int y, bool(* fun)(const TF * courant, const TF *up, const TF * down, const TF * right, const TF * left));
     void nextPlayer();
     const Player<TF> * getPlayerCourant() const;
     const TF * getTuileAt(int x, int y)const;

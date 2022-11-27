@@ -23,6 +23,7 @@ public:
     void rotate() override;
     //void swapTab(FragmentTriple<int> &, FragmentTriple<int> &);
     string toString();
+   // bool compareTuile(TuileDominos * tuileUp, TuileDominos * tuileDown, TuileDominos * tuileRight, TuileDominos * tuileLeft);
 };
 ostream & operator<<(ostream &os, TuileDominos & tdomino);
 
