@@ -24,11 +24,13 @@ public:
     /* to override function */
     virtual int calculPoint(const TF * value, int x, int y)=0;
     virtual bool placeFirstTuile() = 0;
+
+    virtual bool compareTuile(const TF *courant, const TF *tuileUp, const TF *tuileDown, const TF *tuileRight, const TF *tuileLeft) = 0;
  //TODO: Check si carcassonne en a besoin sinon supprimer   virtual const Tuile<TF> & generateRandomTuile() const = 0;
 
     /* define function */
     void init(int l, int L);
-    bool placeTuile(TF * t, int x, int y, bool(* fun)(const TF * courant, const TF *up, const TF * down, const TF * right, const TF * left));
+    bool placeTuile(TF * t, int x, int y);
     void nextPlayer();
     const Player<TF> * getPlayerCourant() const;
     const TF * getTuileAt(int x, int y)const;

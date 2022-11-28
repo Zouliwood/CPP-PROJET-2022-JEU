@@ -63,17 +63,7 @@ public:
 template<typename V>
 ostream & operator<<(ostream &out, FragmentTriple<V> & fragment);
 
-template<typename V>
-bool operator==(const FragmentTriple<V> & a, const FragmentTriple<V> & b) {
-    cout << "----------- on entre == --------------" << endl;
-    return b.gaucheFragment==a.gaucheFragment && b.centreFragment==a.centreFragment && b.droitFragment==a.droitFragment;
-}
 
-template<typename V>
-bool operator!=(const FragmentTriple<V> & a,const FragmentTriple<V> & b) {
-    cout << "----------- on entre != --------------" << endl;
-    return b.gaucheFragment!=a.gaucheFragment ||b.centreFragment!=a.centreFragment || b.droitFragment!=a.droitFragment;
-}
 
 /*template<typename V>
 bool operator==(const FragmentTriple<V> &a, const FragmentTriple<V> &b);

@@ -14,5 +14,10 @@ ostream &PlateauTrax::operator<<(ostream &os) {
     return os;
 }
 
+bool PlateauTrax::compareTuile(const TuileTrax *courant, const TuileTrax *tuileUp, const TuileTrax *tuileDown,
+                               const TuileTrax *tuileRight, const TuileTrax *tuileLeft) {
+    return false;
+}
+
 
 PlateauTrax::~PlateauTrax() = default;

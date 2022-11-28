@@ -15,13 +15,15 @@ public:
 
     bool placeFirstTuile();
     TuileDominos * generateRandomTuile() const;
-    static bool compareTuile(TuileDominos * courant, TuileDominos * tuileUp, TuileDominos * tuileDown, TuileDominos * tuileRight, TuileDominos * tuileLeft);
 
     /* define function */
     void toprint();
+
     /* override function */
     //TODO: https://stackoverflow.com/questions/6969020/overriding-virtual-function-return-type-differs-and-is-not-covariant
     int calculPoint(const TuileDominos * t, int x, int y) override;
+    bool compareTuile(const TuileDominos *courant, const TuileDominos *tuileUp, const TuileDominos *tuileDown,
+                      const TuileDominos *tuileRight, const TuileDominos *tuileLeft) override;
 };
 
 ostream &operator<<(ostream &os, PlateauDominos & plateauDominos);

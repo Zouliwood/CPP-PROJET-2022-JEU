@@ -47,7 +47,7 @@ FragmentTriple<T> & FragmentTriple<T>::operator=(const FragmentTriple<T> * fragm
 template<typename T>
 bool FragmentTriple<T>::compareFragment(const FragmentTriple<T> * fragment){
     cout << "----------- on entre == compaire fonction --------------" << endl;
-    return this == fragment;
+    return *this == *fragment;
 }
 
 
@@ -69,4 +69,15 @@ ostream & operator<<(ostream &out, FragmentTriple<V> & fragment){
 template<typename V>
 string FragmentTriple<V>::toString(){
     return to_string(getFragmentGauche()) + to_string(getFragmentCentre()) + to_string(getFragmentDroit());
+}
+
+template<typename V>
+bool operator==(const FragmentTriple<V> & a, const FragmentTriple<V> & b) {
+    cout << "salut c moi david le codeur haha" << endl;
+    return b.gaucheFragment==a.gaucheFragment && b.centreFragment==a.centreFragment && b.droitFragment==a.droitFragment;
+}
+
+template<typename V>
+bool operator!=(const FragmentTriple<V> & a,const FragmentTriple<V> & b) {
+    return b.gaucheFragment!=a.gaucheFragment ||b.centreFragment!=a.centreFragment || b.droitFragment!=a.droitFragment;
 }

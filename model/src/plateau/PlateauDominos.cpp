@@ -51,6 +51,13 @@ ostream &operator<<(ostream &os, PlateauDominos & plateauDominos){
     return os << endl;
 }
 
+bool PlateauDominos::compareTuile(const TuileDominos * courant, const TuileDominos * tuileUp, const TuileDominos * tuileDown, const TuileDominos * tuileRight, const TuileDominos * tuileLeft){
+    return (!tuileUp || *(&(FragmentTriple<int> &)courant->getUp()) == *(&(FragmentTriple<int> &)tuileUp->getDown()))
+           &&  (!tuileRight || *(&(FragmentTriple<int> &)courant->getRight()) == *(&(FragmentTriple<int> &)tuileRight->getLeft()))
+           && (!tuileLeft || *(&(FragmentTriple<int> &)courant->getLeft()) == *(&(FragmentTriple<int> &)tuileLeft->getRight()))
+           && (!tuileDown || *(&(FragmentTriple<int> &)courant->getDown()) == *(&(FragmentTriple<int> &)tuileDown->getUp()));
+}
+
 /*
 int PlateauDominos::calculPoint(const Tuile<FragmentTriple<int>> &t, int x, int y) {
     const TuileDominos & tuileUp = this->getTuileAt(x,y+1);

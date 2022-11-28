@@ -19,7 +19,8 @@ public:
 
     /* override function */
     int calculPoint(const TuileTrax * t, int x, int y) override;
-   // virtual const TuileTrax & generateRandomTuile() const override;
+    bool compareTuile(const TuileTrax *courant, const TuileTrax *tuileUp, const TuileTrax *tuileDown, const TuileTrax *tuileRight, const TuileTrax *tuileLeft) override;
+    // virtual const TuileTrax & generateRandomTuile() const override;
 
 };
 

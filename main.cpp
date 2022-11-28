@@ -5,18 +5,6 @@
 
 using namespace sf;
 
-/*template<typename  T>
-bool operator==(const FragmentTriple<T> & a, const FragmentTriple<T> & b){
-    cout << "test ############" << endl;
-    return true;
-}*/
-
-bool compareTuile(const TuileDominos * courant, const TuileDominos * tuileUp, const TuileDominos * tuileDown, const TuileDominos * tuileRight, const TuileDominos * tuileLeft){
-    return (!tuileUp || (&(FragmentTriple<int> &)courant->getUp())->compareFragment(&(FragmentTriple<int> &)tuileUp->getDown()))
-        ||  (!tuileRight || (&(FragmentTriple<int> &)courant->getRight())->compareFragment(&(FragmentTriple<int> &)tuileRight->getLeft()))
-        || (!tuileLeft || (&(FragmentTriple<int> &)courant->getLeft())->compareFragment(&(FragmentTriple<int> &)tuileLeft->getRight()))
-        || (!tuileDown || (&(FragmentTriple<int> &)courant->getDown())->compareFragment(&(FragmentTriple<int> &)tuileDown->getUp()));
-}
 
 int main(){
 
@@ -44,7 +32,7 @@ int main(){
                 cin >> x;
                 cout << "y: " << endl;
                 cin >> y;
-                if(!plateau.placeTuile(tuile, x, y, compareTuile)){
+                if(!plateau.placeTuile(tuile, x, y)){
                     cout << "Placement impossible ressayer !" << endl;
                 }
                 break;

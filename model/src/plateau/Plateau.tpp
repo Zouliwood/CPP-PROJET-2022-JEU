@@ -12,7 +12,7 @@ Plateau<TF>::~Plateau(){
 }
 
 template <typename TF>
-bool Plateau<TF>::placeTuile(TF * t, int x, int y, bool(* fun)(const TF * courant, const TF *up, const TF * down, const TF * right, const TF * left)) {
+bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
 
     if (x > this->listTuile.size() || y > this->listTuile.at(0).size() || x < 0 || y < 0) {
         return false;
@@ -22,21 +22,12 @@ bool Plateau<TF>::placeTuile(TF * t, int x, int y, bool(* fun)(const TF * couran
     const TF * tuileRight = getTuileAt(x + 1, y);
     const TF * tuileLeft = getTuileAt(x - 1, y);
 
-    cout << "DOWN, UP, R, L" << endl;
-    cout << tuileDown << endl;
-    cout << tuileUp << endl;
-    cout << tuileRight << endl;
-    cout << tuileLeft << endl;
-
-    cout << "aaaaaaaaaaaaaa" << endl;
-
     if (tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr) {
         return false;
     }
 
     /* Redefinition de l'operateur '==' */
-    bool flag = fun(t, tuileUp, tuileDown, tuileRight, tuileLeft);// (!tuileUp || t-> == tuileUp->down); // || (!tuileRight || t->right == tuileRight->left)
-              //  || (!tuileLeft || t->left == tuileRight->right) || (!tuileDown || t->down == tuileDown->up);
+    bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
     cout << " flag de la fonction compare " << flag << endl;
     if (flag) this->listTuile.at(y).at(x) = t;
     return flag;
