@@ -17,12 +17,16 @@ public:
     TuileDominos(FragmentTriple<int> & up, FragmentTriple<int> & right, FragmentTriple<int> & down, FragmentTriple<int> & left);
     ~TuileDominos() override;
 
-    ostream & operator<<(ostream &os);
+    //ostream & operator<<(ostream &os);
 
     /*function override*/
     void rotate() override;
     //void swapTab(FragmentTriple<int> &, FragmentTriple<int> &);
+    string toString();
+   // bool compareTuile(TuileDominos * tuileUp, TuileDominos * tuileDown, TuileDominos * tuileRight, TuileDominos * tuileLeft);
 };
+ostream & operator<<(ostream &os, TuileDominos & tdomino);
+
 
 
 #endif

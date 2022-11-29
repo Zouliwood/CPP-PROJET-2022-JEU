@@ -5,15 +5,30 @@
 #include "../../hrc/tuile/Tuile.hpp"
 
 
+template<typename TF>
+Tuile<TF>::~Tuile() {}
 
 template<typename TF>
-Tuile<TF>::~Tuile() {
+void Tuile<TF>::rotate() {}
 
+template<typename TF>
+const TF & Tuile<TF>::getUp() const {
+    return this->up;
 }
 
 template<typename TF>
-void Tuile<TF>::rotate() {
+const TF &Tuile<TF>::getLeft() const {
+    return this->left;
+}
 
+template<typename TF>
+const TF &Tuile<TF>::getRight() const {
+    return this->right;
+}
+
+template<typename TF>
+const TF &Tuile<TF>::getDown() const {
+    return this->down;
 }
 
 template<typename TF>

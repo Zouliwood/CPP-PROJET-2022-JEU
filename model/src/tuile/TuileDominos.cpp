@@ -1,20 +1,30 @@
 #include "../../hrc/tuile/TuileDominos.hpp"
 
 
+
+string TuileDominos::toString(){
+    return "[U:"+ ((FragmentTriple<int> &) (this->getUp())).toString() + "\n"
+           + ", R:" + ((FragmentTriple<int> &) (this->getRight())).toString() + "\n"
+           +", D:" + ((FragmentTriple<int> &) (this->getDown())).toString() + "\n"
+           + ", L:" + ((FragmentTriple<int> &) (this->getLeft())).toString() + "]";
+}
+
+ostream & operator<<(ostream &os, TuileDominos & tdomino) {
+    return os << "[U:"<< (FragmentTriple<int> &)(tdomino.getUp()) << ", R:" << (FragmentTriple<int> &)tdomino.getRight() << ", D:" << (FragmentTriple<int> &)tdomino.getDown() <<
+    ", L:" << (FragmentTriple<int> &)tdomino.getLeft() << "]";
+}
+
 void TuileDominos::rotate() {
-    FragmentTriple<int> & tmp = this->up;
+    FragmentTriple<int>* tmp = new FragmentTriple<int>(this->getUp().getFragmentDroit(), this->getUp().getFragmentCentre(), this->getUp().getFragmentGauche()) ;
     this->up = this->left;
     this->left = this->down;
     this->down = this->right;
-    this->right = tmp;
-}
-
-ostream &TuileDominos::operator<<(ostream &os) {
-    return os << "[TUILE DOMINOS]" <<endl;
+    this->right = *tmp;
+    delete tmp;
 }
 
 //TODO: revoir
-TuileDominos::TuileDominos(FragmentTriple<int> & up,FragmentTriple<int> & right,FragmentTriple<int> & down ,FragmentTriple<int> & left): Tuile(up, down, right, left) {
+TuileDominos::TuileDominos(FragmentTriple<int> & up, FragmentTriple<int> & right, FragmentTriple<int> & down , FragmentTriple<int> & left): Tuile(up, down, right, left) {
     cout << "TuileDominos " << endl;
 }
 

@@ -18,7 +18,6 @@ public:
     TuileCarcassonne();
     ~TuileCarcassonne();
 
-
     /*function override*/
     void rotate();
 };

@@ -1,4 +1,4 @@
- #include "../../hrc/plateau/Plateau.hpp"
+#include "../../hrc/plateau/Plateau.hpp"
 #include "../../hrc/tuile/Tuile.hpp"
 
 //TODO: constant de condition
@@ -12,25 +12,24 @@ Plateau<TF>::~Plateau(){
 }
 
 template <typename TF>
-bool Plateau<TF>::placeTuile(const TF & t, int x, int y){
+bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
 
-    if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
+    if (x > this->listTuile.size() || y > this->listTuile.at(0).size() || x < 0 || y < 0) {
         return false;
     }
-    TF tuileUp = getTuileAt(x,y+1);
-    TF tuileDown = getTuileAt(x,y-1);
-    TF tuileRight= getTuileAt(x+1,y);
-    TF tuileLeft= getTuileAt(x-1,y);
+    const TF * tuileUp = getTuileAt(x, y + 1);
+    const TF * tuileDown = getTuileAt(x, y - 1);
+    const TF * tuileRight = getTuileAt(x + 1, y);
+    const TF * tuileLeft = getTuileAt(x - 1, y);
 
-    if(tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr){
-            return false;
+    if (tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr) {
+        return false;
     }
 
     /* Redefinition de l'operateur '==' */
-    bool flag = (!tuileUp || t.up == tuileUp.down) || (!tuileRight || t.right ==  tuileRight.left)
-                || (!tuileLeft || t.left ==  tuileRight.right) || (!tuileDown || t.down ==  tuileDown.up);
-
-    if(flag) this->listTuile.at(x).at(y) = t;
+    bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
+    cout << " flag de la fonction compare " << flag << endl;
+    if (flag) this->listTuile.at(y).at(x) = t;
     return flag;
 }
 
@@ -56,10 +55,10 @@ void Plateau<TF>::init(int l, int L){
 }
 
 template<typename TF>
-const TF & Plateau<TF>::getTuileAt(int x, int y) const {
+const TF * Plateau<TF>::getTuileAt(int x, int y) const{
     if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
         return nullptr;
-    }else return listTuile.at(x).at(y);
+    }else return listTuile.at(y).at(x);
 }
 
 template<typename TF>
@@ -67,11 +66,11 @@ ostream & Plateau<TF>::operator<<(ostream &os) {
     string res;
     for (int i = 0; i < listTuile.size(); ++i) {
         for (int j = 0; j < listTuile.at(i).size(); ++j) {
-             res+="[X,X,X,X]";
+            os << "[X,X,X,X]";
         }
-        res+="\n";
+        os << "\n";
     }
-    return os << "blalalalalla" << endl;
+    return os << endl;
 }
 
  template<typename TF>

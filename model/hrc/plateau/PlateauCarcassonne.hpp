@@ -14,11 +14,14 @@ public:
     /* Constructeur & Destructeur */
     PlateauCarcassonne();
     ~PlateauCarcassonne();
+
     /* define function */
     virtual bool placeFirstTuile() = 0;
 
     /* override function */
-    int calculPoint(const F & t, int x, int y);
+    int calculPoint(const F * t, int x, int y) override;
+    bool compareTuile(TuileCarcassonne<F> * courant, TuileCarcassonne<F> * tuileUp, TuileCarcassonne<F> * tuileDown, TuileCarcassonne<F>  * tuileRight, TuileCarcassonne<F>  * tuileLeft) override;
+    // virtual const TuileCarcassonne<F> & generateRandomTuile() const override;
 
 };
 #include "../../src/plateau/PlateauCarcassonne.tpp"

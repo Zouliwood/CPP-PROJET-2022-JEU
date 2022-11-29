@@ -10,5 +10,6 @@ TuileTrax::TuileTrax(FragmentSolo<colorTrax> & up,FragmentSolo<colorTrax> & righ
 
 TuileTrax::~TuileTrax() {
     cout << " destructeur TuileTrax " << endl;
-
 }
+
+

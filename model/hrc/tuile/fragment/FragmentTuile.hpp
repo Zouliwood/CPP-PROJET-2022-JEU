@@ -2,6 +2,9 @@
 #define CPP_PROJET_2022_JEU_FRAGMENTTUILE_HPP
 
 #include "../../enum/directionTuile.hpp"
+#include <ostream>
+
+using namespace std;
 
 template<typename V>
 class FragmentTuile {

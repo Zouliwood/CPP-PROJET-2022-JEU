@@ -1,7 +1,5 @@
 #include "../../../hrc/tuile/fragment/FragmentTriple.hpp"
 
-
-
 template<typename T>
 const T & FragmentTriple<T>::getFragmentGauche() const{
     return this->gaucheFragment;
@@ -39,6 +37,7 @@ int FragmentTriple<T>::getPoint(){
 
 template<typename T>
 FragmentTriple<T> & FragmentTriple<T>::operator=(const FragmentTriple<T> * fragment) const{
+
     this->gaucheFragment=fragment->gaucheFragment;
     this->centreFragment=fragment->centreFragment;
     this->droitFragment=fragment->droitFragment;
@@ -46,18 +45,11 @@ FragmentTriple<T> & FragmentTriple<T>::operator=(const FragmentTriple<T> * fragm
 }
 
 template<typename T>
-bool FragmentTriple<T>::operator==(const FragmentTriple<T> & fragment) {
-    return this->gaucheFragment==fragment.centreFragment &&
-           this->centreFragment==fragment.elementCentre &&
-           this->droitFragment==fragment.droitFragment;
+bool FragmentTriple<T>::compareFragment(const FragmentTriple<T> * fragment){
+    cout << "----------- on entre == compaire fonction --------------" << endl;
+    return *this == *fragment;
 }
 
-template<typename T>
-bool FragmentTriple<T>::operator!=(const FragmentTriple<T> & fragment) {
-    return this->gaucheFragment!=fragment.gaucheFragment ||
-           this->centreFragment!=fragment.elementCentre ||
-           this->droitFragment!=fragment.droitFragment;
-}
 
 template<typename T>
 FragmentTriple<T>::FragmentTriple(T droitFragment,T centreFragment, T gaucheFragment):
@@ -67,3 +59,25 @@ FragmentTriple<T>::FragmentTriple(T droitFragment,T centreFragment, T gaucheFrag
 
 template<typename T>
 FragmentTriple<T>::~FragmentTriple() = default;
+
+
+template<typename V>
+ostream & operator<<(ostream &out, FragmentTriple<V> & fragment){
+    return out << fragment.getFragmentGauche() << "." << fragment.getFragmentCentre()<<"." << fragment.getFragmentDroit();
+}
+
+template<typename V>
+string FragmentTriple<V>::toString(){
+    return to_string(getFragmentGauche()) + to_string(getFragmentCentre()) + to_string(getFragmentDroit());
+}
+
+template<typename V>
+bool operator==(const FragmentTriple<V> & a, const FragmentTriple<V> & b) {
+    cout << "salut c moi david le codeur haha" << endl;
+    return b.gaucheFragment==a.gaucheFragment && b.centreFragment==a.centreFragment && b.droitFragment==a.droitFragment;
+}
+
+template<typename V>
+bool operator!=(const FragmentTriple<V> & a,const FragmentTriple<V> & b) {
+    return b.gaucheFragment!=a.gaucheFragment ||b.centreFragment!=a.centreFragment || b.droitFragment!=a.droitFragment;
+}

@@ -1,7 +1,7 @@
 #include "../../hrc/plateau/PlateauDominos.hpp"
 
 
-int PlateauDominos::calculPoint(const TuileDominos & t, int x, int y) {
+int PlateauDominos::calculPoint(const TuileDominos * t, int x, int y) {
     return 0;
 }
 
@@ -15,9 +15,25 @@ PlateauDominos::~PlateauDominos(){
 
 bool PlateauDominos::placeFirstTuile(){
     int middle = listTuile.size()/2;
-    FragmentTriple<int> fragment = FragmentTriple<int>(5,5,5);//TODO : à revoir
-    listTuile.at(middle).at(middle) = new TuileDominos(fragment,fragment,fragment,fragment);
+    TuileDominos * domino =  generateRandomTuile();
+    listTuile.at(middle).at(middle) = domino;
     return (listTuile.at(middle).at(middle) != nullptr);
+}
+
+
+TuileDominos * PlateauDominos::generateRandomTuile() const{
+    /*return new TuileDominos(
+            *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2),
+            *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2),
+            *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2),
+            *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2)
+    );*/
+    return new TuileDominos(
+            *new FragmentTriple<int>(1,1,1),
+            *new FragmentTriple<int>(2,2,2),
+            *new FragmentTriple<int>(3,3,3),
+            *new FragmentTriple<int>(4,4,4)
+    );
 }
 
 ostream &operator<<(ostream &os, PlateauDominos & plateauDominos){
@@ -25,15 +41,22 @@ ostream &operator<<(ostream &os, PlateauDominos & plateauDominos){
     for (int i = 0; i < plateauDominos.getListTuile().size(); ++i) {
         for (int j = 0; j < plateauDominos.getListTuile().at(i).size(); ++j) {
                 if(plateauDominos.getListTuile().at(i).at(j) == nullptr){
-                    res+="[X]";
-                }else res+="[ T ]";
+                    os << "[U:0.0.0, R:0.0.0, D:0.0.0, L:0.0.0]";
+                }else {
+                    os << *plateauDominos.getListTuile().at(i).at(j);
+                }
         }
-        res+="\n";
+        os << "\n";
     }
-    return os << res << endl;
+    return os << endl;
 }
 
-
+bool PlateauDominos::compareTuile(const TuileDominos * courant, const TuileDominos * tuileUp, const TuileDominos * tuileDown, const TuileDominos * tuileRight, const TuileDominos * tuileLeft){
+    return (!tuileUp || *(&(FragmentTriple<int> &)courant->getUp()) == *(&(FragmentTriple<int> &)tuileUp->getDown()))
+           &&  (!tuileRight || *(&(FragmentTriple<int> &)courant->getRight()) == *(&(FragmentTriple<int> &)tuileRight->getLeft()))
+           && (!tuileLeft || *(&(FragmentTriple<int> &)courant->getLeft()) == *(&(FragmentTriple<int> &)tuileLeft->getRight()))
+           && (!tuileDown || *(&(FragmentTriple<int> &)courant->getDown()) == *(&(FragmentTriple<int> &)tuileDown->getUp()));
+}
 
 /*
 int PlateauDominos::calculPoint(const Tuile<FragmentTriple<int>> &t, int x, int y) {
