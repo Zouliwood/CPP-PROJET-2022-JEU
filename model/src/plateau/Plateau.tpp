@@ -14,13 +14,10 @@ Plateau<TF>::~Plateau(){
 template <typename TF>
 bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
 
-    if (x > this->listTuile.size() || y > this->listTuile.at(0).size() || x < 0 || y < 0) {
-        return false;
-    }
-    const TF * tuileUp = getTuileAt(x, y + 1);
-    const TF * tuileDown = getTuileAt(x, y - 1);
-    const TF * tuileRight = getTuileAt(x + 1, y);
-    const TF * tuileLeft = getTuileAt(x - 1, y);
+   const TF * tuileUp = getTuileAt(x, y + 1);
+   const TF * tuileDown = getTuileAt(x, y - 1);
+   const TF * tuileRight = getTuileAt(x + 1, y);
+   const TF * tuileLeft = getTuileAt(x - 1, y);
 
     if (tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr) {
         return false;
@@ -28,8 +25,7 @@ bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
 
     /* Redefinition de l'operateur '==' */
     bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
-    cout << " flag de la fonction compare " << flag << endl;
-    if (flag) this->listTuile.at(y).at(x) = t;
+    if (flag) ((AxeVector<TF> *)this->listTuile.getAt(y))->addElement(x, t);
     return flag;
 }
 
@@ -45,20 +41,14 @@ const Player<TF>* Plateau<TF>::getPlayerCourant() const{
 
 template<typename TF>
 void Plateau<TF>::init(int l, int L){
-    for (int i = 0; i < l; ++i) {
-        vector<TF *> ligne;
-        for (int j = 0; j < L; ++j) {
-            ligne.push_back(nullptr);
-        }
-        listTuile.push_back(ligne);
-    }
+    return;
 }
 
 template<typename TF>
 const TF * Plateau<TF>::getTuileAt(int x, int y) const{
-    if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
-        return nullptr;
-    }else return listTuile.at(y).at(x);
+    AxeVector<TF> * ligne = getListTuile().getAt(x);
+    if(ligne == nullptr) return nullptr;
+    return (ligne->getAt(y));
 }
 
 template<typename TF>

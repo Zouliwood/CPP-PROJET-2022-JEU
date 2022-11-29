@@ -14,7 +14,9 @@ class Plateau {
 protected:
     /* attributs */
     vector<const Player<TF> *> listPlayer;
-    vector<vector<TF *>> listTuile;
+    //vector<vector<TF *>> listTuile;
+    AxeVector<AxeVector<TF>> listTuile;
+
     int current_player;
 
 public:
@@ -36,7 +38,8 @@ public:
     const Player<TF> * getPlayerCourant() const;
     const TF * getTuileAt(int x, int y)const;
     vector<const Player<TF> *> getListPlayer() const;
-    vector<vector<TF *>> getListTuile() const;
+    //vector<vector<TF *>> getListTuile() const;
+    AxeVector<AxeVector<TF>> getListTuile()const;
     int getCurrentPlayer();
 
     ostream & operator<<(ostream &os);

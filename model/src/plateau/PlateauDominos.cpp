@@ -14,10 +14,14 @@ PlateauDominos::~PlateauDominos(){
 }
 
 bool PlateauDominos::placeFirstTuile(){
-    int middle = listTuile.size()/2;
+    //int middle = listTuile.size()/2;
+    //  listTuile.at(middle).at(middle) = domino;
     TuileDominos * domino =  generateRandomTuile();
-    listTuile.at(middle).at(middle) = domino;
-    return (listTuile.at(middle).at(middle) != nullptr);
+    listTuile.addElement(0, new AxeVector<TuileDominos>());
+    cout << "Ligne ajoutée !" << endl;
+    ((AxeVector<TuileDominos> *)listTuile.getAt(0))->addElement(0, domino);
+    cout << ">>>>>>>>>>>>>>>>>>>>>>>>" << listTuile.getAt(0)->getAt(0) << endl;
+    return ((AxeVector<TuileDominos> *) listTuile.getAt(0))->getAt(0) != nullptr;
 }
 
 
@@ -38,12 +42,16 @@ TuileDominos * PlateauDominos::generateRandomTuile() const{
 
 ostream &operator<<(ostream &os, PlateauDominos & plateauDominos){
     string res;
-    for (int i = 0; i < plateauDominos.getListTuile().size(); ++i) {
-        for (int j = 0; j < plateauDominos.getListTuile().at(i).size(); ++j) {
-                if(plateauDominos.getListTuile().at(i).at(j) == nullptr){
+    int size = plateauDominos.getListTuile().getNegatif().size() + plateauDominos.getListTuile().getPositif().size();
+    cout << "Taille du grand tableau : " << size << endl;
+    for (int i = 0; i < size; ++i) {
+        AxeVector<TuileDominos> * ligne = plateauDominos.getListTuile().getAt(0);
+        int size_ligne = ligne->getPositif().size() + ligne->getNegatif().size();
+        for (int j = 0; j < size_ligne; ++j) {
+                if(ligne->getAt(0) == nullptr){
                     os << "[U:0.0.0, R:0.0.0, D:0.0.0, L:0.0.0]";
                 }else {
-                    os << *plateauDominos.getListTuile().at(i).at(j);
+                    os << ((TuileDominos*) ligne->getAt(0))->toString();
                 }
         }
         os << "\n";

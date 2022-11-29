@@ -9,8 +9,8 @@ using namespace sf;
 int main(){
 
     auto plateau = PlateauDominos();
-    plateau.init(5,5);
     plateau.placeFirstTuile();
+    cout << "FIn de placefirstTuile()" << endl;
 
     TuileDominos * tuile = plateau.generateRandomTuile();
 
