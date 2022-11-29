@@ -79,7 +79,7 @@ ostream & Plateau<TF>::operator<<(ostream &os) {
  }
 
  template<typename TF>
- vector<vector<TF *>> Plateau<TF>::getListTuile() const {
+ AxeVector<AxeVector<TF>> Plateau<TF>::getListTuile() const {
      return this->listTuile;
  }
 

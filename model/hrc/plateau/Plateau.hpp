@@ -6,6 +6,7 @@
 #include <iostream>
 #include "../joueurs/Player.hpp"
 #include "../tuile/Tuile.hpp"
+#include "../vector/AxeVector.hpp"
 
 template <typename TF>
 class Plateau {
