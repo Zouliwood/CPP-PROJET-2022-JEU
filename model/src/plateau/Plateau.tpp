@@ -1,5 +1,6 @@
 #include "../../hrc/plateau/Plateau.hpp"
 #include "../../hrc/tuile/Tuile.hpp"
+#include "../../hrc/tuile/TuileDominos.hpp"
 
 //TODO: constant de condition
 
@@ -14,22 +15,39 @@ Plateau<TF>::~Plateau(){
 template <typename TF>
 bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
 
-    if (x > this->listTuile.size() || y > this->listTuile.at(0).size() || x < 0 || y < 0) {
-        return false;
-    }
-    const TF * tuileUp = getTuileAt(x, y + 1);
-    const TF * tuileDown = getTuileAt(x, y - 1);
-    const TF * tuileRight = getTuileAt(x + 1, y);
-    const TF * tuileLeft = getTuileAt(x - 1, y);
+    if(getTuileAt(x, y) != nullptr) return false;
+
+   const TF * tuileUp = getTuileAt(x, y + 1);
+   const TF * tuileDown = getTuileAt(x, y - 1);
+   const TF * tuileRight = getTuileAt(x + 1, y);
+   const TF * tuileLeft = getTuileAt(x - 1, y);
 
     if (tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr) {
         return false;
     }
+    cout << "Up" << (const_cast<TuileDominos*>(tuileUp))
+    << " D" << (const_cast<TuileDominos*>(tuileDown))
+    << " R" << (const_cast<TuileDominos*>(tuileRight))
+    << " L" << (const_cast<TuileDominos*>(tuileLeft)) << endl;
 
     /* Redefinition de l'operateur '==' */
     bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
-    cout << " flag de la fonction compare " << flag << endl;
-    if (flag) this->listTuile.at(y).at(x) = t;
+    if (flag) {
+        cout << "Compare Place tuile ok " << endl;
+        if(y >= 0){
+            if(y >= this->listTuile.getPositif().size()){
+                this->listTuile.addElement(y, new AxeVector<TF>());
+            }
+        }else{
+            if((y*-1)-1 >= this->listTuile.getNegatif().size()){
+                cout << "Creation nouvelle tuile" << endl;
+                this->listTuile.addElement(y, new AxeVector<TF>());
+            }
+        }
+        cout <<"On vient de poser la tuile correctement en position x:" << x << " y : "<< y << " ?:" << (y*-1)-1 << endl;
+        //TODO: faire neg ca marche passssssssssssssssss
+        ((AxeVector<TF> *)this->listTuile.getAt(y))->addElement(x, t);
+    }
     return flag;
 }
 
@@ -45,20 +63,17 @@ const Player<TF>* Plateau<TF>::getPlayerCourant() const{
 
 template<typename TF>
 void Plateau<TF>::init(int l, int L){
-    for (int i = 0; i < l; ++i) {
-        vector<TF *> ligne;
-        for (int j = 0; j < L; ++j) {
-            ligne.push_back(nullptr);
-        }
-        listTuile.push_back(ligne);
-    }
+    return;
 }
 
 template<typename TF>
 const TF * Plateau<TF>::getTuileAt(int x, int y) const{
-    if(x > this->listTuile.size() || y > this->listTuile.at(0).size() || x<0 || y<0){
+    AxeVector<TF> * ligne = getListTuile().getAt(y);
+    if(ligne == nullptr) {
+        cout << "#####Plateau getTuileAt NullPtr ######" << endl;
         return nullptr;
-    }else return listTuile.at(y).at(x);
+    }
+    return (ligne->getAt(x));
 }
 
 template<typename TF>
@@ -79,7 +94,7 @@ ostream & Plateau<TF>::operator<<(ostream &os) {
  }
 
  template<typename TF>
- vector<vector<TF *>> Plateau<TF>::getListTuile() const {
+ AxeVector<AxeVector<TF>> Plateau<TF>::getListTuile() const {
      return this->listTuile;
  }
 
