@@ -1,4 +1,4 @@
-#include "../../hrc/tuile/TuileTrax.hpp"
+#include "../../hrc/model/tuile/TuileTrax.hpp"
 
 void TuileTrax::rotate() {
 

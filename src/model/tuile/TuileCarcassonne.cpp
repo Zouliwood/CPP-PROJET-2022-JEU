@@ -1,4 +1,4 @@
-#include "../../hrc/tuile/TuileCarcassonne.hpp"
+#include "../../hrc/model/tuile/TuileCarcassonne.hpp"
 
 template<typename TF>
 TuileCarcassonne<TF>::TuileCarcassonne() = default;

@@ -1,9 +1,4 @@
-//
-// Created by david on 13/11/22.
-//
-
-#include "../../hrc/tuile/Tuile.hpp"
-
+#include "../../hrc/model/tuile/Tuile.hpp"
 
 template<typename TF>
 Tuile<TF>::~Tuile() {}

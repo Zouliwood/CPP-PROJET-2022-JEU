@@ -1,7 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "model/hrc/plateau/PlateauDominos.hpp"
-#include "model/hrc/tuile/TuileDominos.hpp"
+#include "hrc/model/plateau/PlateauDominos.hpp"
 
 using namespace sf;
 

@@ -1,8 +1,4 @@
-//
-// Created by david on 17/11/22.
-//
-
-#include "../../../hrc/tuile/fragment/FragmentSolo.hpp"
+#include "../../hrc/model/tuile/fragment/FragmentSolo.hpp"
 
 template<typename T>
 

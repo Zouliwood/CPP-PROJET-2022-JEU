@@ -1,4 +1,4 @@
-#include "../../hrc/plateau/PlateauCarcassonne.hpp"
+#include "../../hrc/model/plateau/PlateauCarcassonne.hpp"
 
 template<typename TF>
 ostream &PlateauCarcassonne<TF>::operator<<(ostream &os) {
