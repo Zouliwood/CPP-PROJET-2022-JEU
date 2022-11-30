@@ -47,7 +47,7 @@ public:
 
 
 };
-#include "../../src/plateau/Plateau.tpp"
+#include "../../../src/model/plateau/Plateau.tpp"
 
 #endif //CPP_PROJET_2022_JEU_PLATEAU_HPP
 // virtual ostream & operator<<(ostream& os) const =0;//TODO: virtual??

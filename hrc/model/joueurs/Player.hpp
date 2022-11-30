@@ -25,6 +25,6 @@ public:
     TF getTuile() const;
 
 };
-#include "../../src/joueurs/Player.tpp"
+#include "../../../src/model/joueurs/Player.tpp"
 
 #endif //CPP_PROJET_2022_JEU_PLAYER_HPP

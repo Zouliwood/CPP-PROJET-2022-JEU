@@ -71,6 +71,6 @@ bool operator==(const FragmentTriple<V> &a, const FragmentTriple<V> &b);
 template<typename V>
 bool operator!=(const FragmentTriple<V> &a,const FragmentTriple<V> &b);*/
 
-#include "../../../src/tuile/fragment/FragmentTriple.tpp"
+#include "../../../../src/model/tuile/fragment/FragmentTriple.tpp"
 
 #endif //CPP_PROJET_2022_JEU_FRAGMENTTRIPLE_HPP

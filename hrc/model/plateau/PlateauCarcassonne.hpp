@@ -24,6 +24,6 @@ public:
     // virtual const TuileCarcassonne<F> & generateRandomTuile() const override;
 
 };
-#include "../../src/plateau/PlateauCarcassonne.tpp"
+#include "../../../src/model/plateau/PlateauCarcassonne.tpp"
 
 #endif //CPP_PROJET_2022_JEU_PLATEAUCARCASSONNE_HPP

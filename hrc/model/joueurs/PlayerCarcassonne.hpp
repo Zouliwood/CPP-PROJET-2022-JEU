@@ -25,5 +25,5 @@ public:
     vector<Pion> getListPions();
 };
 
-#include "../../src/joueurs/PlayerCarcassonne.tpp"
+#include "../../../src/model/joueurs/PlayerCarcassonne.tpp"
 #endif

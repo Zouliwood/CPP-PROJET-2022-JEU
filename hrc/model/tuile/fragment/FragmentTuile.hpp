@@ -25,5 +25,5 @@ public:
     virtual int getPoint()=0;
 };
 
-#include "../../../src/tuile/fragment/FragmentTuile.tpp"
+#include "../../../../src/model/tuile/fragment/FragmentTuile.tpp"
 #endif

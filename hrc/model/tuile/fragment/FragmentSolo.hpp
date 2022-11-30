@@ -23,5 +23,5 @@ public:
     int getPoint();
 
 };
-#include "../../../src/tuile/fragment/FragmentSolo.tpp"
+#include "../../../../src/model/tuile/fragment/FragmentSolo.tpp"
 #endif
