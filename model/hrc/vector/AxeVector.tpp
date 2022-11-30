@@ -6,21 +6,24 @@ T * AxeVector<T>::getAt(int pos) {
         if(pos >= positif.size()) return nullptr;
         return positif.at(pos);
     }else{
-        pos = pos * (-1) -1;
-        if(pos >= negatif.size()) return nullptr;
-        return negatif.at(pos*-1-1);
+        int posx = pos * (-1) -1;
+        if(posx >= negatif.size()) return nullptr;
+        return negatif.at(posx);
     }
 }
 
 template<typename T>
 void AxeVector<T>::addElement(int pos, T *element) {
-   if(pos >= 0){
+    if(pos >= 0){
        if(pos >= positif.size()) positif.resize(pos + 1);
        positif.at(pos) = element;
    }else{
-       pos = pos*(-1)-1;
-       if(pos >= negatif.size()) negatif.resize(pos + 1);
-       negatif.at(pos) = element;
+        int posx = (pos*-1)-1;//+du 0
+       if(posx >= negatif.size()) {
+           negatif.resize(posx+1);//ici +1 de avoir une place en plus
+           cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << negatif.size() << endl;
+       }
+       negatif.at(posx) = element;
    }
 }
 

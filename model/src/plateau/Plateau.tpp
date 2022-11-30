@@ -1,5 +1,6 @@
 #include "../../hrc/plateau/Plateau.hpp"
 #include "../../hrc/tuile/Tuile.hpp"
+#include "../../hrc/tuile/TuileDominos.hpp"
 
 //TODO: constant de condition
 
@@ -14,6 +15,8 @@ Plateau<TF>::~Plateau(){
 template <typename TF>
 bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
 
+    if(getTuileAt(x, y) != nullptr) return false;
+
    const TF * tuileUp = getTuileAt(x, y + 1);
    const TF * tuileDown = getTuileAt(x, y - 1);
    const TF * tuileRight = getTuileAt(x + 1, y);
@@ -22,10 +25,29 @@ bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
     if (tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr) {
         return false;
     }
+    cout << "Up" << (const_cast<TuileDominos*>(tuileUp))
+    << " D" << (const_cast<TuileDominos*>(tuileDown))
+    << " R" << (const_cast<TuileDominos*>(tuileRight))
+    << " L" << (const_cast<TuileDominos*>(tuileLeft)) << endl;
 
     /* Redefinition de l'operateur '==' */
     bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
-    if (flag) ((AxeVector<TF> *)this->listTuile.getAt(y))->addElement(x, t);
+    if (flag) {
+        cout << "Compare Place tuile ok " << endl;
+        if(y >= 0){
+            if(y >= this->listTuile.getPositif().size()){
+                this->listTuile.addElement(y, new AxeVector<TF>());
+            }
+        }else{
+            if((y*-1)-1 >= this->listTuile.getNegatif().size()){
+                cout << "Creation nouvelle tuile" << endl;
+                this->listTuile.addElement(y, new AxeVector<TF>());
+            }
+        }
+        cout <<"On vient de poser la tuile correctement en position x:" << x << " y : "<< y << " ?:" << (y*-1)-1 << endl;
+        //TODO: faire neg ca marche passssssssssssssssss
+        ((AxeVector<TF> *)this->listTuile.getAt(y))->addElement(x, t);
+    }
     return flag;
 }
 
@@ -46,9 +68,12 @@ void Plateau<TF>::init(int l, int L){
 
 template<typename TF>
 const TF * Plateau<TF>::getTuileAt(int x, int y) const{
-    AxeVector<TF> * ligne = getListTuile().getAt(x);
-    if(ligne == nullptr) return nullptr;
-    return (ligne->getAt(y));
+    AxeVector<TF> * ligne = getListTuile().getAt(y);
+    if(ligne == nullptr) {
+        cout << "#####Plateau getTuileAt NullPtr ######" << endl;
+        return nullptr;
+    }
+    return (ligne->getAt(x));
 }
 
 template<typename TF>

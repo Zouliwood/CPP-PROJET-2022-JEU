@@ -15,10 +15,11 @@ int main(){
     TuileDominos * tuile = plateau.generateRandomTuile();
 
     while(1){
+
         cout << plateau << endl;
         cout << "Votre tuile en main : " << endl;
 
-        cout << tuile->toString() << endl;
+        cout << *tuile<< endl;
 
         cout << "1 - Jouer " << "2- Rotate ma tuile " <<" 3 - defausser " <<endl;
         int rep;
@@ -34,6 +35,8 @@ int main(){
                 cin >> y;
                 if(!plateau.placeTuile(tuile, x, y)){
                     cout << "Placement impossible ressayer !" << endl;
+                }else{
+                    tuile = plateau.generateRandomTuile();
                 }
                 break;
             case 2:

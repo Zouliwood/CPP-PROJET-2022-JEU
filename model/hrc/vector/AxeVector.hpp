@@ -2,11 +2,13 @@
 #define CPP_PROJET_2022_JEU_AXEVECTOR_HPP
 
 #include <vector>
+#define TAUX 10
 
 using namespace std;
 
 template<typename T>
 class AxeVector {
+
 
 
 private:
@@ -19,11 +21,8 @@ public:
     vector<T*> getPositif();
     vector<T*> getNegatif();
 
-
-
-
 };
 
 #include "AxeVector.tpp"
 
-#endif //CPP_PROJET_2022_JEU_AXEVECTOR_HPP
+#endif
