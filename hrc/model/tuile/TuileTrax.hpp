@@ -12,8 +12,12 @@ public:
     TuileTrax(FragmentSolo<colorTrax> & up,FragmentSolo<colorTrax> & right,FragmentSolo<colorTrax> & down ,FragmentSolo<colorTrax> & left);
     ~TuileTrax() override;
 
+    void flipTuile();
+
     /*function override*/
     void rotate() override;
 };
+
+ostream & operator<<(ostream &os, const TuileTrax & ttrax);
 
 #endif

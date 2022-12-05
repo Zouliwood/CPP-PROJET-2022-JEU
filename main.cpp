@@ -1,17 +1,29 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "hrc/model/plateau/PlateauDominos.hpp"
+#include "hrc/model/plateau/PlateauTrax.hpp"
 
 using namespace sf;
 
 
 int main(){
 
-    auto plateau = PlateauDominos();
+    /*auto plateau = PlateauDominos();
     plateau.placeFirstTuile();
     cout << "FIn de placefirstTuile()" << endl;
 
-    TuileDominos * tuile = plateau.generateRandomTuile();
+    TuileDominos * tuile = plateau.generateRandomTuile();*/
+
+    auto plateau = PlateauTrax();
+
+    auto * t = new FragmentSolo<colorTrax>(colorTrax::NOIR);
+
+    TuileTrax * tuile = new TuileTrax(*t, *t, *t, *t);
+    //TODO: fonction qui créer une tuile
+    // fonction qui flipe une tuile dans TuileTrax
+    // fonction qui permet de poser la premiere tuile
+    // fonction qui detecte la fin de partie
+    // redéfinir fonction principale place tuile en y ajoutant un fonction comme
 
     while(1){
 
@@ -35,14 +47,14 @@ int main(){
                 if(!plateau.placeTuile(tuile, x, y)){
                     cout << "Placement impossible ressayer !" << endl;
                 }else{
-                    tuile = plateau.generateRandomTuile();
+                    tuile = new TuileTrax(*t, *t, *t, *t);
                 }
                 break;
             case 2:
                 tuile->rotate();
                 continue;
             case 3:
-                tuile = plateau.generateRandomTuile();
+                tuile = new TuileTrax(*t, *t, *t, *t);
                 break;
             default:
                 continue;

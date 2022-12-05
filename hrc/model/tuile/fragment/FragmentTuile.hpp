@@ -15,8 +15,10 @@ protected:
 
 public:
     /* Constructeur & Destructeur */
-    FragmentTuile(V centreFragment);
+    explicit FragmentTuile(V centreFragment);
     virtual ~FragmentTuile();
+
+    virtual const V & getFragmentCentre()const=0;
 
     /* function to override */
      //TODO: virtual bool operator==(const FragmentTuile<V> &)=0;

@@ -11,17 +11,28 @@
 template<typename V>
 class FragmentSolo final: public FragmentTuile<V> {
 
+    /* override functions */
+    template<typename T>
+    friend bool operator==(const FragmentSolo<V> & a, const FragmentSolo<V> & b);// override;
+
+    template<typename T>
+    friend bool operator!=(const FragmentSolo<V> & a, const FragmentSolo<V> & b);// override;
+
 public:
     /* Constructeur & Destructeur */
-    FragmentSolo();
+    explicit FragmentSolo(V centreFragment);
     ~FragmentSolo();
 
-    /* override functions */
-    bool operator==(const FragmentSolo<V> & );// override;
-    bool operator!=(const FragmentSolo<V> & );// override;
-    FragmentSolo<V> & operator=(const FragmentSolo<V> &);// override;
+    const V & getFragmentCentre() const;
+
+    FragmentSolo<V> & operator=(const FragmentSolo<V> *) const;// override;
+
     int getPoint();
 
 };
+
+template<typename V>
+ostream & operator<<(ostream &out, const FragmentSolo<V> & fragment);
+
 #include "../../../../src/model/tuile/fragment/FragmentSolo.tpp"
 #endif

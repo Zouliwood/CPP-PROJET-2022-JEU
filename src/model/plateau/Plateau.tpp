@@ -22,13 +22,16 @@ bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
    const TF * tuileRight = getTuileAt(x + 1, y);
    const TF * tuileLeft = getTuileAt(x - 1, y);
 
-    if (tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr) {
-        return false;
-    }
-    cout << "Up" << (const_cast<TuileDominos*>(tuileUp))
+
+
+   if(isFirstTuile(tuileUp, tuileDown, tuileRight, tuileLeft)) {
+       return false;
+   }
+
+    /*cout << "Up" << (const_cast<TuileDominos*>(tuileUp))
     << " D" << (const_cast<TuileDominos*>(tuileDown))
     << " R" << (const_cast<TuileDominos*>(tuileRight))
-    << " L" << (const_cast<TuileDominos*>(tuileLeft)) << endl;
+    << " L" << (const_cast<TuileDominos*>(tuileLeft)) << endl;*/
 
     /* Redefinition de l'operateur '==' */
     bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
