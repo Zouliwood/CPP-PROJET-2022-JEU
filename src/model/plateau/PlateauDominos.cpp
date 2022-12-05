@@ -1,4 +1,4 @@
-#include "../../hrc/model/plateau/PlateauDominos.hpp"
+#include "../../../hrc/model/plateau/PlateauDominos.hpp"
 
 
 int PlateauDominos::calculPoint(const TuileDominos * t, int x, int y) {

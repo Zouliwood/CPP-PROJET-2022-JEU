@@ -1,4 +1,4 @@
-#include "../../hrc/model/joueurs/Player.hpp"
+#include "../../../hrc/model/joueurs/Player.hpp"
 
 
 template<typename TF>

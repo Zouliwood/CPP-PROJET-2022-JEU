@@ -1,4 +1,4 @@
-#include "../../hrc/model/plateau/PlateauTrax.hpp"
+#include "../../../hrc/model/plateau/PlateauTrax.hpp"
 
 int PlateauTrax::calculPoint(const TuileTrax * t, int x, int y) {
 

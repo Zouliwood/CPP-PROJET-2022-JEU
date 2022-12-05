@@ -1,4 +1,4 @@
-#include "../../hrc/model/tuile/fragment/FragmentSolo.hpp"
+#include "../../../../hrc/model/tuile/fragment/FragmentSolo.hpp"
 
 template<typename V>
 const V &FragmentSolo<V>::getFragmentCentre() const {
