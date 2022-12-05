@@ -1,4 +1,4 @@
-#include "../../hrc/model/tuile/TuileTrax.hpp"
+#include "../../../hrc/model/tuile/TuileTrax.hpp"
 
 void TuileTrax::rotate() {
     FragmentSolo<colorTrax>* tmp = new FragmentSolo<colorTrax>(this->getUp().getFragmentCentre());

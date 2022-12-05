@@ -1,4 +1,4 @@
-#include "../../hrc/model/joueurs/PlayerTrax.hpp"
+#include "../../../hrc/model/joueurs/PlayerTrax.hpp"
 
 PlayerTrax::~PlayerTrax() {
     std::cout << "TODO : destructeur Player Trax" << std::endl;

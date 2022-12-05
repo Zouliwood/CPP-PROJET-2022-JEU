@@ -1,4 +1,4 @@
-#include  "../../hrc/model/tuile/fragment/FragmentTriple.hpp"
+#include  "../../../../hrc/model/tuile/fragment/FragmentTriple.hpp"
 
 template<typename T>
 const T & FragmentTriple<T>::getFragmentGauche() const{
