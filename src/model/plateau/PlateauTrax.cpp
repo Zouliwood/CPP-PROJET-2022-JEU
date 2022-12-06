@@ -1,11 +1,6 @@
 #include "../../../hrc/model/plateau/PlateauTrax.hpp"
 
 int PlateauTrax::calculPoint(const TuileTrax * t, int x, int y) {
-
-    //TODO: check si fin de partie
-    // vrai -> return nbr cercle cases
-    // false -> continue
-
     return 0;
 }
 
@@ -175,9 +170,39 @@ bool PlateauTrax::canReplay() {
 }
 //TODO: si fonction return existe coup forcé, aors vérifier place tuile va bien placé un coup forcé
 
-bool PlateauTrax::checkVictory() {
-    //TODO: check si il existe une ligne qui va de gauche à droite
-    // figure fermé
+bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer un int -> si ==, numéro gagnant...
+    for (int i = 0; i < listTuile.getNegatif().size(); ++i) {
+        for (int j = 0; j < ((AxeVector<TuileTrax> *)listTuile.getNegatif().at(i))->getNegatif().size(); ++j) {
+            if (isLoop(i*-1, j*-1, colorTrax::BLANC, 0, i*-1, j*-1)
+            || ((i==0 || j==0) && isLine(i*-1, j*-1, colorTrax::BLANC, 0, i*-1, j*-1))) return true;
+            if (isLoop(i*-1, j*-1, colorTrax::NOIR, 0, i*-1, j*-1)
+                || ((i==0 || j==0) && isLine(i*-1, j*-1, colorTrax::NOIR, 0, i*-1, j*-1))) return true;
+        }
+    }
+    for (int i = 0; i < listTuile.getNegatif().size(); ++i) {
+        for (int j = 0; j < ((AxeVector<TuileTrax> *) listTuile.getNegatif().at(i))->getPositif().size(); ++j) {
+            if (isLoop(i*-1, j, colorTrax::NOIR, 0, i*-1, j)
+            || ((i==0 || j==0) && isLine(i*-1, j, colorTrax::NOIR, 0, i*-1, j)))return true;
+            if (isLoop(i*-1, j, colorTrax::BLANC, 0, i*-1, j)
+                || ((i==0 || j==0) && isLine(i*-1, j, colorTrax::BLANC, 0, i*-1, j)))return true;
+        }
+    }
+    for (int i = 0; i < listTuile.getPositif().size(); ++i) {
+        for (int j = 0; j < ((AxeVector<TuileTrax> *) listTuile.getPositif().at(i))->getPositif().size(); ++j) {
+            if (isLoop(i, j, colorTrax::NOIR, 0, i, j)
+                || ((i==0 || j==0) && isLine(i, j, colorTrax::NOIR, 0, i, j)))return true;
+            if (isLoop(i, j, colorTrax::BLANC, 0, i, j)
+                || ((i==0 || j==0) && isLine(i, j, colorTrax::BLANC, 0, i, j)))return true;
+        }
+    }
+    for (int i = 0; i < listTuile.getPositif().size(); ++i) {
+        for (int j = 0; j < ((AxeVector<TuileTrax> *) listTuile.getPositif().at(i))->getNegatif().size(); ++j) {
+            if (isLoop(i, j*-1, colorTrax::NOIR, 0, i, j*-1)
+                || ((i==0 || j==0) && isLine(i, j*-1, colorTrax::NOIR, 0, i, j*-1)))return true;
+            if (isLoop(i, j*-1, colorTrax::BLANC, 0, i, j*-1)
+                || ((i==0 || j==0) && isLine(i, j*-1, colorTrax::BLANC, 0, i, j*-1)))return true;
+        }
+    }
     return false;
 }
 

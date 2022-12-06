@@ -19,15 +19,13 @@ int main(){
     auto * t = new FragmentSolo<colorTrax>(colorTrax::NOIR);
 
     TuileTrax * tuile = new TuileTrax(*t, *t, *t, *t);
-    //TODO: fonction qui créer une tuile
-    // fonction qui flipe une tuile dans TuileTrax
-    // fonction qui detecte la fin de partie
+    //TODO: fonction qui detecte la fin de partie
 
     //fonction qui permet de poser la premiere tuile
     //redéfinir fonction principale place tuile en y ajoutant un fonction comme
 
-    while(plateau.checkVictory()){
-
+    while(!plateau.checkVictory()){
+        //TODO: next player
         cout << plateau << endl;
         cout << "Votre tuile en main : " << endl;
 
