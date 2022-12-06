@@ -110,6 +110,12 @@ PlateauDominos::isFirstTuile(const TuileDominos *tuileUp, const TuileDominos *tu
     return tuileLeft == nullptr && tuileRight == nullptr && tuileUp == nullptr && tuileDown == nullptr;
 }
 
+bool PlateauDominos::checkVictory() {
+    return (listPlayer.size() >= 2); //TODO: && ());
+}
+
+
+
 /*string res;
 int size = plateauDominos.getListTuile().getNegatif().size() + plateauDominos.getListTuile().getPositif().size();
 cout << "Taille du grand tableau : " << size << "--" << plateauDominos.getListTuile().getNegatif().size() << "--" << plateauDominos.getListTuile().getPositif().size() << endl;

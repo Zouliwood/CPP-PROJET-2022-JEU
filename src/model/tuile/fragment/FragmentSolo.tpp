@@ -5,6 +5,11 @@ const V &FragmentSolo<V>::getFragmentCentre() const {
     return this->centreFragment;
 }
 
+template<typename V>
+void FragmentSolo<V>::setFragmentCentre(V element){
+    this->centreFragment=element;
+}
+
 template<typename T>
 bool operator==(const FragmentSolo<T> & a, const FragmentSolo<T> & b) {
     return a.getFragmentCentre()==b.getFragmentCentre();

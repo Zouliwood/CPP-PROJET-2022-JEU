@@ -17,13 +17,18 @@ public:
     bool placeFirstTuile();//--OK--
     /* override function */
     int calculPoint(const TuileTrax * t, int x, int y) override;
-
-
     bool compareTuile(const TuileTrax *courant, const TuileTrax *tuileUp, const TuileTrax *tuileDown, const TuileTrax *tuileRight, const TuileTrax *tuileLeft) override;
     // virtual const TuileTrax & generateRandomTuile() const override;
-
     bool isFirstTuile(const TuileTrax * tuileUp, const TuileTrax * tuileDown, const TuileTrax * tuileRight, const TuileTrax * tuileLeft) override;
+    bool checkVictory() override;
 
+    bool isForced(int x, int y);
+
+    bool canReplay();
+
+    bool isLoop(int x, int y, colorTrax color, int from, int startX, int startY);
+
+    bool isLine(int x, int y, colorTrax color, int from, int startX, int startY);
 };
 
 ostream & operator<<(ostream& os, PlateauTrax & plateauTrax);

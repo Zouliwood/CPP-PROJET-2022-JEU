@@ -1,5 +1,10 @@
 #include "../../hrc/model/plateau/PlateauCarcassonne.hpp"
 
+template<typename F>
+bool PlateauCarcassonne<F>::checkVictory() {
+    return false;
+}
+
 template<typename TF>
 ostream &PlateauCarcassonne<TF>::operator<<(ostream &os) {
     return os << "TODO";

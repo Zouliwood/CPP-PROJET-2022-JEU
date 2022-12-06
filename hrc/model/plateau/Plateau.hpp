@@ -27,6 +27,7 @@ public:
     /* to override function */
     virtual int calculPoint(const TF * value, int x, int y)=0;
     virtual bool placeFirstTuile() = 0;
+    virtual bool checkVictory() = 0;
 
     virtual bool compareTuile(const TF *courant, const TF *tuileUp, const TF *tuileDown, const TF *tuileRight, const TF *tuileLeft) = 0;
  //TODO: Check si carcassonne en a besoin sinon supprimer   virtual const Tuile<TF> & generateRandomTuile() const = 0;

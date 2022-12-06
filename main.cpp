@@ -21,11 +21,12 @@ int main(){
     TuileTrax * tuile = new TuileTrax(*t, *t, *t, *t);
     //TODO: fonction qui créer une tuile
     // fonction qui flipe une tuile dans TuileTrax
-    // fonction qui permet de poser la premiere tuile
     // fonction qui detecte la fin de partie
-    // redéfinir fonction principale place tuile en y ajoutant un fonction comme
 
-    while(1){
+    //fonction qui permet de poser la premiere tuile
+    //redéfinir fonction principale place tuile en y ajoutant un fonction comme
+
+    while(plateau.checkVictory()){
 
         cout << plateau << endl;
         cout << "Votre tuile en main : " << endl;
