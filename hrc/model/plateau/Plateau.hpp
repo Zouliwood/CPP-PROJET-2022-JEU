@@ -43,8 +43,6 @@ public:
     AxeVector<AxeVector<TF>> getListTuile()const;
     int getCurrentPlayer();
 
-    virtual bool isFirstTuile(const TF * tuileUp, const TF * tuileDown, const TF * tuileRight, const TF * tuileLeft)=0;
-
     ostream & operator<<(ostream &os);
  //   string print();
 

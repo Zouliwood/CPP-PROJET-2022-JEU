@@ -19,8 +19,9 @@ public:
     int calculPoint(const TuileTrax * t, int x, int y) override;
     bool compareTuile(const TuileTrax *courant, const TuileTrax *tuileUp, const TuileTrax *tuileDown, const TuileTrax *tuileRight, const TuileTrax *tuileLeft) override;
     // virtual const TuileTrax & generateRandomTuile() const override;
-    bool isFirstTuile(const TuileTrax * tuileUp, const TuileTrax * tuileDown, const TuileTrax * tuileRight, const TuileTrax * tuileLeft) override;
     bool checkVictory() override;
+
+    bool placeTuile(TuileTrax * t, int x, int y);
 
     bool isForced(int x, int y);
 

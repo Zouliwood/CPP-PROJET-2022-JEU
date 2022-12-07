@@ -74,9 +74,50 @@ bool PlateauTrax::compareTuile(const TuileTrax *courant, const TuileTrax *tuileU
            && (!tuileDown || *(&(FragmentSolo<colorTrax> &)courant->getDown()) == *(&(FragmentSolo<colorTrax> &)tuileDown->getUp()));
 }
 
-bool PlateauTrax::isFirstTuile(const TuileTrax *tuileUp, const TuileTrax *tuileDown, const TuileTrax *tuileRight,
-                               const TuileTrax *tuileLeft) {
-    return (listTuile.getPositif().size()+listTuile.getNegatif().size())>0 && tuileDown == nullptr && tuileUp == nullptr && tuileRight == nullptr && tuileLeft == nullptr;
+bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
+    if(getTuileAt(x, y) != nullptr) return false;
+
+    const TuileTrax * tuileUp = getTuileAt(x, y + 1);
+    const TuileTrax * tuileDown = getTuileAt(x, y - 1);
+    const TuileTrax * tuileRight = getTuileAt(x + 1, y);
+    const TuileTrax * tuileLeft = getTuileAt(x - 1, y);
+
+    if((listTuile.getPositif().size()+listTuile.getNegatif().size())>0 && tuileDown == nullptr && tuileUp == nullptr && tuileRight == nullptr && tuileLeft == nullptr) {
+        return false;
+    }
+
+    bool existFrd = canReplay();
+    bool isCurrFrd = isForced(x, y);
+    if (existFrd && !isCurrFrd) return false;
+
+    int axLargeur = (x<0)?listTuile.getNegatif().size():listTuile.getPositif().size(); // NOLINT(cppcoreguidelines-narrowing-conversions)
+    int largeur = listTuile.getNegatif().size()+listTuile.getPositif().size(); // NOLINT(cppcoreguidelines-narrowing-conversions)
+    if ((axLargeur>=x && largeur==8)) return false;
+
+    AxeVector<TuileTrax> * getAxHauteur = (x<0)?listTuile.getNegatif().at((x+1)*-1):listTuile.getPositif().at(x); // NOLINT(cppcoreguidelines-narrowing-conversions)
+    int axHauteur = (y<0)?getAxHauteur->getNegatif().size():getAxHauteur->getPositif().size(); // NOLINT(cppcoreguidelines-narrowing-conversions)
+    int hauteur = getAxHauteur->getNegatif().size()+getAxHauteur->getPositif().size(); // NOLINT(cppcoreguidelines-narrowing-conversions)
+    if (axHauteur>=y && hauteur==8) return false;
+
+    /* Redefinition de l'operateur '==' */
+    bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
+    if (flag) {
+        cout << "Compare Place tuile ok " << endl;
+        if(y >= 0){
+            if(y >= this->listTuile.getPositif().size()){
+                this->listTuile.addElement(y, new AxeVector<TuileTrax>());
+            }
+        }else{
+            if((y*-1)-1 >= this->listTuile.getNegatif().size()){
+                cout << "Creation nouvelle tuile" << endl;
+                this->listTuile.addElement(y, new AxeVector<TuileTrax>());
+            }
+        }
+        cout <<"On vient de poser la tuile correctement en position x:" << x << " y : "<< y << " ?:" << (y*-1)-1 << endl;
+        //TODO: faire neg ca marche passssssssssssssssss
+        ((AxeVector<TuileTrax> *)this->listTuile.getAt(y))->addElement(x, t);
+    }
+    return flag;
 }
 
 //coordonnée
@@ -171,12 +212,14 @@ bool PlateauTrax::canReplay() {
 //TODO: si fonction return existe coup forcé, aors vérifier place tuile va bien placé un coup forcé
 
 bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer un int -> si ==, numéro gagnant...
+    int cpt = 0;
     for (int i = 0; i < listTuile.getNegatif().size(); ++i) {
         for (int j = 0; j < ((AxeVector<TuileTrax> *)listTuile.getNegatif().at(i))->getNegatif().size(); ++j) {
             if (isLoop(i*-1, j*-1, colorTrax::BLANC, 0, i*-1, j*-1)
             || ((i==0 || j==0) && isLine(i*-1, j*-1, colorTrax::BLANC, 0, i*-1, j*-1))) return true;
             if (isLoop(i*-1, j*-1, colorTrax::NOIR, 0, i*-1, j*-1)
                 || ((i==0 || j==0) && isLine(i*-1, j*-1, colorTrax::NOIR, 0, i*-1, j*-1))) return true;
+            if (getTuileAt(i*-1, j*-1)) cpt++;
         }
     }
     for (int i = 0; i < listTuile.getNegatif().size(); ++i) {
@@ -185,6 +228,7 @@ bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer u
             || ((i==0 || j==0) && isLine(i*-1, j, colorTrax::NOIR, 0, i*-1, j)))return true;
             if (isLoop(i*-1, j, colorTrax::BLANC, 0, i*-1, j)
                 || ((i==0 || j==0) && isLine(i*-1, j, colorTrax::BLANC, 0, i*-1, j)))return true;
+            cpt++;
         }
     }
     for (int i = 0; i < listTuile.getPositif().size(); ++i) {
@@ -193,6 +237,7 @@ bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer u
                 || ((i==0 || j==0) && isLine(i, j, colorTrax::NOIR, 0, i, j)))return true;
             if (isLoop(i, j, colorTrax::BLANC, 0, i, j)
                 || ((i==0 || j==0) && isLine(i, j, colorTrax::BLANC, 0, i, j)))return true;
+            cpt++;
         }
     }
     for (int i = 0; i < listTuile.getPositif().size(); ++i) {
@@ -201,9 +246,10 @@ bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer u
                 || ((i==0 || j==0) && isLine(i, j*-1, colorTrax::NOIR, 0, i, j*-1)))return true;
             if (isLoop(i, j*-1, colorTrax::BLANC, 0, i, j*-1)
                 || ((i==0 || j==0) && isLine(i, j*-1, colorTrax::BLANC, 0, i, j*-1)))return true;
+            cpt++;
         }
     }
-    return false;
+    return cpt==64;
 }
 
 PlateauTrax::~PlateauTrax() = default;

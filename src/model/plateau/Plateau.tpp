@@ -24,7 +24,7 @@ bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
 
 
 
-   if(isFirstTuile(tuileUp, tuileDown, tuileRight, tuileLeft)) {
+   if(tuileLeft == nullptr && tuileRight == nullptr && tuileUp == nullptr && tuileDown == nullptr) {
        return false;
    }
 
