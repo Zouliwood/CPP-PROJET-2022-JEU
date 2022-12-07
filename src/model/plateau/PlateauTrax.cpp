@@ -84,6 +84,10 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
 
     if((listTuile.getPositif().size()+listTuile.getNegatif().size())>0 && tuileDown == nullptr && tuileUp == nullptr && tuileRight == nullptr && tuileLeft == nullptr) {
         return false;
+    } else {
+        if (tuileDown == nullptr && tuileUp == nullptr && tuileRight == nullptr && tuileLeft == nullptr){
+            if (x!=0 && y!=0) return false; //obliger de placer le premier coup en (0, 0)
+        }
     }
 
     bool existFrd = canReplay();
