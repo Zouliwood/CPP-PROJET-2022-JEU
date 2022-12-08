@@ -27,7 +27,7 @@ public:
 
     bool canReplay();
 
-    bool isLoop(int x, int y, colorTrax color, int from, int startX, int startY);
+    bool isLoop(int x, int y, colorTrax color, int from, int startX, int startY, int cpt);
 
     bool isLine(int x, int y, colorTrax color, int from, int startX, int startY);
 };
