@@ -5,22 +5,34 @@ TuileView::TuileView(){
 }
 
 void TuileView::draw(RenderTarget &target, sf::RenderStates states) const {
-    for(auto it : position_y)  {
-        it.first->setPosition(getPosition().x, getPosition().y+it.second);
+    for(auto it : position_element) {
+        it.first->setPosition(getPosition().x+ it.second.first, getPosition().y + it.second.second);
+        target.draw(*it.first);
     }
-    for(auto it : position_x){
-    //    cout << "position 4 fils au depart " << (getPosition().x+it.second) << endl;
-        it.first->setPosition(getPosition().x+it.second, getPosition().y);
-    }
-
-    for(auto it : position_x) target.draw(*it.first);
-     cout << getPosition().x << " x, y" << getPosition().y << endl;
-
+ //    cout << getPosition().x << " x, y" << getPosition().y << endl;
 }
 
 void TuileView::addDrawable(int x, int y, TuileView * obj_view) {
-    position_y.insert({obj_view, y});
-    position_x.insert({obj_view, x});
+    position_element.insert({obj_view, pair<int,int>(x,y)});
+}
+
+Text TuileView::createText(const string& text, string font, unsigned size_font, Color color) {
+    auto createFont = new Font();
+    auto createText = new Text();
+    createFont->loadFromFile(font);//);
+    createText->setCharacterSize(size_font);
+    createText->setFont(*createFont);
+    createText->setFillColor(color);
+    createText->setString(text);
+    return *createText;
+}
+
+Text TuileView::createText(const string& text) {
+    return createText(text, "../ressources/font/8bits.ttf", 40, Color::Black);
+}
+
+Text TuileView::createText(const string& text, unsigned size_font, Color color) {
+    return createText(text, "../ressources/font/8bits.ttf", size_font, color);
 }
 
 /*

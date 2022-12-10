@@ -1,0 +1,3 @@
+/home/root0/CLionProjects/cpp-projet-2022-jeu/cmake-build-debug/CMakeFiles/cpp_projet_2022_jeu.dir
+/home/root0/CLionProjects/cpp-projet-2022-jeu/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/root0/CLionProjects/cpp-projet-2022-jeu/cmake-build-debug/CMakeFiles/rebuild_cache.dir

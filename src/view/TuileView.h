@@ -12,17 +12,21 @@ using namespace std;
 class TuileView : public Drawable, public Transformable {
 
 private:
-    map<TuileView *, int> position_x;
-    map<TuileView *, int> position_y;
+    map<TuileView *, pair<int, int>> position_element;
 
 public:
 
-    /* Frabrique statique pour faciliter les choses */
     TuileView();
     void addDrawable(int x, int y, TuileView * element);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
+    /* Frabrique statique pour faciliter les choses */
+    /* TEXT ELEMENT */
+    static Text createText(const string& text, string font, unsigned size_font, Color color);
+    static Text createText(const string &text, unsigned int size_font, Color color);
+    static Text createText(const string& text);
 };
+
 
 
 #endif

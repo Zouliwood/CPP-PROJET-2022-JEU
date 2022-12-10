@@ -1,0 +1,8 @@
+/home/root0/clion-2022.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/root0/clion-2022.3/bin/ninja/linux/ninja -G Ninja -S /home/root0/CLionProjects/cpp-projet-2022-jeu -B /home/root0/CLionProjects/cpp-projet-2022-jeu/cmake-build-debug
+-- Found SFML 2.5.1 in /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/lib/cmake/SFML
+-- SFML_INCLUDE_DIR: ./SFML-2.5.1/include
+-- SFML_LIBRARIES: 
+-- SFML_VERSION: 2.5.1
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/root0/CLionProjects/cpp-projet-2022-jeu/cmake-build-debug
