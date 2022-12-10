@@ -86,8 +86,8 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
         cout << "a" << endl;
         return false;
     } else {
-        if (tuileDown == nullptr && tuileUp == nullptr && tuileRight == nullptr && tuileLeft == nullptr){
-            if (x!=0 && y!=0){
+        if ((listTuile.getPositif().size()+listTuile.getNegatif().size())==0){
+            if (x!=0 || y!=0){
                 cout << "b" << endl;
                 return false; //obliger de placer le premier coup en (0, 0)
             }

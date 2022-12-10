@@ -16,9 +16,8 @@ int main(){
 
     auto plateau = PlateauTrax();
 
-    auto * t = new FragmentSolo<colorTrax>(colorTrax::NOIR);
 
-    TuileTrax * tuile = new TuileTrax(*t, *t, *t, *t);
+    TuileTrax * tuile  = new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)));
     //TODO: fonction qui detecte la fin de partie
 
     //fonction qui permet de poser la premiere tuile
@@ -31,7 +30,7 @@ int main(){
 
         cout << *tuile<< endl;
 
-        cout << "1 - Jouer " << "2- Rotate ma tuile " <<" 3 - defausser " <<endl;
+        cout << "1 - Jouer " << "2- Rotate ma tuile " <<"3-Flip  " <<" 4-Defausser " <<endl;
         int rep;
         cin >> rep;
 
@@ -46,14 +45,18 @@ int main(){
                 if(!plateau.placeTuile(tuile, x, y)){
                     cout << "Placement impossible ressayer !" << endl;
                 }else{
-                    tuile = new TuileTrax(*t, *t, *t, *t);
+                    tuile  = new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)));
                 }
                 break;
             case 2:
                 tuile->rotate();
                 continue;
             case 3:
-                tuile = new TuileTrax(*t, *t, *t, *t);
+                cout << "on flip" << endl;
+                tuile->flipTuile();
+                break;
+            case 4:
+                tuile   = new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)));
                 break;
             default:
                 continue;
