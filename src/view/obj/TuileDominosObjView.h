@@ -5,7 +5,7 @@
 #include "../TuileView.h"
 #include "../../../hrc/model/tuile/TuileTrax.hpp"
 
-class TuileDominosObjView : public TuileView {
+class TuileDominosObjView final: public TuileView {
     Font font;
     TuileDominos tuileDominos;
     mutable RectangleShape shape;
@@ -14,9 +14,9 @@ class TuileDominosObjView : public TuileView {
     mutable Text textRight;
     mutable Text textLeft;
 
-
 public:
     TuileDominosObjView(TuileDominos & tuile);
+    ~TuileDominosObjView();
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     //TODO: à chaque destruction tuer les objets textUp etc...
 

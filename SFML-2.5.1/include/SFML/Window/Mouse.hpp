@@ -101,7 +101,7 @@ public:
     /// \return Current position of the mouse
     ///
     ////////////////////////////////////////////////////////////
-    static Vector2i getPosition(const Window& relativeTo);
+    static Vector2<float> getPosition(const Window& relativeTo);
 
     ////////////////////////////////////////////////////////////
     /// \brief Set the current position of the mouse in desktop coordinates

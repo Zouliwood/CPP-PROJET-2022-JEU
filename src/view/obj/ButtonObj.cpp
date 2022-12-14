@@ -30,10 +30,12 @@ void ButtonObj::update(Vector2f mouse) {
     }
 }
 
-bool ButtonObj::isPressed(){
+bool ButtonObj::isPressed() const{
     return button_status == PRESSED;
 }
-void ButtonObj::draw(RenderTarget &target, sf::RenderStates states) const { TuileView::draw(target, states);
+
+void ButtonObj::draw(RenderTarget &target, sf::RenderStates states) const {
+    TuileView::draw(target, states);
     shape.setPosition(getPosition());
     textbutton.setPosition(getPosition().x + 50, getPosition().y + shape.getSize().y/2); // à changer par setOrigin();//
     target.draw(shape);

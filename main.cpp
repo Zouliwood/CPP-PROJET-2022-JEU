@@ -59,8 +59,10 @@ void miseAJourPlateauView(PlateauDominos * plateau, TuileView * parent, TuileDom
     }
 }
 
-int main(){
 
+
+int main(){
+/*
     auto plateau = PlateauDominos();
     plateau.placeFirstTuile();
     cout << "FIn de placefirstTuile()" << endl;
@@ -73,6 +75,12 @@ int main(){
     shape.setFillColor(Color::Black);
     shape.setPosition(0, 450);
 
+    tuileEnMainObj->rotate();
+    tuileEnMainObj->rotate();
+    plateau.placeTuile(tuileEnMainObj, 1, 0);
+    //plateau.placeTuile(tuileEnMainObj, 0, 2);
+
+
     TuileView parent{};
     parent.setOrigin(550, 350);
     ButtonObj bouton{"Defausser"};
@@ -81,15 +89,32 @@ int main(){
     TuileDominosObjView tuileEnMain{*tuileEnMainObj};
     tuileEnMain.setPosition(550, 540);
 
+    //tuileEnMain.setRotation(50);
+*/
+    float gridSizeF = 150.0f;
+    unsigned grideSizeU = static_cast<unsigned>(gridSizeF);
+
+    float dt = 0.0f;
+    Clock dtClick;
+    Vector2f mousePosWindow;
+    Vector2f mousePosView;
+    Vector2u mousePosGrid;
+
+/*
     Text textMaTuile = TuileView::createText("Ma tuile", 23, Color::White);
     textMaTuile.setPosition(540, 510);
 
-    miseAJourPlateauView(&plateau, &parent, tuileNul);
 
-    RenderWindow app(VideoMode(1280, 720, 32), "Ma premiere fenetre SFML ! ");
+
+    miseAJourPlateauView(&plateau, &parent, tuileNul);
+*/
+    Text positionText = TuileView::createText("x : y : ", 12, Color::White);
+    positionText.setPosition(0, 20);
+    RenderWindow app(VideoMode(1280, 720, 32), "Domino Trax Carcasonne");
 
     while (app.isOpen())
     {
+        /*
         Event event;
         while (app.pollEvent(event))
             switch (event.type) {
@@ -122,20 +147,33 @@ int main(){
        // cout << plateau << endl;
         if(Mouse::isButtonPressed(Mouse::Left)) {
             cout << "tu clique appui"<<endl;
-        }
+        }*/
+        app.clear(Color::Magenta);
 
+        dt = dtClick.restart().asSeconds();
+        mousePosWindow = Mouse::getPosition(app);
+        mousePosView = app.mapPixelToCoords(Vector2i(mousePosWindow));
+        mousePosGrid.x = mousePosView.x/ grideSizeU;
+        mousePosGrid.y = mousePosView.y/ grideSizeU;
 
-        app.draw(parent);
+      //  cout << Mouse::getPosition(app).x << " " << Mouse::getPosition(app).y << endl;
+        sf::Vector2f pos = sf::Mouse::getPosition(app);
+        cout << pos.x << " " << pos.y << endl;
+
+        positionText.setString(to_string(mousePosGrid.x) + " " + to_string(mousePosGrid.y) + " / " + to_string(mousePosWindow.x) + " " + to_string(mousePosWindow.y) + " / " + to_string(mousePosView.x) + " " + to_string(mousePosView.y) );
+     /*   app.draw(parent);
         app.draw(shape);
         app.draw(bouton);
         cout << Mouse::getPosition().x << " " << Mouse::getPosition().y << " notre boutton " << bouton.getPosition().x << " " <<bouton.getPosition().y << endl;
         bouton.update(Vector2f (Mouse::getPosition(app)));
         app.draw(tuileEnMain);
         app.draw(textMaTuile);
+*/        app.draw(positionText);
+        app.setView(app.getView());
 
         // Affichage de la fenêtre à l'écran
         app.display();
-/*
+/***
         cout << "1 - Jouer " << "2- Rotate ma tuile " <<" 3 - defausser " <<endl;
         int rep;
         cin >> rep;

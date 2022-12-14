@@ -29,4 +29,8 @@ void TuileDominosObjView::draw(RenderTarget &target, sf::RenderStates states) co
 
 }
 
+TuileDominosObjView::~TuileDominosObjView() {
+
+}
+
 
