@@ -24,6 +24,10 @@ public:
     bool checkVictory();
     // virtual const TuileCarcassonne<F> & generateRandomTuile() const override;
     TuileCarcassonne<F> *generateRandomTuile();
+
+    bool pionPresent(int x, int y, int posFrag, environment env);
+
+    bool pionPresentAux(int x, int y, int posFrag, environment env, vector<FragmentTuile<F>> dejaVu);
 };
 
 
