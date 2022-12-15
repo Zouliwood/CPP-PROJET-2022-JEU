@@ -24,7 +24,7 @@ bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
 
 
 
-   if(isFirstTuile(tuileUp, tuileDown, tuileRight, tuileLeft)) {
+   if(tuileLeft == nullptr && tuileRight == nullptr && tuileUp == nullptr && tuileDown == nullptr) {
        return false;
    }
 
@@ -73,7 +73,7 @@ template<typename TF>
 const TF * Plateau<TF>::getTuileAt(int x, int y) const{
     AxeVector<TF> * ligne = getListTuile().getAt(y);
     if(ligne == nullptr) {
-        cout << "#####Plateau getTuileAt NullPtr ######" << endl;
+        //cout << "#####Plateau getTuileAt NullPtr ######" << endl;
         return nullptr;
     }
     return (ligne->getAt(x));

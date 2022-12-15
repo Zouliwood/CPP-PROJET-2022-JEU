@@ -21,11 +21,10 @@ public:
     /* override function */
     int calculPoint(const F * t, int x, int y) override;
     bool compareTuile(TuileCarcassonne<F> * courant, TuileCarcassonne<F> * tuileUp, TuileCarcassonne<F> * tuileDown, TuileCarcassonne<F>  * tuileRight, TuileCarcassonne<F>  * tuileLeft) override;
+    bool checkVictory();
     // virtual const TuileCarcassonne<F> & generateRandomTuile() const override;
-
-    bool isFirstTuile(const TuileCarcassonne<F> * tuileUp, const TuileCarcassonne<F> * tuileDown, const TuileCarcassonne<F> * tuileRight, const TuileCarcassonne<F> * tuileLeft) override;
-
 };
+
 
 #include "../../../src/model/plateau/PlateauCarcassonne.tpp"
 

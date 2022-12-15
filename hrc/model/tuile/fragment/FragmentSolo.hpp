@@ -29,6 +29,7 @@ public:
 
     int getPoint();
 
+    void setFragmentCentre(V element);
 };
 
 template<typename V>
