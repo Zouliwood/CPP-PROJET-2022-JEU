@@ -144,7 +144,6 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
                 }
             }
         }
-
     }
 
     /* Redefinition de l'operateur '==' */

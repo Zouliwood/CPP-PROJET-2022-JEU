@@ -5,7 +5,7 @@
 #include "../tuile/TuileCarcassonne.hpp"
 
 template<typename F>
-class PlateauCarcassonne final: Plateau<TuileCarcassonne<F>> {
+class PlateauCarcassonne final: public Plateau<TuileCarcassonne<F>> {
 
 
     ostream & operator<<(ostream& os);
@@ -23,6 +23,7 @@ public:
     bool compareTuile(TuileCarcassonne<F> * courant, TuileCarcassonne<F> * tuileUp, TuileCarcassonne<F> * tuileDown, TuileCarcassonne<F>  * tuileRight, TuileCarcassonne<F>  * tuileLeft) override;
     bool checkVictory();
     // virtual const TuileCarcassonne<F> & generateRandomTuile() const override;
+    TuileCarcassonne<F> *generateRandomTuile();
 };
 
 

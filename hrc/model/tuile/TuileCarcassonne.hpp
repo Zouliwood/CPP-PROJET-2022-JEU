@@ -15,8 +15,10 @@ private:
 
 public:
     /* Constructeur & Destructeur */
-    TuileCarcassonne();
+    TuileCarcassonne(FragmentTriple<TF> & up, FragmentTriple<TF> & right, FragmentTriple<TF> & down, FragmentTriple<TF> & left, FragmentQuadruple<TF> & center);
     ~TuileCarcassonne();
+
+    const TF & getCentre() const;
 
     /*function override*/
     void rotate();
