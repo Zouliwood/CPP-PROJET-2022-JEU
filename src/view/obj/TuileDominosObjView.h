@@ -7,7 +7,6 @@
 
 class TuileDominosObjView final: public TuileView {
     Font font;
-    TuileDominos tuileDominos;
     mutable RectangleShape shape;
     mutable Text textUp;
     mutable Text textDown;
@@ -15,11 +14,13 @@ class TuileDominosObjView final: public TuileView {
     mutable Text textLeft;
 
 public:
-    TuileDominosObjView(TuileDominos & tuile);
-    ~TuileDominosObjView();
+    TuileDominos * tuileDominos;
+    TuileDominosObjView(TuileDominos * tuile);
+    ~TuileDominosObjView();//TODO: à chaque destruction tuer les objets textUp etc...
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    //TODO: à chaque destruction tuer les objets textUp etc...
-
+    void updateTuile() const;
+    void updatePosition() const;
+    //void setTuile(TuileDominos * newtuile);
 };
 
 

@@ -17,8 +17,8 @@ void TuileView::addDrawable(int x, int y, TuileView * obj_view) {
 }
 
 Text TuileView::createText(const string& text, string font, unsigned size_font, Color color) {
-    auto createFont = new Font();
-    auto createText = new Text();
+    Font * createFont = new Font();
+    Text * createText = new Text();
     createFont->loadFromFile(font);//);
     createText->setCharacterSize(size_font);
     createText->setFont(*createFont);
