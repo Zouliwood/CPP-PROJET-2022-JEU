@@ -168,6 +168,34 @@ build CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/TuileVideObjView.cpp.o: CX
   OBJECT_DIR = CMakeFiles/cpp_projet_2022_jeu.dir
   OBJECT_FILE_DIR = CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj
 
+build CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/AnimatedText.cpp.o: CXX_COMPILER__cpp_projet_2022_jeu_Debug /home/root0/CLionProjects/cpp-projet-2022-jeu/src/view/obj/AnimatedText.cpp || cmake_object_order_depends_target_cpp_projet_2022_jeu
+  DEP_FILE = CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/AnimatedText.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I/home/root0/CLionProjects/cpp-projet-2022-jeu/SFML_INCLUDE_DIR -isystem /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/include
+  OBJECT_DIR = CMakeFiles/cpp_projet_2022_jeu.dir
+  OBJECT_FILE_DIR = CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj
+
+build CMakeFiles/cpp_projet_2022_jeu.dir/src/view/MenuView.cpp.o: CXX_COMPILER__cpp_projet_2022_jeu_Debug /home/root0/CLionProjects/cpp-projet-2022-jeu/src/view/MenuView.cpp || cmake_object_order_depends_target_cpp_projet_2022_jeu
+  DEP_FILE = CMakeFiles/cpp_projet_2022_jeu.dir/src/view/MenuView.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I/home/root0/CLionProjects/cpp-projet-2022-jeu/SFML_INCLUDE_DIR -isystem /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/include
+  OBJECT_DIR = CMakeFiles/cpp_projet_2022_jeu.dir
+  OBJECT_FILE_DIR = CMakeFiles/cpp_projet_2022_jeu.dir/src/view
+
+build CMakeFiles/cpp_projet_2022_jeu.dir/src/view/mainTest.cpp.o: CXX_COMPILER__cpp_projet_2022_jeu_Debug /home/root0/CLionProjects/cpp-projet-2022-jeu/src/view/mainTest.cpp || cmake_object_order_depends_target_cpp_projet_2022_jeu
+  DEP_FILE = CMakeFiles/cpp_projet_2022_jeu.dir/src/view/mainTest.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I/home/root0/CLionProjects/cpp-projet-2022-jeu/SFML_INCLUDE_DIR -isystem /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/include
+  OBJECT_DIR = CMakeFiles/cpp_projet_2022_jeu.dir
+  OBJECT_FILE_DIR = CMakeFiles/cpp_projet_2022_jeu.dir/src/view
+
+build CMakeFiles/cpp_projet_2022_jeu.dir/src/view/DominoStateView.cpp.o: CXX_COMPILER__cpp_projet_2022_jeu_Debug /home/root0/CLionProjects/cpp-projet-2022-jeu/src/view/DominoStateView.cpp || cmake_object_order_depends_target_cpp_projet_2022_jeu
+  DEP_FILE = CMakeFiles/cpp_projet_2022_jeu.dir/src/view/DominoStateView.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I/home/root0/CLionProjects/cpp-projet-2022-jeu/SFML_INCLUDE_DIR -isystem /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/include
+  OBJECT_DIR = CMakeFiles/cpp_projet_2022_jeu.dir
+  OBJECT_FILE_DIR = CMakeFiles/cpp_projet_2022_jeu.dir/src/view
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target cpp_projet_2022_jeu
@@ -176,7 +204,7 @@ build CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/TuileVideObjView.cpp.o: CX
 #############################################
 # Link the executable cpp_projet_2022_jeu
 
-build cpp_projet_2022_jeu: CXX_EXECUTABLE_LINKER__cpp_projet_2022_jeu_Debug CMakeFiles/cpp_projet_2022_jeu.dir/main.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/joueurs/PlayerDominos.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/tuile/Tuile.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/tuile/TuileDominos.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/tuile/TuileTrax.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/tuile/TuileCarcassonne.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/plateau/Pion.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/Sac.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/joueurs/PlayerTrax.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/controler/Controller.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/plateau/PlateauDominos.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/plateau/PlateauTrax.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/TuileView.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/TuileDominosObjView.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/PlateauObjView.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/ButtonObj.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/TuileVideObjView.cpp.o | /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/lib/libsfml-graphics.so.2.5.1 /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/lib/libsfml-window.so.2.5.1 /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/lib/libsfml-system.so.2.5.1
+build cpp_projet_2022_jeu: CXX_EXECUTABLE_LINKER__cpp_projet_2022_jeu_Debug CMakeFiles/cpp_projet_2022_jeu.dir/main.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/joueurs/PlayerDominos.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/tuile/Tuile.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/tuile/TuileDominos.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/tuile/TuileTrax.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/tuile/TuileCarcassonne.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/plateau/Pion.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/Sac.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/joueurs/PlayerTrax.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/controler/Controller.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/plateau/PlateauDominos.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/model/plateau/PlateauTrax.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/TuileView.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/TuileDominosObjView.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/PlateauObjView.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/ButtonObj.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/TuileVideObjView.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/obj/AnimatedText.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/MenuView.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/mainTest.cpp.o CMakeFiles/cpp_projet_2022_jeu.dir/src/view/DominoStateView.cpp.o | /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/lib/libsfml-graphics.so.2.5.1 /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/lib/libsfml-window.so.2.5.1 /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/lib/libsfml-system.so.2.5.1
   FLAGS = -g
   LINK_LIBRARIES = -Wl,-rpath,/home/root0/CLionProjects/cpp-projet-2022-jeu/SFML_LIBRARY_DIR:/home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/lib  /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/lib/libsfml-graphics.so.2.5.1  /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/lib/libsfml-window.so.2.5.1  /home/root0/CLionProjects/cpp-projet-2022-jeu/SFML-2.5.1/lib/libsfml-system.so.2.5.1
   LINK_PATH = -L/home/root0/CLionProjects/cpp-projet-2022-jeu/SFML_LIBRARY_DIR
