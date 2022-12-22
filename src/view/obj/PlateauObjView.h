@@ -5,19 +5,23 @@
 #include "../TuileView.h"
 #include "../../../hrc/model/plateau/PlateauDominos.hpp"
 
-enum plateau_status {IDLE = 0, PRESSED, HOVER,};
+//enum plateau_status {IDLE = 0, PRESSED, HOVER,};
 
 class PlateauObjView: public TuileView {
 
-    PlateauDominos * plateauDominos;
+    //PlateauDominos * plateauDominos;
+    mutable Sprite background_plateau;
+    mutable Texture texture_background;
 
 public:
-    PlateauObjView(PlateauDominos * pLateauDominos);
-
-    void init();
-    bool isPressed();
-    bool isHover();
-
+    PlateauObjView();
+    void draw(RenderTarget &target, sf::RenderStates states) const;
+    void updateBackGround(int x, int y);
+        /*
+         void init();
+         bool isPressed();
+         bool isHover();
+     */
 
 
 };

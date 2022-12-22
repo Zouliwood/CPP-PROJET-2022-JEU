@@ -19,19 +19,19 @@ class MenuView final : public State{
 
 private:
     RenderWindow & app;
-    stack<State *>  & stack_display;
+    stack<State *>  * stack_display;
     Text centerText;
     ButtonObj buttonDomino;
 
     bool pressedGame = true;
 
 public:
-    MenuView(sf::RenderWindow  & window, stack<State *> & stack_display);
-    virtual void processInput(sf::Event & event) override;
-    virtual void update() override;
-    virtual void draw() override;
-
-
+    MenuView(sf::RenderWindow  & window, stack<State *> * stack_display);
+    virtual ~MenuView();
+    void init() override;
+    void processInput(sf::Event & event) override;
+    void update() override;
+    void drawView() override;
 };
 
 

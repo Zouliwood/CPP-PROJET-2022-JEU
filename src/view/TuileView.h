@@ -11,7 +11,7 @@ using namespace std;
 
 class TuileView : public Drawable, public Transformable {
 
-private:
+protected:
     map<TuileView *, pair<int, int>> position_element;
 
 public:

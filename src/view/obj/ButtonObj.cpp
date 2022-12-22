@@ -6,7 +6,8 @@ ButtonObj::ButtonObj(string string) {
 }
 
 ButtonObj::~ButtonObj() {
-
+    delete &textbutton;
+    delete &shape;
 }
 
 void ButtonObj::update(Vector2f mouse) {
@@ -40,5 +41,13 @@ void ButtonObj::draw(RenderTarget &target, sf::RenderStates states) const {
     textbutton.setPosition(getPosition().x + 50, getPosition().y + shape.getSize().y/2); // à changer par setOrigin();//
     target.draw(shape);
     target.draw(textbutton);
+}
+
+void ButtonObj::swipeAlsgoPressed() {
+    alsoPressed = (!alsoPressed);
+}
+
+bool ButtonObj::getAlsoPressed() const {
+    return alsoPressed;
 }
 

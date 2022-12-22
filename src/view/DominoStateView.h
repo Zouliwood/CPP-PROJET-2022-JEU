@@ -15,19 +15,20 @@
 using namespace sf;
 using namespace std;
 
-class DominoStateView : public State{
+class DominoStateView final : public State{
 
 private:
     RenderWindow & app;
-    mutable Text centerText;
-    mutable ButtonObj buttonDomino;
+    Text centerText;
+    ButtonObj buttonDomino;
 
 public:
     DominoStateView(sf::RenderWindow & window);
-    virtual void processInput(sf::Event & event) override;
-    virtual void update() override;
-    virtual void draw() override;
+    void processInput(sf::Event & event) override;
+    void update() override;
+    void drawView() override;
 
+    virtual ~DominoStateView();
 };
 
 

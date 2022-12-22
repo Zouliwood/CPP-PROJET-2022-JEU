@@ -10,14 +10,11 @@ using namespace std;
 
 class State {
 
-
-
 public:
-    stack<State *> * stack_display = new stack<State *>;
-
-    virtual void processInput(Event  & event) = 0;
+    virtual void init() = 0;
+    virtual void processInput(Event & event) = 0;
     virtual void update() = 0;
-    virtual void draw() = 0;
+    virtual void drawView() = 0;
 };
 
 
