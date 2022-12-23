@@ -1,5 +1,10 @@
 #include "../../hrc/model/plateau/PlateauCarcassonne.hpp"
 
+template<typename F>
+bool PlateauCarcassonne<F>::checkVictory() {
+    return false;
+}
+
 template<typename TF>
 ostream &PlateauCarcassonne<TF>::operator<<(ostream &os) {
     return os << "TODO";
@@ -26,10 +31,3 @@ bool PlateauCarcassonne<F>::compareTuile(TuileCarcassonne<F> *courant, TuileCarc
 
 template<typename TF>
 PlateauCarcassonne<TF>::~PlateauCarcassonne() = default;
-
-template<typename F>
-bool PlateauCarcassonne<F>::isFirstTuile(
-        const TuileCarcassonne<F> *tuileUp, const TuileCarcassonne<F> *tuileDown,
-        const TuileCarcassonne<F> *tuileRight, const TuileCarcassonne<F> *tuileLeft) {
-    return tuileUp == nullptr && tuileDown == nullptr && tuileRight == nullptr && tuileLeft == nullptr;
-}

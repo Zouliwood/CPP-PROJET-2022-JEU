@@ -102,10 +102,8 @@ bool PlateauDominos::compareTuile(const TuileDominos * courant, const TuileDomin
            && (!tuileDown || *(&(FragmentTriple<int> &)courant->getDown()) == *(&(FragmentTriple<int> &)tuileDown->getUp()));
 }
 
-bool
-PlateauDominos::isFirstTuile(const TuileDominos *tuileUp, const TuileDominos *tuileDown, const TuileDominos *tuileRight,
-                             const TuileDominos *tuileLeft) {
-    return tuileLeft == nullptr && tuileRight == nullptr && tuileUp == nullptr && tuileDown == nullptr;
+bool PlateauDominos::checkVictory() {
+    return (listPlayer.size() >= 2); //TODO: && ());
 }
 
 TuileDominos *PlateauDominos::getFirstTuilePose() {

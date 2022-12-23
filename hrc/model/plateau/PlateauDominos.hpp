@@ -26,9 +26,7 @@ public:
     bool compareTuile(const TuileDominos *courant, const TuileDominos *tuileUp, const TuileDominos *tuileDown,
                       const TuileDominos *tuileRight, const TuileDominos *tuileLeft) override;
 
-    bool isFirstTuile(const TuileDominos * tuileUp, const TuileDominos * tuileDown, const TuileDominos * tuileRight, const TuileDominos * tuileLeft) override;
-
-    TuileDominos *getFirstTuilePose();
+    bool checkVictory();
 };
 
 ostream &operator<<(ostream &os, PlateauDominos & plateauDominos);

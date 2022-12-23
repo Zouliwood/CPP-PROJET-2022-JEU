@@ -4,6 +4,7 @@
 #include "../enum/colorTrax.hpp"
 #include "Tuile.hpp"
 #include "fragment/FragmentSolo.hpp"
+#include <vector>
 
 class TuileTrax final: public Tuile<FragmentSolo<colorTrax>>{
 
@@ -16,6 +17,8 @@ public:
 
     /*function override*/
     void rotate() override;
+    //TODO: ajouter atrb ensemble comme graph
+
 };
 
 ostream & operator<<(ostream &os, const TuileTrax & ttrax);
