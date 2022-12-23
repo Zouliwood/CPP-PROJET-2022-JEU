@@ -14,9 +14,7 @@ PlateauDominos::~PlateauDominos() {
 }
 
 bool PlateauDominos::placeFirstTuile() {
-    //int middle = listTuile.size()/2;
-    //  listTuile.at(middle).at(middle) = domino;
-    TuileDominos * domino =  generateRandomTuile();
+    domino =  generateRandomTuile();
     listTuile.addElement(0, new AxeVector<TuileDominos>());
     cout << "Ligne ajoutée !" << endl;
     ((AxeVector<TuileDominos> *)listTuile.getAt(0))->addElement(0, domino);
@@ -108,7 +106,9 @@ bool PlateauDominos::checkVictory() {
     return (listPlayer.size() >= 2); //TODO: && ());
 }
 
-
+TuileDominos *PlateauDominos::getFirstTuilePose() {
+    return domino;
+}
 
 /*string res;
 int size = plateauDominos.getListTuile().getNegatif().size() + plateauDominos.getListTuile().getPositif().size();
