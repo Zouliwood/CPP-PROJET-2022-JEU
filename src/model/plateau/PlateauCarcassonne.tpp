@@ -18,31 +18,31 @@ int PlateauCarcassonne<TF>::calculPoint(const TF * t, int x, int y){
     return 0;
 }
 
-template<typename F>
-TuileCarcassonne<F> *PlateauCarcassonne<F>::generateRandomTuile() {
-    return new TuileCarcassonne<F>(
-        *new FragmentTriple<int>(1,1,1),
-        *new FragmentTriple<int>(2,2,2),
-        *new FragmentTriple<int>(3,3,3),
-        *new FragmentTriple<int>(4,4,4)
+template<typename TF>
+TuileCarcassonne *PlateauCarcassonne<TF>::generateRandomTuile() {
+    return new TuileCarcassonne(
+        *new FragmentTriple<environment>(environment::ABAYES, environment::ABAYES, environment::ABAYES),
+        *new FragmentTriple<environment>(environment::ABAYES , environment::ABAYES, environment::ABAYES),
+        *new FragmentTriple<environment>(environment::ABAYES, environment::ABAYES, environment::ABAYES),
+        *new FragmentQuadruple<environment>(environment::ABAYES ,environment::ABAYES ,environment::ABAYES, environment::ABAYES)
     );
 }
 
 template<typename TF>
 bool PlateauCarcassonne<TF>::placeFirstTuile() {
-    TuileCarcassonne<TF> * carcassonne =  generateRandomTuile();
+    TuileCarcassonne * carcassonne =  generateRandomTuile();
     this->listTuile.addElement(0, new AxeVector<TuileDominos>());
     cout << "Ligne ajoutée !" << endl;
-    ((AxeVector<TuileDominos> *)this->listTuile.getAt(0))->addElement(0, carcassonne);
+    ((AxeVector<TuileCarcassonne> *)this->listTuile.getAt(0))->addElement(0, carcassonne);
     cout << ">>>>>>>>>>>>>>>>>>>>>>>>" << *(this->listTuile.getAt(0)->getAt(0)) << endl;
     return ((AxeVector<TuileDominos> *) this->listTuile.getAt(0))->getAt(0) != nullptr;
 }
 
 //TODO: add fragment centre - FragmentQuadruple -
 template<typename F>
-bool PlateauCarcassonne<F>::compareTuile(TuileCarcassonne<F> *courant, TuileCarcassonne<F> *tuileUp,
-                                         TuileCarcassonne<F> *tuileDown, TuileCarcassonne<F> *tuileRight,
-                                         TuileCarcassonne<F> *tuileLeft) {
+bool PlateauCarcassonne<F>::compareTuile(TuileCarcassonne *courant, TuileCarcassonne *tuileUp,
+                                         TuileCarcassonne *tuileDown, TuileCarcassonne *tuileRight,
+                                         TuileCarcassonne *tuileLeft) {
     return (!tuileUp || *(&(FragmentTriple<environment> &)courant->getUp()) == *(&(FragmentTriple<environment> &)tuileUp->getDown()))
            &&  (!tuileRight || *(&(FragmentTriple<environment> &)courant->getRight()) == *(&(FragmentTriple<environment> &)tuileRight->getLeft()))
            && (!tuileLeft || *(&(FragmentTriple<environment> &)courant->getLeft()) == *(&(FragmentTriple<environment> &)tuileLeft->getRight()))
@@ -61,7 +61,7 @@ bool PlateauCarcassonne<F>::pionPresent(int x, int y, int posFrag, environment e
 template<typename F>
 bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environment env, vector<FragmentTuile<F>> dejaVu){
 
-    auto currTuile = (TuileCarcassonne<F>)this->getTuileAt(x, y);
+    auto currTuile = this->getTuileAt(x, y);
     //TODO: vérifier si un pion est présent sur la Tuile courante en position posFrag - return true -
 
     if (currTuile){
@@ -89,7 +89,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 3, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x, y+1);
+            auto getExt=this->getTuileAt(x, y+1);
             if (getExt && ((FragmentTriple<environment>) getExt.getDown()).getFragmentGauche()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getDown()).getFragmentGauche())==dejaVu.end()){
                 pionPresentAux(x, y+1, 13, env, dejaVu);
@@ -114,7 +114,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 0, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x, y+1);
+            auto getExt=this->getTuileAt(x, y+1);
             if (getExt && ((FragmentTriple<environment>) getExt.getDown()).getFragmentCentre()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getDown()).getFragmentCentre())==dejaVu.end()){
                 pionPresentAux(x, y+1, 14, env, dejaVu);
@@ -144,7 +144,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 5, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x, y+1);
+            auto getExt=this->getTuileAt(x, y+1);
             if (getExt && ((FragmentTriple<environment>) getExt.getDown()).getFragmentDroit()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getDown()).getFragmentDroit())==dejaVu.end()){
                 pionPresentAux(x, y+1, 15, env, dejaVu);
@@ -174,7 +174,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 6, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x-1, y);
+            auto getExt=this->getTuileAt(x-1, y);
             if (getExt && ((FragmentTriple<environment>) getExt.getRight()).getFragmentDroit()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getRight()).getFragmentDroit())==dejaVu.end()){
                 pionPresentAux(x-1, y, 5, env, dejaVu);
@@ -241,7 +241,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 9, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x+1, y);
+            auto getExt=this->getTuileAt(x+1, y);
             if (getExt && ((FragmentTriple<environment>) getExt.getLeft()).getFragmentGauche()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getLeft()).getFragmentGauche())==dejaVu.end()){
                 pionPresentAux(x+1, y, 3, env, dejaVu);
@@ -266,7 +266,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 10, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x-1, y);
+            auto getExt=this->getTuileAt(x-1, y);
             if (getExt && ((FragmentTriple<environment>) getExt.getRight()).getFragmentCentre()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getRight()).getFragmentCentre())==dejaVu.end()){
                 pionPresentAux(x-1, y, 9, env, dejaVu);
@@ -365,7 +365,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 5, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x+1, y);
+            auto getExt=this->getTuileAt(x+1, y);
             if (getExt && ((FragmentTriple<environment>) getExt.getLeft()).getFragmentCentre()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getLeft()).getFragmentCentre())==dejaVu.end()){
                 pionPresentAux(x+1, y, 6, env, dejaVu);
@@ -395,7 +395,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 6, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x-1, y);
+            auto getExt=this->getTuileAt(x-1, y);
             if (getExt && ((FragmentTriple<environment>) getExt.getRight()).getFragmentGauche()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getRight()).getFragmentGauche())==dejaVu.end()){
                 pionPresentAux(x-1, y, 12, env, dejaVu);
@@ -462,7 +462,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 15, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x+1, y);
+            auto getExt=this->getTuileAt(x+1, y);
             if (getExt && ((FragmentTriple<environment>) getExt.getLeft()).getFragmentDroit()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getLeft()).getFragmentDroit())==dejaVu.end()){
                 pionPresentAux(x+1, y, 10, env, dejaVu);
@@ -492,7 +492,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 10, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x, y-1);
+            auto getExt=this->getTuileAt(x, y-1);
             if (getExt && ((FragmentTriple<environment>) getExt.getUp()).getFragmentDroit()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getUp()).getFragmentDroit())==dejaVu.end()){
                 pionPresentAux(x, y-1, 0, env, dejaVu);
@@ -517,7 +517,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 15, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x, y-1);
+            auto getExt=this->getTuileAt(x, y-1);
             if (getExt && ((FragmentTriple<environment>) getExt.getUp()).getFragmentCentre()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getUp()).getFragmentCentre())==dejaVu.end()){
                 pionPresentAux(x, y-1, 1, env, dejaVu);
@@ -547,7 +547,7 @@ bool PlateauCarcassonne<F>::pionPresentAux(int x, int y, int posFrag, environmen
                 pionPresentAux(x, y, 12, env, dejaVu);
             }
             /* ext */
-            auto getExt=(TuileCarcassonne<F>) this->getTuileAt(x, y-1);
+            auto getExt=this->getTuileAt(x, y-1);
             if (getExt && ((FragmentTriple<environment>) getExt.getUp()).getFragmentGauche()==env
                 && find(dejaVu.begin(), dejaVu.end(), ((FragmentTriple<environment>) getExt.getUp()).getFragmentGauche())==dejaVu.end()){
                 pionPresentAux(x, y-1, 2, env, dejaVu);

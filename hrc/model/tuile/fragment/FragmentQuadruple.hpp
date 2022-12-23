@@ -12,16 +12,23 @@ class FragmentQuadruple : public FragmentTuile<V> {
 
     /* override functions */
     template<typename T>
-    friend bool operator==(const FragmentQuadruple<V> & a, const FragmentQuadruple<V> & b);// override;
+    friend bool operator==(const FragmentQuadruple<T> & a, const FragmentQuadruple<T> & b);// override;
 
     template<typename T>
-    friend bool operator!=(const FragmentQuadruple<V> & a, const FragmentQuadruple<V> & b);// override;
+    friend bool operator!=(const FragmentQuadruple<T> & a, const FragmentQuadruple<T> & b);// override;
+
+private:
+    V gaucheFragment;
+    V droitFragment;
+    V hautFragment;
 
 public:
     /* Constructeur & Destructeur */
-    explicit FragmentQuadruple(V centreFragment);
-    ~FragmentQuadruple();
+    explicit FragmentQuadruple(V hautFragment, V droitFragment, V basFragment, V gaucheFragment);
+    ~FragmentQuadruple() override;
 
+
+    const V & getFragmentCentre()const;
     const V & getFragmentTop() const;
     const V & getFragmentRight() const;
     const V & getFragmentDown() const;
@@ -29,12 +36,22 @@ public:
 
     FragmentQuadruple<V> & operator=(const FragmentQuadruple<V> *) const;// override;
 
-    int getPoint();
+    int getPoint() override;
 
     void setFragmentDroit(const V &fragment) const;
     void setFragmentGauche(const V &fragment) const;
     void setFragmentCentre(const V &fragment) const;
 };
+
+template<typename V>
+int FragmentQuadruple<V>::getPoint() {
+    return 0;
+}
+
+template<typename V>
+const V &FragmentQuadruple<V>::getFragmentCentre() const {
+    return this->centreFragment;
+}
 
 template<typename V>
 ostream & operator<<(ostream &out, const FragmentQuadruple<V> & fragment);

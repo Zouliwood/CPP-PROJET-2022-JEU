@@ -5,7 +5,7 @@
 #include "../tuile/TuileCarcassonne.hpp"
 
 template<typename F>
-class PlateauCarcassonne final: public Plateau<TuileCarcassonne<F>> {
+class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 
 
     ostream & operator<<(ostream& os);
@@ -20,10 +20,10 @@ public:
 
     /* override function */
     int calculPoint(const F * t, int x, int y) override;
-    bool compareTuile(TuileCarcassonne<F> * courant, TuileCarcassonne<F> * tuileUp, TuileCarcassonne<F> * tuileDown, TuileCarcassonne<F>  * tuileRight, TuileCarcassonne<F>  * tuileLeft) override;
+    bool compareTuile(TuileCarcassonne * courant, TuileCarcassonne * tuileUp, TuileCarcassonne * tuileDown, TuileCarcassonne  * tuileRight, TuileCarcassonne  * tuileLeft) override;
     bool checkVictory();
     // virtual const TuileCarcassonne<F> & generateRandomTuile() const override;
-    TuileCarcassonne<F> *generateRandomTuile();
+    TuileCarcassonne *generateRandomTuile();
 
     bool pionPresent(int x, int y, int posFrag, environment env);
 
