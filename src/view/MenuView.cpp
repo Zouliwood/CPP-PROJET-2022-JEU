@@ -1,5 +1,6 @@
 #include "MenuView.h"
 #include "SettingsStateView.h"
+#include "PlateauTraxStateView.h"
 
 void MenuView::processInput(sf::Event & event) {
 
@@ -14,8 +15,8 @@ void MenuView::processInput(sf::Event & event) {
                     stack_display->push(new SettingsStateView(app, stack_display));
                 }else if(statgame == DOMINO){
                     stack_display->push(new SettingsStateView(app, stack_display));
-                }else{
-                    //lancer directement trax
+                }else if(statgame == TRAX){
+                    stack_display->push(new PlateauTraxStateView(app, stack_display));
                 }
             }else if (button_precedent.isPressed()) {
                 if(statgame == DOMINO){
@@ -58,7 +59,7 @@ void MenuView::processInput(sf::Event & event) {
         } else if (Keyboard::isKeyPressed(Keyboard::Left)) {
             if (statgame == DOMINO) {
                 background.setTextureRect(IntRect{0, 0, 1280, 720});
-                statgame = TRAX;
+                    statgame = TRAX;
             } else if (statgame == CARCASSONNE) {
                 background.setTextureRect(IntRect{1280, 0, 1280, 720});
                 statgame = DOMINO;
@@ -66,15 +67,22 @@ void MenuView::processInput(sf::Event & event) {
                 background.setTextureRect(IntRect{2 * 1280, 0, 1280, 720});
                 statgame = CARCASSONNE;
             }
+        }else if(Keyboard::isKeyPressed(Keyboard::Enter)){
+            if(statgame == CARCASSONNE){
+                stack_display->push(new SettingsStateView(app, stack_display));
+            }else if(statgame == DOMINO){
+                stack_display->push(new SettingsStateView(app, stack_display));
+            }else if(statgame == TRAX){
+                stack_display->push(new PlateauTraxStateView(app, stack_display));
+            }
         }
     }
-    }
+}
 
 void MenuView::update() {
     buttonDomino.update(Vector2f(Mouse::getPosition(app)));
     button_precedent.update(Vector2f(Mouse::getPosition(app)));
     button_suivant.update(Vector2f(Mouse::getPosition(app)));
-
 }
 
 void MenuView::drawView() {
@@ -89,8 +97,8 @@ MenuView::MenuView(sf::RenderWindow & window, stack<State * > * stack_display) :
     app{window},
     stack_display{stack_display},
     buttonDomino{*new ButtonObj("Jouer")},
-    button_precedent{*new ButtonObj("< precedent ")},
-    button_suivant{*new ButtonObj("suivant >")},
+    button_precedent{*new ButtonObj("     <")},
+    button_suivant{*new ButtonObj("     >")},
     background{*new Sprite()},
     texture_bg{*new Texture()}
     {

@@ -8,21 +8,21 @@
 #include "../../hrc/model/tuile/TuileTrax.hpp"
 #include "obj/TuileDominosObjView.h"
 #include "obj/PlateauObjView.h"
+#include "TuileTraxObjView.h"
 
 class PlateauTraxStateView  final : public State{
 
     RenderWindow & app;
     stack<State *> stack_display;
     PlateauTrax plateau;
+    TuileTrax * tuileEnMain;
 
-    TuileDominos * tuileEnMainObj;
-    TuileDominos * tuileDominoNul;
-
-    TuileDominosObjView tuileNul;
+    /*Graphique view */
     PlateauObjView parent;
     ButtonObj bouton;
     ButtonObj bouton_defausser;
-    TuileDominosObjView tuileEnMain;
+    ButtonObj boutton_flip;
+    TuileTraxObjView tuileEnMainObjView;
     RectangleShape shape; //{Vector2f (1280, 270)};
 
     float gridSizeF = 150.0f;

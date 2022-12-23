@@ -25,7 +25,7 @@ public:
     int calculPoint(const TuileDominos * t, int x, int y) override;
     bool compareTuile(const TuileDominos *courant, const TuileDominos *tuileUp, const TuileDominos *tuileDown,
                       const TuileDominos *tuileRight, const TuileDominos *tuileLeft) override;
-
+    TuileDominos * getFirstTuilePose();
     bool checkVictory();
 };
 

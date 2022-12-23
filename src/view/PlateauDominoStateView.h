@@ -15,12 +15,12 @@ class PlateauDominoStateView final : public State{
     stack<State *> stack_display;
     PlateauDominos plateau;
     TuileDominos * tuileEnMainObj;
-    TuileDominos * tuileDominoNul;
-    TuileDominosObjView tuileNul;
+    TuileDominosObjView tuileEnMain;
+
+    /* Graphique partie */
     PlateauObjView parent;
     ButtonObj bouton;
     ButtonObj bouton_defausser;
-    TuileDominosObjView tuileEnMain;
     RectangleShape shape; //{Vector2f (1280, 270)};
 
     float gridSizeF = 150.0f;

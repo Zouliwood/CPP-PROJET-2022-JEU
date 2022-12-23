@@ -83,12 +83,12 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
     const TuileTrax * tuileLeft = getTuileAt(x - 1, y);
 
     if((listTuile.getPositif().size()+listTuile.getNegatif().size())>0 && tuileDown == nullptr && tuileUp == nullptr && tuileRight == nullptr && tuileLeft == nullptr) {
-        cout << "a" << endl;
+      //  cout << "a" << endl;
         return false;
     } else {
         if ((listTuile.getPositif().size()+listTuile.getNegatif().size())==0){
             if (x!=0 || y!=0){
-                cout << "b" << endl;
+               // cout << "b" << endl;
                 return false; //obliger de placer le premier coup en (0, 0)
             }
         }
@@ -97,7 +97,7 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
     bool existFrd = canReplay();
     bool isCurrFrd = isForced(x, y);
     if (existFrd && !isCurrFrd){
-        cout << "c" << endl;
+       // cout << "c" << endl;
         return false;
     }
 
@@ -105,7 +105,7 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
 
     if (x>=0){
         if ((listTuile.getNegatif().size()+x)>8){
-            cout << "d" << endl;
+      //      cout << "d" << endl;
             return false;
         }
 
@@ -113,12 +113,12 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
             auto el = ((AxeVector<TuileTrax> *) listTuile.getPositif().at(x));
             if (y>=0){
                 if (el->getNegatif().size()+y>8){
-                    cout << "e" << endl;
+               //     cout << "e" << endl;
                     return false;
                 }
             }else{
                 if (el->getPositif().size()+(y+1)*-1>8){
-                    cout << "f" << endl;
+                 //   cout << "f" << endl;
                     return false;
                 }
             }
@@ -126,7 +126,7 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
 
     }else{
         if ((listTuile.getPositif().size()+(x+1)*-1)>8){
-            cout << "g" << endl;
+         //   cout << "g" << endl;
             return false;
         }
 
@@ -134,12 +134,12 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
             auto el = ((AxeVector<TuileTrax> *) listTuile.getNegatif().at((x+1)*-1));
             if (y>=0){
                 if (el->getNegatif().size()+y>8){
-                    cout << "h" << endl;
+        //            cout << "h" << endl;
                     return false;
                 }
             }else{
                 if (el->getPositif().size()+(y+1)*-1>8){
-                    cout << "i" << endl;
+            //        cout << "i" << endl;
                     return false;
                 }
             }

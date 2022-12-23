@@ -16,9 +16,7 @@ PlateauDominoStateView::PlateauDominoStateView(RenderWindow &window, stack<State
     textMaTuile{TuileView::createText("Ma tuile", 23, Color::White)},
     positionText{TuileView::createText("x : y : ", 12, Color::White)},
     tuileEnMainObj{plateau.generateRandomTuile()},
-    tuileEnMain{tuileEnMainObj},
-    tuileDominoNul{new TuileDominos(*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)))},
-    tuileNul{TuileDominosObjView(tuileDominoNul)}
+    tuileEnMain{tuileEnMainObj}
 {
     init();
 }

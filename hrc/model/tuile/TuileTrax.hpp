@@ -6,9 +6,20 @@
 #include "fragment/FragmentSolo.hpp"
 #include <vector>
 
+enum typeFlip{
+    RECTO,
+    VERSO
+};
+
 class TuileTrax final: public Tuile<FragmentSolo<colorTrax>>{
 
+
+
 public:
+
+    int flip = 0;
+    int rotation = 90;
+
     /* Constructeur & Destructeur*/
     TuileTrax(FragmentSolo<colorTrax> & up,FragmentSolo<colorTrax> & right,FragmentSolo<colorTrax> & down ,FragmentSolo<colorTrax> & left);
     ~TuileTrax() override;

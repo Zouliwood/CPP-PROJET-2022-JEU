@@ -31,7 +31,7 @@ private:
     ButtonObj button_suivant;
     mutable Sprite background;
     mutable Texture texture_bg;
-    StatGameEnum statgame = DOMINO;
+    StatGameEnum statgame = TRAX;
     bool pressedGame = true;
 
 public:

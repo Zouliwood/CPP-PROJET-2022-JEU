@@ -7,14 +7,14 @@ PlateauTraxStateView::PlateauTraxStateView(RenderWindow &window, stack<State *> 
         parent{*new PlateauObjView()},
         bouton_defausser{*new ButtonObj("defausser")},
         bouton{*new ButtonObj("rotation")},
+        boutton_flip{*new ButtonObj("flip")},
         shape{*new RectangleShape(Vector2f (1280, 270))},
         textMaTuile{TuileView::createText("Ma tuile", 23, Color::White)},
         positionText{TuileView::createText("x : y : ", 12, Color::White)},
-        tuileEnMain{tuileEnMainObj},
-        tuileDominoNul{new TuileDominos(*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)))},
-        tuileNul{TuileDominosObjView(tuileDominoNul)}
-{
-    init();
+        tuileEnMain{new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)))},
+        tuileEnMainObjView{tuileEnMain, 0, 0}
+        {
+        init();
 }
 
 PlateauTraxStateView::~PlateauTraxStateView() {
@@ -25,12 +25,13 @@ void PlateauTraxStateView::init() {
     plateau.placeFirstTuile();
     parent.move(550, 200);
     bouton_defausser.setPosition(30, 600);
+    boutton_flip.setPosition(300, 470);
     bouton.setPosition(30, 470);
-    tuileEnMain.setPosition(550, 540);
     shape.setFillColor(Color::Black);
     shape.setPosition(0, 450);
     textMaTuile.setPosition(540, 510);
     positionText.setPosition(0, 20);
+    tuileEnMainObjView.setPosition(550, 540);
 }
 
 void PlateauTraxStateView::processInput(Event &event) {
@@ -69,30 +70,38 @@ void PlateauTraxStateView::processInput(Event &event) {
     if (event.type == sf::Event::MouseButtonReleased) pressedGame = true;
 
     if(Mouse::isButtonPressed(Mouse::Left)) {
-        if(pressedGame){
-            pressedGame= false;
-            if(bouton.isPressed()){
-                tuileEnMainObj->rotate();
-            }if(bouton_defausser.isPressed()) {
-               // tuileEnMainObj = plateau.generateRandomTuile();
-                tuileEnMain.tuileDominos = tuileEnMainObj;
-                tuileEnMain.updateTuile();
+        if(pressedGame) {
+            pressedGame = false;
+            if (bouton.isPressed()) {
+                tuileEnMain->rotate();
+                tuileEnMainObjView.rotatationTuileObj();
+            } else if (bouton_defausser.isPressed()) {
+                // tuileEnMainObj = plateau.generateRandomTuile();
+                // tuileEnMain.tuileDominos = tuileEnMainObj;
+                // tuileEnMain.updateTuile();
+            } else if (boutton_flip.isPressed()) {
+                tuileEnMain->flipTuile();
+                tuileEnMainObjView.resetFlip();
+            }
             }else{
-                if(plateau.placeTuile(nullptr, mousePosGrid.x, mousePosGrid.y)){
-                    TuileDominosObjView *tuileAdd = new TuileDominosObjView(tuileEnMainObj);
-                    parent.addDrawable(mousePosGrid.x *151, mousePosGrid.y *151, *(&tuileAdd));
-                   // tuileEnMainObj = plateau.generateRandomTuile();
-                    tuileEnMain.tuileDominos = tuileEnMainObj;
-                    tuileEnMain.updateTuile();
+                if(plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y)){
+                    if(plateau.checkVictory())stack_display.pop();
+                    parent.addDrawable(mousePosGrid.x *151, mousePosGrid.y *151, new TuileTraxObjView(tuileEnMain, tuileEnMainObjView.rotation_verso, tuileEnMainObjView.rotation_recto));
+                    tuileEnMain = new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)));
+                    tuileEnMainObjView.resetFlip();
+                    tuileEnMainObjView.tuileTrax = tuileEnMain;
+                    cout << plateau << endl;
+                    cout << *tuileEnMain << endl;
                 }
             }
-        }
+
     }
 }
 
 void PlateauTraxStateView::update() {
     bouton_defausser.update(Vector2f(Mouse::getPosition(app)));
     bouton.update(Vector2f(Mouse::getPosition(app)));
+    boutton_flip.update(Vector2f(Mouse::getPosition(app)));
 
     mousePosWindow = Vector2<float>(Mouse::getPosition(app));
     mousePosView = app.mapPixelToCoords(Vector2i(mousePosWindow));
@@ -116,12 +125,13 @@ void PlateauTraxStateView::update() {
 }
 
 void PlateauTraxStateView::drawView() {
-    app.clear(sf::Color::Magenta);
-    app.draw(parent);
-    app.draw(shape);
-    app.draw(tuileEnMain);
-    app.draw(textMaTuile);
-    app.draw(positionText);
-    app.draw(bouton);
-    app.draw(bouton_defausser);
+        app.clear(sf::Color::Magenta);
+        app.draw(parent);
+        app.draw(shape);
+        app.draw(tuileEnMainObjView);
+        app.draw(textMaTuile);
+        app.draw(boutton_flip);
+        app.draw(positionText);
+        app.draw(bouton);
+        app.draw(bouton_defausser);
 }

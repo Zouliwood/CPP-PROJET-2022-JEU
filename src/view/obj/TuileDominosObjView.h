@@ -16,11 +16,10 @@ class TuileDominosObjView final: public TuileView {
 public:
     TuileDominos * tuileDominos;
     TuileDominosObjView(TuileDominos * tuile);
-    ~TuileDominosObjView();//TODO: à chaque destruction tuer les objets textUp etc...
+    ~TuileDominosObjView();
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void updateTuile() const;
     void updatePosition() const;
-    //void setTuile(TuileDominos * newtuile);
 };
 
 

@@ -1,6 +1,7 @@
 #include "../../../hrc/model/tuile/TuileTrax.hpp"
 
 void TuileTrax::rotate() {
+    rotation = (rotation+90)%360;
     FragmentSolo<colorTrax>* tmp = new FragmentSolo<colorTrax>(this->getUp().getFragmentCentre());
     this->up = this->left;
     this->left = this->down;
@@ -10,13 +11,16 @@ void TuileTrax::rotate() {
 }
 
 void TuileTrax::flipTuile() {
-    if (this->getUp()==this->getDown()){
-        //cas tuile recto
+    if (this->getUp()==this->getDown()){        //cas tuile recto
+        flip = 1;
+        cout << "RECTO " << endl;
         this->up.setFragmentCentre(colorTrax::NOIR);
         this->right.setFragmentCentre(colorTrax::BLANC);
         this->down.setFragmentCentre(colorTrax::BLANC);
         this->left.setFragmentCentre(colorTrax::NOIR);
     }else{
+        flip = 0;
+        cout << "VERSO" << endl;
         this->up.setFragmentCentre(colorTrax::NOIR);
         this->right.setFragmentCentre(colorTrax::BLANC);
         this->down.setFragmentCentre(colorTrax::NOIR);
@@ -25,7 +29,7 @@ void TuileTrax::flipTuile() {
 }
 
 TuileTrax::TuileTrax(FragmentSolo<colorTrax> & up,FragmentSolo<colorTrax> & right,FragmentSolo<colorTrax> & down ,FragmentSolo<colorTrax> & left):
-    Tuile(up, right, down, left) {//TODO : à revoir
+    Tuile(up, right, down, left) {
     cout << "TuileTrax " << endl;
 }
 

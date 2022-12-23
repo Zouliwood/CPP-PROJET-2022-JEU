@@ -12,12 +12,11 @@ enum button_status {IDLE = 0, PRESSED, HOVER,};
 
 class ButtonObj : public TuileView {
 
-    mutable  Text textbutton;
+    mutable Text textbutton;
     mutable Sprite fond_image;
     mutable Texture texture;
 
     short unsigned button_status;
-    bool alsoPressed = false;
 
 public:
     ButtonObj(string string);
@@ -25,8 +24,11 @@ public:
     void update(Vector2f mouse);
     void draw(RenderTarget &target, RenderStates states) const;
     bool isPressed() const;
-    bool getAlsoPressed() const;
-    void swipeAlsgoPressed(bool);
+    void toPressed();
+
+    void unPressed();
+
+    void updateGraphique();
 };
 
 

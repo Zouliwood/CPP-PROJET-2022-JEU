@@ -15,6 +15,13 @@ ButtonObj::~ButtonObj() {
     delete &fond_image;
 }
 
+void ButtonObj::toPressed(){
+    button_status = PRESSED;
+}
+void ButtonObj::unPressed(){
+    button_status = IDLE;
+}
+
 void ButtonObj::update(Vector2f mouse) {
     button_status = IDLE;
     if(fond_image.getGlobalBounds().contains(mouse)){
@@ -23,6 +30,11 @@ void ButtonObj::update(Vector2f mouse) {
             button_status = PRESSED;
         }
     }
+    updateGraphique();
+}
+
+
+void ButtonObj::updateGraphique(){
     switch (button_status) {
         case IDLE:
             textbutton.setScale(Vector2f(1, 1));
@@ -48,13 +60,5 @@ void ButtonObj::draw(RenderTarget &target, sf::RenderStates states) const {
     textbutton.setPosition(getPosition().x + 40, getPosition().y + 25); // à changer par setOrigin();//
     target.draw(fond_image);
     target.draw(textbutton);
-}
-
-void ButtonObj::swipeAlsgoPressed(bool value) {
-    alsoPressed = value;
-}
-
-bool ButtonObj::getAlsoPressed() const {
-    return alsoPressed;
 }
 
