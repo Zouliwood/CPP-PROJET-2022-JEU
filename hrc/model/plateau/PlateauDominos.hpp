@@ -5,8 +5,12 @@
 #include "Plateau.hpp"
 #include "../tuile/fragment/FragmentTriple.hpp"
 #include "../tuile/TuileDominos.hpp"
+#include "../../../src/view/TuileView.h"
 
 class PlateauDominos final: public Plateau<TuileDominos>{
+
+private:
+    TuileDominos * domino;
 
 public:
     /* Constructeur & Destructeur */
@@ -16,9 +20,6 @@ public:
     bool placeFirstTuile();
     TuileDominos * generateRandomTuile() const;
 
-    /* define function */
-    void toprint();
-
     /* override function */
     //TODO: https://stackoverflow.com/questions/6969020/overriding-virtual-function-return-type-differs-and-is-not-covariant
     int calculPoint(const TuileDominos * t, int x, int y) override;
@@ -27,6 +28,7 @@ public:
 
     bool isFirstTuile(const TuileDominos * tuileUp, const TuileDominos * tuileDown, const TuileDominos * tuileRight, const TuileDominos * tuileLeft) override;
 
+    TuileDominos *getFirstTuilePose();
 };
 
 ostream &operator<<(ostream &os, PlateauDominos & plateauDominos);

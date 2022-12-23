@@ -9,7 +9,6 @@ void TuileView::draw(RenderTarget &target, sf::RenderStates states) const {
         it.first->setPosition(getPosition().x+ it.second.first, getPosition().y + it.second.second);
         target.draw(*it.first);
     }
- //    cout << getPosition().x << " x, y" << getPosition().y << endl;
 }
 
 void TuileView::addDrawable(int x, int y, TuileView * obj_view) {

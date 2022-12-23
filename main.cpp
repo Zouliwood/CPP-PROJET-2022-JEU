@@ -10,7 +10,7 @@ using namespace std;
 
 int main(){
 
-    RenderWindow app(VideoMode(1280, 720, 32), "Projet Master M1 CPP | Benakli Saad");
+    RenderWindow app(VideoMode(1280, 720, 32), "Projet Master M1 CPP | Benakli Saad", sf::Style::Titlebar | sf::Style::Close);
     stack<State *> * stack_display = new stack<State *>;
 
     MenuView menu{app, stack_display};

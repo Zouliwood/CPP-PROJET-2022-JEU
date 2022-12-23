@@ -1,21 +1,23 @@
-#ifndef CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_H
-#define CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_H
 
+#ifndef CPP_PROJET_2022_JEU_PLATEAUTRAXSTATEVIEW_H
+#define CPP_PROJET_2022_JEU_PLATEAUTRAXSTATEVIEW_H
 
 #include "State.h"
 #include "obj/ButtonObj.h"
-#include "../../hrc/model/plateau/PlateauDominos.hpp"
-#include "../../hrc/model/tuile/TuileDominos.hpp"
+#include "../../hrc/model/plateau/PlateauTrax.hpp"
+#include "../../hrc/model/tuile/TuileTrax.hpp"
 #include "obj/TuileDominosObjView.h"
 #include "obj/PlateauObjView.h"
 
-class PlateauDominoStateView final : public State{
+class PlateauTraxStateView  final : public State{
 
     RenderWindow & app;
     stack<State *> stack_display;
-    PlateauDominos plateau;
+    PlateauTrax plateau;
+
     TuileDominos * tuileEnMainObj;
     TuileDominos * tuileDominoNul;
+
     TuileDominosObjView tuileNul;
     PlateauObjView parent;
     ButtonObj bouton;
@@ -35,9 +37,10 @@ class PlateauDominoStateView final : public State{
     bool pressedGame = true;
     bool notKeyPressedGame = true;
 
+
 public:
-    PlateauDominoStateView(RenderWindow & window, std::stack<State *> * stack_display);
-    ~PlateauDominoStateView();
+    PlateauTraxStateView(RenderWindow & window, std::stack<State *> * stack_display);
+    ~PlateauTraxStateView();
 
     void init() override;
     void processInput(Event & event) override;
@@ -45,6 +48,4 @@ public:
     void drawView() override;
 };
 
-
-
-#endif //CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_H
+#endif

@@ -14,9 +14,7 @@ PlateauDominos::~PlateauDominos() {
 }
 
 bool PlateauDominos::placeFirstTuile() {
-    //int middle = listTuile.size()/2;
-    //  listTuile.at(middle).at(middle) = domino;
-    TuileDominos * domino =  generateRandomTuile();
+    domino =  generateRandomTuile();
     listTuile.addElement(0, new AxeVector<TuileDominos>());
     cout << "Ligne ajoutée !" << endl;
     ((AxeVector<TuileDominos> *)listTuile.getAt(0))->addElement(0, domino);
@@ -108,6 +106,10 @@ bool
 PlateauDominos::isFirstTuile(const TuileDominos *tuileUp, const TuileDominos *tuileDown, const TuileDominos *tuileRight,
                              const TuileDominos *tuileLeft) {
     return tuileLeft == nullptr && tuileRight == nullptr && tuileUp == nullptr && tuileDown == nullptr;
+}
+
+TuileDominos *PlateauDominos::getFirstTuilePose() {
+    return domino;
 }
 
 /*string res;

@@ -1,33 +1,27 @@
-//
-// Created by root0 on 22/12/22.
-//
+#include "PlateauTraxStateView.h"
 
-#include "PlateauDominoStateView.h"
-
-
-PlateauDominoStateView::PlateauDominoStateView(RenderWindow &window, stack<State *> * stack_display) :
-    app{window},
-    stack_display{*stack_display},
-    plateau{*new PlateauDominos()},
-    parent{*new PlateauObjView()},
-    bouton_defausser{*new ButtonObj("defausser")},
-    bouton{*new ButtonObj("rotation")},
-    shape{*new RectangleShape(Vector2f (1280, 270))},
-    textMaTuile{TuileView::createText("Ma tuile", 23, Color::White)},
-    positionText{TuileView::createText("x : y : ", 12, Color::White)},
-    tuileEnMainObj{plateau.generateRandomTuile()},
-    tuileEnMain{tuileEnMainObj},
-    tuileDominoNul{new TuileDominos(*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)))},
-    tuileNul{TuileDominosObjView(tuileDominoNul)}
+PlateauTraxStateView::PlateauTraxStateView(RenderWindow &window, stack<State *> * stack_display) :
+        app{window},
+        stack_display{*stack_display},
+        plateau{*new PlateauTrax()},
+        parent{*new PlateauObjView()},
+        bouton_defausser{*new ButtonObj("defausser")},
+        bouton{*new ButtonObj("rotation")},
+        shape{*new RectangleShape(Vector2f (1280, 270))},
+        textMaTuile{TuileView::createText("Ma tuile", 23, Color::White)},
+        positionText{TuileView::createText("x : y : ", 12, Color::White)},
+        tuileEnMain{tuileEnMainObj},
+        tuileDominoNul{new TuileDominos(*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)),*(new FragmentTriple<int> (0,0,0)))},
+        tuileNul{TuileDominosObjView(tuileDominoNul)}
 {
     init();
 }
 
-PlateauDominoStateView::~PlateauDominoStateView() {
+PlateauTraxStateView::~PlateauTraxStateView() {
 
 }
 
-void PlateauDominoStateView::init() {
+void PlateauTraxStateView::init() {
     plateau.placeFirstTuile();
     parent.move(550, 200);
     bouton_defausser.setPosition(30, 600);
@@ -37,11 +31,9 @@ void PlateauDominoStateView::init() {
     shape.setPosition(0, 450);
     textMaTuile.setPosition(540, 510);
     positionText.setPosition(0, 20);
-    TuileDominosObjView * firstTuileDomino = new TuileDominosObjView( plateau.getFirstTuilePose());
-    parent.addDrawable(0,0, firstTuileDomino);
 }
 
-void PlateauDominoStateView::processInput(Event &event) {
+void PlateauTraxStateView::processInput(Event &event) {
 
     if(event.type == sf::Event::KeyReleased)notKeyPressedGame = true;
 
@@ -82,14 +74,14 @@ void PlateauDominoStateView::processInput(Event &event) {
             if(bouton.isPressed()){
                 tuileEnMainObj->rotate();
             }if(bouton_defausser.isPressed()) {
-                tuileEnMainObj = plateau.generateRandomTuile();
+               // tuileEnMainObj = plateau.generateRandomTuile();
                 tuileEnMain.tuileDominos = tuileEnMainObj;
                 tuileEnMain.updateTuile();
             }else{
-                if(plateau.placeTuile(tuileEnMainObj, mousePosGrid.x, mousePosGrid.y)){
+                if(plateau.placeTuile(nullptr, mousePosGrid.x, mousePosGrid.y)){
                     TuileDominosObjView *tuileAdd = new TuileDominosObjView(tuileEnMainObj);
                     parent.addDrawable(mousePosGrid.x *151, mousePosGrid.y *151, *(&tuileAdd));
-                    tuileEnMainObj = plateau.generateRandomTuile();
+                   // tuileEnMainObj = plateau.generateRandomTuile();
                     tuileEnMain.tuileDominos = tuileEnMainObj;
                     tuileEnMain.updateTuile();
                 }
@@ -98,7 +90,7 @@ void PlateauDominoStateView::processInput(Event &event) {
     }
 }
 
-void PlateauDominoStateView::update() {
+void PlateauTraxStateView::update() {
     bouton_defausser.update(Vector2f(Mouse::getPosition(app)));
     bouton.update(Vector2f(Mouse::getPosition(app)));
 
@@ -123,7 +115,7 @@ void PlateauDominoStateView::update() {
 
 }
 
-void PlateauDominoStateView::drawView() {
+void PlateauTraxStateView::drawView() {
     app.clear(sf::Color::Magenta);
     app.draw(parent);
     app.draw(shape);

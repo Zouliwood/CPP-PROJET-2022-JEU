@@ -15,14 +15,23 @@
 
 using namespace std;
 
+enum StatGameEnum {
+    TRAX,
+    DOMINO,
+    CARCASSONNE,
+
+};
 class MenuView final : public State{
 
 private:
     RenderWindow & app;
     stack<State *>  * stack_display;
-    Text centerText;
     ButtonObj buttonDomino;
-
+    ButtonObj button_precedent;
+    ButtonObj button_suivant;
+    mutable Sprite background;
+    mutable Texture texture_bg;
+    StatGameEnum statgame = DOMINO;
     bool pressedGame = true;
 
 public:

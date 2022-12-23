@@ -10,7 +10,11 @@ class SettingsStateView final : public State{
     stack<State *> * stack_display;
     Sprite background;
     Text nombre_j, nombre_tuile;
-    ButtonObj jouer;
+    ButtonObj button_jouer, button_plus_j, button_moins_j, button_plus_t, button_moins_t;
+    bool pressedGame = true;
+    int nombre_j_game = 2;
+    int nombre_t_game = 10;
+
 
 public:
     SettingsStateView(RenderWindow & window, std::stack<State * > * stack_display);
