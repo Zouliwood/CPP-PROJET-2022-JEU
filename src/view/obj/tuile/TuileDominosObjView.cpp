@@ -51,9 +51,9 @@ TuileDominosObjView::~TuileDominosObjView() {
     delete &textRight;
     delete &shape;
 }
-/*
-void TuileDominosObjView::setTuile(TuileDominos *newtuile) {
-    this->tuileDominos = *newtuile;
-}*/
+
+void TuileDominosObjView::setTuile(TuileDominos *newtuile){
+    this->tuileDominos = newtuile;
+}
 
 

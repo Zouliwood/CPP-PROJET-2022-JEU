@@ -24,7 +24,6 @@ PlateauDominoStateView::PlateauDominoStateView(RenderWindow &window, stack<State
 PlateauDominoStateView::~PlateauDominoStateView() {
     delete &parent;
     delete &tuileEnMain;
-    delete &tuileEnMainObj;
     delete &bouton;
     delete &bouton_defausser;
     delete &shape;
@@ -88,14 +87,14 @@ void PlateauDominoStateView::processInput(Event &event) {
                 tuileEnMainObj->rotate();
             }if(bouton_defausser.isPressed()) {
                 tuileEnMainObj = plateau.generateRandomTuile();
-                tuileEnMain.tuileDominos = tuileEnMainObj;
+                tuileEnMain.setTuile(tuileEnMainObj);
                 tuileEnMain.updateTuile();
             }else{
                 if(plateau.placeTuile(tuileEnMainObj, mousePosGrid.x, mousePosGrid.y*-1)){
                     TuileDominosObjView *tuileAdd = new TuileDominosObjView(tuileEnMainObj);
                     parent.addDrawable(mousePosGrid.x *151, mousePosGrid.y *151, *(&tuileAdd));
                     tuileEnMainObj = plateau.generateRandomTuile();
-                    tuileEnMain.tuileDominos = tuileEnMainObj;
+                    tuileEnMain.setTuile(tuileEnMainObj);
                     tuileEnMain.updateTuile();
                     cout << plateau << endl;
                 }

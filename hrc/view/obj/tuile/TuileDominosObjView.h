@@ -12,14 +12,15 @@ class TuileDominosObjView final: public ComposantView {
     mutable Text textDown;
     mutable Text textRight;
     mutable Text textLeft;
+    TuileDominos * tuileDominos;
 
 public:
-    TuileDominos * tuileDominos;
     TuileDominosObjView(TuileDominos * tuile);
     ~TuileDominosObjView();
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void updateTuile() const;
     void updatePosition() const;
+    void setTuile(TuileDominos *newtuile);
 };
 
 
