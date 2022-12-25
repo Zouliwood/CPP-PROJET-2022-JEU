@@ -84,17 +84,24 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
 
 
     if((listTuile.getPositif().size()+listTuile.getNegatif().size())>0 && tuileDown == nullptr && tuileUp == nullptr && tuileRight == nullptr && tuileLeft == nullptr) {
-        cout << "a" << endl;
+      //  cout << "a" << endl;
         return false;
-    } else {
-        if ((listTuile.getPositif().size()+listTuile.getNegatif().size())==0){
-            if (x!=0 || y!=0){
-                cout << "b" << endl;
-                return false; //obliger de placer le premier coup en (0, 0)
-            }
+    }
+    if ((listTuile.getPositif().size()+listTuile.getNegatif().size())==0){
+        if (x!=0 || y!=0){
+       //     cout << "b" << endl;
+            return false; //obliger de placer le premier coup en (0, 0)
         }
     }
-
+    if((listTuile.getPositif().size()+listTuile.getNegatif().size())> 0){
+        bool isForcedCoup = existForcedAction(0,0);
+        deja_vu.clear();
+        if(isForcedCoup && !coupIsOk(x,y)){
+            cout << "Il y a un ou plusieurs cours forcés à faire";
+            return false;
+        }
+    }
+/*
     bool existFrd = canReplay();
     bool isCurrFrd = isForced(x, y);
     cout << "existFrd (canReplay) " << existFrd << " isCurrFrd (isForced)" << !isCurrFrd << endl;
@@ -105,8 +112,7 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
 
 
     //check largeur et hauteur
-
-    if (x>=0){
+if (x>=0){
         if ((listTuile.getNegatif().size()+x)>8){
             cout << "d" << endl;
             return false;
@@ -147,7 +153,6 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
                 }
             }
         }
-
     }
 
     /* Redefinition de l'operateur '==' */
@@ -201,9 +206,163 @@ bool PlateauTrax::isLine(int x, int y, colorTrax color, int from, int startX, in
 }
 
 
+bool PlateauTrax::coupIsOk(int x, int y){
+
+    auto * topTuileTop = getTuileAt(x, y+1);
+    auto * topTuileLeft = getTuileAt(x-1, y);
+    auto * topTuileRight = getTuileAt(x+1, y);
+    auto * topTuileDown = getTuileAt(x, y-1);
+
+    int cptBlanc{0};
+    if (topTuileTop && topTuileTop->getDown().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+    if (topTuileRight && topTuileRight->getLeft().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+    if (topTuileDown && topTuileDown->getUp().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+    if (topTuileLeft && topTuileLeft->getRight().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+
+    int cptNoir{0};
+    if (topTuileTop && topTuileTop->getDown().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+    if (topTuileRight && topTuileRight->getLeft().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+    if (topTuileDown && topTuileDown->getUp().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+    if (topTuileLeft && topTuileLeft->getRight().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+
+    //  if (cptBlanc==3 || cptNoir==3)return false;
+    return (cptBlanc==2 || cptNoir==2);
+}
+
+
+bool PlateauTrax::existForcedAction(int x, int y){ // on part de 0 0
+    auto * courtantTuile = getTuileAt(x, y);
+    for(auto item : deja_vu) if(item == courtantTuile)return false;
+    deja_vu.push_back(courtantTuile);
+
+   /* if(find(const_cast<TuileTrax *>(deja_vu.begin()), const_cast<TuileTrax *>(deja_vu.end()), const_cast<TuileTrax *>(courtantTuile))!=const_cast<TuileTrax *>(deja_vu).end()){
+        return false;
+    }*/
+
+    auto * topTuile = getTuileAt(x, y+1);
+    auto * rightTuile = getTuileAt(x+1, y);
+    auto * bottomTuile = getTuileAt(x, y-1);
+    auto * leftTuile = getTuileAt(x-1, y);
+
+    //if(topTuile && rightTuile && leftTuile && bottomTuile){
+    //}
+
+    if(topTuile == nullptr){
+        cout << "cas top " << x<<" / " << y << endl;
+        //checkDigonalIsNotEmpty return false;
+        auto * topTuileTop = getTuileAt(x, y+2);
+        auto * topTuileLeft = getTuileAt(x-1, y+1);
+        auto * topTuileRight = getTuileAt(x+1, y+1);
+
+        int cptBlanc{0};
+        if (topTuileTop && topTuileTop->getDown().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (topTuileRight && topTuileRight->getLeft().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (courtantTuile && courtantTuile->getUp().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (topTuileLeft && topTuileLeft->getRight().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+
+        int cptNoir{0};
+        if (topTuileTop && topTuileTop->getDown().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+        if (topTuileRight && topTuileRight->getLeft().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+        if (courtantTuile && courtantTuile->getUp().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+        if (topTuileLeft && topTuileLeft->getRight().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+
+      //  if (cptBlanc==3 || cptNoir==3)return false;
+        if (cptBlanc==2 || cptNoir==2)return true;
+
+    }
+    if(rightTuile == nullptr){
+        cout << "cas right " << x<<" / " << y << endl;
+
+        //checkDigonalIsNotEmpty return false;
+        auto * rightTuileTop = getTuileAt(x+1, y+1);
+        auto * rightTuileRight = getTuileAt(x+2, y);
+        auto * topTuileLeft = getTuileAt(x+1, y-1);
+
+        int cptBlanc{0};
+        if (rightTuileRight && rightTuileRight->getLeft().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (rightTuileTop && rightTuileTop->getDown().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (courtantTuile && courtantTuile->getRight().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (topTuileLeft && topTuileLeft->getUp().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+
+        int cptNoir{0};
+        if (rightTuileRight && rightTuileRight->getLeft().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+        if (rightTuileTop && rightTuileTop->getDown().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+        if (courtantTuile && courtantTuile->getRight().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+        if (topTuileLeft && topTuileLeft->getUp().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+
+       // if (cptBlanc==3 || cptNoir==3)return false;
+        if (cptBlanc==2 || cptNoir==2)return true;
+
+    }
+    if(bottomTuile == nullptr){
+        cout << "cas down " << x<<" / " << y << endl;
+
+        auto * rightTuileBottom = getTuileAt(x, y-2);
+        auto * rightTuileLeft = getTuileAt(x-1, y-1);
+        auto * rightTuileRight = getTuileAt(x+1, y-1);
+
+        int cptBlanc{0};
+        if (rightTuileBottom && rightTuileBottom->getUp().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (rightTuileRight && rightTuileRight->getLeft().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (courtantTuile && courtantTuile->getDown().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (rightTuileLeft && rightTuileLeft->getRight().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+
+        int cptNoir{0};
+        if (rightTuileBottom && rightTuileBottom->getUp().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+        if (rightTuileRight && rightTuileRight->getLeft().getFragmentCentre() == colorTrax::NOIR)cptNoir++;
+        if (courtantTuile && courtantTuile->getDown().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+        if (rightTuileLeft && rightTuileLeft->getRight().getFragmentCentre() == colorTrax::NOIR)cptNoir++;
+
+      //  if (cptBlanc==3 || cptNoir==3)return false;
+        if (cptBlanc==2 || cptNoir==2)return true;
+    }
+    if(leftTuile == nullptr){
+        cout << "cas left " << x<<" / " << y << endl;
+
+        auto * rightTuileRight = getTuileAt(x-1, y+1);
+        auto * rightTuileLeft = getTuileAt(x-1, y-1);
+        auto * leftTuileTop = getTuileAt(x-2, y);
+
+        int cptBlanc{0};
+        if (leftTuileTop && leftTuileTop->getRight().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (rightTuileRight && rightTuileRight->getUp().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (courtantTuile && courtantTuile->getLeft().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+        if (rightTuileLeft && rightTuileLeft->getDown().getFragmentCentre() == colorTrax::BLANC)cptBlanc++;
+
+        int cptNoir{0};
+        if (leftTuileTop && leftTuileTop->getRight().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+        if (rightTuileRight && rightTuileRight->getUp().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+        if (courtantTuile && courtantTuile->getLeft().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+        if (rightTuileLeft && rightTuileLeft->getDown().getFragmentCentre()  == colorTrax::NOIR)cptNoir++;
+
+        //if (cptBlanc==3 || cptNoir==3)return false;
+        if (cptBlanc==2 || cptNoir==2)return true;
+    }
+    cout << "On sort " << x<<" / " << y << endl;
+    return existForcedAction(x, y+1) ||  existForcedAction(x+1, y) || existForcedAction(x, y-1) ||  existForcedAction(x-1, y); // left
+}
+
+bool PlateauTrax::isUnTruc(colorTrax color1, colorTrax color2, colorTrax color3, colorTrax color4){
+    int cptBlanc{0};
+    if (color1 == colorTrax::BLANC)cptBlanc++;
+    if (color2 == colorTrax::BLANC)cptBlanc++;
+    if (color3 == colorTrax::BLANC)cptBlanc++;
+    if (color4 == colorTrax::BLANC)cptBlanc++;
+
+    int cptNoir{0};
+    if (color1 == colorTrax::NOIR)cptNoir++;
+    if (color2 == colorTrax::NOIR)cptNoir++;
+    if (color3 == colorTrax::NOIR)cptNoir++;
+    if (color4 == colorTrax::NOIR)cptNoir++;
+
+    if (cptBlanc==3 || cptNoir==3)return false;
+    if (cptBlanc==2 || cptNoir==2)return true;
+}
 
 //TODO: fonction isForced indique si la position courante correspond à un coup forcé
 bool PlateauTrax::isForced(int x, int y) {
+    if(getTuileAt(x,y) != nullptr) return false;
+
     auto * topTuile = getTuileAt(x, y+1);
     auto * rightTuile = getTuileAt(x+1, y);
     auto * bottomTuile = getTuileAt(x, y-1);
@@ -214,7 +373,7 @@ bool PlateauTrax::isForced(int x, int y) {
         || (leftTuile && bottomTuile->getUp()==leftTuile->getRight())
         || (rightTuile && bottomTuile->getUp()==rightTuile->getLeft())
         )){
-        cout << "-- 1" << endl;
+        cout << "-- 1:"  << x << " " << y << endl;
         return true;
     }
 
@@ -223,7 +382,7 @@ bool PlateauTrax::isForced(int x, int y) {
         || (topTuile && leftTuile->getRight()==topTuile->getDown())
         || (bottomTuile && leftTuile->getRight()==bottomTuile->getUp())
         )){
-        cout << "-- 2" << endl;
+        cout << "-- 2:"  << x << " " << y << endl;
         return true;
     }
 
@@ -232,7 +391,7 @@ bool PlateauTrax::isForced(int x, int y) {
         || (leftTuile && topTuile->getDown()==leftTuile->getRight())
         || (rightTuile && topTuile->getDown()==rightTuile->getLeft())
         )){
-        cout << "-- 3" << endl;
+        cout << "-- 3:"  << x << " " << y << endl;
         return true;
     }
 
@@ -241,11 +400,11 @@ bool PlateauTrax::isForced(int x, int y) {
         || (topTuile && rightTuile->getLeft()==topTuile->getDown())
         || (bottomTuile && rightTuile->getLeft()==bottomTuile->getUp())
         )){
-        cout << "-- 4" << endl;
+        cout << "-- 4 :"  << x << " " << y << endl;
         return true;
     }
 
-    cout << "on sort" << endl;
+    cout << "on sort:"  << x << " " << y << endl;
     return false;
 }
 

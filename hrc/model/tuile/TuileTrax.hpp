@@ -14,7 +14,6 @@ enum typeFlip{
 class TuileTrax final: public Tuile<FragmentSolo<colorTrax>>{
 
 
-
 public:
 
     int flip = 0;

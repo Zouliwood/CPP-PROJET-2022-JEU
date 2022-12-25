@@ -29,7 +29,7 @@ int main(){
             }
         }
         stack_display->top()->update();
-        stack_display->top()->processInput(event);
+        if(app.hasFocus()) stack_display->top()->processInput(event);
 
         if(Keyboard::isKeyPressed((sf::Keyboard::Escape))){
             if(stack_display->size() > 1) stack_display->pop();

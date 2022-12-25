@@ -109,9 +109,9 @@ void PlateauTraxStateView::processInput(Event &event) {
                     tuileEnMainObjView.tuileTrax = tuileEnMain;
                     cout << plateau << endl;
                     cout << *tuileEnMain << endl;
-                    cout << "############ placeTuile: " << test << " ############\n";
+                   // cout << "############ placeTuile: " << test << " ############\n";
                 }else{
-                    cout << "############ placeTuile: " << test << " ############\n";
+                   // cout << "############ placeTuile: " << test << " ############\n";
                 }
           //  cout << "-----------------------------------------------££" << endl;
         }
@@ -146,6 +146,7 @@ void PlateauTraxStateView::update() {
 
     if(plateau.checkVictory()){
         cout << "fin de partie "<< endl;
+        app.close();
     }
 }
 
