@@ -11,15 +11,15 @@ void TuileTrax::rotate() {
 }
 
 void TuileTrax::flipTuile() {
-    if (this->getUp()==this->getDown()){        //cas tuile recto
-        flip = 1;
+    if (this->getUp() == this->getDown()){        //cas tuile recto
+        flip = 0;
         cout << "RECTO " << endl;
         this->up.setFragmentCentre(colorTrax::NOIR);
         this->right.setFragmentCentre(colorTrax::BLANC);
         this->down.setFragmentCentre(colorTrax::BLANC);
         this->left.setFragmentCentre(colorTrax::NOIR);
     }else{
-        flip = 0;
+        flip = 1;
         cout << "VERSO" << endl;
         this->up.setFragmentCentre(colorTrax::NOIR);
         this->right.setFragmentCentre(colorTrax::BLANC);
@@ -29,7 +29,8 @@ void TuileTrax::flipTuile() {
 }
 
 TuileTrax::TuileTrax(FragmentSolo<colorTrax> & up,FragmentSolo<colorTrax> & right,FragmentSolo<colorTrax> & down ,FragmentSolo<colorTrax> & left):
-    Tuile(up, right, down, left) {
+    Tuile(up, right, down, left), flip{1}, rotation{0}{
+
     cout << "TuileTrax " << endl;
 }
 

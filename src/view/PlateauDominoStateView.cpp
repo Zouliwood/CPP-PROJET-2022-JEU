@@ -84,12 +84,13 @@ void PlateauDominoStateView::processInput(Event &event) {
                 tuileEnMain.tuileDominos = tuileEnMainObj;
                 tuileEnMain.updateTuile();
             }else{
-                if(plateau.placeTuile(tuileEnMainObj, mousePosGrid.x, mousePosGrid.y)){
+                if(plateau.placeTuile(tuileEnMainObj, mousePosGrid.x, mousePosGrid.y*-1)){
                     TuileDominosObjView *tuileAdd = new TuileDominosObjView(tuileEnMainObj);
                     parent.addDrawable(mousePosGrid.x *151, mousePosGrid.y *151, *(&tuileAdd));
                     tuileEnMainObj = plateau.generateRandomTuile();
                     tuileEnMain.tuileDominos = tuileEnMainObj;
                     tuileEnMain.updateTuile();
+                    cout << plateau << endl;
                 }
             }
         }

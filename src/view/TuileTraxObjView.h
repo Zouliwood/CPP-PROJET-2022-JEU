@@ -10,13 +10,11 @@ class TuileTraxObjView final : public TuileView {
     mutable Sprite bg_tuile;
 
 public:
-    int rotation_verso, rotation_recto = 0;
     TuileTrax * tuileTrax;
-    TuileTraxObjView(TuileTrax * trax, int, int);
+    TuileTraxObjView(TuileTrax * trax);
     ~TuileTraxObjView();
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void resetFlip();
-    void rotatationTuileObj();
 };
 
 

@@ -12,8 +12,9 @@ PlateauTraxStateView::PlateauTraxStateView(RenderWindow &window, stack<State *> 
         textMaTuile{TuileView::createText("Ma tuile", 23, Color::White)},
         positionText{TuileView::createText("x : y : ", 12, Color::White)},
         tuileEnMain{new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)))},
-        tuileEnMainObjView{tuileEnMain, 0, 0}
+        tuileEnMainObjView{tuileEnMain}
         {
+            cout << *tuileEnMain << endl;
         init();
 }
 
@@ -31,7 +32,7 @@ void PlateauTraxStateView::init() {
     shape.setPosition(0, 450);
     textMaTuile.setPosition(540, 510);
     positionText.setPosition(0, 20);
-    tuileEnMainObjView.setPosition(550, 540);
+    tuileEnMainObjView.setPosition(550+75, 540+75);
 }
 
 void PlateauTraxStateView::processInput(Event &event) {
@@ -74,26 +75,35 @@ void PlateauTraxStateView::processInput(Event &event) {
             pressedGame = false;
             if (bouton.isPressed()) {
                 tuileEnMain->rotate();
-                tuileEnMainObjView.rotatationTuileObj();
+                cout << "-----------------------------------------------££" << endl;
+
             } else if (bouton_defausser.isPressed()) {
                 // tuileEnMainObj = plateau.generateRandomTuile();
                 // tuileEnMain.tuileDominos = tuileEnMainObj;
                 // tuileEnMain.updateTuile();
+                cout << plateau << endl;
+                cout << "-----" << endl;
+                cout << *tuileEnMain << endl;
             } else if (boutton_flip.isPressed()) {
                 tuileEnMain->flipTuile();
-                tuileEnMainObjView.resetFlip();
+                tuileEnMain->rotation = 0;
+                cout << "-----------------------------------------------££" << endl;
             }
-            }else{
-                if(plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y)){
-                    if(plateau.checkVictory())stack_display.pop();
-                    parent.addDrawable(mousePosGrid.x *151, mousePosGrid.y *151, new TuileTraxObjView(tuileEnMain, tuileEnMainObjView.rotation_verso, tuileEnMainObjView.rotation_recto));
+        }else{
+            bool test = plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y*-1);
+                if(test == true){
+                    parent.addDrawable(mousePosGrid.x *151 +75, mousePosGrid.y *151 +75, new TuileTraxObjView(tuileEnMain));
                     tuileEnMain = new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)));
-                    tuileEnMainObjView.resetFlip();
                     tuileEnMainObjView.tuileTrax = tuileEnMain;
                     cout << plateau << endl;
                     cout << *tuileEnMain << endl;
+                    cout << "############ placeTuile: " << test << " ############\n";
+                }else{
+                    cout << "############ placeTuile: " << test << " ############\n";
                 }
-            }
+          //  cout << "-----------------------------------------------££" << endl;
+        }
+
 
     }
 }
@@ -122,6 +132,9 @@ void PlateauTraxStateView::update() {
 
     positionText.setString(to_string(mousePosGrid.x) + " " + to_string(mousePosGrid.y)); //+ " / " + to_string(mousePosWindow.x) + " " + to_string(mousePosWindow.y) + " / " + to_string(mousePosView.x) + " " + to_string(mousePosView.y) );
 
+    if(plateau.checkVictory()){
+        cout << "fin de partie "<< endl;
+    }
 }
 
 void PlateauTraxStateView::drawView() {
