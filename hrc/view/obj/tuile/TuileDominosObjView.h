@@ -1,11 +1,11 @@
 #ifndef CPP_PROJET_2022_JEU_TUILEDOMINOSOBJVIEW_H
 #define CPP_PROJET_2022_JEU_TUILEDOMINOSOBJVIEW_H
 
-#include "../../../hrc/model/tuile/TuileDominos.hpp"
-#include "../TuileView.h"
-#include "../../../hrc/model/tuile/TuileTrax.hpp"
+#include "../../../model/tuile/TuileDominos.hpp"
+#include "../composant/ComposantView.h"
+#include "../../../model/tuile/TuileTrax.hpp"
 
-class TuileDominosObjView final: public TuileView {
+class TuileDominosObjView final: public ComposantView {
     Font font;
     mutable RectangleShape shape;
     mutable Text textUp;

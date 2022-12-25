@@ -1,6 +1,6 @@
-#include "ButtonObj.h"
+#include "../../../../hrc/view/obj/composant/ButtonObj.h"
 
-ButtonObj::ButtonObj(string string) : fond_image{*new Sprite()}, texture{*new Texture()}{
+ButtonObj::ButtonObj(string string) : ComposantView{}, fond_image{*new Sprite()}, texture{*new Texture()}{
     texture.loadFromFile("../ressources/img/menu/image_bg_menu.png");
     textbutton = createText(string,18, Color::White);
     texture.setRepeated(true);
@@ -55,7 +55,7 @@ bool ButtonObj::isPressed() const{
 }
 
 void ButtonObj::draw(RenderTarget &target, sf::RenderStates states) const {
-    TuileView::draw(target, states);
+    ComposantView::draw(target, states);
     fond_image.setPosition(getPosition());
     textbutton.setPosition(getPosition().x + 40, getPosition().y + 25); // à changer par setOrigin();//
     target.draw(fond_image);

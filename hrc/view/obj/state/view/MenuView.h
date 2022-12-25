@@ -1,37 +1,31 @@
-//
-// Created by root0 on 21/12/22.
-//
-
 #ifndef CPP_PROJET_2022_JEU_MENUVIEW_H
 #define CPP_PROJET_2022_JEU_MENUVIEW_H
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "State.h"
+#include "../State.h"
 #include <stack>
-#include "TuileView.h"
-#include "obj/ButtonObj.h"
-#include "DominoStateView.h"
+#include "../../composant/ComposantView.h"
+#include "../../composant/ButtonObj.h"
 
 using namespace std;
 
 enum StatGameEnum {
     TRAX,
     DOMINO,
-    CARCASSONNE,
-
+    CARCASSONNE
 };
+
 class MenuView final : public State{
 
-private:
     RenderWindow & app;
-    stack<State *>  * stack_display;
+    stack<State *>  *stack_display;
     ButtonObj buttonDomino;
     ButtonObj button_precedent;
     ButtonObj button_suivant;
     mutable Sprite background;
     mutable Texture texture_bg;
-    StatGameEnum statgame = TRAX;
+    StatGameEnum statgame;
     bool pressedGame = true;
 
 public:
@@ -43,5 +37,4 @@ public:
     void drawView() override;
 };
 
-
-#endif //CPP_PROJET_2022_JEU_MENUVIEW_H
+#endif

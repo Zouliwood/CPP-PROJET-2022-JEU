@@ -1,5 +1,5 @@
-#include "SettingsStateView.h"
-#include "PlateauDominoStateView.h"
+#include "../../../../../hrc/view/obj/state/view/SettingsStateView.h"
+#include "../../../../../hrc/view/obj/state/view/PlateauDominoStateView.h"
 
 SettingsStateView::~SettingsStateView() {
     delete &nombre_j;
@@ -7,6 +7,10 @@ SettingsStateView::~SettingsStateView() {
     delete &button_jouer;
     delete background.getTexture();
     delete &background;
+    delete &button_plus_j;
+    delete &button_moins_j;
+    delete &button_plus_t;
+    delete &button_moins_t;
 }
 
 void SettingsStateView::processInput(sf::Event & event) {
@@ -16,9 +20,7 @@ void SettingsStateView::processInput(sf::Event & event) {
         if (pressedGame) {
             pressedGame = false;
             if(button_jouer.isPressed()){
-
                 stack_display->push(new PlateauDominoStateView(app, stack_display));
-                cout << "stack setting " << stack_display->size() << endl;
             }else if(button_moins_t.isPressed()){
                 if(nombre_t_game > 10)nombre_t_game--;
             }else if(button_plus_t.isPressed()){
@@ -78,8 +80,11 @@ void SettingsStateView::init() {
 SettingsStateView::SettingsStateView(RenderWindow & window, std::stack<State * > * stack_display) :
                 app{window},
                 stack_display{stack_display},
-                nombre_j{TuileView::createText("", 20, Color(236, 168, 48))},
-                nombre_tuile{TuileView::createText("", 20, Color(236, 168, 48))},
+                nombre_j_game{2},
+                nombre_t_game{16},
+                pressedGame{true},
+                nombre_j{ComposantView::createText("", 20, Color(236, 168, 48))},
+                nombre_tuile{ComposantView::createText("", 20, Color(236, 168, 48))},
                 button_jouer{*new ButtonObj("Jouer")},
                 button_moins_j{*new ButtonObj("    [-]")},
                 button_plus_j{*new ButtonObj("   [+]")},

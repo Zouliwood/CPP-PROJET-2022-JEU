@@ -1,20 +1,20 @@
-//
-// Created by root0 on 22/12/22.
-//
-
-#include "PlateauDominoStateView.h"
+#include "../../../../../hrc/view/obj/state/view/PlateauDominoStateView.h"
 
 
 PlateauDominoStateView::PlateauDominoStateView(RenderWindow &window, stack<State *> * stack_display) :
     app{window},
-    stack_display{*stack_display},
+    stack_display{stack_display},
+    gridSizeF{150.0f},
+    grideSizeU{static_cast<int>(gridSizeF)},
+    pressedGame{true},
+    notKeyPressedGame{true},
     plateau{*new PlateauDominos()},
     parent{*new PlateauObjView()},
     bouton_defausser{*new ButtonObj("defausser")},
     bouton{*new ButtonObj("rotation")},
     shape{*new RectangleShape(Vector2f (1280, 270))},
-    textMaTuile{TuileView::createText("Ma tuile", 23, Color::White)},
-    positionText{TuileView::createText("x : y : ", 12, Color::White)},
+    textMaTuile{ComposantView::createText("Ma tuile", 23, Color::White)},
+    positionText{ComposantView::createText("x : y : ", 12, Color::White)},
     tuileEnMainObj{plateau.generateRandomTuile()},
     tuileEnMain{tuileEnMainObj}
 {
@@ -22,7 +22,14 @@ PlateauDominoStateView::PlateauDominoStateView(RenderWindow &window, stack<State
 }
 
 PlateauDominoStateView::~PlateauDominoStateView() {
-
+    delete &parent;
+    delete &tuileEnMain;
+    delete &tuileEnMainObj;
+    delete &bouton;
+    delete &bouton_defausser;
+    delete &shape;
+    delete &textMaTuile;
+    delete &positionText;
 }
 
 void PlateauDominoStateView::init() {

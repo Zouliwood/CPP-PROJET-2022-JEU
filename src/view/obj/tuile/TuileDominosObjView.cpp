@@ -1,4 +1,4 @@
-#include "TuileDominosObjView.h"
+#include "../../../../hrc/view/obj/tuile/TuileDominosObjView.h"
 
 TuileDominosObjView::TuileDominosObjView(TuileDominos * tuile) : tuileDominos{tuile}, shape(RectangleShape(Vector2f(150.0f,150.0f))){
 
@@ -14,7 +14,7 @@ TuileDominosObjView::TuileDominosObjView(TuileDominos * tuile) : tuileDominos{tu
 
 }
 
-void TuileDominosObjView::draw(RenderTarget &target, sf::RenderStates states) const { TuileView::draw(target, states);
+void TuileDominosObjView::draw(RenderTarget &target, sf::RenderStates states) const { ComposantView::draw(target, states);
     shape.setPosition(getPosition());
     updateTuile();
     updatePosition();
@@ -45,7 +45,11 @@ void TuileDominosObjView::updateTuile() const{
 };
 
 TuileDominosObjView::~TuileDominosObjView() {
-
+    delete &textUp;
+    delete &textDown;
+    delete &textLeft;
+    delete &textRight;
+    delete &shape;
 }
 /*
 void TuileDominosObjView::setTuile(TuileDominos *newtuile) {

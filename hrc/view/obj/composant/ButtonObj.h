@@ -6,16 +6,15 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <SFML/System.hpp>
-#include "../TuileView.h"
+#include "ComposantView.h"
 
 enum button_status {IDLE = 0, PRESSED, HOVER,};
 
-class ButtonObj : public TuileView {
+class ButtonObj final: public ComposantView {
 
     mutable Text textbutton;
     mutable Sprite fond_image;
     mutable Texture texture;
-
     short unsigned button_status;
 
 public:
@@ -25,9 +24,7 @@ public:
     void draw(RenderTarget &target, RenderStates states) const;
     bool isPressed() const;
     void toPressed();
-
     void unPressed();
-
     void updateGraphique();
 };
 

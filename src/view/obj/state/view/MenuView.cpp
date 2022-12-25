@@ -1,6 +1,6 @@
-#include "MenuView.h"
-#include "SettingsStateView.h"
-#include "PlateauTraxStateView.h"
+#include "../../../../../hrc/view/obj/state/view/MenuView.h"
+#include "../../../../../hrc/view/obj/state/view/SettingsStateView.h"
+#include "../../../../../hrc/view/obj/state/view/PlateauTraxStateView.h"
 
 void MenuView::processInput(sf::Event & event) {
 
@@ -96,7 +96,8 @@ void MenuView::drawView() {
 MenuView::MenuView(sf::RenderWindow & window, stack<State * > * stack_display) :
     app{window},
     stack_display{stack_display},
-    buttonDomino{*new ButtonObj("Jouer")},
+    statgame{TRAX},
+    buttonDomino{*new ButtonObj("Enter")},
     button_precedent{*new ButtonObj("     <")},
     button_suivant{*new ButtonObj("     >")},
     background{*new Sprite()},
@@ -106,7 +107,11 @@ MenuView::MenuView(sf::RenderWindow & window, stack<State * > * stack_display) :
 }
 
 MenuView::~MenuView() {
-
+    delete &buttonDomino;
+    delete &button_precedent;
+    delete &button_suivant;
+    delete &background;
+    delete &texture_bg;
 }
 
 void MenuView::init() {

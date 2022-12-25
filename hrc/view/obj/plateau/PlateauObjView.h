@@ -2,10 +2,10 @@
 #define CPP_PROJET_2022_JEU_PLATEAUOBJVIEW_H
 
 
-#include "../TuileView.h"
-#include "../../../hrc/model/plateau/PlateauDominos.hpp"
+#include "../composant/ComposantView.h"
+#include "../../../model/plateau/PlateauDominos.hpp"
 
-class PlateauObjView: public TuileView {
+class PlateauObjView: public ComposantView {
 
     //PlateauDominos * plateauDominos;
     mutable Sprite background_plateau;
@@ -15,16 +15,15 @@ class PlateauObjView: public TuileView {
 
 public:
     PlateauObjView();
+    ~PlateauObjView();
     void draw(RenderTarget &target, sf::RenderStates states) const;
     void updateBackGround(int x, int y, int posx, int posy);
     /*
-         void init();
-         bool isPressed();
-         bool isHover();
+        void init();
+        bool isPressed();
+        bool isHover();
      */
-
-
 };
 
 
-#endif //CPP_PROJET_2022_JEU_PLATEAUOBJVIEW_H
+#endif

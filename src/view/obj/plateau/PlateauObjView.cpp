@@ -1,4 +1,4 @@
-#include "PlateauObjView.h"
+#include "../../../../hrc/view/obj/plateau/PlateauObjView.h"
 
 PlateauObjView::PlateauObjView():
 /*        plateauDominos{plateauDominos},*/
@@ -17,7 +17,7 @@ PlateauObjView::PlateauObjView():
 void PlateauObjView::draw(RenderTarget &target, sf::RenderStates states) const {
     target.draw(background_plateau);
     //background_plateau.setPosition(getPosition().x - 700, getPosition().y -350);
-    TuileView::draw(target, states);
+    ComposantView::draw(target, states);
 }
 
 void PlateauObjView::updateBackGround(int x, int y, int posx, int posy){
@@ -25,6 +25,10 @@ void PlateauObjView::updateBackGround(int x, int y, int posx, int posy){
             y_back+=y;
     //background_plateau.setPosition(getPosition().x - x, getPosition().y -y);
     //background_plateau.setOrigin(0,0);
-
     background_plateau.setTextureRect(IntRect(0,0,x_back, y_back));
+}
+
+PlateauObjView::~PlateauObjView() {
+            delete &background_plateau;
+            delete &texture_background;
 }

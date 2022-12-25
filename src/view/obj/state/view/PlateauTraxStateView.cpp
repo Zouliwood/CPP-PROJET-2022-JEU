@@ -1,16 +1,20 @@
-#include "PlateauTraxStateView.h"
+#include "../../../../../hrc/view/obj/state/view/PlateauTraxStateView.h"
 
 PlateauTraxStateView::PlateauTraxStateView(RenderWindow &window, stack<State *> * stack_display) :
         app{window},
-        stack_display{*stack_display},
+        stack_display{stack_display},
+        gridSizeF{150.0f},
+        grideSizeU{static_cast<int>(gridSizeF)},
+        pressedGame{true},
+        notKeyPressedGame{true},
         plateau{*new PlateauTrax()},
         parent{*new PlateauObjView()},
         bouton_defausser{*new ButtonObj("defausser")},
         bouton{*new ButtonObj("rotation")},
         boutton_flip{*new ButtonObj("flip")},
         shape{*new RectangleShape(Vector2f (1280, 270))},
-        textMaTuile{TuileView::createText("Ma tuile", 23, Color::White)},
-        positionText{TuileView::createText("x : y : ", 12, Color::White)},
+        textMaTuile{ComposantView::createText("Ma tuile", 23, Color::White)},
+        positionText{ComposantView::createText("x : y : ", 12, Color::White)},
         tuileEnMain{new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)))},
         tuileEnMainObjView{tuileEnMain}
         {
@@ -19,7 +23,15 @@ PlateauTraxStateView::PlateauTraxStateView(RenderWindow &window, stack<State *> 
 }
 
 PlateauTraxStateView::~PlateauTraxStateView() {
-
+    delete &parent;
+    delete &bouton;
+    delete &bouton_defausser;
+    delete &boutton_flip;
+    delete &tuileEnMainObjView;
+    delete &tuileEnMain;
+    delete &shape;
+    delete &textMaTuile;
+    delete &positionText;
 }
 
 void PlateauTraxStateView::init() {
