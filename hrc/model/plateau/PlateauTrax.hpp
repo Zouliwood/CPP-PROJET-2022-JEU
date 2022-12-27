@@ -25,19 +25,13 @@ public:
 
     virtual bool placeTuile(TuileTrax * t, int x, int y);
 
-    bool isForced(int x, int y);
-
-    bool canReplay();
-
     bool isLoop(int x, int y, colorTrax color, int from, int startX, int startY, int cpt);
-
-    bool isLine(int x, int y, colorTrax color, int from, int startX, int startY);
 
     bool existForcedAction(int x, int y);
 
-    bool isUnTruc(colorTrax color1, colorTrax color2, colorTrax color3, colorTrax color4);
-
     bool coupIsOk(int x, int y);
+
+    bool isLine(int x, int y, colorTrax color, int startX, int startY, int from, int cpt=0);
 };
 
 ostream & operator<<(ostream& os, PlateauTrax & plateauTrax);
