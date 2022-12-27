@@ -5,6 +5,7 @@
 #include "../enum/colorTrax.hpp"
 #include "../enum/environment.hpp"
 #include "fragment/FragmentTuile.hpp"
+#include "fragment/FragmentQuadruple.hpp"
 #include "fragment/FragmentTriple.hpp"
 #include "fragment/FragmentSolo.hpp"
 #include <iostream>

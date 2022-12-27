@@ -101,6 +101,21 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
             cout << "Il y a un ou plusieurs cours forcés à faire";
             return false;
         }
+
+        if (listTuile.getNegatif().size()>((x+1)*-1)){
+            auto el = ((AxeVector<TuileTrax> *) listTuile.getNegatif().at((x+1)*-1));
+            if (y>=0){
+                if (el->getNegatif().size()+y>8){
+                    cout << "h" << endl;
+                    return false;
+                }
+            }else{
+                if (el->getPositif().size()+(y+1)*-1>8){
+                    cout << "i" << endl;
+                    return false;
+                }
+            }
+        }
     }
 
     /* Redefinition de l'operateur '==' */

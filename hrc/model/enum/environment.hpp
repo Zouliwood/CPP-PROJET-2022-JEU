@@ -7,7 +7,7 @@
 
 
 enum class environment {
-    ROUTE, VILLAGE, CHAMPS, ABAYES
+    ROUTE, VILLAGE, CHAMPS, ABAYES, INVALIDE
 };
 
 
