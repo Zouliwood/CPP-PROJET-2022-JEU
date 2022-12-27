@@ -4,11 +4,25 @@
 #include "Plateau.hpp"
 #include "../tuile/TuileCarcassonne.hpp"
 
-template<typename F>
 class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 
+    class FragElement{
+    public:
+        int x;
+        int y;
+        int pos;
 
-    ostream & operator<<(ostream& os);
+        FragElement(int x, int y, int pos): x{x}, y{y}, pos{pos}{
+
+        }
+
+        ~FragElement(){
+
+        }
+
+    };
+
+    vector<FragElement *> dejaVu;
 
 public:
     /* Constructeur & Destructeur */
@@ -16,7 +30,7 @@ public:
     ~PlateauCarcassonne();
 
     /* define function */
-    virtual bool placeFirstTuile() = 0;
+    bool placeFirstTuile();
 
     /* override function */
     int calculPoint(const F * t, int x, int y) override;
@@ -27,7 +41,9 @@ public:
 
     bool pionPresent(int x, int y, int posFrag, environment env);
 
-    bool pionPresentAux(int x, int y, int posFrag, environment env, vector<FragmentTuile<F>> dejaVu);
+    bool pionPresentAux(int x, int y, int posFrag, environment env);
+
+    bool isDejaVu(int x, int y, int pos);
 };
 
 

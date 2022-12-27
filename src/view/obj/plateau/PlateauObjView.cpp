@@ -39,20 +39,6 @@ void PlateauObjView::updateEvent(Event & event, Vector2i mouse) {
 
     hover.setPosition(((mouse.x+50 )/150)*150-50, ((mouse.y+100)/150)*150 - 100);
 
-    if (event.type == sf::Event::MouseButtonPressed){
-
-        if (Mouse::isButtonPressed(Mouse::Right)) {
-            isScrooled= true;
-            x = getPosition().x;
-            y = getPosition().y;
-            cout << "tu as bine cliqué je t'ai vu"<< endl;
-        }
-    }
-    if(isScrooled){
-       // setPosition(mouse.x-x , mouse.y-y);
-        isScrooled=false;
-    }
-
     if (event.type == sf::Event::MouseWheelScrolled) {
         if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel){
             std::cout << "wheel type: vertical" << std::endl;

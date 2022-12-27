@@ -1,53 +1,49 @@
-#include "../../../../../hrc/view/obj/state/view/PlateauTraxStateView.h"
+#include "../../../../../hrc/view/obj/state/view/PlateauCarcassonneStateView.hpp"
 
-PlateauTraxStateView::PlateauTraxStateView(RenderWindow &window, stack<State *> * stack_display) :
+PlateauCarcassonneStateView::PlateauCarcassonneStateView(RenderWindow &window, stack<State *> * stack_display) :
         app{window},
         stack_display{stack_display},
         gridSizeF{150.0f},
         grideSizeU{static_cast<int>(gridSizeF)},
         pressedGame{true},
         notKeyPressedGame{true},
-        plateau{*new PlateauTrax()},
+        plateau{*new PlateauCarcassonne()},
         parent{*new PlateauObjView()},
         bouton_defausser{*new ButtonObj("defausser")},
         bouton{*new ButtonObj("rotation")},
-        boutton_flip{*new ButtonObj("flip")},
         shape{*new RectangleShape(Vector2f (1280, 270))},
         textMaTuile{ComposantView::createText("Ma tuile", 23, Color::White)},
-        positionText{ComposantView::createText("x : y : ", 12, Color::White)},
-        tuileEnMain{new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)))},
-        tuileEnMainObjView{tuileEnMain}
-        {
-            cout << *tuileEnMain << endl;
-        init();
+        positionText{ComposantView::createText("x : y : ", 12, Color::White)}//,
+        //tuileEnMain{new TuileC(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)))},
+        //tuileEnMainObjView{tuileEnMain}
+{
+    //cout << *tuileEnMain << endl;
+    init();
 }
 
-PlateauTraxStateView::~PlateauTraxStateView() {
+PlateauCarcassonneStateView::~PlateauCarcassonneStateView() {
     delete &parent;
     delete &bouton;
     delete &bouton_defausser;
-    delete &boutton_flip;
-    delete &tuileEnMainObjView;
-    delete &tuileEnMain;
+ //   delete &tuileEnMainObjView;
+  //  delete &tuileEnMain;
     delete &shape;
     delete &textMaTuile;
     delete &positionText;
 }
 
-void PlateauTraxStateView::init() {
-    plateau.placeFirstTuile();
+void PlateauCarcassonneStateView::init() {
     parent.move(550, 200);
     bouton_defausser.setPosition(30, 600);
-    boutton_flip.setPosition(300, 470);
     bouton.setPosition(30, 470);
     shape.setFillColor(Color::Black);
     shape.setPosition(0, 450);
     textMaTuile.setPosition(540, 510);
     positionText.setPosition(0, 20);
-    tuileEnMainObjView.setPosition(550+75, 540+75);
+  //  tuileEnMainObjView.setPosition(550+75, 540+75);
 }
 
-void PlateauTraxStateView::processInput(Event &event) {
+void PlateauCarcassonneStateView::processInput(Event &event) {
     parent.updateEvent(event, Mouse::getPosition(app));
 
     if(event.type == sf::Event::KeyReleased)notKeyPressedGame = true;
@@ -87,39 +83,35 @@ void PlateauTraxStateView::processInput(Event &event) {
         if(pressedGame) {
             pressedGame = false;
             if (bouton.isPressed()) {
-                tuileEnMain->rotate();
+               // tuileEnMain->rotate();
             } else if (bouton_defausser.isPressed()) {
                 // tuileEnMainObj = plateau.generateRandomTuile();
                 // tuileEnMain.tuileDominos = tuileEnMainObj;
                 // tuileEnMain.updateTuile();
-                cout << plateau << endl;
-                cout << *tuileEnMain << endl;
-            } else if (boutton_flip.isPressed()) {
-                tuileEnMain->flipTuile();
-                tuileEnMain->rotation = 0;
+               // cout << plateau << endl;
+              //  cout << *tuileEnMain << endl;
             }
         }else{
-                if(plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y*-1)){
-                    parent.addDrawable(mousePosGrid.x *151 +75, mousePosGrid.y *151 +75, new TuileTraxObjView(tuileEnMain));
-                    tuileEnMain = new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)));
-                    tuileEnMainObjView.tuileTrax = tuileEnMain;
-                    cout << plateau << endl;
-                    cout << *tuileEnMain << endl;
-                   // cout << "############ placeTuile: " << test << " ############\n";
-                }else{
-                   // cout << "############ placeTuile: " << test << " ############\n";
-                }
-          //  cout << "-----------------------------------------------££" << endl;
+            //if(plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y*-1)){
+              //  parent.addDrawable(mousePosGrid.x *151 +75, mousePosGrid.y *151 +75, new TuileTraxObjView(tuileEnMain));
+              //  tuileEnMain = new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)));
+            //    tuileEnMainObjView.tuileTrax = tuileEnMain;
+                //cout << plateau << endl;
+                //cout << *tuileEnMain << endl;
+                // cout << "############ placeTuile: " << test << " ############\n";
+            //}else{
+                // cout << "############ placeTuile: " << test << " ############\n";
+            //}
+            //  cout << "-----------------------------------------------££" << endl;
         }
 
 
     }
 }
 
-void PlateauTraxStateView::update() {
+void PlateauCarcassonneStateView::update() {
     bouton_defausser.update(Vector2f(Mouse::getPosition(app)));
     bouton.update(Vector2f(Mouse::getPosition(app)));
-    boutton_flip.update(Vector2f(Mouse::getPosition(app)));
 
     mousePosWindow = Vector2<float>(Mouse::getPosition(app));
     mousePosView = app.mapPixelToCoords(Vector2i(mousePosWindow));
@@ -140,20 +132,19 @@ void PlateauTraxStateView::update() {
 
     positionText.setString(to_string(mousePosGrid.x) + " " + to_string(mousePosGrid.y)); //+ " / " + to_string(mousePosWindow.x) + " " + to_string(mousePosWindow.y) + " / " + to_string(mousePosView.x) + " " + to_string(mousePosView.y) );
 
-    if(plateau.checkVictory()){
+/*    if(plateau.checkVictory()){
         cout << "fin de partie "<< endl;
         app.close();
-    }
+    }*/
 }
 
-void PlateauTraxStateView::drawView() {
-        app.clear(sf::Color::Magenta);
-        app.draw(parent);
-        app.draw(shape);
-        app.draw(tuileEnMainObjView);
-        app.draw(textMaTuile);
-        app.draw(boutton_flip);
-        app.draw(positionText);
-        app.draw(bouton);
-        app.draw(bouton_defausser);
+void PlateauCarcassonneStateView::drawView() {
+    app.clear(sf::Color::Magenta);
+    app.draw(parent);
+    app.draw(shape);
+  //  app.draw(tuileEnMainObjView);
+    app.draw(textMaTuile);
+    app.draw(positionText);
+    app.draw(bouton);
+    app.draw(bouton_defausser);
 }

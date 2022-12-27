@@ -44,8 +44,6 @@ public:
     int getCurrentPlayer();
 
     ostream & operator<<(ostream &os);
- //   string print();
-
 
 };
 
