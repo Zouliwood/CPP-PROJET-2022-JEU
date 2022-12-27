@@ -8,6 +8,8 @@
 
 class PlateauTrax final: public Plateau<TuileTrax> {
 
+
+    vector<const TuileTrax *> deja_vu;
 public:
 
     /* Constructeur & Destructeur */
@@ -21,15 +23,15 @@ public:
     // virtual const TuileTrax & generateRandomTuile() const override;
     bool checkVictory() override;
 
-    bool placeTuile(TuileTrax * t, int x, int y);
-
-    bool isForced(int x, int y);
-
-    bool canReplay();
+    virtual bool placeTuile(TuileTrax * t, int x, int y);
 
     bool isLoop(int x, int y, colorTrax color, int from, int startX, int startY, int cpt);
 
-    bool isLine(int x, int y, colorTrax color, int from, int startX, int startY);
+    bool existForcedAction(int x, int y);
+
+    bool coupIsOk(int x, int y);
+
+    bool isLine(int x, int y, colorTrax color, int startX, int startY, int from, int cpt=0);
 };
 
 ostream & operator<<(ostream& os, PlateauTrax & plateauTrax);
