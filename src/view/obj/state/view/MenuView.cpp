@@ -5,7 +5,7 @@
 void MenuView::processInput(sf::Event & event) {
 
     if (event.type == sf::Event::MouseButtonReleased) pressedGame = true;
-    if (event.type == sf::Event::KeyReleased) pressedGame = true;
+    if (event.type == sf::Event::KeyReleased) keyPressedGame = true;
 
     if(Mouse::isButtonPressed(Mouse::Left)) {
         if(pressedGame){
@@ -43,8 +43,8 @@ void MenuView::processInput(sf::Event & event) {
             }
         }
     }
-    if(pressedGame) {
-        pressedGame = false;
+    if(keyPressedGame) {
+        keyPressedGame = false;
         if (Keyboard::isKeyPressed(Keyboard::Right)) {
             if (statgame == DOMINO) {
                 background.setTextureRect(IntRect{1280 * 2, 0, 1280, 720});
@@ -101,7 +101,9 @@ MenuView::MenuView(sf::RenderWindow & window, stack<State * > * stack_display) :
     button_precedent{*new ButtonObj("     <")},
     button_suivant{*new ButtonObj("     >")},
     background{*new Sprite()},
-    texture_bg{*new Texture()}
+    texture_bg{*new Texture()},
+    keyPressedGame{true},
+    pressedGame{true}
     {
     init();
 }

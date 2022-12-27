@@ -26,7 +26,7 @@ class MenuView final : public State{
     mutable Sprite background;
     mutable Texture texture_bg;
     StatGameEnum statgame;
-    bool pressedGame = true;
+    bool pressedGame, keyPressedGame;
 
 public:
     MenuView(sf::RenderWindow  & window, stack<State *> * stack_display);

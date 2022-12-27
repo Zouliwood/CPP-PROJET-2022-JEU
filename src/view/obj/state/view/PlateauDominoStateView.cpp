@@ -46,6 +46,7 @@ void PlateauDominoStateView::init() {
 }
 
 void PlateauDominoStateView::processInput(Event &event) {
+    parent.updateEvent(event, Mouse::getPosition(app));
 
     if(event.type == sf::Event::KeyReleased)notKeyPressedGame = true;
 
@@ -80,6 +81,13 @@ void PlateauDominoStateView::processInput(Event &event) {
     }
     if (event.type == sf::Event::MouseButtonReleased) pressedGame = true;
 
+    if (event.type == sf::Event::MouseWheelMoved){
+        cout << "tu slide ma parole" << endl;
+        cout << parent.getScale().x << " " << parent.getScale().y << endl;
+        cout << event.mouseWheel.x << " " << event.mouseWheel.y << endl;
+        parent.setScale(Vector2f (event.mouseWheel.x, event.mouseWheel.y));
+    }
+
     if(Mouse::isButtonPressed(Mouse::Left)) {
         if(pressedGame){
             pressedGame= false;
@@ -101,6 +109,7 @@ void PlateauDominoStateView::processInput(Event &event) {
             }
         }
     }
+
 }
 
 void PlateauDominoStateView::update() {

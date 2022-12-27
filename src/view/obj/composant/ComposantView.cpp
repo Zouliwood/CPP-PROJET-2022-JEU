@@ -5,6 +5,7 @@ ComposantView::ComposantView(){}
 void ComposantView::draw(RenderTarget &target, sf::RenderStates states) const {
     for(auto it : position_element) {
         it.first->setPosition(getPosition().x+ it.second.first, getPosition().y + it.second.second);
+        it.first->setScale(getScale().x  + it.first->getScale().x, getScale().y+it.first->getScale().y);
         target.draw(*it.first);
     }
 }

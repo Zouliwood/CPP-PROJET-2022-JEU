@@ -15,6 +15,7 @@ SettingsStateView::~SettingsStateView() {
 
 void SettingsStateView::processInput(sf::Event & event) {
     if (event.type == sf::Event::MouseButtonReleased) pressedGame = true;
+    if (event.type == sf::Event::KeyReleased) keyPressed = true;
 
     if(Mouse::isButtonPressed(Mouse::Left)) {
         if (pressedGame) {
@@ -32,7 +33,39 @@ void SettingsStateView::processInput(sf::Event & event) {
             }
         }
     }
-}
+    if(Keyboard::isKeyPressed(sf::Keyboard::Enter)){
+        if(keyPressed){
+            keyPressed = false;
+            stack_display->push(new PlateauDominoStateView(app, stack_display));
+        }
+    }
+
+    if(Keyboard::isKeyPressed(sf::Keyboard::LControl)){
+        if(Keyboard::isKeyPressed(sf::Keyboard::Up)){
+            if(keyPressed){
+                keyPressed = false;
+                if(nombre_t_game <= 120)nombre_t_game++;
+            }
+        }
+        if(Keyboard::isKeyPressed(sf::Keyboard::Down)){
+            if(keyPressed){
+                keyPressed = false;
+                if(nombre_t_game > 10)nombre_t_game--;
+            }
+        }
+    }else if(Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        if(keyPressed){
+            keyPressed = false;
+            if(nombre_j_game < 8)nombre_j_game++;
+        }
+    }else if(Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        if(keyPressed){
+            keyPressed = false;
+            if(nombre_j_game> 2)nombre_j_game--;
+        }
+    }
+
+    }
 
 void SettingsStateView::update() {
     button_jouer.update(Vector2f(Mouse::getPosition(app)));
@@ -83,9 +116,10 @@ SettingsStateView::SettingsStateView(RenderWindow & window, std::stack<State * >
                 nombre_j_game{2},
                 nombre_t_game{16},
                 pressedGame{true},
+                keyPressed{true},
                 nombre_j{ComposantView::createText("", 20, Color(236, 168, 48))},
                 nombre_tuile{ComposantView::createText("", 20, Color(236, 168, 48))},
-                button_jouer{*new ButtonObj("Jouer")},
+                button_jouer{*new ButtonObj(" Enter")},
                 button_moins_j{*new ButtonObj("    [-]")},
                 button_plus_j{*new ButtonObj("   [+]")},
                 button_moins_t{*new ButtonObj("    [-]")},

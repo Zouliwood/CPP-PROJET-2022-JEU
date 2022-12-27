@@ -136,7 +136,7 @@ if (x>=0){
     }else{
         if ((listTuile.getPositif().size()+(x+1)*-1)>8){
             cout << "g" << endl;
-            return false;
+            return false
         }
 
         if (listTuile.getNegatif().size()>((x+1)*-1)){

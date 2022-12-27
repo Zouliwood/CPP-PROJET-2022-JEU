@@ -16,7 +16,7 @@ class SettingsStateView final : public State{
     ButtonObj button_jouer, button_plus_j, button_moins_j, button_plus_t, button_moins_t;
 
     /* Parametre */
-    bool pressedGame;
+    bool pressedGame, keyPressed;
     int nombre_j_game, nombre_t_game;
 
 
