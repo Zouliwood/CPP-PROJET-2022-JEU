@@ -33,8 +33,8 @@ public:
     bool placeFirstTuile();
 
     /* override function */
-    int calculPoint(const F * t, int x, int y) override;
-    bool compareTuile(TuileCarcassonne * courant, TuileCarcassonne * tuileUp, TuileCarcassonne * tuileDown, TuileCarcassonne  * tuileRight, TuileCarcassonne  * tuileLeft) override;
+    int calculPoint(const TuileCarcassonne * t, int x, int y) override;
+    bool compareTuile(const TuileCarcassonne * courant, const TuileCarcassonne * tuileUp, const TuileCarcassonne * tuileDown, const TuileCarcassonne  * tuileRight, const TuileCarcassonne  * tuileLeft) override;
     bool checkVictory();
     // virtual const TuileCarcassonne<F> & generateRandomTuile() const override;
     TuileCarcassonne *generateRandomTuile();

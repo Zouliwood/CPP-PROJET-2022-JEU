@@ -23,6 +23,7 @@ public:
 
     /*function override*/
     void rotate();
+
 };
 
 #endif

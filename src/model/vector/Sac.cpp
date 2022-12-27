@@ -223,6 +223,8 @@ Sac::Sac() {
     for (int i = 0; i < 2; ++i) {
         sac.push_back(
                 new TuileCarcassonne(
+                        600,
+                        300,
                         *new FragmentTriple<environment>(environment::VILLAGE, environment::VILLAGE, environment::VILLAGE),
                         *new FragmentTriple<environment>(environment::VILLAGE, environment::VILLAGE, environment::VILLAGE),
                         *new FragmentTriple<environment>(environment::CHAMPS, environment::ROUTE, environment::CHAMPS),
@@ -234,6 +236,8 @@ Sac::Sac() {
     for (int i = 0; i < 1; ++i) {
         sac.push_back(
                 new TuileCarcassonne(
+                        600,
+                        450,
                         *new FragmentTriple<environment>(environment::VILLAGE, environment::VILLAGE, environment::VILLAGE),
                         *new FragmentTriple<environment>(environment::VILLAGE, environment::VILLAGE, environment::VILLAGE),
                         *new FragmentTriple<environment>(environment::VILLAGE, environment::VILLAGE, environment::VILLAGE),
@@ -245,6 +249,8 @@ Sac::Sac() {
     for (int i = 0; i < 1; ++i) {
         sac.push_back(
                 new TuileCarcassonne(
+                        600,
+                        150,
                         *new FragmentTriple<environment>(environment::CHAMPS, environment::ROUTE, environment::CHAMPS),
                         *new FragmentTriple<environment>(environment::CHAMPS, environment::ROUTE, environment::CHAMPS),
                         *new FragmentTriple<environment>(environment::CHAMPS, environment::ROUTE, environment::CHAMPS),
@@ -256,6 +262,8 @@ Sac::Sac() {
     for (int i = 0; i < 2; ++i) {
         sac.push_back(
                 new TuileCarcassonne(
+                        150,
+                        450,
                         *new FragmentTriple<environment>(environment::VILLAGE, environment::VILLAGE, environment::VILLAGE),
                         *new FragmentTriple<environment>(environment::CHAMPS, environment::CHAMPS, environment::CHAMPS),
                         *new FragmentTriple<environment>(environment::CHAMPS, environment::CHAMPS, environment::CHAMPS),
@@ -267,6 +275,8 @@ Sac::Sac() {
     for (int i = 0; i < 3; ++i) {
         sac.push_back(
                 new TuileCarcassonne(
+                        300,
+                        150,
                         *new FragmentTriple<environment>(environment::CHAMPS, environment::CHAMPS, environment::CHAMPS),
                         *new FragmentTriple<environment>(environment::VILLAGE, environment::VILLAGE, environment::VILLAGE),
                         *new FragmentTriple<environment>(environment::CHAMPS, environment::CHAMPS, environment::CHAMPS),

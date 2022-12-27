@@ -28,11 +28,6 @@ bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
        return false;
    }
 
-    /*cout << "Up" << (const_cast<TuileDominos*>(tuileUp))
-    << " D" << (const_cast<TuileDominos*>(tuileDown))
-    << " R" << (const_cast<TuileDominos*>(tuileRight))
-    << " L" << (const_cast<TuileDominos*>(tuileLeft)) << endl;*/
-
     /* Redefinition de l'operateur '==' */
     bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
     if (flag) {

@@ -118,6 +118,50 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
         }
     }
 
+    //check largeur et hauteur
+    if (y>=0){
+        if ((listTuile.getNegatif().size()+y)>8){
+            cout << "d check largeur et hauteur" << endl;
+            return false;
+        }
+
+        if (listTuile.getPositif().size()>y){
+            auto el = ((AxeVector<TuileTrax> *) listTuile.getPositif().at(y));
+            if (x>=0){
+                if (el->getNegatif().size()+x>8){
+                    cout << "e check largeur et hauteur" << endl;
+                    return false;
+                }
+            }else{
+                if (el->getPositif().size()+(x+1)*-1>8){
+                    cout << "f check largeur et hauteur" << endl;
+                    return false;
+                }
+            }
+        }
+
+    }else{
+        if ((listTuile.getPositif().size()+(y+1)*-1)>8){
+            cout << "g check largeur et hauteur" << endl;
+            return false;
+        }
+
+        if (listTuile.getNegatif().size()>((y+1)*-1)){
+            auto el = ((AxeVector<TuileTrax> *) listTuile.getNegatif().at((y+1)*-1));
+            if (x>=0){
+                if (el->getNegatif().size()+x>8){
+                    cout << "h check largeur et hauteur" << endl;
+                    return false;
+                }
+            }else{
+                if (el->getPositif().size()+(x+1)*-1>8){
+                    cout << "i check largeur et hauteur" << endl;
+                    return false;
+                }
+            }
+        }
+    }
+
     /* Redefinition de l'operateur '==' */
     bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
     if (flag) {

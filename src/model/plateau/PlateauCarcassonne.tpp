@@ -1,17 +1,12 @@
 #include "../../hrc/model/plateau/PlateauCarcassonne.hpp"
 
-template<typename F>
-bool PlateauCarcassonne<F>::checkVictory() {
+bool PlateauCarcassonne::checkVictory() {
     return false;
 }
 
 PlateauCarcassonne::PlateauCarcassonne() = default;
 
-template<typename TF>
-PlateauCarcassonne<TF>::PlateauCarcassonne() = default;
-
-template<typename TF>
-int PlateauCarcassonne<TF>::calculPoint(const TF * t, int x, int y){
+int PlateauCarcassonne::calculPoint(const TuileCarcassonne * t, int x, int y){
     return 0;
 }
 
@@ -28,10 +23,9 @@ bool PlateauCarcassonne::placeFirstTuile() {
 }
 
 //TODO: add fragment centre - FragmentQuadruple -
-template<typename F>
-bool PlateauCarcassonne<F>::compareTuile(TuileCarcassonne *courant, TuileCarcassonne *tuileUp,
-                                         TuileCarcassonne *tuileDown, TuileCarcassonne *tuileRight,
-                                         TuileCarcassonne *tuileLeft) {
+bool PlateauCarcassonne::compareTuile(const TuileCarcassonne *courant, const TuileCarcassonne *tuileUp,
+                                      const TuileCarcassonne *tuileDown, const TuileCarcassonne *tuileRight,
+                                      const TuileCarcassonne *tuileLeft) {
     return (!tuileUp || *(&(FragmentTriple<environment> &)courant->getUp()) == *(&(FragmentTriple<environment> &)tuileUp->getDown()))
            &&  (!tuileRight || *(&(FragmentTriple<environment> &)courant->getRight()) == *(&(FragmentTriple<environment> &)tuileRight->getLeft()))
            && (!tuileLeft || *(&(FragmentTriple<environment> &)courant->getLeft()) == *(&(FragmentTriple<environment> &)tuileLeft->getRight()))
