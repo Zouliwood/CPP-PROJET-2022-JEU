@@ -14,9 +14,7 @@ PlateauDominos::~PlateauDominos() {
 }
 
 bool PlateauDominos::placeFirstTuile() {
-    //int middle = listTuile.size()/2;
-    //  listTuile.at(middle).at(middle) = domino;
-    TuileDominos * domino =  generateRandomTuile();
+    domino =  generateRandomTuile();
     listTuile.addElement(0, new AxeVector<TuileDominos>());
     cout << "Ligne ajoutée !" << endl;
     ((AxeVector<TuileDominos> *)listTuile.getAt(0))->addElement(0, domino);
@@ -26,17 +24,11 @@ bool PlateauDominos::placeFirstTuile() {
 
 
 TuileDominos * PlateauDominos::generateRandomTuile() const{
-    /*return new TuileDominos(
+    return new TuileDominos(
             *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2),
             *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2),
             *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2),
             *new FragmentTriple<int>(rand()%2,rand()%2,rand()%2)
-    );*/
-    return new TuileDominos(
-            *new FragmentTriple<int>(1,1,1),
-            *new FragmentTriple<int>(2,2,2),
-            *new FragmentTriple<int>(3,3,3),
-            *new FragmentTriple<int>(4,4,4)
     );
 }
 
@@ -108,7 +100,9 @@ bool PlateauDominos::checkVictory() {
     return (listPlayer.size() >= 2); //TODO: && ());
 }
 
-
+TuileDominos *PlateauDominos::getFirstTuilePose() {
+    return domino;
+}
 
 /*string res;
 int size = plateauDominos.getListTuile().getNegatif().size() + plateauDominos.getListTuile().getPositif().size();

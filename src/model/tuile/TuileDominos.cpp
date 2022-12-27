@@ -24,7 +24,7 @@ void TuileDominos::rotate() {
 }
 
 //TODO: revoir
-TuileDominos::TuileDominos(FragmentTriple<int> & up, FragmentTriple<int> & right, FragmentTriple<int> & down , FragmentTriple<int> & left): Tuile(up, down, right, left) {
+TuileDominos::TuileDominos(FragmentTriple<int> & up, FragmentTriple<int> & right, FragmentTriple<int> & down , FragmentTriple<int> & left): Tuile(up, right, down, left) {
     cout << "TuileDominos " << endl;
 }
 
