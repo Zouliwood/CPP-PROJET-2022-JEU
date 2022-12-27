@@ -8,7 +8,6 @@
 
 class PlateauTrax final: public Plateau<TuileTrax> {
 
-
     vector<const TuileTrax *> deja_vu;
 public:
 

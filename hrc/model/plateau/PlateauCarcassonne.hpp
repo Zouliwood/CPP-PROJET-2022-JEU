@@ -35,7 +35,7 @@ public:
     /* override function */
     int calculPoint(const TuileCarcassonne * t, int x, int y) override;
     bool compareTuile(const TuileCarcassonne * courant, const TuileCarcassonne * tuileUp, const TuileCarcassonne * tuileDown, const TuileCarcassonne  * tuileRight, const TuileCarcassonne  * tuileLeft) override;
-    bool checkVictory();
+    bool checkVictory() override;
     // virtual const TuileCarcassonne<F> & generateRandomTuile() const override;
     TuileCarcassonne *generateRandomTuile();
 
@@ -45,8 +45,5 @@ public:
 
     bool isDejaVu(int x, int y, int pos);
 };
-
-
-#include "../../../src/model/plateau/PlateauCarcassonne.tpp"
 
 #endif //CPP_PROJET_2022_JEU_PLATEAUCARCASSONNE_HPP

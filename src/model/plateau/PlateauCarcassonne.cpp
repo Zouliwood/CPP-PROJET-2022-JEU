@@ -4,7 +4,7 @@ bool PlateauCarcassonne::checkVictory() {
     return false;
 }
 
-PlateauCarcassonne::PlateauCarcassonne() = default;
+PlateauCarcassonne::PlateauCarcassonne(){};
 
 int PlateauCarcassonne::calculPoint(const TuileCarcassonne * t, int x, int y){
     return 0;
@@ -45,7 +45,7 @@ bool PlateauCarcassonne::isDejaVu(int x, int y, int pos){
 
 bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment env){
 
-    auto currTuile = this->getTuileAt(x, y);
+    TuileCarcassonne * currTuile = const_cast<TuileCarcassonne *>(this->getTuileAt(x, y));
     //TODO: vérifier si un pion est présent sur la Tuile courante en position posFrag - return true -
 
     if (currTuile){

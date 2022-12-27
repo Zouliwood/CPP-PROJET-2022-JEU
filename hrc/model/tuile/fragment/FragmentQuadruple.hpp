@@ -1,14 +1,10 @@
-//
-// Created by david on 11/12/22.
-//
-
 #ifndef CPP_PROJET_2022_JEU_FRAGMENTQUADRUPLE_HPP
 #define CPP_PROJET_2022_JEU_FRAGMENTQUADRUPLE_HPP
 
 #include "FragmentTuile.hpp"
 
 template<typename V>
-class FragmentQuadruple : public FragmentTuile<V> {
+class FragmentQuadruple final : public FragmentTuile<V> {
 
     /* override functions */
     template<typename T>
@@ -24,7 +20,7 @@ private:
 
 public:
     /* Constructeur & Destructeur */
-    explicit FragmentQuadruple(V hautFragment, V droitFragment, V basFragment, V gaucheFragment);
+    FragmentQuadruple(V hautFragment, V droitFragment, V basFragment, V gaucheFragment);
     ~FragmentQuadruple() override;
 
 
@@ -43,17 +39,6 @@ public:
     void setFragmentCentre(const V &fragment) const;
 };
 
-template<typename V>
-int FragmentQuadruple<V>::getPoint() {
-    return 0;
-}
-
-template<typename V>
-const V &FragmentQuadruple<V>::getFragmentCentre() const {
-    return this->centreFragment;
-}
-
-template<typename V>
-ostream & operator<<(ostream &out, const FragmentQuadruple<V> & fragment);
+#include "../../../../src/model/tuile/fragment/FragmentQuadruple.tpp"
 
 #endif //CPP_PROJET_2022_JEU_FRAGMENTQUADRUPLE_HPP
