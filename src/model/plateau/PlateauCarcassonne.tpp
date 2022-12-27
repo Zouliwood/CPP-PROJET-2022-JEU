@@ -5,9 +5,6 @@ bool PlateauCarcassonne<F>::checkVictory() {
     return false;
 }
 
-void PlateauCarcassonne::placeFirstTuile(){
-
-}
 PlateauCarcassonne::PlateauCarcassonne() = default;
 
 template<typename TF>
