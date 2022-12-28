@@ -16,9 +16,7 @@ PlateauDominos::~PlateauDominos() {
 bool PlateauDominos::placeFirstTuile() {
     domino =  generateRandomTuile();
     listTuile.addElement(0, new AxeVector<TuileDominos>());
-    cout << "Ligne ajoutée !" << endl;
     ((AxeVector<TuileDominos> *)listTuile.getAt(0))->addElement(0, domino);
-    cout << ">>>>>>>>>>>>>>>>>>>>>>>>" << *(listTuile.getAt(0)->getAt(0)) << endl;
     return ((AxeVector<TuileDominos> *) listTuile.getAt(0))->getAt(0) != nullptr;
 }
 

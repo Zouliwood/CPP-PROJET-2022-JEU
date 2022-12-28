@@ -9,16 +9,14 @@ PlateauCarcassonne::PlateauCarcassonne(): sac{*new Sac()}{}
 int PlateauCarcassonne::calculPoint(const TuileCarcassonne * t, int x, int y){
     return 0;
 }
-
-TuileCarcassonne *PlateauCarcassonne::generateRandomTuile() {
-    //TODO: Récupérer une tuile du Sac
-    return nullptr;
+TuileCarcassonne *PlateauCarcassonne::getFirstTuilePose() {
+    return tuile_initial;
 }
 
 bool PlateauCarcassonne::placeFirstTuile() {
-    TuileCarcassonne * carcassonne =  generateRandomTuile();
+    tuile_initial = sac.getRandomTuile();
     this->listTuile.addElement(0, new AxeVector<TuileCarcassonne>());
-    ((AxeVector<TuileCarcassonne> *)this->listTuile.getAt(0))->addElement(0, carcassonne);
+    ((AxeVector<TuileCarcassonne> *)this->listTuile.getAt(0))->addElement(0, tuile_initial);
     return ((AxeVector<TuileDominos> *) this->listTuile.getAt(0))->getAt(0) != nullptr;
 }
 

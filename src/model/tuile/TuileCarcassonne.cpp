@@ -5,6 +5,7 @@ TuileCarcassonne::TuileCarcassonne(int x_view, int y_view, FragmentTriple<enviro
         Tuile<FragmentTriple<environment>>(up, right, down, left),
         x_pos_view{x_view},
         y_pos_view{y_view},
+        rotation{0},
         centre{center} {}
 
 TuileCarcassonne::~TuileCarcassonne() = default;
