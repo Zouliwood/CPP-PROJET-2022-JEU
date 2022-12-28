@@ -3,6 +3,7 @@
 
 #include "Plateau.hpp"
 #include "../tuile/TuileCarcassonne.hpp"
+#include "../Sac.hpp"
 
 class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 
@@ -26,6 +27,7 @@ class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 
 public:
     /* Constructeur & Destructeur */
+    Sac sac;
     PlateauCarcassonne();
     ~PlateauCarcassonne();
 

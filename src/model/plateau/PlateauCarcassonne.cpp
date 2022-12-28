@@ -4,7 +4,7 @@ bool PlateauCarcassonne::checkVictory() {
     return false;
 }
 
-PlateauCarcassonne::PlateauCarcassonne(){};
+PlateauCarcassonne::PlateauCarcassonne(): sac{*new Sac()}{}
 
 int PlateauCarcassonne::calculPoint(const TuileCarcassonne * t, int x, int y){
     return 0;

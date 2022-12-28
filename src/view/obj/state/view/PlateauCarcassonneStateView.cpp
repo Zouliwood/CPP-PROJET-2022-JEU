@@ -13,9 +13,9 @@ PlateauCarcassonneStateView::PlateauCarcassonneStateView(RenderWindow &window, s
         bouton{*new ButtonObj("rotation")},
         shape{*new RectangleShape(Vector2f (1280, 270))},
         textMaTuile{ComposantView::createText("Ma tuile", 23, Color::White)},
-        positionText{ComposantView::createText("x : y : ", 12, Color::White)}//,
-//tuileEnMain{new TuileC(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)))},
-//tuileEnMainObjView{tuileEnMain}
+        positionText{ComposantView::createText("x : y : ", 12, Color::White)},
+        tuileEnMain{plateau.sac.getRandomTuile()},
+        tuileEnMainObjView{tuileEnMain}
 {
     //cout << *tuileEnMain << endl;
     init();
@@ -25,8 +25,8 @@ PlateauCarcassonneStateView::~PlateauCarcassonneStateView() {
     delete &parent;
     delete &bouton;
     delete &bouton_defausser;
-    //   delete &tuileEnMainObjView;
-    //  delete &tuileEnMain;
+    delete &tuileEnMainObjView;
+    delete tuileEnMain;
     delete &shape;
     delete &textMaTuile;
     delete &positionText;
@@ -40,7 +40,7 @@ void PlateauCarcassonneStateView::init() {
     shape.setPosition(0, 450);
     textMaTuile.setPosition(540, 510);
     positionText.setPosition(0, 20);
-    //  tuileEnMainObjView.setPosition(550+75, 540+75);
+      tuileEnMainObjView.setPosition(550+75, 540+75);
 }
 
 void PlateauCarcassonneStateView::processInput(Event &event) {
@@ -85,11 +85,9 @@ void PlateauCarcassonneStateView::processInput(Event &event) {
             if (bouton.isPressed()) {
                 // tuileEnMain->rotate();
             } else if (bouton_defausser.isPressed()) {
-                // tuileEnMainObj = plateau.generateRandomTuile();
-                // tuileEnMain.tuileDominos = tuileEnMainObj;
-                // tuileEnMain.updateTuile();
-                // cout << plateau << endl;
-                //  cout << *tuileEnMain << endl;
+                tuileEnMain = plateau.sac.getRandomTuile();
+                tuileEnMainObjView.tuileCarcassonne = tuileEnMain;
+                tuileEnMainObjView.updateTuile();
             }
         }else{
             //if(plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y*-1)){
@@ -142,7 +140,7 @@ void PlateauCarcassonneStateView::drawView() {
     app.clear(sf::Color::Magenta);
     app.draw(parent);
     app.draw(shape);
-    //  app.draw(tuileEnMainObjView);
+    app.draw(tuileEnMainObjView);
     app.draw(textMaTuile);
     app.draw(positionText);
     app.draw(bouton);

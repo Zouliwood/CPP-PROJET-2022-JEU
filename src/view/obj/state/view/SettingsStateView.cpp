@@ -1,5 +1,6 @@
 #include "../../../../../hrc/view/obj/state/view/SettingsStateView.h"
 #include "../../../../../hrc/view/obj/state/view/PlateauDominoStateView.h"
+#include "../../../../../hrc/view/obj/state/view/PlateauCarcassonneStateView.hpp"
 
 SettingsStateView::~SettingsStateView() {
     delete &nombre_j;
@@ -21,7 +22,7 @@ void SettingsStateView::processInput(sf::Event & event) {
         if (pressedGame) {
             pressedGame = false;
             if(button_jouer.isPressed()){
-                stack_display->push(new PlateauDominoStateView(app, stack_display));
+                stack_display->push(new PlateauCarcassonneStateView(app, stack_display));
             }else if(button_moins_t.isPressed()){
                 if(nombre_t_game > 10)nombre_t_game--;
             }else if(button_plus_t.isPressed()){
@@ -36,7 +37,7 @@ void SettingsStateView::processInput(sf::Event & event) {
     if(Keyboard::isKeyPressed(sf::Keyboard::Enter)){
         if(keyPressed){
             keyPressed = false;
-            stack_display->push(new PlateauDominoStateView(app, stack_display));
+            stack_display->push(new PlateauCarcassonneStateView(app, stack_display));
         }
     }
 

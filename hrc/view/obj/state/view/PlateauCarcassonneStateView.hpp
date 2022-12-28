@@ -8,6 +8,7 @@
 #include "../../tuile/TuileDominosObjView.h"
 #include "../../plateau/PlateauObjView.h"
 #include "../../tuile/TuileTraxObjView.h"
+#include "../../tuile/TuileCarcassonneObjView.hpp"
 
 class PlateauCarcassonneStateView final : public State{
 
@@ -15,13 +16,13 @@ class PlateauCarcassonneStateView final : public State{
     RenderWindow & app;
     stack<State *> * stack_display;
     PlateauCarcassonne plateau;
-    // TuileCarcassonne * tuileEnMain;
+    TuileCarcassonne * tuileEnMain;
 
     /*Graphique view */
     PlateauObjView parent;
     ButtonObj bouton;
     ButtonObj bouton_defausser;
-    //  TuileDominosObjView tuileEnMainObjView;
+    TuileCarcassonneObjView tuileEnMainObjView;
     RectangleShape shape; //{Vector2f (1280, 270)};
     Text textMaTuile;
     Text positionText;
@@ -43,6 +44,7 @@ public:
     void processInput(Event & event) override;
     void update() override;
     void drawView() override;
+
 };
 
 #endif

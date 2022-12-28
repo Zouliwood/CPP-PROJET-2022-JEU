@@ -7,6 +7,8 @@
 using namespace std;
 
 class Sac {
+
+public:
     vector<TuileCarcassonne *> sac;
     Sac();
     TuileCarcassonne * getRandomTuile();

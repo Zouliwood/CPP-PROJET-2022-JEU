@@ -9,12 +9,13 @@ class TuileCarcassonneObjView final : public ComposantView {
 
     mutable Texture texture;
     mutable Sprite bg_tuile;
-    TuileCarcassonne * tuileCarcassonne;
 
 public:
+    TuileCarcassonne * tuileCarcassonne;
     TuileCarcassonneObjView(TuileCarcassonne * tuileCarcassonne);
     ~TuileCarcassonneObjView();
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    void updateTuile();
 };
 
 
