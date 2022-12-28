@@ -28,7 +28,7 @@ PlateauTraxStateView::~PlateauTraxStateView() {
     delete &bouton_defausser;
     delete &boutton_flip;
     delete &tuileEnMainObjView;
-    delete &tuileEnMain;
+    delete tuileEnMain;
     delete &shape;
     delete &textMaTuile;
     delete &positionText;

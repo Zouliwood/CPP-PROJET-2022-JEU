@@ -15,5 +15,4 @@ void BackGroundObjView::draw(RenderTarget &target, sf::RenderStates states) cons
 
 BackGroundObjView::~BackGroundObjView() {
     delete &background_plateau;
-    delete &texture_background;
 }

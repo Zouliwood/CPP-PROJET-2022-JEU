@@ -113,7 +113,6 @@ MenuView::~MenuView() {
     delete &button_precedent;
     delete &button_suivant;
     delete &background;
-    delete &texture_bg;
 }
 
 void MenuView::init() {

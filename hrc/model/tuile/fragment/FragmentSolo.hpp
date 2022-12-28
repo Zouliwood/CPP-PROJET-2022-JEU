@@ -1,10 +1,5 @@
-//
-// Created by david on 17/11/22.
-//
-
 #ifndef CPP_PROJET_2022_JEU_FRAGMENTSOLO_HPP
 #define CPP_PROJET_2022_JEU_FRAGMENTSOLO_HPP
-
 
 #include "FragmentTuile.hpp"
 

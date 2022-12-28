@@ -11,7 +11,6 @@ void TuileTraxObjView::draw(RenderTarget &target, sf::RenderStates states) const
 }
 
 TuileTraxObjView::~TuileTraxObjView() {
-    delete &texture;
     delete &bg_tuile;
 }
 

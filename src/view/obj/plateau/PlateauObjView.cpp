@@ -31,7 +31,6 @@ void PlateauObjView::updateBackGround(int x, int y, int posx, int posy){
 
 PlateauObjView::~PlateauObjView() {
             delete &background_plateau;
-            delete &texture_background;
             delete &hover;
 }
 

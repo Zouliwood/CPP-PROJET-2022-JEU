@@ -35,7 +35,6 @@ Text ComposantView::createText(const string& text, unsigned size_font, Color col
 
 ComposantView::~ComposantView() {
     while (!position_element.empty()) delete position_element.end()->first;
-    delete &position_element;
 }
 
 
