@@ -6,8 +6,10 @@
 #define CPP_PROJET_2022_JEU_PION_HPP
 
 #include "../enum/roleCarcassonne.hpp"
+#include "../joueurs/PlayerCarcassonne.hpp"
 
-class Pion {
+
+class Pion final {
 
 private:
     roleCarcassonne role;

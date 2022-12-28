@@ -7,7 +7,6 @@ TuileCarcassonneObjView::TuileCarcassonneObjView(TuileCarcassonne *tuileCarcasso
     bg_tuile.setTextureRect(IntRect(1280*2+ tuileCarcassonne->x_pos_view,720 +tuileCarcassonne->y_pos_view, 150, 150));
     bg_tuile.setOrigin(75,75);
     bg_tuile.setRotation(tuileCarcassonne->rotation);
-
 }
 
 TuileCarcassonneObjView::~TuileCarcassonneObjView(){

@@ -14,6 +14,8 @@ class Plateau {
 protected:
     /* attributs */
     vector<const Player<TF> *> listPlayer;
+    Player<TF> * courant;
+
     //vector<vector<TF *>> listTuile;
     AxeVector<AxeVector<TF>> listTuile;
 

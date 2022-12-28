@@ -28,6 +28,8 @@ class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 public:
     /* Constructeur & Destructeur */
     Sac sac;
+    vector <Pion *> listPion;
+
     PlateauCarcassonne();
     ~PlateauCarcassonne();
 
