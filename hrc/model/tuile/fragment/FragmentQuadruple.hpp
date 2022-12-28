@@ -26,11 +26,11 @@ public:
 
 
     const V & getFragmentCentre()const;
-    /*const V & getFragmentTop() const;
+    const V & getFragmentTop() const;
     const V & getFragmentRight() const;
     const V & getFragmentDown() const;
     const V & getFragmentLeft() const;
-*/
+
     FragmentQuadruple<V> & operator=(const FragmentQuadruple<V> *) const;// override;
 
     int getPoint() override;
@@ -39,6 +39,7 @@ public:
      void setFragmentGauche(const V &fragment) const;
      void setFragmentCentre(const V &fragment) const;
  */
+
 };
 
 #include "../../../../src/model/tuile/fragment/FragmentQuadruple.tpp"
