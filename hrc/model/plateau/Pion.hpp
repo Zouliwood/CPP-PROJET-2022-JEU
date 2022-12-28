@@ -13,6 +13,16 @@ class Pion final {
 
 private:
     roleCarcassonne role;
+    PlayerCarcassonne<TuileCarcassonne> * playerCarcassonne;
+    int x, y, pos;
+    Pion(int x, int y, int pos_frag, roleCarcassonne role, PlayerCarcassonne<TuileCarcassonne> * joueur);
+    ~Pion();
+
+public:
+
+    int getX() const;
+    int getY() const;
+    int getPos() const;
 
 };
 

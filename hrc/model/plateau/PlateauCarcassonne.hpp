@@ -4,6 +4,7 @@
 #include "Plateau.hpp"
 #include "../tuile/TuileCarcassonne.hpp"
 #include "../Sac.hpp"
+#include "Pion.hpp"
 
 class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 
@@ -25,6 +26,8 @@ class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 
     vector<FragElement *> dejaVu;
     TuileCarcassonne * tuile_initial;
+
+
 public:
     /* Constructeur & Destructeur */
     Sac sac;

@@ -47,6 +47,13 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
     //TODO: vérifier si un pion est présent sur la Tuile courante en position posFrag - return true -
 
     if (currTuile){
+
+        //TODO: se baser sur la liste de joueur
+        for (int i = 0; i < listPion.size(); ++i) {
+            Pion * p = listPion.at(i);
+            if (p->getX() == x && p->getY() == y && p->getPos() == posFrag)return true;
+        }
+
         /* top droit */
         auto currFrag0 =  ((FragmentTriple<environment>) currTuile->getUp()).getFragmentDroit();
         if (posFrag==0 && !isDejaVu(x, y, 0)){
