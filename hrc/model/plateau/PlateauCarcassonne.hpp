@@ -4,11 +4,25 @@
 #include "Plateau.hpp"
 #include "../tuile/TuileCarcassonne.hpp"
 
-template<typename F>
-class PlateauCarcassonne final: Plateau<TuileCarcassonne<F>> {
+class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 
+    class FragElement{
+    public:
+        int x;
+        int y;
+        int pos;
 
-    ostream & operator<<(ostream& os);
+        FragElement(int x, int y, int pos): x{x}, y{y}, pos{pos}{
+
+        }
+
+        ~FragElement(){
+
+        }
+
+    };
+
+    vector<FragElement *> dejaVu;
 
 public:
     /* Constructeur & Destructeur */
@@ -16,16 +30,21 @@ public:
     ~PlateauCarcassonne();
 
     /* define function */
-    virtual bool placeFirstTuile() = 0;
+    bool placeFirstTuile();
 
     /* override function */
-    int calculPoint(const F * t, int x, int y) override;
-    bool compareTuile(TuileCarcassonne<F> * courant, TuileCarcassonne<F> * tuileUp, TuileCarcassonne<F> * tuileDown, TuileCarcassonne<F>  * tuileRight, TuileCarcassonne<F>  * tuileLeft) override;
-    bool checkVictory();
+    int calculPoint(const TuileCarcassonne * t, int x, int y) override;
+    bool compareTuile(const TuileCarcassonne * courant, const TuileCarcassonne * tuileUp, const TuileCarcassonne * tuileDown, const TuileCarcassonne  * tuileRight, const TuileCarcassonne  * tuileLeft) override;
+    bool checkVictory() override;
     // virtual const TuileCarcassonne<F> & generateRandomTuile() const override;
+    TuileCarcassonne *generateRandomTuile();
+
+    bool pionPresent(int x, int y, int posFrag, environment env);
+
+    bool pionPresentAux(int x, int y, int posFrag, environment env);
+
+    bool isDejaVu(int x, int y, int pos);
 };
 
-
-#include "../../../src/model/plateau/PlateauCarcassonne.tpp"
 
 #endif //CPP_PROJET_2022_JEU_PLATEAUCARCASSONNE_HPP

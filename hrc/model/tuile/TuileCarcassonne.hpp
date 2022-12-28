@@ -6,20 +6,23 @@
 #include "Tuile.hpp"
 #include "../enum/environment.hpp"
 
-template <typename TF>
-class TuileCarcassonne final: public Tuile<TF>{
+class TuileCarcassonne final: public Tuile<FragmentTriple<environment>>{
 
 private:
     /* attributs de la classe */
-    TF & centre;
+    FragmentQuadruple<environment> & centre;
 
 public:
+    int x_pos_view, y_pos_view, rotation;
     /* Constructeur & Destructeur */
-    TuileCarcassonne();
+    TuileCarcassonne(int, int, FragmentTriple<environment> & up, FragmentTriple<environment> & right, FragmentTriple<environment> & down, FragmentTriple<environment> & left, FragmentQuadruple<environment> & center);
     ~TuileCarcassonne();
+
+    const FragmentQuadruple<environment> & getCentre() const;
 
     /*function override*/
     void rotate();
+
 };
 
 #endif

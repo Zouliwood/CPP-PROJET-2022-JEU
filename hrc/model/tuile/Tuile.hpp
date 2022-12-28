@@ -6,6 +6,7 @@
 #include "../enum/environment.hpp"
 #include "fragment/FragmentTuile.hpp"
 #include "fragment/FragmentTriple.hpp"
+#include "fragment/FragmentQuadruple.hpp"
 #include "fragment/FragmentSolo.hpp"
 #include <iostream>
 
