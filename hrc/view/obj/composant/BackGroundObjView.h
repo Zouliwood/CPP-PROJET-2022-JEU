@@ -6,8 +6,6 @@
 #include "../../../model/plateau/PlateauDominos.hpp"
 
 class BackGroundObjView : public ComposantView {
-
-    //PlateauDominos * plateauDominos;
     mutable Sprite background_plateau;
     mutable Texture texture_background;
 

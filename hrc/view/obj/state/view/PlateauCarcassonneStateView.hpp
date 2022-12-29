@@ -9,6 +9,7 @@
 #include "../../plateau/PlateauObjView.h"
 #include "../../tuile/TuileTraxObjView.h"
 #include "../../tuile/TuileCarcassonneObjView.hpp"
+#include "../../../../../src/view/obj/plateau/PanelPionObjView.hpp"
 
 class PlateauCarcassonneStateView final : public State{
 
@@ -26,6 +27,7 @@ class PlateauCarcassonneStateView final : public State{
     RectangleShape shape; //{Vector2f (1280, 270)};
     Text textMaTuile;
     Text positionText;
+    PanelPionObjView panelPion;
 
     /* Paremetre */
     float gridSizeF;

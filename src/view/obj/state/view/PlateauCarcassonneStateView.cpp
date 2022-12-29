@@ -15,7 +15,8 @@ PlateauCarcassonneStateView::PlateauCarcassonneStateView(RenderWindow &window, s
         textMaTuile{ComposantView::createText("Ma tuile", 23, Color::White)},
         positionText{ComposantView::createText("x : y : ", 12, Color::White)},
         tuileEnMain{plateau.sac.getRandomTuile()},
-        tuileEnMainObjView{tuileEnMain}
+        tuileEnMainObjView{tuileEnMain},
+        panelPion{*new PanelPionObjView(new TuileCarcassonneObjView(tuileEnMain))}
 {
     init();
 }
@@ -29,6 +30,7 @@ PlateauCarcassonneStateView::~PlateauCarcassonneStateView() {
     delete &shape;
     delete &textMaTuile;
     delete &positionText;
+    delete &panelPion;
 }
 
 void PlateauCarcassonneStateView::init() {
@@ -94,11 +96,12 @@ void PlateauCarcassonneStateView::processInput(Event &event) {
             }
         } else {
             if (plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y * -1)) {
-                parent.addDrawable(mousePosGrid.x * 151 + 75, mousePosGrid.y * 151 + 75,
-                                   new TuileCarcassonneObjView(tuileEnMain));
+                parent.addDrawable(mousePosGrid.x * 151 + 75, mousePosGrid.y * 151 + 75, new TuileCarcassonneObjView(tuileEnMain));
+                panelPion.show();
                 tuileEnMain = plateau.sac.getRandomTuile();
                 tuileEnMainObjView.tuileCarcassonne = tuileEnMain;
                 tuileEnMainObjView.updateTuile();
+                plateau.nextPlayer();
             }
         }
     }
@@ -107,7 +110,7 @@ void PlateauCarcassonneStateView::processInput(Event &event) {
 void PlateauCarcassonneStateView::update() {
     bouton_defausser.update(Vector2f(Mouse::getPosition(app)));
     bouton.update(Vector2f(Mouse::getPosition(app)));
-
+    panelPion.updateAction(Vector2f(Mouse::getPosition(app)));
     mousePosWindow = Vector2<float>(Mouse::getPosition(app));
     mousePosView = app.mapPixelToCoords(Vector2i(mousePosWindow));
 
@@ -137,4 +140,5 @@ void PlateauCarcassonneStateView::drawView() {
     app.draw(positionText);
     app.draw(bouton);
     app.draw(bouton_defausser);
+    app.draw(panelPion);
 }

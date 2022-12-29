@@ -6,7 +6,7 @@
 
 template <typename TF>
 Plateau<TF>::Plateau(): current_player{0}{
-    courant = listPlayer.at(current_player);
+    //courant = listPlayer.at(current_player);
 }
 
 template <typename TF>
@@ -58,8 +58,8 @@ bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
 
 template<typename TF>
 void Plateau<TF>::nextPlayer() {
-    current_player= (current_player+1)%listPlayer.size();
-    courant = listPlayer.at(current_player);
+  //  current_player= (current_player+1)%listPlayer.size();
+  //  courant = listPlayer.at(current_player);
 }
 
 template<typename TF>
