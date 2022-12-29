@@ -9,7 +9,7 @@ PanelPionObjView::PanelPionObjView(TuileCarcassonneObjView * tuileCarcassonneObj
     zone{*new Sprite()},
     texture{*new Texture()},
     text(createText("Placement d'un partisant", 20, Color::White)){
-    t
+
     panel.setPosition(-500, -500);
     panel.setFillColor(Color::Black);
     text.setPosition(-500, -500);
