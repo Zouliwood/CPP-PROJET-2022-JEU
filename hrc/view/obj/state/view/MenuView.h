@@ -10,12 +10,6 @@
 
 using namespace std;
 
-enum StatGameEnum {
-    TRAX,
-    DOMINO,
-    CARCASSONNE
-};
-
 class MenuView final : public State{
 
     RenderWindow & app;
@@ -25,7 +19,7 @@ class MenuView final : public State{
     ButtonObj button_suivant;
     mutable Sprite background;
     mutable Texture texture_bg;
-    StatGameEnum statgame;
+    StatGameEnum & statgame;
     bool pressedGame, keyPressedGame;
 
 public:

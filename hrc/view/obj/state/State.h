@@ -8,6 +8,12 @@
 using namespace sf;
 using namespace std;
 
+enum StatGameEnum {
+    TRAX,
+    DOMINO,
+    CARCASSONNE
+};
+
 class State {
 
 public:

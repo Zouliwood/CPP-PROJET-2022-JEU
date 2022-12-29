@@ -22,7 +22,11 @@ void SettingsStateView::processInput(sf::Event & event) {
         if (pressedGame) {
             pressedGame = false;
             if(button_jouer.isPressed()){
-                stack_display->push(new PlateauCarcassonneStateView(app, stack_display));
+                if(gameEnum == CARCASSONNE){
+                    stack_display->push(new PlateauCarcassonneStateView(app, stack_display));
+                }else{
+                    stack_display->push(new PlateauDominoStateView(app, stack_display));
+                }
             }else if(button_moins_t.isPressed()){
                 if(nombre_t_game > 10)nombre_t_game--;
             }else if(button_plus_t.isPressed()){
@@ -30,7 +34,7 @@ void SettingsStateView::processInput(sf::Event & event) {
             }else if(button_moins_j.isPressed()){
                 if(nombre_j_game> 2)nombre_j_game--;
             }else if(button_plus_j.isPressed()){
-                if(nombre_j_game < 8)nombre_j_game++;
+                if(nombre_j_game < 5)nombre_j_game++;
             }
         }
     }
@@ -57,7 +61,7 @@ void SettingsStateView::processInput(sf::Event & event) {
     }else if(Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         if(keyPressed){
             keyPressed = false;
-            if(nombre_j_game < 8)nombre_j_game++;
+            if(nombre_j_game < 5)nombre_j_game++;
         }
     }else if(Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         if(keyPressed){
@@ -81,13 +85,15 @@ void SettingsStateView::update() {
 void SettingsStateView::drawView() {
     app.clear(sf::Color::Black);
     app.draw(background);
-    app.draw(nombre_tuile);
     app.draw(nombre_j);
     app.draw(button_jouer);
     app.draw(button_moins_j);
     app.draw(button_plus_j);
-    app.draw(button_moins_t);
-    app.draw(button_plus_t);
+    if(gameEnum == DOMINO){
+        app.draw(nombre_tuile);
+        app.draw(button_moins_t);
+        app.draw(button_plus_t);
+    }
 }
 
 void SettingsStateView::init() {
@@ -111,7 +117,8 @@ void SettingsStateView::init() {
     button_plus_t.setPosition(850, 370);
 }
 
-SettingsStateView::SettingsStateView(RenderWindow & window, std::stack<State * > * stack_display) :
+SettingsStateView::SettingsStateView(RenderWindow & window, std::stack<State * > * stack_display, StatGameEnum & gameEnum):
+                gameEnum{gameEnum},
                 app{window},
                 stack_display{stack_display},
                 nombre_j_game{2},

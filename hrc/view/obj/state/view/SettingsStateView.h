@@ -18,10 +18,10 @@ class SettingsStateView final : public State{
     /* Parametre */
     bool pressedGame, keyPressed;
     int nombre_j_game, nombre_t_game;
-
+    StatGameEnum & gameEnum;
 
 public:
-    SettingsStateView(RenderWindow & window, std::stack<State * > * stack_display);
+    SettingsStateView(RenderWindow & window, std::stack<State * > * stack_display, StatGameEnum & gameEnum);
     virtual ~SettingsStateView();
 
     void init() override;

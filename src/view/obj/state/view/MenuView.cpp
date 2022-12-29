@@ -12,9 +12,9 @@ void MenuView::processInput(sf::Event & event) {
             pressedGame= false;
             if (buttonDomino.isPressed()) {
                 if(statgame == CARCASSONNE){
-                    stack_display->push(new SettingsStateView(app, stack_display));
+                    stack_display->push(new SettingsStateView(app, stack_display, statgame));
                 }else if(statgame == DOMINO){
-                    stack_display->push(new SettingsStateView(app, stack_display));
+                    stack_display->push(new SettingsStateView(app, stack_display, statgame));
                 }else if(statgame == TRAX){
                     stack_display->push(new PlateauTraxStateView(app, stack_display));
                 }
@@ -69,9 +69,9 @@ void MenuView::processInput(sf::Event & event) {
             }
         }else if(Keyboard::isKeyPressed(Keyboard::Enter)){
             if(statgame == CARCASSONNE){
-                stack_display->push(new SettingsStateView(app, stack_display));
+                stack_display->push(new SettingsStateView(app, stack_display, statgame));
             }else if(statgame == DOMINO){
-                stack_display->push(new SettingsStateView(app, stack_display));
+                stack_display->push(new SettingsStateView(app, stack_display, statgame));
             }else if(statgame == TRAX){
                 stack_display->push(new PlateauTraxStateView(app, stack_display));
             }
@@ -96,7 +96,7 @@ void MenuView::drawView() {
 MenuView::MenuView(sf::RenderWindow & window, stack<State * > * stack_display) :
     app{window},
     stack_display{stack_display},
-    statgame{TRAX},
+    statgame{*new StatGameEnum(TRAX)},
     buttonDomino{*new ButtonObj("Enter")},
     button_precedent{*new ButtonObj("     <")},
     button_suivant{*new ButtonObj("     >")},
@@ -113,6 +113,7 @@ MenuView::~MenuView() {
     delete &button_precedent;
     delete &button_suivant;
     delete &background;
+    delete &statgame;
 }
 
 void MenuView::init() {
