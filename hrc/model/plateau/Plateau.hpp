@@ -13,7 +13,7 @@ class Plateau {
 
 protected:
     /* attributs */
-    vector<const Player<TF> *> listPlayer;
+    vector<Player<TF> *> listPlayer;
     Player<TF> * courant;
 
     //vector<vector<TF *>> listTuile;

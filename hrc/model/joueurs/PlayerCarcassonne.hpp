@@ -7,8 +7,8 @@
 
 #include <vector>
 #include "Player.hpp"
-#include "../plateau/Pion.hpp"
 #include "../tuile/TuileCarcassonne.hpp"
+#include "../plateau/Pion.hpp"
 
 template<typename TF>
 class PlayerCarcassonne final: public Player<TuileCarcassonne>{
@@ -18,13 +18,17 @@ private:
 //    vector<Pion> listePionsJoueur;
      // int nombre_de_partisans;
 
+
 public:
     /* Constructeur & Destructeur */
+    vector<Pion *> listPion;
+
     PlayerCarcassonne();
     ~PlayerCarcassonne();
 
     /* other function */
    // vector<Pion> getListPions();
+
 };
 
 #include "../../../src/model/joueurs/PlayerCarcassonne.tpp"

@@ -2,7 +2,9 @@
 
 
 template<typename TF>
-PlayerCarcassonne<TF>::~PlayerCarcassonne() = default;
+PlayerCarcassonne<TF>::~PlayerCarcassonne(){
+
+}
 
 /*
 template<typename TF>
@@ -11,4 +13,6 @@ vector<Pion> PlayerCarcassonne<TF>::getListPions() {
 }*/
 
 template<typename TF>
-PlayerCarcassonne<TF>::PlayerCarcassonne() = default;
+PlayerCarcassonne<TF>::PlayerCarcassonne() {
+
+}

@@ -48,10 +48,11 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
 
     if (currTuile){
 
-        //TODO: se baser sur la liste de joueur
-        for (int i = 0; i < listPion.size(); ++i) {
-            Pion * p = listPion.at(i);
-            if (p->getX() == x && p->getY() == y && p->getPos() == posFrag)return true;
+        for (int i = 0; i < listPlayer.size(); ++i) {
+            for (int j = 0; j < ((PlayerCarcassonne<TuileCarcassonne> *) listPlayer.at(i))->listPion.size(); ++j) {
+                Pion * p = ((PlayerCarcassonne<TuileCarcassonne> *) listPlayer.at(i))->listPion.at(j);
+                if (p->getX() == x && p->getY() == y && p->getPos() == posFrag)return true;
+            }
         }
 
         /* top droit */

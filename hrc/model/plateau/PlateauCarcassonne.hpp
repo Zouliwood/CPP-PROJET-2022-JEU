@@ -5,6 +5,7 @@
 #include "../tuile/TuileCarcassonne.hpp"
 #include "../Sac.hpp"
 #include "Pion.hpp"
+#include "../joueurs/PlayerCarcassonne.hpp"
 
 class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 
@@ -31,7 +32,6 @@ class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 public:
     /* Constructeur & Destructeur */
     Sac sac;
-    vector <Pion *> listPion;
 
     PlateauCarcassonne();
     ~PlateauCarcassonne();
