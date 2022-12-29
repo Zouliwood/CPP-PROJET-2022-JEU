@@ -16,7 +16,7 @@ PlateauCarcassonneStateView::PlateauCarcassonneStateView(RenderWindow &window, s
         positionText{ComposantView::createText("x : y : ", 12, Color::White)},
         tuileEnMain{plateau.sac.getRandomTuile()},
         tuileEnMainObjView{tuileEnMain},
-        panelPion{*new PanelPionObjView(new TuileCarcassonneObjView(tuileEnMain))}
+        panelPion{new PanelPionObjView(new TuileCarcassonneObjView(tuileEnMain))}
 {
     init();
 }
@@ -48,11 +48,11 @@ void PlateauCarcassonneStateView::init() {
 }
 
 void PlateauCarcassonneStateView::processInput(Event &event) {
+    panelPion->updateAction(Vector2f(Mouse::getPosition(app)), event);
     parent.updateEvent(event, Mouse::getPosition(app));
-
     if (event.type == sf::Event::KeyReleased)notKeyPressedGame = true;
 
-    if(!panelPion.isOpen()){
+    if(!panelPion->isOpen()){
         if (Keyboard::isKeyPressed(Keyboard::Right)) {
             if (notKeyPressedGame) {
                 notKeyPressedGame = false;
@@ -98,7 +98,16 @@ void PlateauCarcassonneStateView::processInput(Event &event) {
             } else {
                 if (plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y * -1)) {
                     parent.addDrawable(mousePosGrid.x * 151 + 75, mousePosGrid.y * 151 + 75, new TuileCarcassonneObjView(tuileEnMain));
-                    panelPion.show(tuileEnMain);
+                    panelPion->show(tuileEnMain);
+
+                    int pos_partisant = panelPion->getPartisantPos();
+                    //ici le gars clické
+                    cout << pos_partisant << endl;
+
+                    if(panelPion->isWantToPosPartisant()){
+                        cout << "on entre " << endl;
+                        //plateau.pionPresent(mousePosGrid.x, mousePosGrid.y , pos_partisant, environment);
+                    }
                     tuileEnMain = plateau.sac.getRandomTuile();
                     tuileEnMainObjView.tuileCarcassonne = tuileEnMain;
                     tuileEnMainObjView.updateTuile();
@@ -112,7 +121,6 @@ void PlateauCarcassonneStateView::processInput(Event &event) {
 void PlateauCarcassonneStateView::update() {
     bouton_defausser.update(Vector2f(Mouse::getPosition(app)));
     bouton.update(Vector2f(Mouse::getPosition(app)));
-    panelPion.updateAction(Vector2f(Mouse::getPosition(app)));
 
     mousePosWindow = Vector2<float>(Mouse::getPosition(app));
     mousePosView = app.mapPixelToCoords(Vector2i(mousePosWindow));
@@ -143,5 +151,5 @@ void PlateauCarcassonneStateView::drawView() {
     app.draw(positionText);
     app.draw(bouton);
     app.draw(bouton_defausser);
-    app.draw(panelPion);
+    app.draw(*panelPion);
 }

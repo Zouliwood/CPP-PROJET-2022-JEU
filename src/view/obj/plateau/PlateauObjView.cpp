@@ -35,55 +35,5 @@ PlateauObjView::~PlateauObjView() {
 }
 
 void PlateauObjView::updateEvent(Event & event, Vector2i mouse) {
-
     hover.setPosition(((mouse.x+50 )/150)*150-50, ((mouse.y+100)/150)*150 - 100);
-
-    if (event.type == sf::Event::MouseButtonPressed){
-
-        if (Mouse::isButtonPressed(Mouse::Right)) {
-            isScrooled= true;
-            x = getPosition().x;
-            y = getPosition().y;
-            cout << "tu as bine cliqué je t'ai vu"<< endl;
         }
-    }
-    if(isScrooled){
-       // setPosition(mouse.x-x , mouse.y-y);
-        isScrooled=false;
-    }
-
-    if (event.type == sf::Event::MouseWheelScrolled) {
-        if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel){
-            std::cout << "wheel type: vertical" << std::endl;
-            //setPosition(getPosition().x, getPosition().y+150);
-    }else if (event.mouseWheelScroll.wheel == sf::Mouse::HorizontalWheel) {
-            std::cout << "wheel type: horizontal" << std::endl;
-          //  setPosition(getPosition().x+150, getPosition().y);
-        }else
-            std::cout << "wheel type: unknown" << std::endl;
-        std::cout << "wheel movement: " << event.mouseWheelScroll.delta << std::endl;
-        //std::cout << "mouse x: " << event.mouseWheelScroll.x << std::endl;
-        std::cout << "getScale x: " << getScale().x <<  " getScale y: " << getScale().y << endl;//<< event.mouseWheelScroll.y << std::endl;
-/*
-        if(event.mouseWheelScroll.delta){
-            setScale(getScale().x * 0.6, getScale().y * 0.6);
-        }else{
-            setScale(getScale().x * 1.2, getScale().y * 1.2);
-        }
-*/
-    }
-
-
-    if (event.type == sf::Event::MouseButtonReleased) {
-        if (Mouse::isButtonPressed(Mouse::Right)) {
-            isScrooled = false;
-            x = getPosition().x;
-            y = getPosition().y;
-            cout << "tu as relaché droit "<< endl;
-        }
-        cout << "tu as bine relaché je t'ai vu"<< endl;
-
-    }
-
-
-    }

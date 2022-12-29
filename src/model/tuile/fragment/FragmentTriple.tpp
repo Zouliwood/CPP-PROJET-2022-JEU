@@ -74,7 +74,6 @@ string FragmentTriple<V>::toString(){
 
 template<typename V>
 bool operator==(const FragmentTriple<V> & a, const FragmentTriple<V> & b) {
-    cout << "salut c moi david le codeur haha" << endl;
     return b.gaucheFragment==a.gaucheFragment && b.centreFragment==a.centreFragment && b.droitFragment==a.droitFragment;
 }
 

@@ -1,7 +1,3 @@
-//
-// Created by root0 on 23/12/22.
-//
-
 #include "../../../../hrc/view/obj/composant/BackGroundObjView.h"
 
 BackGroundObjView::BackGroundObjView() {
