@@ -10,15 +10,19 @@
 class PanelPionObjView final : public ComposantView{
 
     mutable TuileCarcassonneObjView * tuilEnMain;
+    mutable ButtonObj * annuler;
     mutable RectangleShape panel;
-    mutable ButtonObj annuler;
     mutable Text text;
+    bool isOpenStatus;
+    mutable Texture texture;
+    mutable Sprite zone;
 
 public:
     PanelPionObjView(TuileCarcassonneObjView *);
     ~PanelPionObjView();
+    bool isOpen();
     void draw(RenderTarget &target, sf::RenderStates states) const;
-    void show();
+    void show(TuileCarcassonne * tuile);
     void hide();
     void updateAction(Vector2f mouse);
 };

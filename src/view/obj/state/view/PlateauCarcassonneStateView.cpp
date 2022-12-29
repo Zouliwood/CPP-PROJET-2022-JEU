@@ -52,56 +52,58 @@ void PlateauCarcassonneStateView::processInput(Event &event) {
 
     if (event.type == sf::Event::KeyReleased)notKeyPressedGame = true;
 
-    if (Keyboard::isKeyPressed(Keyboard::Right)) {
-        if (notKeyPressedGame) {
-            notKeyPressedGame = false;
-            parent.move(151, 0);
-            parent.updateBackGround(150, 0, mousePosGrid.x, mousePosGrid.y);
-        }
-    }
-    if (Keyboard::isKeyPressed(Keyboard::Left)) {
-        if (notKeyPressedGame) {
-            notKeyPressedGame = false;
-            parent.move(-151, 0);
-            parent.updateBackGround(150, 0, mousePosGrid.x, mousePosGrid.y);
-
-        }
-    }
-    if (Keyboard::isKeyPressed(Keyboard::Up)) {
-        if (notKeyPressedGame) {
-            notKeyPressedGame = false;
-            parent.move(0, -151);
-            parent.updateBackGround(0, 150, mousePosGrid.x, mousePosGrid.y);
-        }
-    }
-    if (Keyboard::isKeyPressed(Keyboard::Down)) {
-        if (notKeyPressedGame) {
-            notKeyPressedGame = false;
-            parent.move(0, 151);
-            parent.updateBackGround(0, 150, mousePosGrid.x, mousePosGrid.y);
-        }
-    }
-    if (event.type == sf::Event::MouseButtonReleased) pressedGame = true;
-
-    if (Mouse::isButtonPressed(Mouse::Left)) {
-        if (pressedGame) {
-            pressedGame = false;
-            if (bouton.isPressed()) {
-                 tuileEnMain->rotate();
-                 tuileEnMainObjView.updateTuile();
-            } else if (bouton_defausser.isPressed()) {
-                tuileEnMain = plateau.sac.getRandomTuile();
-                tuileEnMainObjView.tuileCarcassonne = tuileEnMain;
-                tuileEnMainObjView.updateTuile();
+    if(!panelPion.isOpen()){
+        if (Keyboard::isKeyPressed(Keyboard::Right)) {
+            if (notKeyPressedGame) {
+                notKeyPressedGame = false;
+                parent.move(151, 0);
+                parent.updateBackGround(150, 0, mousePosGrid.x, mousePosGrid.y);
             }
-        } else {
-            if (plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y * -1)) {
-                parent.addDrawable(mousePosGrid.x * 151 + 75, mousePosGrid.y * 151 + 75, new TuileCarcassonneObjView(tuileEnMain));
-                panelPion.show();
-                tuileEnMain = plateau.sac.getRandomTuile();
-                tuileEnMainObjView.tuileCarcassonne = tuileEnMain;
-                tuileEnMainObjView.updateTuile();
-                plateau.nextPlayer();
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Left)) {
+            if (notKeyPressedGame) {
+                notKeyPressedGame = false;
+                parent.move(-151, 0);
+                parent.updateBackGround(150, 0, mousePosGrid.x, mousePosGrid.y);
+
+            }
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Up)) {
+            if (notKeyPressedGame) {
+                notKeyPressedGame = false;
+                parent.move(0, -151);
+                parent.updateBackGround(0, 150, mousePosGrid.x, mousePosGrid.y);
+            }
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Down)) {
+            if (notKeyPressedGame) {
+                notKeyPressedGame = false;
+                parent.move(0, 151);
+                parent.updateBackGround(0, 150, mousePosGrid.x, mousePosGrid.y);
+            }
+        }
+        if (event.type == sf::Event::MouseButtonReleased) pressedGame = true;
+
+        if (Mouse::isButtonPressed(Mouse::Left)) {
+            if (pressedGame) {
+                pressedGame = false;
+                if (bouton.isPressed()) {
+                     tuileEnMain->rotate();
+                     tuileEnMainObjView.updateTuile();
+                } else if (bouton_defausser.isPressed()) {
+                    tuileEnMain = plateau.sac.getRandomTuile();
+                    tuileEnMainObjView.tuileCarcassonne = tuileEnMain;
+                    tuileEnMainObjView.updateTuile();
+                }
+            } else {
+                if (plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y * -1)) {
+                    parent.addDrawable(mousePosGrid.x * 151 + 75, mousePosGrid.y * 151 + 75, new TuileCarcassonneObjView(tuileEnMain));
+                    panelPion.show(tuileEnMain);
+                    tuileEnMain = plateau.sac.getRandomTuile();
+                    tuileEnMainObjView.tuileCarcassonne = tuileEnMain;
+                    tuileEnMainObjView.updateTuile();
+                    plateau.nextPlayer();
+                }
             }
         }
     }
@@ -111,6 +113,7 @@ void PlateauCarcassonneStateView::update() {
     bouton_defausser.update(Vector2f(Mouse::getPosition(app)));
     bouton.update(Vector2f(Mouse::getPosition(app)));
     panelPion.updateAction(Vector2f(Mouse::getPosition(app)));
+
     mousePosWindow = Vector2<float>(Mouse::getPosition(app));
     mousePosView = app.mapPixelToCoords(Vector2i(mousePosWindow));
 
