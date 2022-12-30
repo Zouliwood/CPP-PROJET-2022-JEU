@@ -1,4 +1,4 @@
-#include "../../../../../hrc/view/obj/state/view/PlateauDominoStateView.h"
+#include "../../../../../hrc/view/obj/state/view/PlateauDominoStateView.hpp"
 
 
 PlateauDominoStateView::PlateauDominoStateView(RenderWindow &window, stack<State *> * stack_display) :

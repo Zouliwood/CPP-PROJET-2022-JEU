@@ -1,14 +1,14 @@
 
-#ifndef CPP_PROJET_2022_JEU_PLATEAUTRAXSTATEVIEW_H
-#define CPP_PROJET_2022_JEU_PLATEAUTRAXSTATEVIEW_H
+#ifndef CPP_PROJET_2022_JEU_PLATEAUTRAXSTATEVIEW_HPP
+#define CPP_PROJET_2022_JEU_PLATEAUTRAXSTATEVIEW_HPP
 
-#include "../State.h"
-#include "../../composant/ButtonObj.h"
+#include "../State.hpp"
+#include "../../composant/ButtonObj.hpp"
 #include "../../../../model/plateau/PlateauTrax.hpp"
 #include "../../../../model/tuile/TuileTrax.hpp"
-#include "../../tuile/TuileDominosObjView.h"
-#include "../../plateau/PlateauObjView.h"
-#include "../../tuile/TuileTraxObjView.h"
+#include "../../tuile/TuileDominosObjView.hpp"
+#include "../../plateau/PlateauObjView.hpp"
+#include "../../tuile/TuileTraxObjView.hpp"
 
 class PlateauTraxStateView final : public State{
 

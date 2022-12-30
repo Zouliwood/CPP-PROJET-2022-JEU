@@ -1,5 +1,5 @@
-#ifndef CPP_PROJET_2022_JEU_STATE_H
-#define CPP_PROJET_2022_JEU_STATE_H
+#ifndef CPP_PROJET_2022_JEU_STATE_HPP
+#define CPP_PROJET_2022_JEU_STATE_HPP
 
 #include <iostream>
 #include <SFML/Graphics.hpp>

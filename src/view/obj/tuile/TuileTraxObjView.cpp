@@ -1,4 +1,4 @@
-#include "../../../../hrc/view/obj/tuile/TuileTraxObjView.h"
+#include "../../../../hrc/view/obj/tuile/TuileTraxObjView.hpp"
 
 void TuileTraxObjView::draw(RenderTarget &target, sf::RenderStates states) const {
     ComposantView::draw(target, states);

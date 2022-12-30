@@ -1,4 +1,4 @@
-#include "../../../../hrc/view/obj/composant/BackGroundObjView.h"
+#include "../../../../hrc/view/obj/composant/BackGroundObjView.hpp"
 
 BackGroundObjView::BackGroundObjView() {
 

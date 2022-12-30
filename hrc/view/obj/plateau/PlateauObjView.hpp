@@ -1,8 +1,8 @@
-#ifndef CPP_PROJET_2022_JEU_PLATEAUOBJVIEW_H
-#define CPP_PROJET_2022_JEU_PLATEAUOBJVIEW_H
+#ifndef CPP_PROJET_2022_JEU_PLATEAUOBJVIEW_HPP
+#define CPP_PROJET_2022_JEU_PLATEAUOBJVIEW_HPP
 
 
-#include "../composant/ComposantView.h"
+#include "../composant/ComposantView.hpp"
 #include "../../../model/plateau/PlateauDominos.hpp"
 
 class PlateauObjView: public ComposantView {

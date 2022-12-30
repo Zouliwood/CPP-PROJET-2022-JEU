@@ -1,13 +1,13 @@
 #ifndef CPP_PROJET_2022_JEU_PLATEAUCARCASSONNESTATEVIEW_HPP
 #define CPP_PROJET_2022_JEU_PLATEAUCARCASSONNESTATEVIEW_HPP
 
-#include "../State.h"
-#include "../../composant/ButtonObj.h"
+#include "../State.hpp"
+#include "../../composant/ButtonObj.hpp"
 #include "../../../../model/plateau/PlateauCarcassonne.hpp"
 #include "../../../../model/tuile/TuileTrax.hpp"
-#include "../../tuile/TuileDominosObjView.h"
-#include "../../plateau/PlateauObjView.h"
-#include "../../tuile/TuileTraxObjView.h"
+#include "../../tuile/TuileDominosObjView.hpp"
+#include "../../plateau/PlateauObjView.hpp"
+#include "../../tuile/TuileTraxObjView.hpp"
 #include "../../tuile/TuileCarcassonneObjView.hpp"
 #include "../../plateau/PanelPionObjView.hpp"
 

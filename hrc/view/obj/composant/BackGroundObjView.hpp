@@ -1,8 +1,8 @@
-#ifndef CPP_PROJET_2022_JEU_BACKGROUNDOBJVIEW_H
-#define CPP_PROJET_2022_JEU_BACKGROUNDOBJVIEW_H
+#ifndef CPP_PROJET_2022_JEU_BACKGROUNDOBJVIEW_HPP
+#define CPP_PROJET_2022_JEU_BACKGROUNDOBJVIEW_HPP
 
 
-#include "ComposantView.h"
+#include "ComposantView.hpp"
 #include "../../../model/plateau/PlateauDominos.hpp"
 
 class BackGroundObjView : public ComposantView {

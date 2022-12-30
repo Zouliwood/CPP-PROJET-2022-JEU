@@ -1,8 +1,8 @@
-#ifndef CPP_PROJET_2022_JEU_SETTINGSSTATEVIEW_H
-#define CPP_PROJET_2022_JEU_SETTINGSSTATEVIEW_H
+#ifndef CPP_PROJET_2022_JEU_SETTINGSSTATEVIEW_HPP
+#define CPP_PROJET_2022_JEU_SETTINGSSTATEVIEW_HPP
 
-#include "../State.h"
-#include "../../composant/ButtonObj.h"
+#include "../State.hpp"
+#include "../../composant/ButtonObj.hpp"
 
 class SettingsStateView final : public State{
 

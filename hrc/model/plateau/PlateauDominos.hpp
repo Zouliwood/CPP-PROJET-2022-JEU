@@ -5,7 +5,7 @@
 #include "Plateau.hpp"
 #include "../tuile/fragment/FragmentTriple.hpp"
 #include "../tuile/TuileDominos.hpp"
-#include "../../view/obj/composant/ComposantView.h"
+#include "../../view/obj/composant/ComposantView.hpp"
 
 class PlateauDominos final: public Plateau<TuileDominos>{
 

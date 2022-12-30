@@ -1,4 +1,4 @@
-#include "../../../../../hrc/view/obj/state/view/PlateauTraxStateView.h"
+#include "../../../../../hrc/view/obj/state/view/PlateauTraxStateView.hpp"
 
 PlateauTraxStateView::PlateauTraxStateView(RenderWindow &window, stack<State *> * stack_display) :
         app{window},

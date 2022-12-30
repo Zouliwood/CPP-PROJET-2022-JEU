@@ -1,4 +1,4 @@
-#include "../../hrc/controler/Controller.hpp"
+#include "../../hrc/controller/Controller.hpp"
 
 template<typename T>
 void Controller<T>::init() {

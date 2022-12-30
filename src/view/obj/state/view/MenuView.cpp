@@ -1,6 +1,6 @@
-#include "../../../../../hrc/view/obj/state/view/MenuView.h"
-#include "../../../../../hrc/view/obj/state/view/SettingsStateView.h"
-#include "../../../../../hrc/view/obj/state/view/PlateauTraxStateView.h"
+#include "../../../../../hrc/view/obj/state/view/MenuView.hpp"
+#include "../../../../../hrc/view/obj/state/view/SettingsStateView.hpp"
+#include "../../../../../hrc/view/obj/state/view/PlateauTraxStateView.hpp"
 
 void MenuView::processInput(sf::Event & event) {
 

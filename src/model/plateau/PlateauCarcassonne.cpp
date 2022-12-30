@@ -54,6 +54,8 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
                 if (p->getX() == x && p->getY() == y && p->getPos() == posFrag)return true;
             }
         }
+        //TODO: fermé - herbe et ville - si les voisins ne sont pas nuls.
+        // compter les routes, algo style loop de trax
 
         /* top droit */
         auto currFrag0 =  ((FragmentTriple<environment>) currTuile->getUp()).getFragmentDroit();

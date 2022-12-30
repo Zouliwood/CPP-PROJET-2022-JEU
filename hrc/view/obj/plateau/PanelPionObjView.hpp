@@ -3,9 +3,9 @@
 #define CPP_PROJET_2022_JEU_PANELPIONOBJVIEW_HPP
 
 
-#include "../composant/ComposantView.h"
+#include "../composant/ComposantView.hpp"
 #include "../tuile/TuileCarcassonneObjView.hpp"
-#include "../composant/ButtonObj.h"
+#include "../composant/ButtonObj.hpp"
 
 class PanelPionObjView final : public ComposantView {
     mutable TuileCarcassonneObjView *tuilEnMain;

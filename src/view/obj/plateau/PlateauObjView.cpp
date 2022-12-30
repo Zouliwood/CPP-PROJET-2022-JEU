@@ -1,4 +1,4 @@
-#include "../../../../hrc/view/obj/plateau/PlateauObjView.h"
+#include "../../../../hrc/view/obj/plateau/PlateauObjView.hpp"
 
 PlateauObjView::PlateauObjView():
 /*        plateauDominos{plateauDominos},*/

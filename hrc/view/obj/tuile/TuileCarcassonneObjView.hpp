@@ -2,7 +2,7 @@
 #define CPP_PROJET_2022_JEU_TUILECARCASSONNEOBJVIEW_H
 
 
-#include "../composant/ComposantView.h"
+#include "../composant/ComposantView.hpp"
 #include "../../../model/tuile/TuileCarcassonne.hpp"
 
 class TuileCarcassonneObjView final : public ComposantView {

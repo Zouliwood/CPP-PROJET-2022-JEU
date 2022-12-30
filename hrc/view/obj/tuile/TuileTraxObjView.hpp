@@ -1,7 +1,7 @@
-#ifndef CPP_PROJET_2022_JEU_TUILETRAXOBJVIEW_H
-#define CPP_PROJET_2022_JEU_TUILETRAXOBJVIEW_H
+#ifndef CPP_PROJET_2022_JEU_TUILETRAXOBJVIEW_HPP
+#define CPP_PROJET_2022_JEU_TUILETRAXOBJVIEW_HPP
 
-#include "../composant/ComposantView.h"
+#include "../composant/ComposantView.hpp"
 #include "../../../model/tuile/TuileTrax.hpp"
 
 class TuileTraxObjView final : public ComposantView {

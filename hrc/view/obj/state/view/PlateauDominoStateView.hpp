@@ -1,13 +1,13 @@
-#ifndef CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_H
-#define CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_H
+#ifndef CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_HPP
+#define CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_HPP
 
 
-#include "../State.h"
-#include "../../composant/ButtonObj.h"
+#include "../State.hpp"
+#include "../../composant/ButtonObj.hpp"
 #include "../../../../model/plateau/PlateauDominos.hpp"
 #include "../../../../model/tuile/TuileDominos.hpp"
-#include "../../tuile/TuileDominosObjView.h"
-#include "../../plateau/PlateauObjView.h"
+#include "../../tuile/TuileDominosObjView.hpp"
+#include "../../plateau/PlateauObjView.hpp"
 
 class PlateauDominoStateView final : public State{
 
@@ -47,4 +47,4 @@ public:
 
 
 
-#endif //CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_H
+#endif //CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_HPP

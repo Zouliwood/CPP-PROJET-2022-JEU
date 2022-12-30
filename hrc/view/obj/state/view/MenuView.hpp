@@ -1,12 +1,12 @@
-#ifndef CPP_PROJET_2022_JEU_MENUVIEW_H
-#define CPP_PROJET_2022_JEU_MENUVIEW_H
+#ifndef CPP_PROJET_2022_JEU_MENUVIEW_HPP
+#define CPP_PROJET_2022_JEU_MENUVIEW_HPP
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "../State.h"
+#include "../State.hpp"
 #include <stack>
-#include "../../composant/ComposantView.h"
-#include "../../composant/ButtonObj.h"
+#include "../../composant/ComposantView.hpp"
+#include "../../composant/ButtonObj.hpp"
 
 using namespace std;
 

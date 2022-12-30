@@ -1,4 +1,4 @@
-#include "../../../../hrc/view/obj/composant/ButtonObj.h"
+#include "../../../../hrc/view/obj/composant/ButtonObj.hpp"
 
 ButtonObj::ButtonObj(string string) : ComposantView{}, fond_image{*new Sprite()}, texture{*new Texture()}{
     texture.loadFromFile("../ressources/img/menu/image_bg_menu.png");

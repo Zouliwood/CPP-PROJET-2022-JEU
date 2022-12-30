@@ -1,12 +1,12 @@
-#ifndef CPP_PROJET_2022_JEU_BUTTONOBJ_H
-#define CPP_PROJET_2022_JEU_BUTTONOBJ_H
+#ifndef CPP_PROJET_2022_JEU_BUTTONOBJ_HPP
+#define CPP_PROJET_2022_JEU_BUTTONOBJ_HPP
 
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <SFML/System.hpp>
-#include "ComposantView.h"
+#include "ComposantView.hpp"
 
 enum button_status {IDLE = 0, PRESSED, HOVER,};
 
@@ -29,4 +29,4 @@ public:
 };
 
 
-#endif //CPP_PROJET_2022_JEU_BUTTONOBJ_H
+#endif //CPP_PROJET_2022_JEU_BUTTONOBJ_HPP

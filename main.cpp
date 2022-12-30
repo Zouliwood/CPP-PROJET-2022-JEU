@@ -1,8 +1,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <stack>
-#include "hrc/view/obj/state/State.h"
-#include "hrc/view/obj/state/view/MenuView.h"
+#include "hrc/view/obj/state/State.hpp"
+#include "hrc/view/obj/state/view/MenuView.hpp"
 
 using namespace sf;
 using namespace std;

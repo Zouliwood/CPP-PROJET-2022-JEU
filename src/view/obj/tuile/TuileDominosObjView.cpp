@@ -1,4 +1,4 @@
-#include "../../../../hrc/view/obj/tuile/TuileDominosObjView.h"
+#include "../../../../hrc/view/obj/tuile/TuileDominosObjView.hpp"
 
 TuileDominosObjView::TuileDominosObjView(TuileDominos * tuile) : tuileDominos{tuile}, shape(RectangleShape(Vector2f(150.0f,150.0f))){
 

@@ -1,8 +1,8 @@
-#ifndef CPP_PROJET_2022_JEU_TUILEDOMINOSOBJVIEW_H
-#define CPP_PROJET_2022_JEU_TUILEDOMINOSOBJVIEW_H
+#ifndef CPP_PROJET_2022_JEU_TUILEDOMINOSOBJVIEW_HPP
+#define CPP_PROJET_2022_JEU_TUILEDOMINOSOBJVIEW_HPP
 
 #include "../../../model/tuile/TuileDominos.hpp"
-#include "../composant/ComposantView.h"
+#include "../composant/ComposantView.hpp"
 #include "../../../model/tuile/TuileTrax.hpp"
 
 class TuileDominosObjView final: public ComposantView {

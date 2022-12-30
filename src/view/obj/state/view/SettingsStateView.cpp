@@ -1,5 +1,5 @@
-#include "../../../../../hrc/view/obj/state/view/SettingsStateView.h"
-#include "../../../../../hrc/view/obj/state/view/PlateauDominoStateView.h"
+#include "../../../../../hrc/view/obj/state/view/SettingsStateView.hpp"
+#include "../../../../../hrc/view/obj/state/view/PlateauDominoStateView.hpp"
 #include "../../../../../hrc/view/obj/state/view/PlateauCarcassonneStateView.hpp"
 
 SettingsStateView::~SettingsStateView() {

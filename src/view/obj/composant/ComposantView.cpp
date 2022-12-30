@@ -1,4 +1,4 @@
-#include "../../../../hrc/view/obj/composant/ComposantView.h"
+#include "../../../../hrc/view/obj/composant/ComposantView.hpp"
 
 ComposantView::ComposantView(){}
 
