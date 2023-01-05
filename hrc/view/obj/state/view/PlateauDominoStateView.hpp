@@ -8,15 +8,19 @@
 #include "../../../../model/tuile/TuileDominos.hpp"
 #include "../../tuile/TuileDominosObjView.hpp"
 #include "../../plateau/PlateauObjView.hpp"
+#include "../../../../controller/Controller.hpp"
 
 class PlateauDominoStateView final : public State{
 
     /* Object */
     RenderWindow & app;
     stack<State *> * stack_display;
+    Controller<TuileDominos> & controller;
+
+    /*
     PlateauDominos plateau;
     TuileDominos * tuileEnMainObj;
-
+    */
     /* Graphique partie */
     PlateauObjView parent;
     TuileDominosObjView tuileEnMain;
@@ -36,7 +40,7 @@ class PlateauDominoStateView final : public State{
     bool pressedGame, notKeyPressedGame;
 
 public:
-    PlateauDominoStateView(RenderWindow & window, std::stack<State *> * stack_display);
+    PlateauDominoStateView(RenderWindow & window, std::stack<State *> * stack_display,  Controller<TuileDominos> & controller);
     virtual ~PlateauDominoStateView();
 
     void init() override;

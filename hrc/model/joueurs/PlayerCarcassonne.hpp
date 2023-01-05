@@ -18,7 +18,7 @@ public:
     /* Constructeur & Destructeur */
     vector<Pion *> listPion;
 
-    PlayerCarcassonne();
+    PlayerCarcassonne(string & pseudo);
     ~PlayerCarcassonne();
 
     /* other function */

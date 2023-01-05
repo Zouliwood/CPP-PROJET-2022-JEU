@@ -10,10 +10,12 @@ bool PlateauTrax::placeFirstTuile() {
 
 PlateauTrax::PlateauTrax(): Plateau(2, 64){
     for(int i = 0; i < nbr_player; i++){
-        listPlayer.push_back(new PlayerTrax());
+        string s = "Player  " + to_string(i);
+        listPlayer.push_back(new PlayerTrax(s));
     }
     courant = listPlayer.at(current_player);
 }
+
 
 ostream & operator<<(ostream& os, PlateauTrax & plateauTrax) {
     auto pos = plateauTrax.getListTuile().getPositif();
@@ -466,6 +468,10 @@ bool PlateauTrax::isLine(int x, int y, colorTrax color, int startX, int startY, 
     }else if (from!=0 && getTuileAt(x, y+1) && currTuile->getUp().getFragmentCentre()==color){
         return isLine(x, y+1, color, startX, startY, 2, ++cpt);
     }else return false;
+}
+
+TuileTrax *PlateauTrax::getFirstTuilePose() {
+    return nullptr;
 }
 
 PlateauTrax::~PlateauTrax() = default;

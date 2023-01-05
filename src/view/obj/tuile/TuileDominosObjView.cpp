@@ -54,6 +54,7 @@ TuileDominosObjView::~TuileDominosObjView() {
 
 void TuileDominosObjView::setTuile(TuileDominos *newtuile){
     this->tuileDominos = newtuile;
+    updateTuile();
 }
 
 

@@ -6,7 +6,8 @@ bool PlateauCarcassonne::checkVictory() {
 
 PlateauCarcassonne::PlateauCarcassonne(): Plateau(5, 72), sac{*new Sac()}{
     for(int i = 0; i < nbr_player; i++){
-        listPlayer.push_back(new PlayerCarcassonne());
+        string s = "Player " + to_string(i);
+        listPlayer.push_back(new PlayerCarcassonne(s));
     }
     courant = listPlayer.at(current_player);
 }

@@ -8,6 +8,7 @@
 #include "../tuile/Tuile.hpp"
 #include "../vector/AxeVector.hpp"
 #include "../tuile/TuileDominos.hpp"
+#include "../../view/obj/tuile/TuileDominosObjView.hpp"
 
 template <typename TF>
 class Plateau {
@@ -16,7 +17,6 @@ protected:
     /* attributs */
     vector<Player<TF> *> listPlayer;
     Player<TF> * courant;
-
     AxeVector<AxeVector<TF>> listTuile;
 
     int current_player, nbr_tuile, nbr_player;
@@ -30,6 +30,7 @@ public:
     virtual int calculPoint(const TF * value, int x, int y)=0;
     virtual bool placeFirstTuile() = 0;
     virtual bool checkVictory() = 0;
+    virtual TF *getFirstTuilePose()=0;
 
     virtual bool compareTuile(const TF *courant, const TF *tuileUp, const TF *tuileDown, const TF *tuileRight, const TF *tuileLeft) = 0;
  //TODO: Check si carcassonne en a besoin sinon supprimer   virtual const Tuile<TF> & generateRandomTuile() const = 0;
@@ -38,20 +39,17 @@ public:
     void init(int l, int L);
     bool placeTuile(TF * t, int x, int y);
     void nextPlayer();
-    const Player<TF> * getPlayerCourant() const;
+    Player<TF> * getPlayerCourant();
     const TF * getTuileAt(int x, int y)const;
-    vector<const Player<TF> *> getListPlayer() const;
-    //vector<vector<TF *>> getListTuile() const;
+    vector<Player<TF> *> getListPlayer();
     AxeVector<AxeVector<TF>> getListTuile()const;
     int getCurrentPlayer();
-
     ostream & operator<<(ostream &os);
- //   string print();
-
-
+    bool canPlay();
+    int nombreSacRestant();
 };
+
 
 #include "../../../src/model/plateau/Plateau.tpp"
 
 #endif //CPP_PROJET_2022_JEU_PLATEAU_HPP
-// virtual ostream & operator<<(ostream& os) const =0;//TODO: virtual??

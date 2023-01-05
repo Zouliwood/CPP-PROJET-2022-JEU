@@ -6,20 +6,21 @@
 template<typename T>
 class Controller {
 
-private:
-    Plateau<T> plateauCourant;
+protected:
+    Plateau<T> * plateauCourant;
 
 public:
     Controller() = default;
-    void init(int nombre_joueur, int nombre_tuile);
-    void deletePlateau();
-    void defausserTuile();
-    bool placerTuile(Tuile<T> t, int x, int y);
-
-    void piocheCarte();
-    void suivantJoueur();
-    void abandonnerParty();
+    ~Controller(){ delete plateauCourant;}
+    virtual bool placerTuile(T * t, int x, int y) = 0;
+    virtual void init(int nombre_joueur, int nombre_tuile)= 0;
+    virtual void defausserTuile() = 0;
+    virtual T * getTuileJoueurQuiJoue() = 0;
+    virtual void piocheCarte() = 0;
+    virtual void suivantJoueur() = 0;
+    virtual void abandonnerParty() = 0;
+    virtual Plateau<T> *getPlateau() = 0;
+   virtual void generateRandomTuilePlateau() = 0;
 };
 
-#include "../../src/controller/Controller.tpp"
 #endif

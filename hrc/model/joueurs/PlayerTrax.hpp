@@ -13,7 +13,7 @@ private:
 
 public:
     /* Constructeur & Destructeur */
-    PlayerTrax();
+    PlayerTrax(string & pseudo);
     ~PlayerTrax() override;
 
     /* function */

@@ -1,22 +1,21 @@
 #include "../../../../../hrc/view/obj/state/view/PlateauDominoStateView.hpp"
 
 
-PlateauDominoStateView::PlateauDominoStateView(RenderWindow &window, stack<State *> * stack_display) :
+PlateauDominoStateView::PlateauDominoStateView(RenderWindow &window, stack<State *> * stack_display, Controller<TuileDominos> & controller) :
     app{window},
     stack_display{stack_display},
+    controller{controller},
     gridSizeF{150.0f},
     grideSizeU{static_cast<int>(gridSizeF)},
     pressedGame{true},
     notKeyPressedGame{true},
-    plateau{*new PlateauDominos()},
     parent{*new PlateauObjView()},
     bouton_defausser{*new ButtonObj("defausser")},
     bouton{*new ButtonObj("rotation")},
     shape{*new RectangleShape(Vector2f (1280, 270))},
     textMaTuile{ComposantView::createText("Ma tuile", 23, Color::White)},
     positionText{ComposantView::createText("x : y : ", 12, Color::White)},
-    tuileEnMainObj{plateau.generateRandomTuile()},
-    tuileEnMain{tuileEnMainObj}
+    tuileEnMain{(TuileDominos *) this->controller.getTuileJoueurQuiJoue()}
 {
     init();
 }
@@ -32,7 +31,7 @@ PlateauDominoStateView::~PlateauDominoStateView() {
 }
 
 void PlateauDominoStateView::init() {
-    plateau.placeFirstTuile();
+    controller.getPlateau()->placeFirstTuile();
     parent.move(550, 200);
     bouton_defausser.setPosition(30, 600);
     bouton.setPosition(30, 470);
@@ -41,7 +40,7 @@ void PlateauDominoStateView::init() {
     shape.setPosition(0, 450);
     textMaTuile.setPosition(540, 510);
     positionText.setPosition(0, 20);
-    TuileDominosObjView * firstTuileDomino = new TuileDominosObjView( plateau.getFirstTuilePose());
+    TuileDominosObjView * firstTuileDomino = new TuileDominosObjView(controller.getPlateau()->getFirstTuilePose());
     parent.addDrawable(0,0, firstTuileDomino);
 }
 
@@ -81,30 +80,19 @@ void PlateauDominoStateView::processInput(Event &event) {
     }
     if (event.type == sf::Event::MouseButtonReleased) pressedGame = true;
 
-    if (event.type == sf::Event::MouseWheelMoved){
-        cout << "tu slide ma parole" << endl;
-        cout << parent.getScale().x << " " << parent.getScale().y << endl;
-        cout << event.mouseWheel.x << " " << event.mouseWheel.y << endl;
-        parent.setScale(Vector2f (event.mouseWheel.x, event.mouseWheel.y));
-    }
-
     if(Mouse::isButtonPressed(Mouse::Left)) {
         if(pressedGame){
             pressedGame= false;
             if(bouton.isPressed()){
-                tuileEnMainObj->rotate();
+                controller.getPlateau()->getPlayerCourant()->getTuile()->rotate();
             }if(bouton_defausser.isPressed()) {
-                tuileEnMainObj = plateau.generateRandomTuile();
-                tuileEnMain.setTuile(tuileEnMainObj);
-                tuileEnMain.updateTuile();
+                controller.defausserTuile();
+                tuileEnMain.setTuile(controller.getTuileJoueurQuiJoue());
             }else{
-                if(plateau.placeTuile(tuileEnMainObj, mousePosGrid.x, mousePosGrid.y*-1)){
-                    TuileDominosObjView *tuileAdd = new TuileDominosObjView(tuileEnMainObj);
-                    parent.addDrawable(mousePosGrid.x *151, mousePosGrid.y *151, *(&tuileAdd));
-                    tuileEnMainObj = plateau.generateRandomTuile();
-                    tuileEnMain.setTuile(tuileEnMainObj);
-                    tuileEnMain.updateTuile();
-                    cout << plateau << endl;
+                if(controller.placerTuile(controller.getTuileJoueurQuiJoue(), mousePosGrid.x, mousePosGrid.y*-1)){
+                    parent.addDrawable(mousePosGrid.x *151, mousePosGrid.y *151, new TuileDominosObjView(controller.getTuileJoueurQuiJoue()));
+                    controller.suivantJoueur();
+                    tuileEnMain.setTuile(controller.getTuileJoueurQuiJoue());
                 }
             }
         }

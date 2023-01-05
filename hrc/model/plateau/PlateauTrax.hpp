@@ -25,7 +25,7 @@ public:
     bool checkVictory() override;
 
     virtual bool placeTuile(TuileTrax * t, int x, int y);
-
+    TuileTrax* getFirstTuilePose() override;
     bool isLoop(int x, int y, colorTrax color, int from, int startX, int startY, int cpt);
 
     bool existForcedAction(int x, int y);

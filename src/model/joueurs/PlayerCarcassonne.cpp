@@ -11,6 +11,6 @@ vector<Pion> PlayerCarcassonne<TF>::getListPions() {
     return listePionsJoueur;
 }*/
 
-PlayerCarcassonne::PlayerCarcassonne() {
+PlayerCarcassonne::PlayerCarcassonne(string & pseudo): Player(pseudo){
 
 }

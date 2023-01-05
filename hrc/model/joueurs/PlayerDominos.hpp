@@ -9,7 +9,7 @@ class PlayerDominos final: public Player<TuileDominos> {
 
 public:
     /* Constructeur & Destructeur */
-    PlayerDominos();
+    PlayerDominos(string & pseudo);
     ~PlayerDominos() override;
 
 };

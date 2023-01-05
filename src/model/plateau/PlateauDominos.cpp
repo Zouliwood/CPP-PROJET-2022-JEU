@@ -6,9 +6,11 @@ int PlateauDominos::calculPoint(const TuileDominos * t, int x, int y) {
     return 0;
 }
 
-PlateauDominos::PlateauDominos(): Plateau(2, 2) {
+PlateauDominos::PlateauDominos(int nombre_joueur, int nombre_tuile): Plateau(nombre_joueur, nombre_tuile) {
     for(int i = 0; i < nbr_player; i++){
-        listPlayer.push_back(new PlayerDominos());
+        //cout << " on ajoute joueur " +  << endl;
+        string s = " Player " + to_string(i);
+        listPlayer.push_back(new PlayerDominos(*new string (s)));
     }
     courant = listPlayer.at(current_player);
 }

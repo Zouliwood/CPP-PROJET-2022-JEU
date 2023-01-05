@@ -12,19 +12,21 @@ class Player {
 
 protected:
     /* Constructeur & Destructeur */
-    Player();
+    Player(string & pseudo);
     virtual ~Player();
 
     /* attributs */
-    const string pseudo;
+    const string & pseudo;
     mutable int points;
-    //mutable Tuile<FragmentTuile<V>> tuilecourante ;
+    TF * tuilecourante ;
 
 public:
     int getPoints();
-    TF getTuile() const;
-
+    TF * getTuile();
+    void setTuile(TF * newTuile);
+    string getName();
 };
+
 #include "../../../src/model/joueurs/Player.tpp"
 
 #endif //CPP_PROJET_2022_JEU_PLAYER_HPP

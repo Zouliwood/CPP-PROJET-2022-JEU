@@ -50,7 +50,7 @@ public:
 
     bool isDejaVu(int x, int y, int pos);
 
-    TuileCarcassonne *getFirstTuilePose();
+    TuileCarcassonne * getFirstTuilePose() override;
 };
 
 
