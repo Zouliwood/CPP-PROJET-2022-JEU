@@ -5,6 +5,7 @@
 #include "../enum/colorTrax.hpp"
 #include "../tuile/fragment/FragmentSolo.hpp"
 #include "../tuile/TuileTrax.hpp"
+#include "../joueurs/PlayerTrax.hpp"
 
 class PlateauTrax final: public Plateau<TuileTrax> {
 

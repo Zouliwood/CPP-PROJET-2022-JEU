@@ -1,12 +1,16 @@
 #include "../../../hrc/model/plateau/PlateauDominos.hpp"
+#include "../../../hrc/model/joueurs/PlayerDominos.hpp"
 
 
 int PlateauDominos::calculPoint(const TuileDominos * t, int x, int y) {
     return 0;
 }
 
-PlateauDominos::PlateauDominos() {
-    cout << "Plateau domino " << endl;
+PlateauDominos::PlateauDominos(): Plateau(2, 2) {
+    for(int i = 0; i < nbr_player; i++){
+        listPlayer.push_back(new PlayerDominos());
+    }
+    courant = listPlayer.at(current_player);
 }
 
 PlateauDominos::~PlateauDominos() {

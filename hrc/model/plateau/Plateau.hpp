@@ -7,6 +7,7 @@
 #include "../joueurs/Player.hpp"
 #include "../tuile/Tuile.hpp"
 #include "../vector/AxeVector.hpp"
+#include "../tuile/TuileDominos.hpp"
 
 template <typename TF>
 class Plateau {
@@ -16,14 +17,13 @@ protected:
     vector<Player<TF> *> listPlayer;
     Player<TF> * courant;
 
-    //vector<vector<TF *>> listTuile;
     AxeVector<AxeVector<TF>> listTuile;
 
-    int current_player;
+    int current_player, nbr_tuile, nbr_player;
 
 public:
     /* Constructeur & Destructeur */
-    Plateau();
+    Plateau(int current_player, int nbr_tuile);
     virtual ~Plateau();
 
     /* to override function */

@@ -1,4 +1,3 @@
-
 #ifndef CPP_PROJET_2022_JEU_CONTROLLER_HPP
 #define CPP_PROJET_2022_JEU_CONTROLLER_HPP
 
@@ -11,14 +10,16 @@ private:
     Plateau<T> plateauCourant;
 
 public:
-    void init();
+    Controller() = default;
+    void init(int nombre_joueur, int nombre_tuile);
     void deletePlateau();
-    void suivantJoueur();
     void defausserTuile();
-    bool placerTuileDomino(const Tuile<T> t, int x, int y);
-    bool placerTuileCarcasonne(const Tuile<T> t, int x, int y);
-    bool placerTuileTrax(const Tuile<T> t, int x, int y);
+    bool placerTuile(Tuile<T> t, int x, int y);
+
+    void piocheCarte();
+    void suivantJoueur();
+    void abandonnerParty();
 };
 
-
-#endif //CPP_PROJET_2022_JEU_CONTROLLER_HPP
+#include "../../src/controller/Controller.tpp"
+#endif

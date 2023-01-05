@@ -30,7 +30,7 @@ PlateauCarcassonneStateView::~PlateauCarcassonneStateView() {
     delete &shape;
     delete &textMaTuile;
     delete &positionText;
-    delete &panelPion;
+    delete panelPion;
 }
 
 void PlateauCarcassonneStateView::init() {

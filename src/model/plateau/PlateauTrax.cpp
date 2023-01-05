@@ -8,7 +8,12 @@ bool PlateauTrax::placeFirstTuile() {
     return true;
 }
 
-PlateauTrax::PlateauTrax() = default;
+PlateauTrax::PlateauTrax(): Plateau(2, 64){
+    for(int i = 0; i < nbr_player; i++){
+        listPlayer.push_back(new PlayerTrax());
+    }
+    courant = listPlayer.at(current_player);
+}
 
 ostream & operator<<(ostream& os, PlateauTrax & plateauTrax) {
     auto pos = plateauTrax.getListTuile().getPositif();

@@ -6,7 +6,6 @@
 #include "../tuile/TuileCarcassonne.hpp"
 #include "../plateau/Pion.hpp"
 
-template<typename TF>
 class PlayerCarcassonne final: public Player<TuileCarcassonne>{
 
 private:
@@ -26,6 +25,4 @@ public:
    // vector<Pion> getListPions();
 
 };
-
-#include "../../../src/model/joueurs/PlayerCarcassonne.tpp"
 #endif

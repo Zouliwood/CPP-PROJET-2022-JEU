@@ -1,13 +1,9 @@
 #include "../../../hrc/model/plateau/Plateau.hpp"
-#include "../../../hrc/model/tuile/Tuile.hpp"
-#include "../../../hrc/model/tuile/TuileDominos.hpp"
 
 //TODO: constant de condition
 
-template <typename TF>
-Plateau<TF>::Plateau(): current_player{0}{
-    //courant = listPlayer.at(current_player);
-}
+template<typename TF>
+Plateau<TF>::Plateau(int nbr_player, int nbr_tuile): nbr_player{nbr_player}, current_player{0}, nbr_tuile{nbr_tuile} {}
 
 template <typename TF>
 Plateau<TF>::~Plateau(){
