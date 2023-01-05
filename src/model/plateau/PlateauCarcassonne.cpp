@@ -4,7 +4,7 @@ bool PlateauCarcassonne::checkVictory() {
     return false;
 }
 
-PlateauCarcassonne::PlateauCarcassonne(): Plateau(5, 72), sac{*new Sac()}{
+PlateauCarcassonne::PlateauCarcassonne(int nombre_joueur): Plateau(nombre_joueur, 72), sac{*new Sac()}{
     for(int i = 0; i < nbr_player; i++){
         string s = "Player " + to_string(i);
         listPlayer.push_back(new PlayerCarcassonne(s));

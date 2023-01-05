@@ -16,6 +16,8 @@ public:
     ~TuileCarcassonneObjView();
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void updateTuile();
+
+    void setTuile(TuileCarcassonne *pCarcassonne);
 };
 
 

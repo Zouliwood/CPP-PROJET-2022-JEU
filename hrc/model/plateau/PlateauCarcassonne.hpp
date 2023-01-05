@@ -33,7 +33,7 @@ public:
     /* Constructeur & Destructeur */
     Sac sac;
 
-    PlateauCarcassonne();
+    PlateauCarcassonne(int nombre_joueur);
     ~PlateauCarcassonne();
 
     /* define function */

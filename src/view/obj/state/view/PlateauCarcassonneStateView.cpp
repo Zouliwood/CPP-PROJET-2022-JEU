@@ -1,22 +1,21 @@
 #include "../../../../../hrc/view/obj/state/view/PlateauCarcassonneStateView.hpp"
 
-PlateauCarcassonneStateView::PlateauCarcassonneStateView(RenderWindow &window, stack<State *> * stack_display) :
+PlateauCarcassonneStateView::PlateauCarcassonneStateView(RenderWindow &window, stack<State *> * stack_display, ControllerCarcassonne  & controllerCarcassonne) :
         app{window},
         stack_display{stack_display},
+        controllerCarcassonne{controllerCarcassonne},
         gridSizeF{150.0f},
         grideSizeU{static_cast<int>(gridSizeF)},
         pressedGame{true},
         notKeyPressedGame{true},
-        plateau{*new PlateauCarcassonne()},
         parent{*new PlateauObjView()},
         bouton_defausser{*new ButtonObj("defausser")},
         bouton{*new ButtonObj("rotation")},
         shape{*new RectangleShape(Vector2f (1280, 270))},
         textMaTuile{ComposantView::createText("Ma tuile", 23, Color::White)},
         positionText{ComposantView::createText("x : y : ", 12, Color::White)},
-        tuileEnMain{plateau.sac.getRandomTuile()},
-        tuileEnMainObjView{tuileEnMain},
-        panelPion{new PanelPionObjView(new TuileCarcassonneObjView(tuileEnMain))}
+        tuileEnMainObjView{(TuileCarcassonne *) this->controllerCarcassonne.getTuileJoueurQuiJoue()},
+        panelPion{new PanelPionObjView(new TuileCarcassonneObjView((TuileCarcassonne *) this->controllerCarcassonne.getTuileJoueurQuiJoue()))}
 {
     init();
 }
@@ -26,7 +25,6 @@ PlateauCarcassonneStateView::~PlateauCarcassonneStateView() {
     delete &bouton;
     delete &bouton_defausser;
     delete &tuileEnMainObjView;
-    delete tuileEnMain;
     delete &shape;
     delete &textMaTuile;
     delete &positionText;
@@ -34,7 +32,7 @@ PlateauCarcassonneStateView::~PlateauCarcassonneStateView() {
 }
 
 void PlateauCarcassonneStateView::init() {
-    plateau.placeFirstTuile();
+    controllerCarcassonne.getPlateau()->placeFirstTuile();
     parent.move(550, 200);
     bouton_defausser.setPosition(30, 600);
     bouton.setPosition(30, 470);
@@ -43,7 +41,7 @@ void PlateauCarcassonneStateView::init() {
     textMaTuile.setPosition(540, 510);
     positionText.setPosition(0, 20);
     tuileEnMainObjView.setPosition(550+75, 540+75);
-    TuileCarcassonneObjView * firstTuileDomino = new TuileCarcassonneObjView( plateau.getFirstTuilePose());
+    TuileCarcassonneObjView * firstTuileDomino = new TuileCarcassonneObjView(controllerCarcassonne.getPlateau()->getFirstTuilePose());
     parent.addDrawable(75,75, firstTuileDomino);
 }
 
@@ -88,18 +86,16 @@ void PlateauCarcassonneStateView::processInput(Event &event) {
             if (pressedGame) {
                 pressedGame = false;
                 if (bouton.isPressed()) {
-                     tuileEnMain->rotate();
+                    controllerCarcassonne.getPlateau()->getPlayerCourant()->getTuile()->rotate();
                      tuileEnMainObjView.updateTuile();
                 } else if (bouton_defausser.isPressed()) {
-                    tuileEnMain = plateau.sac.getRandomTuile();
-                    tuileEnMainObjView.tuileCarcassonne = tuileEnMain;
-                    tuileEnMainObjView.updateTuile();
+                    controllerCarcassonne.defausserTuile();
+                    tuileEnMainObjView.setTuile(controllerCarcassonne.getTuileJoueurQuiJoue());
                 }
             } else {
-                if (plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y * -1)) {
-                    parent.addDrawable(mousePosGrid.x * 151 + 75, mousePosGrid.y * 151 + 75, new TuileCarcassonneObjView(tuileEnMain));
-                    panelPion->show(tuileEnMain);
-
+                if (controllerCarcassonne.placerTuile(controllerCarcassonne.getTuileJoueurQuiJoue(), mousePosGrid.x, mousePosGrid.y * -1)) {
+                    parent.addDrawable(mousePosGrid.x * 151 + 75, mousePosGrid.y * 151 + 75, new TuileCarcassonneObjView(controllerCarcassonne.getTuileJoueurQuiJoue()));
+                    panelPion->show(controllerCarcassonne.getTuileJoueurQuiJoue());
                     int pos_partisant = panelPion->getPartisantPos();
                     //ici le gars clické
                     cout << pos_partisant << endl;
@@ -108,10 +104,8 @@ void PlateauCarcassonneStateView::processInput(Event &event) {
                         cout << "on entre " << endl;
                         //plateau.pionPresent(mousePosGrid.x, mousePosGrid.y , pos_partisant, environment);
                     }
-                    tuileEnMain = plateau.sac.getRandomTuile();
-                    tuileEnMainObjView.tuileCarcassonne = tuileEnMain;
-                    tuileEnMainObjView.updateTuile();
-                    plateau.nextPlayer();
+                    controllerCarcassonne.suivantJoueur();
+                    tuileEnMainObjView.setTuile(controllerCarcassonne.getTuileJoueurQuiJoue());
                 }
             }
         }

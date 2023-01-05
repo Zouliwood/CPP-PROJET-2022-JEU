@@ -23,3 +23,8 @@ void TuileCarcassonneObjView::updateTuile() {
     bg_tuile.setTextureRect(IntRect(1280*2+ tuileCarcassonne->x_pos_view,720+tuileCarcassonne->y_pos_view, 150, 150));
     bg_tuile.setRotation(tuileCarcassonne->rotation);
 }
+
+void TuileCarcassonneObjView::setTuile(TuileCarcassonne *pCarcassonne) {
+    tuileCarcassonne = pCarcassonne;
+    updateTuile();
+}
