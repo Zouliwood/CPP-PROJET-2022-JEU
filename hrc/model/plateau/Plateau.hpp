@@ -46,7 +46,8 @@ public:
     int getCurrentPlayer();
     ostream & operator<<(ostream &os);
     bool canPlay();
-    int nombreSacRestant();
+    int nombreCarteRestant();
+    void piocheCarte();
 };
 
 

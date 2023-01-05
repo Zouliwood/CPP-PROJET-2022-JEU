@@ -137,7 +137,7 @@ void PlateauCarcassonneStateView::update() {
 }
 
 void PlateauCarcassonneStateView::drawView() {
-    app.clear(sf::Color::Magenta);
+    app.clear(sf::Color::Black);
     app.draw(parent);
     app.draw(shape);
     app.draw(tuileEnMainObjView);

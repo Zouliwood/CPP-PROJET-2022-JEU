@@ -42,7 +42,6 @@ template<typename TF>
 void Plateau<TF>::nextPlayer() {
     current_player= (current_player+1)%listPlayer.size();
     courant = listPlayer.at(current_player);
-    nbr_tuile--;
 }
 
 template<typename TF>
@@ -56,7 +55,7 @@ void Plateau<TF>::init(int l, int L){
 }
 
 template<typename TF>
-int Plateau<TF>::nombreSacRestant() {
+int Plateau<TF>::nombreCarteRestant() {
     return nbr_tuile;
 }
 
@@ -103,3 +102,7 @@ bool Plateau<TF>::canPlay() {
     return nbr_tuile > 0 && listPlayer.size() > 1;
 }
 
+template<typename TF>
+void Plateau<TF>::piocheCarte() {
+    if(nbr_tuile > 0) nbr_tuile--;
+}

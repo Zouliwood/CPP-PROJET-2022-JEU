@@ -2,12 +2,13 @@
 #include "../../hrc/model/joueurs/PlayerDominos.hpp"
 
 void ControllerDominos::init(int nombre_joueur, int nombre_tuile) {
-              plateauCourant = new PlateauDominos(nombre_joueur, nombre_tuile);
-              (this->getPlateau()->getPlayerCourant())->setTuile(( (PlateauDominos *) plateauCourant)->generateRandomTuile());
+    plateauCourant = new PlateauDominos(nombre_joueur, nombre_tuile);
+    piocheCarte();
 }
 
 void ControllerDominos::piocheCarte() {
      (this->getPlateau()->getPlayerCourant())->setTuile(((PlateauDominos *) plateauCourant)->generateRandomTuile());
+    plateauCourant->piocheCarte();
 }
 
 bool ControllerDominos::placerTuile(TuileDominos *t, int x, int y) {
@@ -22,7 +23,7 @@ void ControllerDominos::generateRandomTuilePlateau() {
 void ControllerDominos::suivantJoueur(){
     cout << "Au suivant " << plateauCourant->getListPlayer().at(plateauCourant->getCurrentPlayer())->getName() << endl;
     cout << " current " << plateauCourant->getCurrentPlayer();
-    cout << "TuileRestante" << plateauCourant->nombreSacRestant();
+    cout << "TuileRestante" << plateauCourant->nombreCarteRestant();
     if(plateauCourant->canPlay()) {
         plateauCourant->nextPlayer();
         piocheCarte();
