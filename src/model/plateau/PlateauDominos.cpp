@@ -5,14 +5,6 @@ int PlateauDominos::calculPoint(const TuileDominos * t, int x, int y) {
     return 0;
 }
 
-PlateauDominos::PlateauDominos() {
-    cout << "Plateau domino " << endl;
-}
-
-PlateauDominos::~PlateauDominos() {
-    cout << "destructeur Plateau domino " << endl;
-}
-
 bool PlateauDominos::placeFirstTuile() {
     domino =  generateRandomTuile();
     listTuile.addElement(0, new AxeVector<TuileDominos>());
@@ -101,59 +93,6 @@ bool PlateauDominos::checkVictory() {
 TuileDominos *PlateauDominos::getFirstTuilePose() {
     return domino;
 }
-
-/*string res;
-int size = plateauDominos.getListTuile().getNegatif().size() + plateauDominos.getListTuile().getPositif().size();
-cout << "Taille du grand tableau : " << size << "--" << plateauDominos.getListTuile().getNegatif().size() << "--" << plateauDominos.getListTuile().getPositif().size() << endl;
-os << "\n";
-cout << "Partie Positive du plateau "<< endl;
-
-
-*//*vector<TuileDominos> tempo;
-
-tempo.reserve( plateauDominos.getListTuile().getPositif().size() + plateauDominos.getListTuile().getNegatif().size() ); // preallocate memory
-tempo.insert( tempo.end(), plateauDominos.getListTuile().getNegatif().begin(), plateauDominos.getListTuile().getNegatif().end() );
-tempo.insert( tempo.end(),plateauDominos.getListTuile().getPositif().begin(), plateauDominos.getListTuile().getPositif().end() );*//*
-
-for (int i = 0; i < plateauDominos.getListTuile().getNegatif().size(); ++i) {
-AxeVector<TuileDominos> * ligne = plateauDominos.getListTuile().getAt(i);
-for (int j = 0; j < ligne->getNegatif().size(); ++j) {
-if (ligne->getAt(j) == nullptr) {
-os << "[U:0.0.0, R:0.0.0, D:0.0.0, L:0.0.0]";
-} else {
-os << *((TuileDominos *) ligne->getAt(j));
-}
-}
-for (int j = 0; j <  ligne->getPositif().size(); ++j) {
-if(ligne->getAt(j) == nullptr){
-os << "[U:0.0.0, R:0.0.0, D:0.0.0, L:0.0.0]";
-}else {
-os << *((TuileDominos*) ligne->getAt(j));
-}
-}
-os << "\n";
-}
-os << "\n";
-
-cout << "Partie Negative du plateau "<< endl;
-for (int i = 0; i < plateauDominos.getListTuile().getNegatif().size(); ++i) {
-AxeVector<TuileDominos> *ligne = plateauDominos.getListTuile().getAt(i);
-for (int j = 0; j < ligne->getNegatif().size(); ++j) {
-if (ligne->getAt(j) == nullptr) {
-os << "[U:0.0.0, R:0.0.0, D:0.0.0, L:0.0.0]";
-} else {
-os << *((TuileDominos *) ligne->getAt(j));
-}
-}
-for (int j = 0; j <  ligne->getPositif().size(); ++j) {
-if(ligne->getAt(j) == nullptr){
-os << "[U:0.0.0, R:0.0.0, D:0.0.0, L:0.0.0]";
-}else {
-os << *((TuileDominos*) ligne->getAt(j));
-}
-}
-os << "\n";
-}*/
 
 /*
 int PlateauDominos::calculPoint(const Tuile<FragmentTriple<int>> &t, int x, int y) {

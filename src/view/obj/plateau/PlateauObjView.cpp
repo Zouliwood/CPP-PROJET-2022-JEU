@@ -29,11 +29,11 @@ void PlateauObjView::updateBackGround(int x, int y, int posx, int posy){
     background_plateau.setTextureRect(IntRect(0,0,x_back, y_back));
 }
 
-PlateauObjView::~PlateauObjView() {
-            delete &background_plateau;
-            delete &hover;
-}
-
 void PlateauObjView::updateEvent(Event & event, Vector2i mouse) {
     hover.setPosition(((mouse.x+50 )/150)*150-50, ((mouse.y+100)/150)*150 - 100);
         }
+
+PlateauObjView::~PlateauObjView() {
+    delete &background_plateau;
+    delete &hover;
+}

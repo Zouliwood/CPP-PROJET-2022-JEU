@@ -9,7 +9,7 @@ class PlayerTrax final: public Player<TuileTrax>{
 
 private:
     /* attributs */
-    colorTrax couleur;
+    colorTrax & couleur;
 
 public:
     /* Constructeur & Destructeur */

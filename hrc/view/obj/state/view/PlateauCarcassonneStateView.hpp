@@ -10,12 +10,15 @@
 #include "../../tuile/TuileTraxObjView.h"
 #include "../../tuile/TuileCarcassonneObjView.hpp"
 #include "../../plateau/PanelPionObjView.hpp"
+#include "../../../../controler/Controller.hpp"
 
 class PlateauCarcassonneStateView final : public State{
 
     /* Objetc */
     RenderWindow & app;
     stack<State *> * stack_display;
+    Controller<PlateauCarcassonne> & controler;
+
     PlateauCarcassonne plateau;
     TuileCarcassonne * tuileEnMain;
 
@@ -39,7 +42,7 @@ class PlateauCarcassonneStateView final : public State{
     bool notKeyPressedGame;
 
 public:
-    PlateauCarcassonneStateView(RenderWindow & window, std::stack<State *> * stack_display);
+    PlateauCarcassonneStateView(RenderWindow & window, std::stack<State *> * stack_display, Controller<PlateauCarcassonne> & controller);
     virtual ~PlateauCarcassonneStateView();
 
     void init() override;

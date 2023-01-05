@@ -4,7 +4,14 @@ bool PlateauCarcassonne::checkVictory() {
     return false;
 }
 
-PlateauCarcassonne::PlateauCarcassonne(): sac{*new Sac()}{}
+PlateauCarcassonne::PlateauCarcassonne() {
+
+}
+
+PlateauCarcassonne::~PlateauCarcassonne() {
+    delete &sac;
+}
+
 
 int PlateauCarcassonne::calculPoint(const TuileCarcassonne * t, int x, int y){
     return 0;
@@ -49,8 +56,8 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
     if (currTuile){
 
         for (int i = 0; i < listPlayer.size(); ++i) {
-            for (int j = 0; j < ((PlayerCarcassonne<TuileCarcassonne> *) listPlayer.at(i))->listPion.size(); ++j) {
-                Pion * p = ((PlayerCarcassonne<TuileCarcassonne> *) listPlayer.at(i))->listPion.at(j);
+            for (int j = 0; j < ((PlayerCarcassonne *) listPlayer.at(i))->listPion.size(); ++j) {
+                Pion * p = ((PlayerCarcassonne *) listPlayer.at(i))->listPion.at(j);
                 if (p->getX() == x && p->getY() == y && p->getPos() == posFrag)return true;
             }
         }
@@ -545,5 +552,3 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
     }
     return false;
 }
-
-PlateauCarcassonne::~PlateauCarcassonne() = default;

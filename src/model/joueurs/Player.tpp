@@ -2,19 +2,28 @@
 
 
 template<typename TF>
-Player<TF>::~Player() = default;
+Player<TF>::Player() {
+
+}
 
 template<typename TF>
-TF Player<TF>::getTuile() const {
-    return TF();
+Player<TF>::~Player() {
+    if(tuilecourante != nullptr) delete tuilecourante;
+}
+
+template<typename TF>
+TF & Player<TF>::getTuile() const {
+    return tuilecourante;
+}
+
+template<typename TF>
+void Player<TF>::setTuile(TF & tuile ) const {
+    tuilecourante = tuile;
 }
 
 template<typename TF>
 int Player<TF>::getPoints() {
     return points;
 }
-
-template<typename TF>
-Player<TF>::Player(){}
 
 

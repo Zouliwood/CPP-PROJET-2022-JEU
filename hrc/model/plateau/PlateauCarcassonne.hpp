@@ -31,7 +31,7 @@ class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 
 public:
     /* Constructeur & Destructeur */
-    Sac sac;
+    Sac & sac;
 
     PlateauCarcassonne();
     ~PlateauCarcassonne();

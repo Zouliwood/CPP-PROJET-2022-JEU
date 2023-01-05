@@ -23,7 +23,7 @@ void SettingsStateView::processInput(sf::Event & event) {
             pressedGame = false;
             if(button_jouer.isPressed()){
                 if(gameEnum == CARCASSONNE){
-                    stack_display->push(new PlateauCarcassonneStateView(app, stack_display));
+                    stack_display->push(new PlateauCarcassonneStateView(app, stack_display, *(new Controller<PlateauCarcassonne>())));
                 }else{
                     stack_display->push(new PlateauDominoStateView(app, stack_display));
                 }
@@ -41,7 +41,7 @@ void SettingsStateView::processInput(sf::Event & event) {
     if(Keyboard::isKeyPressed(sf::Keyboard::Enter)){
         if(keyPressed){
             keyPressed = false;
-            stack_display->push(new PlateauCarcassonneStateView(app, stack_display));
+            stack_display->push(new PlateauCarcassonneStateView(app, stack_display, new Controller<PlateauCarcassonne>()));
         }
     }
 

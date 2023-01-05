@@ -8,7 +8,6 @@ bool PlateauTrax::placeFirstTuile() {
     return true;
 }
 
-PlateauTrax::PlateauTrax() = default;
 
 ostream & operator<<(ostream& os, PlateauTrax & plateauTrax) {
     auto pos = plateauTrax.getListTuile().getPositif();
@@ -312,7 +311,6 @@ bool PlateauTrax::existForcedAction(int x, int y){ // NOLINT(misc-no-recursion)
 }
 
 bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer un int -> si ==, numéro gagnant...
-
     //left bottom - left to right
     if ((int)listTuile.getNegatif().size()!=0){
         for (int i = 0; i < listTuile.getNegatif().size(); ++i) {//parcours y
@@ -462,5 +460,3 @@ bool PlateauTrax::isLine(int x, int y, colorTrax color, int startX, int startY, 
         return isLine(x, y+1, color, startX, startY, 2, ++cpt);
     }else return false;
 }
-
-PlateauTrax::~PlateauTrax() = default;

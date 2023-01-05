@@ -6,7 +6,6 @@
 #include "../tuile/TuileCarcassonne.hpp"
 #include "../plateau/Pion.hpp"
 
-template<typename TF>
 class PlayerCarcassonne final: public Player<TuileCarcassonne>{
 
 private:
@@ -27,5 +26,4 @@ public:
 
 };
 
-#include "../../../src/model/joueurs/PlayerCarcassonne.tpp"
 #endif

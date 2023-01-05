@@ -18,13 +18,17 @@ protected:
     /* attributs */
     const string pseudo;
     mutable int points;
-    //mutable Tuile<FragmentTuile<V>> tuilecourante ;
+    TF & tuilecourante;
 
 public:
     int getPoints();
-    TF getTuile() const;
+    TF & getTuile() const;
+    void setTuile(TF &)const;
 
 };
+
+
+
 #include "../../../src/model/joueurs/Player.tpp"
 
 #endif //CPP_PROJET_2022_JEU_PLAYER_HPP

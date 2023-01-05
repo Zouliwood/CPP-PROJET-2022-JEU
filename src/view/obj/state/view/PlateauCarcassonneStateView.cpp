@@ -1,23 +1,24 @@
 #include "../../../../../hrc/view/obj/state/view/PlateauCarcassonneStateView.hpp"
+#include "../../../../../hrc/controler/Controller.hpp"
 
-PlateauCarcassonneStateView::PlateauCarcassonneStateView(RenderWindow &window, stack<State *> * stack_display) :
+PlateauCarcassonneStateView::PlateauCarcassonneStateView(RenderWindow &window, stack<State *> * stack_display, Controller<PlateauCarcassonne> & control) :
         app{window},
         stack_display{stack_display},
         gridSizeF{150.0f},
         grideSizeU{static_cast<int>(gridSizeF)},
         pressedGame{true},
         notKeyPressedGame{true},
-        plateau{*new PlateauCarcassonne()},
+        plateau{*new PlateauCarcassonne(0, 0)},
         parent{*new PlateauObjView()},
         bouton_defausser{*new ButtonObj("defausser")},
         bouton{*new ButtonObj("rotation")},
         shape{*new RectangleShape(Vector2f (1280, 270))},
         textMaTuile{ComposantView::createText("Ma tuile", 23, Color::White)},
         positionText{ComposantView::createText("x : y : ", 12, Color::White)},
+        controler{control},
         tuileEnMain{plateau.sac.getRandomTuile()},
         tuileEnMainObjView{tuileEnMain},
-        panelPion{new PanelPionObjView(new TuileCarcassonneObjView(tuileEnMain))}
-{
+        panelPion{new PanelPionObjView(new TuileCarcassonneObjView(tuileEnMain))}, plateau(0, 0) {
     init();
 }
 
@@ -30,7 +31,7 @@ PlateauCarcassonneStateView::~PlateauCarcassonneStateView() {
     delete &shape;
     delete &textMaTuile;
     delete &positionText;
-    delete &panelPion;
+    delete panelPion;
 }
 
 void PlateauCarcassonneStateView::init() {

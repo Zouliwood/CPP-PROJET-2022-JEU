@@ -15,15 +15,12 @@ protected:
     /* attributs */
     vector<Player<TF> *> listPlayer;
     Player<TF> * courant;
-
-    //vector<vector<TF *>> listTuile;
     AxeVector<AxeVector<TF>> listTuile;
-
-    int current_player;
+    int current_player, nombreTuile;
 
 public:
     /* Constructeur & Destructeur */
-    Plateau();
+    Plateau(int, int);
     virtual ~Plateau();
 
     /* to override function */
@@ -35,18 +32,16 @@ public:
  //TODO: Check si carcassonne en a besoin sinon supprimer   virtual const Tuile<TF> & generateRandomTuile() const = 0;
 
     /* define function */
-    void init(int l, int L);
     bool placeTuile(TF * t, int x, int y);
     void nextPlayer();
+    bool partyIsRunning();
+    bool piocheCarte();
     const Player<TF> * getPlayerCourant() const;
     const TF * getTuileAt(int x, int y)const;
     vector<const Player<TF> *> getListPlayer() const;
-    //vector<vector<TF *>> getListTuile() const;
     AxeVector<AxeVector<TF>> getListTuile()const;
     int getCurrentPlayer();
-
     ostream & operator<<(ostream &os);
- //   string print();
 
 
 };

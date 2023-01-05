@@ -1,8 +1,7 @@
 #include "../../hrc/model/joueurs/PlayerCarcassonne.hpp"
 
 
-template<typename TF>
-PlayerCarcassonne<TF>::~PlayerCarcassonne(){
+PlayerCarcassonne::~PlayerCarcassonne(){
 
 }
 
@@ -12,7 +11,6 @@ vector<Pion> PlayerCarcassonne<TF>::getListPions() {
     return listePionsJoueur;
 }*/
 
-template<typename TF>
-PlayerCarcassonne<TF>::PlayerCarcassonne() {
+PlayerCarcassonne::PlayerCarcassonne() {
 
 }

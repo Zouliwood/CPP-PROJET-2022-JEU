@@ -8,6 +8,6 @@ colorTrax PlayerTrax::getColor() {
     return this->couleur;
 }
 
-PlayerTrax::PlayerTrax() {
+PlayerTrax::PlayerTrax(colorTrax & ) {
 
 }
