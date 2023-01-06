@@ -8,15 +8,18 @@
 
 class PlayerCarcassonne final: public Player<TuileCarcassonne>{
 
+    /**
+     * Class PlayerCarcassonne represente un joueur carcassonne.
+     * Une couleur identifié par 3 int r,g,b
+     * et une liste de pointeur d'objet Pion qui represente les partisants
+     */
+
 private:
-    /* attributs */
-//    vector<Pion> listePionsJoueur;
-    int r,g,b;
+    const int r,g,b;
+    vector<Pion *> listPion;
 
 public:
     /* Constructeur & Destructeur */
-    vector<Pion *> listPion;
-
     PlayerCarcassonne(string & pseudo);
     PlayerCarcassonne(const PlayerCarcassonne & player) = delete ;
     ~PlayerCarcassonne();

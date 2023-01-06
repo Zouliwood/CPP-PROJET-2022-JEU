@@ -6,18 +6,23 @@
 template<typename T>
 class Controller {
 
+    /**
+     * Class controller qui agit comme une interface.
+     * Qui assure un certain nombre de fonctions à definir.
+     */
 protected:
     Plateau<T> * plateauCourant;
 
 public:
     Controller() = default;
     ~Controller(){ delete plateauCourant;}
+    Controller(const Controller &) = delete;
+    
     virtual bool placerTuile(T * t, int x, int y) = 0;
     virtual void defausserTuile() = 0;
     virtual T * getTuileJoueurQuiJoue() = 0;
     virtual void piocheCarte() = 0;
     virtual void suivantJoueur() = 0;
-    virtual void abandonnerParty() = 0;
     virtual Plateau<T> *getPlateau() = 0;
     virtual void generateRandomTuilePlateau() = 0;
 };

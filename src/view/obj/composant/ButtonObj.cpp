@@ -1,8 +1,10 @@
 #include "../../../../hrc/view/obj/composant/ButtonObj.hpp"
 
-ButtonObj::ButtonObj(string string) : ComposantView{}, fond_image{*new Sprite()}, texture{*new Texture()}{
+ButtonObj::ButtonObj(string string) : ComposantView{},
+        fond_image{*new Sprite()},
+        texture{*new Texture()},
+        textbutton{createText(string,18, Color::White)}{
     texture.loadFromFile("../ressources/img/menu/image_bg_menu.png");
-    textbutton = createText(string,18, Color::White);
     texture.setRepeated(true);
     texture.setSmooth(true);
     fond_image.setTexture(texture);

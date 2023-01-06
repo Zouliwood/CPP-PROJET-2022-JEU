@@ -13,8 +13,8 @@ enum button_status {IDLE = 0, PRESSED, HOVER,};
 class ButtonObj final: public ComposantView {
 
     mutable Text textbutton;
-    mutable Sprite fond_image;
-    mutable Texture texture;
+    Sprite & fond_image;
+    Texture & texture;
     short unsigned button_status;
 
 public:

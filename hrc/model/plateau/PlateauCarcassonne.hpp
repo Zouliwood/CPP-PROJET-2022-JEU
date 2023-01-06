@@ -14,17 +14,10 @@ class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
         int x;
         int y;
         int pos;
-
-        FragElement(int x, int y, int pos): x{x}, y{y}, pos{pos}{
-
-        }
-
-        ~FragElement(){
-
-        }
-
+        FragElement(int x, int y, int pos): x{x}, y{y}, pos{pos}{}
+        FragElement(const FragElement &)=delete;
+        ~FragElement(){}
     };
-
     vector<FragElement *> dejaVu;
     TuileCarcassonne * tuile_initial;
     bool solution = false;

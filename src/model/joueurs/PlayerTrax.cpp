@@ -1,13 +1,8 @@
 #include "../../../hrc/model/joueurs/PlayerTrax.hpp"
 
-PlayerTrax::~PlayerTrax() {
-    std::cout << "TODO : destructeur Player Trax" << std::endl;
-}
-
+PlayerTrax::PlayerTrax(string & pseudo): Player(pseudo){}
+PlayerTrax::~PlayerTrax() {}
 colorTrax PlayerTrax::getColor() {
     return this->couleur;
 }
 
-PlayerTrax::PlayerTrax(string & pseudo): Player(pseudo){
-
-}

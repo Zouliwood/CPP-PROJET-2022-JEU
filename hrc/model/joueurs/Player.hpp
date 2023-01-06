@@ -10,9 +10,16 @@ using namespace std;
 template<typename TF>
 class Player {
 
+    /**
+     * Class Player represente n'importe quel un joueur
+     * il est utilise principalement pour avoir de l'heritage et l'utilisation
+     * de la generecite.
+     */
+
 protected:
     /* Constructeur & Destructeur */
     Player(string & pseudo);
+    Player(const Player & player) = delete;
     virtual ~Player();
 
     /* attributs */
@@ -29,4 +36,4 @@ public:
 
 #include "../../../src/model/joueurs/Player.tpp"
 
-#endif //CPP_PROJET_2022_JEU_PLAYER_HPP
+#endif

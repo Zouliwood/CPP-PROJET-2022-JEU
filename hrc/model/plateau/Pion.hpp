@@ -6,13 +6,15 @@
 
 
 class Pion final {
-
+    /**
+     * Class Pion represente un partisant dans le jeu carcassonne
+     */
 private:
     roleCarcassonne role;
     int x, y, pos;
     bool isPlaced;
-public:
 
+public:
     Pion(roleCarcassonne role=roleCarcassonne::PARTISAN, bool isPlaced=false, int x=0, int y=0, int pos_frag=0);
     Pion(const Pion &) = delete;
     ~Pion();

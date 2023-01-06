@@ -15,7 +15,7 @@ class PlateauTraxStateView final : public State{
     /* Objetc */
     RenderWindow & app;
     stack<State *> * stack_display;
-    PlateauTrax plateau;
+    PlateauTrax & plateau;
     TuileTrax * tuileEnMain;
 
     /*Graphique view */

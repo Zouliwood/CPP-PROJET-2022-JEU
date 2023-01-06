@@ -665,4 +665,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
     }
 }
 
-PlateauCarcassonne::~PlateauCarcassonne() = default;
+PlateauCarcassonne::~PlateauCarcassonne(){
+   // while (!dejaVu.empty()) delete dejaVu.end()->first;
+
+}

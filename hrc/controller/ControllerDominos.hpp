@@ -14,6 +14,9 @@ class ControllerDominos final  : public Controller<TuileDominos>{
 
 public:
     ControllerDominos(int i, int i1);
+    ~ControllerDominos(){}
+    ControllerDominos(const ControllerDominos &) = delete;
+
     void defausserTuile()override;
     bool placerTuile(TuileDominos *t, int x, int y)override;
     TuileDominos * getTuileJoueurQuiJoue() override;

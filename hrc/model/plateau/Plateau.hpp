@@ -16,9 +16,8 @@ class Plateau {
 protected:
     /* attributs */
     vector<Player<TF> *> listPlayer;
-    Player<TF> * courant;
     AxeVector<AxeVector<TF>> listTuile;
-
+    Player<TF> * courant; /* Pas besoin de free est deja supprimé c'est un pointeur */
     int current_player, nbr_tuile, nbr_player;
 
 public:
@@ -32,9 +31,7 @@ public:
     virtual bool placeFirstTuile() = 0;
     virtual bool checkVictory() = 0;
     virtual TF *getFirstTuilePose()=0;
-
     virtual bool compareTuile(const TF *courant, const TF *tuileUp, const TF *tuileDown, const TF *tuileRight, const TF *tuileLeft) = 0;
- //TODO: Check si carcassonne en a besoin sinon supprimer   virtual const Tuile<TF> & generateRandomTuile() const = 0;
 
     /* define function */
     void init(int l, int L);

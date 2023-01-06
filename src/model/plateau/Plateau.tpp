@@ -13,14 +13,14 @@ bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
 
     if(getTuileAt(x, y) != nullptr) return false;
 
-   const TF * tuileUp = getTuileAt(x, y + 1);
-   const TF * tuileDown = getTuileAt(x, y - 1);
-   const TF * tuileRight = getTuileAt(x + 1, y);
-   const TF * tuileLeft = getTuileAt(x - 1, y);
+    const TF * tuileUp = getTuileAt(x, y + 1);
+    const TF * tuileDown = getTuileAt(x, y - 1);
+    const TF * tuileRight = getTuileAt(x + 1, y);
+    const TF * tuileLeft = getTuileAt(x - 1, y);
 
-   if(tuileLeft == nullptr && tuileRight == nullptr && tuileUp == nullptr && tuileDown == nullptr) {
-       return false;
-   }
+    if(tuileLeft == nullptr && tuileRight == nullptr && tuileUp == nullptr && tuileDown == nullptr) {
+        return false;
+    }
     /* Redefinition de l'operateur '==' */
     bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
     if (flag) {
@@ -81,20 +81,20 @@ ostream & Plateau<TF>::operator<<(ostream &os) {
     return os << endl;
 }
 
- template<typename TF>
- vector<Player<TF> *> Plateau<TF>::getListPlayer() {
-     return this->listPlayer;
- }
+template<typename TF>
+vector<Player<TF> *> Plateau<TF>::getListPlayer() {
+    return this->listPlayer;
+}
 
- template<typename TF>
- AxeVector<AxeVector<TF>> Plateau<TF>::getListTuile() const {
-     return this->listTuile;
- }
+template<typename TF>
+AxeVector<AxeVector<TF>> Plateau<TF>::getListTuile() const {
+    return this->listTuile;
+}
 
- template<typename TF>
- int Plateau<TF>::getCurrentPlayer() {
-     return this->current_player;
- }
+template<typename TF>
+int Plateau<TF>::getCurrentPlayer() {
+    return this->current_player;
+}
 
 
 template<typename TF>

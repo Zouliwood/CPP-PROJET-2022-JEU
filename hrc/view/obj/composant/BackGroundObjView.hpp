@@ -7,8 +7,7 @@
 
 class BackGroundObjView : public ComposantView {
     mutable Sprite background_plateau;
-    mutable Texture texture_background;
-
+    mutable Texture  texture_background;
     int x_back, y_back;
 
 public:

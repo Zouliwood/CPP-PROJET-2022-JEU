@@ -7,6 +7,10 @@
 
 class PlayerTrax final: public Player<TuileTrax>{
 
+    /**
+     * Class PlayerTrax represente un joueur du jeu Trax.
+     * colorTrax est une enumeration qui  represente la couleur
+     */
 private:
     /* attributs */
     colorTrax couleur;

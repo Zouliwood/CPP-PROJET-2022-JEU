@@ -14,6 +14,9 @@ class ControllerTrax final  : public Controller<TuileTrax>{
 
 public:
     ControllerTrax();
+    ~ControllerTrax();
+    ControllerTrax(const ControllerTrax & copy) = delete;
+
     void defausserTuile()override;
     bool placerTuile(TuileTrax *t, int x, int y)override;
     TuileTrax * getTuileJoueurQuiJoue() override;

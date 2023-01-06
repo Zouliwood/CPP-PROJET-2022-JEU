@@ -14,13 +14,15 @@ class ControllerCarcassonne final  : public Controller<TuileCarcassonne>{
 
 public:
     ControllerCarcassonne(int i);
-    void defausserTuile()override;
+    ~ControllerCarcassonne();
+    ControllerCarcassonne(const ControllerCarcassonne &) = delete;
+
+    void defausserTuile() override;
     bool placerTuile(TuileCarcassonne *t, int x, int y)override;
     TuileCarcassonne * getTuileJoueurQuiJoue() override;
     void piocheCarte()override;
     void suivantJoueur() override;
-    void abandonnerParty() override;
-    PlateauCarcassonne *getPlateau() override;
+    PlateauCarcassonne * getPlateau() override;
     void generateRandomTuilePlateau() override;
     PlayerCarcassonne * getJoueurQuiJoue();
 };
