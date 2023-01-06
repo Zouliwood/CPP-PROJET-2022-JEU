@@ -129,7 +129,7 @@ PlateauTraxStateView.o: $(HRC)view/obj/state/view/PlateauTraxStateView.hpp $(SRC
 SettingsStateView.o: $(HRC)view/obj/state/view/SettingsStateView.hpp $(SRC)view/obj/state/view/SettingsStateView.cpp
 		$(CCO)
 
-State.o: $(HRC)view/obj/state/State.hpp $(SRC)view/obj/state/State.cpp
+State.o: $(HRC)view/obj/state/State.hpp
 		$(CCO)
 
 TuileCarcassonneObjView.o: $(HRC)view/obj/tuile/TuileCarcassonneObjView.hpp $(SRC)view/obj/tuile/TuileCarcassonneObjView.cpp
