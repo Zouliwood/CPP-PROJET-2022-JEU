@@ -18,7 +18,7 @@ protected:
     vector<Player<TF> *> listPlayer;
     AxeVector<AxeVector<TF>> listTuile;
     Player<TF> * courant; /* Pas besoin de free est deja supprimé c'est un pointeur */
-    int current_player, nbr_tuile, nbr_player;
+    int current_player, nbr_player, nbr_tuile;
 
 public:
     /* Constructeur & Destructeur */

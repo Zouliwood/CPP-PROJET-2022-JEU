@@ -1,7 +1,7 @@
 #include "../../../hrc/model/plateau/Plateau.hpp"
 
 template<typename TF>
-Plateau<TF>::Plateau(int nbr_player, int nbr_tuile): nbr_player{nbr_player}, current_player{0}, nbr_tuile{nbr_tuile} {}
+Plateau<TF>::Plateau(int nbr_player, int nbr_tuile): current_player{0}, nbr_player{nbr_player},  nbr_tuile{nbr_tuile} {}
 
 template <typename TF>
 Plateau<TF>::~Plateau(){

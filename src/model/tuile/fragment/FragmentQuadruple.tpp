@@ -24,8 +24,9 @@ const V &FragmentQuadruple<V>::getFragmentTop() const {
 
 template<typename V>
 FragmentQuadruple<V>::FragmentQuadruple(V hautFragment, V droitFragment, V basFragment, V gaucheFragment) :
+        hautFragment{hautFragment},
+        droitFragment{droitFragment},
         FragmentTuile<V>(basFragment),
-        hautFragment{hautFragment}, droitFragment{droitFragment},
         gaucheFragment{gaucheFragment}
 {}
 

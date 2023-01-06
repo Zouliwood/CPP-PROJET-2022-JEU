@@ -119,21 +119,21 @@ void SettingsStateView::init() {
 }
 
 SettingsStateView::SettingsStateView(RenderWindow & window, std::stack<State * > * stack_display, StatGameEnum & gameEnum):
-                gameEnum{gameEnum},
-                app{window},
-                stack_display{stack_display},
-                nombre_j_game{2},
-                nombre_t_game{16},
-                pressedGame{true},
-                keyPressed{true},
-                nombre_j{ComposantView::createText("", 20, Color(236, 168, 48))},
-                nombre_tuile{ComposantView::createText("", 20, Color(236, 168, 48))},
-                button_jouer{*new ButtonObj(" Enter")},
-                button_moins_j{*new ButtonObj("    [-]")},
-                button_plus_j{*new ButtonObj("   [+]")},
-                button_moins_t{*new ButtonObj("    [-]")},
-                button_plus_t{*new ButtonObj("    [+]")},
-                background{*new Sprite()}{
+        app{window},
+        stack_display{stack_display},
+        background{*new Sprite()},
+        gameEnum{gameEnum},
+        nombre_j{ComposantView::createText("", 20, Color(236, 168, 48))},
+        nombre_tuile{ComposantView::createText("", 20, Color(236, 168, 48))},
+        button_jouer{*new ButtonObj(" Enter")},
+        button_plus_j{*new ButtonObj("   [+]")},
+        button_moins_j{*new ButtonObj("    [-]")},
+        button_plus_t{*new ButtonObj("    [+]")},
+        button_moins_t{*new ButtonObj("    [-]")},
+        pressedGame{true},
+        keyPressed{true},
+        nombre_j_game{2},
+        nombre_t_game{16}{
     init();
 }
 

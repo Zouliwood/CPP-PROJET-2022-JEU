@@ -55,9 +55,9 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
     if (currTuile){
 
 
-        for (int i = 0; i < listPlayer.size(); ++i) {
+        for (int i = 0; i < (int) listPlayer.size(); ++i) {
             //cout << "_ _ _ _ listPlayer.size() " << ((PlayerCarcassonne *) listPlayer.at(i))->listPion.size() << " " << endl;
-            for (int j = 0; j < ((PlayerCarcassonne *) listPlayer.at(i))->getListPion().size(); ++j) {
+            for (int j = 0; j < (int) ((PlayerCarcassonne *) listPlayer.at(i))->getListPion().size(); ++j) {
                 Pion * p = ((PlayerCarcassonne *) listPlayer.at(i))->getListPion().at(j);
                 if (p->getIsPlaced() && p->getX() == x && p->getY() == y && p->getPos() == posFrag){
                     solution = true;
@@ -66,7 +66,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* top droit */
-        auto currFrag0 =  ((FragmentTriple<environment>) currTuile->getUp()).getFragmentDroit();
+        //auto currFrag0 =  ((FragmentTriple<environment>) currTuile->getUp()).getFragmentDroit();
         if (posFrag==0 && !isDejaVu(x, y, 0)){
             dejaVu.push_back(new FragElement(x,y,0));
             /* centre */
@@ -96,7 +96,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* top centre */
-        auto currFrag1 =  ((FragmentTriple<environment>) currTuile->getUp()).getFragmentCentre();
+        //auto currFrag1 =  ((FragmentTriple<environment>) currTuile->getUp()).getFragmentCentre();
         if (posFrag==1 && !isDejaVu(x, y, 1)){
             dejaVu.push_back(new FragElement(x, y, 1));
             /* centre */
@@ -121,7 +121,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* top gauche */
-        auto currFrag2 =  ((FragmentTriple<environment>) currTuile->getUp()).getFragmentGauche();
+        //auto currFrag2 =  ((FragmentTriple<environment>) currTuile->getUp()).getFragmentGauche();
         if (posFrag==2 && !isDejaVu(x, y, 2)){
             dejaVu.push_back(new FragElement(x, y, 2));
             /* centre */
@@ -151,7 +151,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* gauche gauche */
-        auto currFrag3 = ((FragmentTriple<environment>) currTuile->getLeft()).getFragmentGauche();
+        //auto currFrag3 = ((FragmentTriple<environment>) currTuile->getLeft()).getFragmentGauche();
         if (posFrag==3 && !isDejaVu(x, y, 3)){
             dejaVu.push_back(new FragElement(x, y, 3));
             /* centre */
@@ -181,7 +181,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* center haut */
-        auto currFrag4 = ((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentTop();
+        //auto currFrag4 = ((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentTop();
         if (posFrag==4 && !isDejaVu(x, y, 4)){
             dejaVu.push_back(new FragElement(x, y, 4));
             /* centre */
@@ -218,7 +218,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* droit droit */
-        auto currFrag5 = ((FragmentTriple<environment>) currTuile->getRight()).getFragmentDroit();
+        //auto currFrag5 = ((FragmentTriple<environment>) currTuile->getRight()).getFragmentDroit();
         if (posFrag==5 && !isDejaVu(x, y, 5)){
             dejaVu.push_back(new FragElement(x, y, 5));
             /* centre */
@@ -248,7 +248,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* gauche centre */
-        auto currFrag6 =  ((FragmentTriple<environment>) currTuile->getLeft()).getFragmentCentre();
+        //auto currFrag6 =  ((FragmentTriple<environment>) currTuile->getLeft()).getFragmentCentre();
         if (posFrag==6 && !isDejaVu(x, y, 6)){
             dejaVu.push_back(new FragElement(x, y, 6));
             /* centre */
@@ -273,7 +273,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* center gauche */
-        auto currFrag7 = ((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentLeft();
+        //auto currFrag7 = ((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentLeft();
         if (posFrag==7 && !isDejaVu(x, y, 7)){
             dejaVu.push_back(new FragElement(x, y, 7));
             /* centre */
@@ -310,7 +310,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* center droit */
-        auto currFrag8 = ((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentRight();
+        //auto currFrag8 = ((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentRight();
         if (posFrag==8 && !isDejaVu(x, y, 8)){
             dejaVu.push_back(new FragElement(x,y,8));
             /* centre */
@@ -347,7 +347,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* droit centre */
-        auto currFrag9 =  ((FragmentTriple<environment>) currTuile->getRight()).getFragmentCentre();
+        //auto currFrag9 =  ((FragmentTriple<environment>) currTuile->getRight()).getFragmentCentre();
         if (posFrag==9 && !isDejaVu(x, y, 9)){
             dejaVu.push_back(new FragElement(x,y,9));
             /* centre */
@@ -372,7 +372,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* gauche droit */
-        auto currFrag10 = ((FragmentTriple<environment>) currTuile->getLeft()).getFragmentDroit();
+        //auto currFrag10 = ((FragmentTriple<environment>) currTuile->getLeft()).getFragmentDroit();
         if (posFrag==10 && !isDejaVu(x, y, 10)){
             dejaVu.push_back(new FragElement(x,y,10));
             /* centre */
@@ -402,7 +402,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* center bas */
-        auto currFrag11 = ((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentDown();
+        //auto currFrag11 = ((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentDown();
         if (posFrag==11 && !isDejaVu(x, y, 11)){
             dejaVu.push_back(new FragElement(x,y,11));
             /* centre */
@@ -439,7 +439,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* droit gauche */
-        auto currFrag12 =  ((FragmentTriple<environment>) currTuile->getRight()).getFragmentGauche();
+        //auto currFrag12 =  ((FragmentTriple<environment>) currTuile->getRight()).getFragmentGauche();
         if (posFrag==12 && !isDejaVu(x, y, 12)){
             dejaVu.push_back(new FragElement(x,y,12));
             /* centre */
@@ -469,7 +469,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* bas gauche */
-        auto currFrag13 =  ((FragmentTriple<environment>) currTuile->getDown()).getFragmentGauche();
+        //auto currFrag13 =  ((FragmentTriple<environment>) currTuile->getDown()).getFragmentGauche();
         if (posFrag==13 && !isDejaVu(x, y, 13)){
             dejaVu.push_back(new FragElement(x,y,13));
             /* centre */
@@ -499,7 +499,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* bas centre */
-        auto currFrag14 = ((FragmentTriple<environment>) currTuile->getDown()).getFragmentCentre();
+        //auto currFrag14 = ((FragmentTriple<environment>) currTuile->getDown()).getFragmentCentre();
         if (posFrag==14 && isDejaVu(x,y, 14)){
             dejaVu.push_back(new FragElement(x,y,14));
             /* centre */
@@ -524,7 +524,7 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
         /* bas droit */
-        auto currFrag15 = ((FragmentTriple<environment>) currTuile->getDown()).getFragmentDroit();
+        //auto currFrag15 = ((FragmentTriple<environment>) currTuile->getDown()).getFragmentDroit();
         if (posFrag==15 && isDejaVu(x,y, 15)){
             dejaVu.push_back(new FragElement(x,y,15));
             /* centre */

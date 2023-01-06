@@ -2,24 +2,24 @@
 
 PanelPionObjView::PanelPionObjView(TuileCarcassonneObjView * tuileCarcassonneObjView, ControllerCarcassonne & controllerCarcassonne, TuileCarcassonneObjView * t):
     tuilEnMain{tuileCarcassonneObjView},
-    tuileCarcassonneObjView{tuileCarcassonneObjView},
-    controllerCarcassonne{controllerCarcassonne},
-    tuiledejaplace{t},
-    tuileEnmain{t},
-    panel(*new RectangleShape(Vector2f(600,380))),
     annuler{new ButtonObj("Annuler")},
     valider{new ButtonObj("Valider")},
-    position_value{0},
-    posy{0},
-    posx{0},
+    panel{(*new RectangleShape(Vector2f(600,380)))},
+    text{createText("     Placement d'un partisant \n Utilisez Up ou Down pour choisir", 16, Color::White)},
+    position{createText("0", 20, Color::White)},
     isOpenStatus{false},
     pressedGame{true},
     pressedGameMouse{true},
-    zone{*new Sprite()},
     texture{*new Texture()},
-    text{createText("     Placement d'un partisant \n Utilisez Up ou Down pour choisir", 16, Color::White)},
-    position{createText("0", 20, Color::White)}{
-    texture.loadFromFile("ressources/img/menu/image_bg_menu.png");
+    zone{*new Sprite()},
+    position_value{0},
+    posx{0},
+    posy{0},
+    controllerCarcassonne{controllerCarcassonne},
+    tuiledejaplace{t},
+    tuileCarcassonneObjView{tuileCarcassonneObjView},
+    tuileEnmain{t}{
+            texture.loadFromFile("ressources/img/menu/image_bg_menu.png");
     zone.setTexture(texture);
     zone.setTextureRect(IntRect(0, 850, 150,150));
     zone.setPosition(-500, -500);

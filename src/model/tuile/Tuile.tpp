@@ -27,7 +27,7 @@ const TF &Tuile<TF>::getDown() const {
 }
 
 template<typename TF>
-Tuile<TF>::Tuile(TF & up,  TF & right, TF & down, TF & left): up{up}, down{down}, right{right}, left{left} {}
+Tuile<TF>::Tuile(TF & up,  TF & right, TF & down, TF & left): up{up}, right{right}, left{left}, down{down} {}
 
 /* https://stackoverflow.com/a/8752879/16440965 */
 template class Tuile<FragmentTriple<int>>;

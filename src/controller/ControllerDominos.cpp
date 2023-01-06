@@ -18,6 +18,7 @@ void ControllerDominos::generateRandomTuilePlateau() {
 
 void ControllerDominos::suivantJoueur(){
     if(plateauCourant->canPlay()) {
+        cout << "Place au joueur suivant " << endl;
         plateauCourant->nextPlayer();
         piocheCarte();
     }else{

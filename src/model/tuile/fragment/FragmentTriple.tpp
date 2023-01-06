@@ -47,7 +47,6 @@ FragmentTriple<T> & FragmentTriple<T>::operator=(const FragmentTriple<T> * fragm
 
 template<typename T>
 bool FragmentTriple<T>::compareFragment(const FragmentTriple<T> * fragment){
-    cout << "----------- on entre == compaire fonction --------------" << endl;
     return *this == *fragment;
 }
 

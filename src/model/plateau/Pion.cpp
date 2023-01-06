@@ -16,7 +16,7 @@ Pion::~Pion() {
 
 }
 
-Pion::Pion(roleCarcassonne role, bool isPlaced, int x, int y, int pos_frag): role{role}, isPlaced{isPlaced}, x{x}, y{y}, pos{pos_frag} {
+Pion::Pion(roleCarcassonne role, bool isPlaced, int x, int y, int pos_frag): role{role},  x{x}, y{y}, pos{pos_frag},isPlaced{isPlaced} {
 
 }
 

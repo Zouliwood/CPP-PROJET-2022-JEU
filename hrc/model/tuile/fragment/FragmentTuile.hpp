@@ -21,9 +21,6 @@ public:
     virtual const V & getFragmentCentre()const=0;
 
     /* function to override */
-     //TODO: virtual bool operator==(const FragmentTuile<V> &)=0;
-     //TODO: virtual bool operator!=(const FragmentTuile<V> &)=0;
-     //TODO: virtual FragmentTuile<V> & operator=(const FragmentTuile<V> *) const = 0;
     virtual int getPoint()=0;
 };
 

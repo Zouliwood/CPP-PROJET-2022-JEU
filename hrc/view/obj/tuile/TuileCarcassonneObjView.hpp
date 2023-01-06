@@ -14,7 +14,7 @@ class TuileCarcassonneObjView final : public ComposantView {
     int partisantposx, partisantposy;
 
 public:
-    TuileCarcassonne * tuileCarcassonne; //TODO mettre en private
+    TuileCarcassonne * tuileCarcassonne;
     TuileCarcassonneObjView(TuileCarcassonne * tuileCarcassonne);
     ~TuileCarcassonneObjView();
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;

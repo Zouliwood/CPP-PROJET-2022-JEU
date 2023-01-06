@@ -1,4 +1,4 @@
-CC= g++ -Wall -std=c++11 #factorisation pour la lisibilité
+CC= g++ -std=c++11 #factorisation pour la lisibilité
 CCO= $(CC) -c $< #factorisation
 LIBS= -lsfml-graphics -lsfml-window -lsfml-system #SFML
 OBJECTS= PionObjView.o ControllerTrax.o ControllerDominos.o ControllerCarcassonne.o TuileTraxObjView.o TuileDominosObjView.o TuileCarcassonneObjView.o SettingsStateView.o PlateauTraxStateView.o PlateauDominosStateView.o PlateauCarcassonneStateView.o MenuView.o PlateauObjView.o PanelPionObjView.o ComposantView.o ButtonObj.o BackGroundObjView.o Sac.o TuileTrax.o TuileDominos.o TuileCarcassonne.o  PlateauTrax.o PlateauDominos.o PlateauCarcassonne.o PlayerCarcassonne.o PlayerDominos.o PlayerTrax.o Pion.o main.o #Test.o #Tous nos objets

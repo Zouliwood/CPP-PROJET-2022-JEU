@@ -56,14 +56,12 @@ bool PlateauTrax::placeTuile(TuileTrax *t, int x, int y) {
     /* Redefinition de l'operateur '==' */
     bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
     if (flag) {
-        cout << "Compare Place tuile ok " << endl;
         if(y >= 0){
-            if(y >= this->listTuile.getPositif().size()){
+            if(y >= (int) this->listTuile.getPositif().size()){
                 this->listTuile.addElement(y, new AxeVector<TuileTrax>());
             }
         }else{
-            if((y*-1)-1 >= this->listTuile.getNegatif().size()){
-                cout << "Creation nouvelle tuile" << endl;
+            if((y*-1)-1 >= (int) this->listTuile.getNegatif().size()){
                 this->listTuile.addElement(y, new AxeVector<TuileTrax>());
             }
         }
@@ -265,7 +263,7 @@ bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer u
 
     //left bottom - left to right
     if ((int)listTuile.getNegatif().size()!=0){
-        for (int i = 0; i < listTuile.getNegatif().size(); ++i) {//parcours y
+        for (int i = 0; i < (int) listTuile.getNegatif().size(); ++i) {//parcours y
             int sz = (int)listTuile.getNegatif().at(i)->getNegatif().size();
             if (sz>0){
                 auto * currentTuile = listTuile.getNegatif().at(i)->getNegatif().at(sz-1);
@@ -282,7 +280,7 @@ bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer u
 
     //left top - left to right
     if ((int)listTuile.getPositif().size()!=0){
-        for (int i = 0; i < listTuile.getPositif().size(); ++i) {//parcours y
+        for (int i = 0; i < (int) listTuile.getPositif().size(); ++i) {//parcours y
             //x, y, startX, startY
             int sz = (int)listTuile.getPositif().at(i)->getNegatif().size();
             if (sz>0){
@@ -298,7 +296,7 @@ bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer u
 
     //top right - top to bottom
     if ((int)listTuile.getPositif().size()!=0){
-        for (int i = 0; i < listTuile.getPositif().size(); ++i) {//parcours y
+        for (int i = 0; i < (int) listTuile.getPositif().size(); ++i) {//parcours y
             //x, y, startX, startY
             int sz = (int)listTuile.getPositif().at(i)->getPositif().size();
             if (sz>0){
@@ -315,7 +313,7 @@ bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer u
 
     //top left - top to bottom
     if ((int)listTuile.getPositif().size()!=0){
-        for (int i = 0; i < listTuile.getPositif().size(); ++i) {//parcours y
+        for (int i = 0; i < (int)  listTuile.getPositif().size(); ++i) {//parcours y
             //x, y, startX, startY
             int sz = (int)listTuile.getPositif().at(i)->getNegatif().size();
             if(sz>0){
@@ -333,7 +331,7 @@ bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer u
 
     //left bottom - check loop
     if ((int)listTuile.getNegatif().size()!=0){
-        for (int i = 0; i < listTuile.getNegatif().size(); ++i) {//parcours y
+        for (int i = 0; i < (int)  listTuile.getNegatif().size(); ++i) {//parcours y
             int sz = (int)listTuile.getNegatif().at(i)->getNegatif().size();
             for (int j = 0; j < sz; ++j) {
                 auto * currentTuile = listTuile.getNegatif().at(i)->getNegatif().at(j);
@@ -347,7 +345,7 @@ bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer u
 
     //top right - check loop
     if ((int)listTuile.getPositif().size()!=0){
-        for (int i = 0; i < listTuile.getPositif().size(); ++i) {//parcours y
+        for (int i = 0; i < (int) listTuile.getPositif().size(); ++i) {//parcours y
             //x, y, startX, startY
             int sz = (int)listTuile.getPositif().at(i)->getPositif().size();
             for (int j = 0; j < sz; ++j) {
@@ -363,7 +361,7 @@ bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer u
 
     //top left - check loop
     if ((int)listTuile.getPositif().size()!=0){
-        for (int i = 0; i < listTuile.getPositif().size(); ++i) {//parcours y
+        for (int i = 0; i < (int) listTuile.getPositif().size(); ++i) {//parcours y
             //x, y, startX, startY
             int sz = (int)listTuile.getPositif().at(i)->getNegatif().size();
             for (int j = 0; j < sz; ++j) {
@@ -379,7 +377,7 @@ bool PlateauTrax::checkVictory() {//TODO: au lieu de renvoyer un bool renvoyer u
 
     //bottom right - check loop
     if ((int)listTuile.getNegatif().size()!=0){
-        for (int i = 0; i < listTuile.getNegatif().size(); ++i) {//parcours y
+        for (int i = 0; i < (int) listTuile.getNegatif().size(); ++i) {//parcours y
             //x, y, startX, startY
             int sz = (int)listTuile.getNegatif().at(i)->getPositif().size();
             for (int j = 0; j < sz; ++j) {

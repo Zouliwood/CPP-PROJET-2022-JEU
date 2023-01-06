@@ -36,7 +36,6 @@ public:
     /* functions to override */
     virtual void rotate()=0;
 
-
 };
 
 #include "../../../src/model/tuile/Tuile.tpp"

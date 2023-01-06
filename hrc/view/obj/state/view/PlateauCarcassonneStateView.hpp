@@ -14,29 +14,31 @@
 
 class PlateauCarcassonneStateView final : public State{
 
-    /* Objetc */
+
+/* Objetc */
     RenderWindow & app;
     stack<State *> * stack_display;
     ControllerCarcassonne & controllerCarcassonne;
 
-    /*Graphique view */
+/* Paremetre */
+    float gridSizeF;
+    int grideSizeU;
+    bool pressedGame;
+    bool notKeyPressedGame;
+
+/*Graphique view */
     PlateauObjView parent;
-    ButtonObj bouton;
     ButtonObj bouton_defausser;
-    TuileCarcassonneObjView tuileEnMainObjView;
+    ButtonObj bouton;
     RectangleShape shape; //{Vector2f (1280, 270)};
     Text textMaTuile;
     Text positionText;
+    TuileCarcassonneObjView tuileEnMainObjView;
     PanelPionObjView * panelPion;
 
-    /* Paremetre */
-    float gridSizeF;
-    int grideSizeU;
     Vector2f mousePosWindow;
     Vector2f mousePosView;
     Vector2i mousePosGrid;
-    bool pressedGame;
-    bool notKeyPressedGame;
 
 public:
     PlateauCarcassonneStateView(RenderWindow & window, std::stack<State *> * stack_display, ControllerCarcassonne  & controllerCarcassonne);

@@ -11,13 +11,12 @@ bool ControllerCarcassonne::placerTuile(TuileCarcassonne *t, int x, int y) {
 }
 
 
-void ControllerCarcassonne::generateRandomTuilePlateau() {
-
-}
+void ControllerCarcassonne::generateRandomTuilePlateau() {}
 
 void ControllerCarcassonne::suivantJoueur(){
     if(plateauCourant->canPlay()) {
         plateauCourant->nextPlayer();
+        cout << "Place au joueur suivant " << endl;
         piocheCarte();
     }else{
         cout << "Fin de partie" << endl;

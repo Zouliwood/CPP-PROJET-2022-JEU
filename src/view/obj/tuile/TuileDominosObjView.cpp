@@ -1,6 +1,6 @@
 #include "../../../../hrc/view/obj/tuile/TuileDominosObjView.hpp"
 
-TuileDominosObjView::TuileDominosObjView(TuileDominos * tuile) : tuileDominos{tuile}, shape(RectangleShape(Vector2f(150.0f,150.0f))){
+TuileDominosObjView::TuileDominosObjView(TuileDominos * tuile) : shape(RectangleShape(Vector2f(150.0f,150.0f))), tuileDominos{tuile} {
 
     string up = to_string(tuile->getUp().getFragmentGauche())  + to_string(tuile->getUp().getFragmentCentre()) + to_string(tuile->getUp().getFragmentDroit());
     string down = to_string(tuile->getDown().getFragmentGauche()) + to_string(tuile->getDown().getFragmentCentre()) + to_string(tuile->getDown().getFragmentDroit());
