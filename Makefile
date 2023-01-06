@@ -90,7 +90,7 @@ TuileDominos.o: $(HRC)model/tuile/TuileDominos.hpp $(SRC)model/tuile/TuileDomino
 TuileTrax.o: $(HRC)model/tuile/TuileTrax.hpp $(SRC)model/tuile/TuileTrax.cpp
 		$(CCO)
 
-AxeVector.o: $(HRC)model/vector/AxeVector.hpp $(SRC)model/vector/AxeVector.cpp
+AxeVector.o: $(HRC)model/vector/AxeVector.hpp $(SRC)model/vector/AxeVector.tpp
 		$(CCO)
 
 Sac.o: $(HRC)model/Sac.hpp $(SRC)model/Sac.cpp
