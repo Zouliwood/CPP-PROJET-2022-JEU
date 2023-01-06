@@ -21,7 +21,6 @@ void AxeVector<T>::addElement(int pos, T *element) {
        int posx = (pos*-1)-1;//+du 0
        if(posx >= negatif.size()) {
            negatif.resize(posx+1);//ici +1 de avoir une place en plus
-           cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << negatif.size() << endl;
        }
        negatif.at(posx) = element;
    }
