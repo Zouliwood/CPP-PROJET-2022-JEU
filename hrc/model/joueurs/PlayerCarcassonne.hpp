@@ -18,14 +18,14 @@ public:
     vector<Pion *> listPion;
 
     PlayerCarcassonne(string & pseudo);
+    PlayerCarcassonne(const PlayerCarcassonne & player) = delete ;
     ~PlayerCarcassonne();
 
     /* other function */
-   // vector<Pion> getListPions();
-    int getR();
-    int getG();
-    int getB();
-
+    int getR() const;
+    int getG() const;
+    int getB() const;
+    vector<Pion *> getListPion() const;
     Pion * getPionLibre();
 
 };

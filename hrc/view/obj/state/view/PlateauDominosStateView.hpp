@@ -1,5 +1,5 @@
-#ifndef CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_HPP
-#define CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_HPP
+#ifndef CPP_PROJET_2022_JEU_PLATEAUDOMINOSSTATEVIEW_HPP
+#define CPP_PROJET_2022_JEU_PLATEAUDOMINOSSTATEVIEW_HPP
 
 
 #include "../State.hpp"
@@ -10,7 +10,7 @@
 #include "../../plateau/PlateauObjView.hpp"
 #include "../../../../controller/Controller.hpp"
 
-class PlateauDominoStateView final : public State{
+class PlateauDominosStateView final : public State{
 
     /* Object */
     RenderWindow & app;
@@ -40,8 +40,8 @@ class PlateauDominoStateView final : public State{
     bool pressedGame, notKeyPressedGame;
 
 public:
-    PlateauDominoStateView(RenderWindow & window, std::stack<State *> * stack_display,  Controller<TuileDominos> & controller);
-    virtual ~PlateauDominoStateView();
+    PlateauDominosStateView(RenderWindow & window, std::stack<State *> * stack_display, Controller<TuileDominos> & controller);
+    virtual ~PlateauDominosStateView();
 
     void init() override;
     void processInput(Event & event) override;
@@ -51,4 +51,4 @@ public:
 
 
 
-#endif //CPP_PROJET_2022_JEU_PLATEAUDOMINOSTATEVIEW_HPP
+#endif //CPP_PROJET_2022_JEU_PLATEAUDOMINOSSTATEVIEW_HPP

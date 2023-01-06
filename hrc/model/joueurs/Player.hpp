@@ -18,7 +18,7 @@ protected:
     /* attributs */
     const string & pseudo;
     mutable int points;
-    TF * tuilecourante ;
+    TF * tuilecourante;
 
 public:
     int getPoints();

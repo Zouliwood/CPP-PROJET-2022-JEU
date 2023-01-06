@@ -14,6 +14,7 @@ private:
 public:
     /* Constructeur & Destructeur */
     PlayerTrax(string & pseudo);
+    PlayerTrax(const PlayerTrax &) = delete;
     ~PlayerTrax() override;
 
     /* function */

@@ -15,6 +15,7 @@ private:
 public:
     /* Constructeur & Destructeur */
     PlateauDominos(int nombre_joueur, int nombre_tuile);
+    PlateauDominos(const PlateauDominos &)=delete;
     ~PlateauDominos();
 
     bool placeFirstTuile();

@@ -14,6 +14,7 @@ public:
 
     /* Constructeur & Destructeur */
     PlateauTrax();
+    PlateauTrax(const PlateauTrax &)=delete;
     ~PlateauTrax();
     /* define function */
     bool placeFirstTuile();//--OK--

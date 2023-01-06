@@ -1,7 +1,7 @@
-#include "../../../../../hrc/view/obj/state/view/PlateauDominoStateView.hpp"
+#include "../../../../../hrc/view/obj/state/view/PlateauDominosStateView.hpp"
 
 
-PlateauDominoStateView::PlateauDominoStateView(RenderWindow &window, stack<State *> * stack_display, Controller<TuileDominos> & controller) :
+PlateauDominosStateView::PlateauDominosStateView(RenderWindow &window, stack<State *> * stack_display, Controller<TuileDominos> & controller) :
     app{window},
     stack_display{stack_display},
     controller{controller},
@@ -20,7 +20,7 @@ PlateauDominoStateView::PlateauDominoStateView(RenderWindow &window, stack<State
     init();
 }
 
-PlateauDominoStateView::~PlateauDominoStateView() {
+PlateauDominosStateView::~PlateauDominosStateView() {
     delete &parent;
     delete &tuileEnMain;
     delete &bouton;
@@ -30,7 +30,7 @@ PlateauDominoStateView::~PlateauDominoStateView() {
     delete &positionText;
 }
 
-void PlateauDominoStateView::init() {
+void PlateauDominosStateView::init() {
     controller.getPlateau()->placeFirstTuile();
     parent.move(550, 200);
     bouton_defausser.setPosition(30, 600);
@@ -44,7 +44,7 @@ void PlateauDominoStateView::init() {
     parent.addDrawable(0,0, firstTuileDomino);
 }
 
-void PlateauDominoStateView::processInput(Event &event) {
+void PlateauDominosStateView::processInput(Event &event) {
     parent.updateEvent(event, Mouse::getPosition(app));
 
     if(event.type == sf::Event::KeyReleased)notKeyPressedGame = true;
@@ -100,7 +100,7 @@ void PlateauDominoStateView::processInput(Event &event) {
 
 }
 
-void PlateauDominoStateView::update() {
+void PlateauDominosStateView::update() {
     bouton_defausser.update(Vector2f(Mouse::getPosition(app)));
     bouton.update(Vector2f(Mouse::getPosition(app)));
 
@@ -125,7 +125,7 @@ void PlateauDominoStateView::update() {
 
 }
 
-void PlateauDominoStateView::drawView() {
+void PlateauDominosStateView::drawView() {
     app.clear(sf::Color::Magenta);
     app.draw(parent);
     app.draw(shape);

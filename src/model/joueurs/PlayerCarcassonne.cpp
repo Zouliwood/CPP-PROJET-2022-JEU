@@ -27,12 +27,18 @@ Pion * PlayerCarcassonne::getPionLibre() {
     return nullptr;
 }
 
-int PlayerCarcassonne::getR(){
+int PlayerCarcassonne::getR() const{
     return r;
 }
-int PlayerCarcassonne::getG(){
+
+int PlayerCarcassonne::getG() const{
     return g;
 }
-int PlayerCarcassonne::getB(){
+
+int PlayerCarcassonne::getB() const{
     return b;
+}
+
+vector<Pion *> PlayerCarcassonne::getListPion() const {
+    return listPion;
 }

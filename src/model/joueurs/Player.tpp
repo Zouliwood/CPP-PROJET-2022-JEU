@@ -26,5 +26,3 @@ int Player<TF>::getPoints() {
 
 template<typename TF>
 Player<TF>::Player(string & pseudo): pseudo{pseudo} , tuilecourante{nullptr} {}
-
-

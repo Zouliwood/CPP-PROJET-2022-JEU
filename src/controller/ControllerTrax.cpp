@@ -26,10 +26,6 @@ void ControllerTrax::defausserTuile(){
     suivantJoueur();
 }
 
-void ControllerTrax::abandonnerParty(){
-    //suivantJoueur();
-}
-
 TuileTrax * ControllerTrax::getTuileJoueurQuiJoue(){
     return plateauCourant->getPlayerCourant()->getTuile();
 }

@@ -72,8 +72,8 @@ void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
 
         for (int i = 0; i < listPlayer.size(); ++i) {
             //cout << "_ _ _ _ listPlayer.size() " << ((PlayerCarcassonne *) listPlayer.at(i))->listPion.size() << " " << endl;
-            for (int j = 0; j < ((PlayerCarcassonne *) listPlayer.at(i))->listPion.size(); ++j) {
-                Pion * p = ((PlayerCarcassonne *) listPlayer.at(i))->listPion.at(j);
+            for (int j = 0; j < ((PlayerCarcassonne *) listPlayer.at(i))->getListPion().size(); ++j) {
+                Pion * p = ((PlayerCarcassonne *) listPlayer.at(i))->getListPion().at(j);
                 if(p->getIsPlaced()){
                     cout << endl;
                     cout << p->getX() << " " << x << endl;

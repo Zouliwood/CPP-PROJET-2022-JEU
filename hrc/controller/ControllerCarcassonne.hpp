@@ -6,6 +6,10 @@
 #include "Controller.hpp"
 #include "../model/plateau/PlateauCarcassonne.hpp"
 
+/**
+ * Class ControllerCarcassonne.
+ * Controler du jeu carcassonne
+ */
 class ControllerCarcassonne final  : public Controller<TuileCarcassonne>{
 
 public:

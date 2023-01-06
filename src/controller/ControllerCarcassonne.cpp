@@ -31,10 +31,6 @@ void ControllerCarcassonne::defausserTuile(){
     suivantJoueur();
 }
 
-void ControllerCarcassonne::abandonnerParty(){
-    //suivantJoueur();
-}
-
 TuileCarcassonne * ControllerCarcassonne::getTuileJoueurQuiJoue(){
     return plateauCourant->getPlayerCourant()->getTuile();
 }

@@ -6,6 +6,10 @@
 #include "../model/plateau/PlateauDominos.hpp"
 #include "../model/plateau/PlateauTrax.hpp"
 
+/**
+ * Class ControllerTrax.
+ * Contolleur du jeu trax
+ */
 class ControllerTrax final  : public Controller<TuileTrax>{
 
 public:
@@ -15,7 +19,6 @@ public:
     TuileTrax * getTuileJoueurQuiJoue() override;
     void piocheCarte()override;
     void suivantJoueur() override;
-    void abandonnerParty() override;
     PlateauTrax *getPlateau() override;
     void generateRandomTuilePlateau() override;
 };

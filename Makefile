@@ -1,7 +1,7 @@
 CC= g++ -Wall -std=c++11 #factorisation pour la lisibilité
 CCO= $(CC) -c $< #factorisation
 LIBS= -lsfml-graphics -lsfml-window -lsfml-system #SFML
-OBJECTS= TuileTraxObjView.o TuileDominosObjView.o TuileCarcassonneObjView.o State.o SettingsStateView.o PlateauTraxStateView.o PlateauDominosStateView.o PlateauCarcassonneStateView.o MenuView.o PanelObjView.o PanelPionObjView.o ComposantView.o ButtonObj.o BackGroundObjView.o Sac.o AxeVector.o TuileTrax.o TuileDominos.o TuileCarcassonne.o Tuile.o FragmentTuile.o FragmentTriple.o FragmentSolo.o FragmentQuadruple.o PlateauTrax.o PlateauDominos.o PlateauCarcassonne.o Controller.o colorCarcassonne.o colorTrax.o directionTuile.o environment.o roleCarcassonne.o Player.o PlayerCarcassonne.o PlayerDominos.o PlayerTrax.o Pion.o Plateau.o main.o #Test.o #Tous nos objets
+OBJECTS= PionObjView.o ControllerTrax.o ControllerDominos.o ControllerCarcassonne.o TuileTraxObjView.o TuileDominosObjView.o TuileCarcassonneObjView.o State.o SettingsStateView.o PlateauTraxStateView.o PlateauDominosStateView.o PlateauCarcassonneStateView.o MenuView.o PlateauObjView.o PanelPionObjView.o ComposantView.o ButtonObj.o BackGroundObjView.o Sac.o AxeVector.o TuileTrax.o TuileDominos.o TuileCarcassonne.o Tuile.o FragmentTuile.o FragmentTriple.o FragmentSolo.o FragmentQuadruple.o PlateauTrax.o PlateauDominos.o PlateauCarcassonne.o Controller.o colorTrax.o directionTuile.o environment.o roleCarcassonne.o Player.o PlayerCarcassonne.o PlayerDominos.o PlayerTrax.o Pion.o Plateau.o main.o #Test.o #Tous nos objets
 
 HRC=hrc/
 SRC=src/
@@ -15,10 +15,17 @@ Main.o:	main.cpp
 
 Controller.o: $(SRC)/controller/Controller.cpp $(HRC)/controller/Controller.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
 		$(CCO)
-#ici il n'est plus utilse de précisé le nom puisque "$<" s'en occupe
 
-colorCarcassonne.o: $(ENUM)colorCarcassonne.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
+ControllerCarcassonne.o: $(SRC)/controller/ControllerCarcassonne.cpp $(HRC)/controller/ControllerCarcassonne.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
 		$(CCO)
+
+ControllerDominos.o: $(SRC)/controller/ControllerDominos.cpp $(HRC)/controller/ControllerDominos.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
+		$(CCO)
+
+ControllerTrax.o: $(SRC)/controller/ControllerTrax.cpp $(HRC)/controller/ControllerTrax.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
+		$(CCO)
+
+#ici il n'est plus utilse de précisé le nom puisque "$<" s'en occupe
 
 colorTrax.o: $(ENUM)colorTrax.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
 		$(CCO)
@@ -101,22 +108,25 @@ ComposantView.o: $(HRC)view/obj/composant/ComposantView.hpp $(SRC)view/obj/compo
 PanelPionObjView.o: $(HRC)view/obj/plateau/PanelPionObjView.hpp $(SRC)view/obj/plateau/PanelPionObjView.cpp
 		$(CCO)
 
-PanelObjView.o: $(HRC)view/obj/plateau/PanelObjView.hpp $(SRC)view/obj/plateau/PanelObjView.cpp
+PionObjView.o: $(HRC)view/obj/plateau/PionObjView.hpp $(SRC)view/obj/plateau/PionObjView.cpp
 		$(CCO)
 
-MenuView.o: $(HRC)view/obj/state/view/MenuView.hpp $(SRC)view/obj/plateau/PanelObjView.cpp
+PlateauObjView.o: $(HRC)view/obj/plateau/PlateauObjView.hpp $(SRC)view/obj/plateau/PlateauObjView.cpp
 		$(CCO)
 
-PlateauCarcassonneStateView.o: $(HRC)view/obj/state/view/PlateauCarcassonneStateView.hpp $(SRC)view/obj/plateau/PlateauCarcassonneStateView.cpp
+MenuView.o: $(HRC)view/obj/state/view/MenuView.hpp $(SRC)view/obj/state/view/MenuView.cpp
 		$(CCO)
 
-PlateauDominosStateView.o: $(HRC)view/obj/state/view/PlateauDominosStateView.hpp $(SRC)view/obj/plateau/PlateauDominosStateView.cpp
+PlateauCarcassonneStateView.o: $(HRC)view/obj/state/view/PlateauCarcassonneStateView.hpp $(SRC)view/obj/state/view/PlateauCarcassonneStateView.cpp
 		$(CCO)
 
-PlateauTraxStateView.o: $(HRC)view/obj/state/view/PlateauTraxStateView.hpp $(SRC)view/obj/plateau/PlateauTraxStateView.cpp
+PlateauDominosStateView.o: $(HRC)view/obj/state/view/PlateauDominosStateView.hpp $(SRC)view/obj/state/view/PlateauDominosStateView.cpp
 		$(CCO)
 
-SettingsStateView.o: $(HRC)view/obj/state/view/SettingsStateView.hpp $(SRC)view/obj/plateau/SettingsStateView.cpp
+PlateauTraxStateView.o: $(HRC)view/obj/state/view/PlateauTraxStateView.hpp $(SRC)view/obj/state/view/PlateauTraxStateView.cpp
+		$(CCO)
+
+SettingsStateView.o: $(HRC)view/obj/state/view/SettingsStateView.hpp $(SRC)view/obj/state/view/SettingsStateView.cpp
 		$(CCO)
 
 State.o: $(HRC)view/obj/state/State.hpp $(SRC)view/obj/state/State.cpp

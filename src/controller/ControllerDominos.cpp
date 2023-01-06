@@ -32,10 +32,6 @@ void ControllerDominos::defausserTuile(){
     suivantJoueur();
 }
 
-void ControllerDominos::abandonnerParty(){
-    //suivantJoueur();
-}
-
 TuileDominos * ControllerDominos::getTuileJoueurQuiJoue(){
     return plateauCourant->getPlayerCourant()->getTuile();
 }

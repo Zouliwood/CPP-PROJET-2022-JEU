@@ -14,6 +14,7 @@ private:
 public:
 
     Pion(roleCarcassonne role=roleCarcassonne::PARTISAN, bool isPlaced=false, int x=0, int y=0, int pos_frag=0);
+    Pion(const Pion &) = delete;
     ~Pion();
 
     int getX() const;

@@ -24,6 +24,7 @@ protected:
 public:
     /* Constructeur & Destructeur */
     Plateau(int current_player, int nbr_tuile);
+    Plateau(const Plateau &) = delete;
     virtual ~Plateau();
 
     /* to override function */

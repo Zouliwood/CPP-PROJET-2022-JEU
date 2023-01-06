@@ -19,7 +19,7 @@ public:
     virtual void suivantJoueur() = 0;
     virtual void abandonnerParty() = 0;
     virtual Plateau<T> *getPlateau() = 0;
-   virtual void generateRandomTuilePlateau() = 0;
+    virtual void generateRandomTuilePlateau() = 0;
 };
 
 #endif

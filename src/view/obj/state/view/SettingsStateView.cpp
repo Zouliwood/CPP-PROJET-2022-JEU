@@ -1,5 +1,5 @@
 #include "../../../../../hrc/view/obj/state/view/SettingsStateView.hpp"
-#include "../../../../../hrc/view/obj/state/view/PlateauDominoStateView.hpp"
+#include "../../../../../hrc/view/obj/state/view/PlateauDominosStateView.hpp"
 #include "../../../../../hrc/view/obj/state/view/PlateauCarcassonneStateView.hpp"
 #include "../../../../../hrc/controller/ControllerDominos.hpp"
 
@@ -26,7 +26,7 @@ void SettingsStateView::processInput(sf::Event & event) {
                 if(gameEnum == CARCASSONNE){
                     stack_display->push(new PlateauCarcassonneStateView(app, stack_display, *new ControllerCarcassonne(nombre_j_game)));
                 }else{
-                    stack_display->push(new PlateauDominoStateView(app, stack_display, *new ControllerDominos(nombre_j_game, nombre_t_game)));
+                    stack_display->push(new PlateauDominosStateView(app, stack_display, *new ControllerDominos(nombre_j_game, nombre_t_game)));
                 }
             }else if(button_moins_t.isPressed()){
                 if(nombre_t_game > 10)nombre_t_game--;

@@ -34,6 +34,7 @@ public:
     Sac sac;
 
     PlateauCarcassonne(int nombre_joueur);
+    PlateauCarcassonne(const PlateauCarcassonne &) = delete;
     ~PlateauCarcassonne();
 
     /* define function */

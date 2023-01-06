@@ -6,6 +6,10 @@
 #include "Controller.hpp"
 #include "../model/plateau/PlateauDominos.hpp"
 
+/**
+ * Class ControllerDominos.
+ * Contolleur du jeu dominos
+ */
 class ControllerDominos final  : public Controller<TuileDominos>{
 
 public:
@@ -15,7 +19,6 @@ public:
     TuileDominos * getTuileJoueurQuiJoue() override;
     void piocheCarte()override;
     void suivantJoueur() override;
-    void abandonnerParty() override;
     PlateauDominos *getPlateau() override;
     void generateRandomTuilePlateau() override;
 
