@@ -40,106 +40,106 @@ environment.o: $(ENUM)environment.hpp #ici on a un noeud avec ses deux fils coup
 roleCarcassonne.o: $(ENUM)roleCarcassonne.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
 		$(CCO)
 
-Player.o: $(HRC)model/joueurs/Player.hpp $(SRC)model/joueurs/Player.tpp
+Player.o: $(SRC)model/joueurs/Player.tpp $(HRC)model/joueurs/Player.hpp
 		$(CCO)
 
-PlayerCarcassonne.o: $(HRC)model/joueurs/PlayerCarcassonne.hpp $(SRC)model/joueurs/PlayerCarcassonne.cpp
+PlayerCarcassonne.o: $(SRC)model/joueurs/PlayerCarcassonne.cpp $(HRC)model/joueurs/PlayerCarcassonne.hpp
 		$(CCO)
 
-PlayerDominos.o: $(HRC)model/joueurs/PlayerDominos.hpp $(SRC)model/joueurs/PlayerDominos.cpp
+PlayerDominos.o: $(SRC)model/joueurs/PlayerDominos.cpp $(HRC)model/joueurs/PlayerDominos.hpp
 		$(CCO)
 
-PlayerTrax.o: $(HRC)model/joueurs/PlayerTrax.hpp $(SRC)model/joueurs/PlayerTrax.cpp
+PlayerTrax.o: $(SRC)model/joueurs/PlayerTrax.cpp $(HRC)model/joueurs/PlayerTrax.hpp
 		$(CCO)
 
-Pion.o: $(HRC)model/plateau/Pion.hpp $(SRC)model/plateau/Pion.cpp
+Pion.o: $(SRC)model/plateau/Pion.cpp $(HRC)model/plateau/Pion.hpp
 		$(CCO)
 
-Plateau.o: $(HRC)model/plateau/Plateau.hpp $(SRC)model/plateau/Plateau.tpp
+Plateau.o: $(SRC)model/plateau/Plateau.tpp $(HRC)model/plateau/Plateau.hpp
 		$(CCO)
 
-PlateauCarcassonne.o: $(HRC)model/plateau/PlateauCarcassonne.hpp $(SRC)model/plateau/PlateauCarcassonne.cpp
+PlateauCarcassonne.o: $(SRC)model/plateau/PlateauCarcassonne.cpp $(HRC)model/plateau/PlateauCarcassonne.hpp
 		$(CCO)
 
-PlateauDominos.o: $(HRC)model/plateau/PlateauDominos.hpp $(SRC)model/plateau/PlateauDominos.cpp
+PlateauDominos.o: $(SRC)model/plateau/PlateauDominos.cpp $(HRC)model/plateau/PlateauDominos.hpp
 		$(CCO)
 
-PlateauTrax.o: $(HRC)model/plateau/PlateauTrax.hpp $(SRC)model/plateau/PlateauTrax.cpp
+PlateauTrax.o: $(SRC)model/plateau/PlateauTrax.cpp $(HRC)model/plateau/PlateauTrax.hpp
 		$(CCO)
 
-FragmentQuadruple.o: $(HRC)model/tuile/fragment/FragmentQuadruple.hpp $(SRC)model/tuile/fragment/FragmentQuadruple.tpp
+FragmentQuadruple.o: $(SRC)model/tuile/fragment/FragmentQuadruple.tpp $(HRC)model/tuile/fragment/FragmentQuadruple.hpp
 		$(CCO)
 
-FragmentSolo.o: $(HRC)model/tuile/fragment/FragmentSolo.hpp $(SRC)model/tuile/fragment/FragmentSolo.tpp
+FragmentSolo.o: $(SRC)model/tuile/fragment/FragmentSolo.tpp $(HRC)model/tuile/fragment/FragmentSolo.hpp
 		$(CCO)
 
-FragmentTriple.o: $(HRC)model/tuile/fragment/FragmentTriple.hpp $(SRC)model/tuile/fragment/FragmentTriple.tpp
+FragmentTriple.o: $(SRC)model/tuile/fragment/FragmentTriple.tpp $(HRC)model/tuile/fragment/FragmentTriple.hpp
 		$(CCO)
 
-FragmentTuile.o: $(HRC)model/tuile/fragment/FragmentTuile.hpp $(SRC)model/tuile/fragment/FragmentTuile.tpp
+FragmentTuile.o: $(SRC)model/tuile/fragment/FragmentTuile.tpp $(HRC)model/tuile/fragment/FragmentTuile.hpp
 		$(CCO)
 
-Tuile.o: $(HRC)model/tuile/Tuile.hpp $(SRC)model/tuile/Tuile.tpp
+Tuile.o: $(SRC)model/tuile/Tuile.tpp $(HRC)model/tuile/Tuile.hpp
 		$(CCO)
 
-TuileCarcassonne.o: $(HRC)model/tuile/TuileCarcassonne.hpp $(SRC)model/tuile/TuileCarcassonne.cpp
+TuileCarcassonne.o: $(SRC)model/tuile/TuileCarcassonne.cpp $(HRC)model/tuile/TuileCarcassonne.hpp
 		$(CCO)
 
-TuileDominos.o: $(HRC)model/tuile/TuileDominos.hpp $(SRC)model/tuile/TuileDominos.cpp
+TuileDominos.o: $(SRC)model/tuile/TuileDominos.cpp $(HRC)model/tuile/TuileDominos.hpp
 		$(CCO)
 
-TuileTrax.o: $(HRC)model/tuile/TuileTrax.hpp $(SRC)model/tuile/TuileTrax.cpp
+TuileTrax.o: $(SRC)model/tuile/TuileTrax.cpp $(HRC)model/tuile/TuileTrax.hpp
 		$(CCO)
 
-AxeVector.o: $(HRC)model/vector/AxeVector.hpp $(SRC)model/vector/AxeVector.tpp
+AxeVector.o: $(SRC)model/vector/AxeVector.tpp $(HRC)model/vector/AxeVector.hpp
 		$(CCO)
 
 Sac.o: $(SRC)model/Sac.cpp $(HRC)model/Sac.hpp
 		$(CCO)
 
-BackGroundObjView.o: $(HRC)view/obj/composant/BackGroundObjView.hpp $(SRC)view/obj/composant/BackGroundObjView.cpp
+BackGroundObjView.o: $(SRC)view/obj/composant/BackGroundObjView.cpp $(HRC)view/obj/composant/BackGroundObjView.hpp
 		$(CCO)
 
-ButtonObj.o: $(HRC)view/obj/composant/ButtonObj.hpp $(SRC)view/obj/composant/ButtonObj.cpp
+ButtonObj.o: $(SRC)view/obj/composant/ButtonObj.cpp $(HRC)view/obj/composant/ButtonObj.hpp
 		$(CCO)
 
-ComposantView.o: $(HRC)view/obj/composant/ComposantView.hpp $(SRC)view/obj/composant/ComposantView.cpp
+ComposantView.o: $(SRC)view/obj/composant/ComposantView.cpp $(HRC)view/obj/composant/ComposantView.hpp
 		$(CCO)
 
-PanelPionObjView.o: $(HRC)view/obj/plateau/PanelPionObjView.hpp $(SRC)view/obj/plateau/PanelPionObjView.cpp
+PanelPionObjView.o: $(SRC)view/obj/plateau/PanelPionObjView.cpp $(HRC)view/obj/plateau/PanelPionObjView.hpp
 		$(CCO)
 
-PionObjView.o: $(HRC)view/obj/plateau/PionObjView.hpp $(SRC)view/obj/plateau/PionObjView.cpp
+PionObjView.o: $(SRC)view/obj/plateau/PionObjView.cpp $(HRC)view/obj/plateau/PionObjView.hpp
 		$(CCO)
 
-PlateauObjView.o: $(HRC)view/obj/plateau/PlateauObjView.hpp $(SRC)view/obj/plateau/PlateauObjView.cpp
+PlateauObjView.o: $(SRC)view/obj/plateau/PlateauObjView.cpp $(HRC)view/obj/plateau/PlateauObjView.hpp
 		$(CCO)
 
-MenuView.o: $(HRC)view/obj/state/view/MenuView.hpp $(SRC)view/obj/state/view/MenuView.cpp
+MenuView.o: $(SRC)view/obj/state/view/MenuView.cpp $(HRC)view/obj/state/view/MenuView.hpp
 		$(CCO)
 
-PlateauCarcassonneStateView.o: $(HRC)view/obj/state/view/PlateauCarcassonneStateView.hpp $(SRC)view/obj/state/view/PlateauCarcassonneStateView.cpp
+PlateauCarcassonneStateView.o: $(SRC)view/obj/state/view/PlateauCarcassonneStateView.cpp $(HRC)view/obj/state/view/PlateauCarcassonneStateView.hpp
 		$(CCO)
 
-PlateauDominosStateView.o: $(HRC)view/obj/state/view/PlateauDominosStateView.hpp $(SRC)view/obj/state/view/PlateauDominosStateView.cpp
+PlateauDominosStateView.o: $(SRC)view/obj/state/view/PlateauDominosStateView.cpp $(HRC)view/obj/state/view/PlateauDominosStateView.hpp
 		$(CCO)
 
-PlateauTraxStateView.o: $(HRC)view/obj/state/view/PlateauTraxStateView.hpp $(SRC)view/obj/state/view/PlateauTraxStateView.cpp
+PlateauTraxStateView.o: $(SRC)view/obj/state/view/PlateauTraxStateView.cpp $(HRC)view/obj/state/view/PlateauTraxStateView.hpp
 		$(CCO)
 
-SettingsStateView.o: $(HRC)view/obj/state/view/SettingsStateView.hpp $(SRC)view/obj/state/view/SettingsStateView.cpp
+SettingsStateView.o: $(SRC)view/obj/state/view/SettingsStateView.cpp $(HRC)view/obj/state/view/SettingsStateView.hpp
 		$(CCO)
 
 State.o: $(HRC)view/obj/state/State.hpp
 		$(CCO)
 
-TuileCarcassonneObjView.o: $(HRC)view/obj/tuile/TuileCarcassonneObjView.hpp $(SRC)view/obj/tuile/TuileCarcassonneObjView.cpp
+TuileCarcassonneObjView.o: $(SRC)view/obj/tuile/TuileCarcassonneObjView.cpp $(HRC)view/obj/tuile/TuileCarcassonneObjView.hpp
 		$(CCO)
 
-TuileDominosObjView.o: $(HRC)view/obj/tuile/TuileDominosObjView.hpp $(SRC)view/obj/tuile/TuileDominosObjView.cpp
+TuileDominosObjView.o: $(SRC)view/obj/tuile/TuileDominosObjView.cpp $(HRC)view/obj/tuile/TuileDominosObjView.hpp
 		$(CCO)
 
-TuileTraxObjView.o: $(HRC)view/obj/tuile/TuileTraxObjView.hpp $(SRC)view/obj/tuile/TuileTraxObjView.cpp
+TuileTraxObjView.o: $(SRC)view/obj/tuile/TuileTraxObjView.cpp $(HRC)view/obj/tuile/TuileTraxObjView.hpp
 		$(CCO)
 
 clean:
