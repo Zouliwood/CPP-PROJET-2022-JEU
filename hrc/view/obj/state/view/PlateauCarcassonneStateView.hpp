@@ -46,7 +46,6 @@ public:
     void processInput(Event & event) override;
     void update() override;
     void drawView() override;
-
 };
 
 #endif

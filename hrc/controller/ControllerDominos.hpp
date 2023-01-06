@@ -10,8 +10,6 @@ class ControllerDominos final  : public Controller<TuileDominos>{
 
 public:
     ControllerDominos(int i, int i1);
-
-    void init(int nombre_joueur, int nombre_tuile) override;
     void defausserTuile()override;
     bool placerTuile(TuileDominos *t, int x, int y)override;
     TuileDominos * getTuileJoueurQuiJoue() override;
@@ -20,6 +18,7 @@ public:
     void abandonnerParty() override;
     PlateauDominos *getPlateau() override;
     void generateRandomTuilePlateau() override;
+
 };
 
 #endif

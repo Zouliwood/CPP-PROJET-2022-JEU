@@ -27,7 +27,7 @@ class PlateauCarcassonne final: public Plateau<TuileCarcassonne> {
 
     vector<FragElement *> dejaVu;
     TuileCarcassonne * tuile_initial;
-
+    bool solution = false;
 
 public:
     /* Constructeur & Destructeur */
@@ -43,11 +43,9 @@ public:
     int calculPoint(const TuileCarcassonne * t, int x, int y) override;
     bool compareTuile(const TuileCarcassonne * courant, const TuileCarcassonne * tuileUp, const TuileCarcassonne * tuileDown, const TuileCarcassonne  * tuileRight, const TuileCarcassonne  * tuileLeft) override;
     bool checkVictory() override;
-
     bool pionPresent(int x, int y, int posFrag, environment env);
     void pionPresentAux(int x, int y, int posFrag, environment env);
     bool isDejaVu(int x, int y, int pos);
-
     TuileCarcassonne * getFirstTuilePose() override;
 };
 

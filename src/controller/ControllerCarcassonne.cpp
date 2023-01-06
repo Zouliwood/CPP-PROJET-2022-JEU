@@ -1,11 +1,6 @@
 
 #include "../../hrc/controller/ControllerCarcassonne.hpp"
 
-void ControllerCarcassonne::init(int nombre_joueur) {
-    plateauCourant = new PlateauCarcassonne(nombre_joueur);
-    piocheCarte();
-}
-
 void ControllerCarcassonne::piocheCarte() {
     (this->getPlateau()->getPlayerCourant())->setTuile(((PlateauCarcassonne *) plateauCourant)->sac.getRandomTuile());
     plateauCourant->piocheCarte();
@@ -48,10 +43,12 @@ PlateauCarcassonne * ControllerCarcassonne::getPlateau() {
     return (PlateauCarcassonne *) plateauCourant;
 }
 
-void ControllerCarcassonne::init(int nombre_joueur, int) {
-
+ControllerCarcassonne::ControllerCarcassonne(int nombre_joueur) {
+    plateauCourant = new PlateauCarcassonne(nombre_joueur);
+    piocheCarte();
 }
 
-ControllerCarcassonne::ControllerCarcassonne(int nombre_joueur) {
-    init(nombre_joueur);
+
+PlayerCarcassonne * ControllerCarcassonne::getJoueurQuiJoue() {
+    return (PlayerCarcassonne* )plateauCourant->getPlayerCourant();
 }

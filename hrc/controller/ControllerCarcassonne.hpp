@@ -10,9 +10,6 @@ class ControllerCarcassonne final  : public Controller<TuileCarcassonne>{
 
 public:
     ControllerCarcassonne(int i);
-
-    void init(int nombre_joueur);
-    void init(int nombre_joueur, int );
     void defausserTuile()override;
     bool placerTuile(TuileCarcassonne *t, int x, int y)override;
     TuileCarcassonne * getTuileJoueurQuiJoue() override;
@@ -21,6 +18,7 @@ public:
     void abandonnerParty() override;
     PlateauCarcassonne *getPlateau() override;
     void generateRandomTuilePlateau() override;
+    PlayerCarcassonne * getJoueurQuiJoue();
 };
 
 

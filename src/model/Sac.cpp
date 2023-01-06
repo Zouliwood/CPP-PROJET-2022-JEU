@@ -1,7 +1,8 @@
 #include "../../hrc/model/Sac.hpp"
 
 Sac::Sac() {
-
+/*int x_view, int y_view, FragmentTriple<environment> &up, FragmentTriple<environment> &right, FragmentTriple<environment> &down,
+                                   FragmentTriple<environment> &left, FragmentQuadruple<environment> &center) :*/
     for (int i = 0; i < 9; ++i) {
         sac.push_back(
                 new TuileCarcassonne(2*150,

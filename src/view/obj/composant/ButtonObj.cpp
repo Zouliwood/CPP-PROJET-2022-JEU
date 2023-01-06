@@ -57,7 +57,7 @@ bool ButtonObj::isPressed() const{
 void ButtonObj::draw(RenderTarget &target, sf::RenderStates states) const {
     ComposantView::draw(target, states);
     fond_image.setPosition(getPosition());
-    textbutton.setPosition(getPosition().x + 40, getPosition().y + 25); // à changer par setOrigin();//
+    textbutton.setPosition(getPosition().x + 40, getPosition().y + 25);
     target.draw(fond_image);
     target.draw(textbutton);
 }

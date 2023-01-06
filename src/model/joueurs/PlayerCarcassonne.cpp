@@ -26,3 +26,13 @@ Pion * PlayerCarcassonne::getPionLibre() {
     }
     return nullptr;
 }
+
+int PlayerCarcassonne::getR(){
+    return r;
+}
+int PlayerCarcassonne::getG(){
+    return g;
+}
+int PlayerCarcassonne::getB(){
+    return b;
+}

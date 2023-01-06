@@ -11,8 +11,7 @@ class PlayerCarcassonne final: public Player<TuileCarcassonne>{
 private:
     /* attributs */
 //    vector<Pion> listePionsJoueur;
-     // int nombre_de_partisans;
-
+    int r,g,b;
 
 public:
     /* Constructeur & Destructeur */

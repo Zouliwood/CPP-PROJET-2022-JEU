@@ -13,7 +13,6 @@ public:
     Controller() = default;
     ~Controller(){ delete plateauCourant;}
     virtual bool placerTuile(T * t, int x, int y) = 0;
-    virtual void init(int nombre_joueur, int nombre_tuile)= 0;
     virtual void defausserTuile() = 0;
     virtual T * getTuileJoueurQuiJoue() = 0;
     virtual void piocheCarte() = 0;

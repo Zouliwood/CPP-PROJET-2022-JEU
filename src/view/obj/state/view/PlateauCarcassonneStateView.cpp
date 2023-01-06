@@ -15,7 +15,7 @@ PlateauCarcassonneStateView::PlateauCarcassonneStateView(RenderWindow &window, s
         textMaTuile{ComposantView::createText("Ma tuile", 23, Color::White)},
         positionText{ComposantView::createText("x : y : ", 12, Color::White)},
         tuileEnMainObjView{(TuileCarcassonne *) this->controllerCarcassonne.getTuileJoueurQuiJoue()},
-        panelPion{new PanelPionObjView(new TuileCarcassonneObjView((TuileCarcassonne *) this->controllerCarcassonne.getTuileJoueurQuiJoue()))}
+        panelPion{new PanelPionObjView(new TuileCarcassonneObjView((TuileCarcassonne *) this->controllerCarcassonne.getTuileJoueurQuiJoue()), controllerCarcassonne, &tuileEnMainObjView)}
 {
     init();
 }
@@ -94,18 +94,11 @@ void PlateauCarcassonneStateView::processInput(Event &event) {
                 }
             } else {
                 if (controllerCarcassonne.placerTuile(controllerCarcassonne.getTuileJoueurQuiJoue(), mousePosGrid.x, mousePosGrid.y * -1)) {
-                    parent.addDrawable(mousePosGrid.x * 151 + 75, mousePosGrid.y * 151 + 75, new TuileCarcassonneObjView(controllerCarcassonne.getTuileJoueurQuiJoue()));
+                    TuileCarcassonneObjView * tuileplace = new TuileCarcassonneObjView(controllerCarcassonne.getTuileJoueurQuiJoue());
+                    parent.addDrawable(mousePosGrid.x * 151 + 75, mousePosGrid.y * 151 + 75, tuileplace);
+                    panelPion->updateTuile(tuileplace);
+                    panelPion->updatePosition(mousePosGrid.x, mousePosGrid.y * -1);
                     panelPion->show(controllerCarcassonne.getTuileJoueurQuiJoue());
-                    int pos_partisant = panelPion->getPartisantPos();
-                    //ici le gars clické
-                    cout << pos_partisant << endl;
-
-                    if(panelPion->isWantToPosPartisant()){
-                        cout << "on entre " << endl;
-                        //plateau.pionPresent(mousePosGrid.x, mousePosGrid.y , pos_partisant, environment);
-                    }
-                    controllerCarcassonne.suivantJoueur();
-                    tuileEnMainObjView.setTuile(controllerCarcassonne.getTuileJoueurQuiJoue());
                 }
             }
         }
@@ -132,8 +125,7 @@ void PlateauCarcassonneStateView::update() {
         mousePosGrid.x = (mousePosView.x - parent.getPosition().x)/ grideSizeU;
         mousePosGrid.y = ((mousePosView.y - parent.getPosition().y)/ grideSizeU) -1;
     }
-
-    positionText.setString(to_string(mousePosGrid.x) + " " + to_string(mousePosGrid.y)); //+ " / " + to_string(mousePosWindow.x) + " " + to_string(mousePosWindow.y) + " / " + to_string(mousePosView.x) + " " + to_string(mousePosView.y) );
+    positionText.setString(to_string(mousePosGrid.x) + " " + to_string(mousePosGrid.y));
 }
 
 void PlateauCarcassonneStateView::drawView() {

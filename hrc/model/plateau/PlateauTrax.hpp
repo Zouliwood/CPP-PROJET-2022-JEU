@@ -9,7 +9,6 @@
 
 class PlateauTrax final: public Plateau<TuileTrax> {
 
-
     vector<const TuileTrax *> deja_vu;
 public:
 
@@ -27,14 +26,11 @@ public:
     virtual bool placeTuile(TuileTrax * t, int x, int y);
     TuileTrax* getFirstTuilePose() override;
     bool isLoop(int x, int y, colorTrax color, int from, int startX, int startY, int cpt);
-
     bool existForcedAction(int x, int y);
-
     bool coupIsOk(int x, int y);
-
     bool isLine(int x, int y, colorTrax color, int startX, int startY, int from, int cpt=0);
 };
 
 ostream & operator<<(ostream& os, PlateauTrax & plateauTrax);
 
-#endif //CPP_PROJET_2022_JEU_PLATEAUTRAX_HPP
+#endif
