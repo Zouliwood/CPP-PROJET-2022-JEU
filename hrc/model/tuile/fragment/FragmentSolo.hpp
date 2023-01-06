@@ -2,6 +2,7 @@
 #define CPP_PROJET_2022_JEU_FRAGMENTSOLO_HPP
 
 #include "FragmentTuile.hpp"
+#include "../../enum/colorTrax.hpp"
 
 template<typename V>
 class FragmentSolo final: public FragmentTuile<V> {

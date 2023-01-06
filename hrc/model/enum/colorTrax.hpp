@@ -8,4 +8,4 @@ enum class colorTrax {
     BLANC, NOIR
 };
 
-#endif //CPP_PROJET_2022_JEU_COLORTRAX_HPP
+#endif

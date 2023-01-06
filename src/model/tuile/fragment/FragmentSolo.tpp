@@ -30,10 +30,8 @@ template<typename V>
 ostream & operator<<(ostream &out, const FragmentSolo<V> & fragment){
     switch (fragment.getFragmentCentre()) {
         case colorTrax::NOIR:
-            out << "NOIR";
             break;
         case colorTrax::BLANC:
-            out << "BLANC";
             break;
     }
     return out;

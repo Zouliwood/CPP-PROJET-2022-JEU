@@ -8,21 +8,22 @@ SRC=src/
 ENUM=hrc/model/enum/
 
 all	:$(OBJECTS) #pour le make de base todo: fichier out
-	$(CC) -o runtest $(OBJECTS) $(LIBS)
+	$(CC) -o launch $(OBJECTS) $(LIBS)
+	mv *.o "out" | echo "Fin du makefile... ./launch"
 
 Main.o:	main.cpp
 	$(CCO)
 
-Controller.o: $(SRC)/controller/Controller.cpp $(HRC)/controller/Controller.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
+Controller.o: $(HRC)controller/Controller.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
 		$(CCO)
 
-ControllerCarcassonne.o: $(SRC)/controller/ControllerCarcassonne.cpp $(HRC)/controller/ControllerCarcassonne.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
+ControllerCarcassonne.o: $(SRC)controller/ControllerCarcassonne.cpp $(HRC)controller/ControllerCarcassonne.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
 		$(CCO)
 
-ControllerDominos.o: $(SRC)/controller/ControllerDominos.cpp $(HRC)/controller/ControllerDominos.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
+ControllerDominos.o: $(SRC)controller/ControllerDominos.cpp $(HRC)controller/ControllerDominos.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
 		$(CCO)
 
-ControllerTrax.o: $(SRC)/controller/ControllerTrax.cpp $(HRC)/controller/ControllerTrax.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
+ControllerTrax.o: $(SRC)controller/ControllerTrax.cpp $(HRC)controller/ControllerTrax.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
 		$(CCO)
 
 #ici il n'est plus utilse de précisé le nom puisque "$<" s'en occupe
@@ -142,4 +143,4 @@ TuileTraxObjView.o: $(HRC)view/obj/tuile/TuileTraxObjView.hpp $(SRC)view/obj/tui
 		$(CCO)
 
 clean:
-	rm -rf *.o runtest
+	rm -rf *.o launch
