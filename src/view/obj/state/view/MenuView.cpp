@@ -120,7 +120,7 @@ void MenuView::init() {
     button_suivant.setPosition(1000, 600);
     button_precedent.setPosition(20, 600);
     buttonDomino.setPosition(525, 350);
-    texture_bg.loadFromFile("../ressources/img/menu/image_bg_menu.png");
+    texture_bg.loadFromFile("ressources/img/menu/image_bg_menu.png");
     texture_bg.setSmooth(true);
     background.setTexture(texture_bg);
 }

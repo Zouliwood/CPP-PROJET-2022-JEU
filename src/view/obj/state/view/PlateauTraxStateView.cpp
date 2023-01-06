@@ -17,9 +17,9 @@ PlateauTraxStateView::PlateauTraxStateView(RenderWindow &window, stack<State *> 
         positionText{ComposantView::createText("x : y : ", 12, Color::White)},
         tuileEnMain{new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)))},
         tuileEnMainObjView{tuileEnMain}
-        {
-            cout << *tuileEnMain << endl;
-        init();
+{
+    cout << *tuileEnMain << endl;
+    init();
 }
 
 PlateauTraxStateView::~PlateauTraxStateView() {
@@ -87,33 +87,22 @@ void PlateauTraxStateView::processInput(Event &event) {
             pressedGame = false;
             if (bouton.isPressed()) {
                 tuileEnMain->rotate();
-                cout << "-----------------------------------------------££" << endl;
-
             } else if (bouton_defausser.isPressed()) {
-                // tuileEnMainObj = plateau.generateRandomTuile();
-                // tuileEnMain.tuileDominos = tuileEnMainObj;
-                // tuileEnMain.updateTuile();
-                cout << plateau << endl;
-                cout << "-----" << endl;
-                cout << *tuileEnMain << endl;
             } else if (boutton_flip.isPressed()) {
                 tuileEnMain->flipTuile();
                 tuileEnMain->rotation = 0;
-                cout << "-----------------------------------------------££" << endl;
             }
         }else{
             bool test = plateau.placeTuile(tuileEnMain, mousePosGrid.x, mousePosGrid.y*-1);
-                if(test == true){
-                    parent.addDrawable(mousePosGrid.x *151 +75, mousePosGrid.y *151 +75, new TuileTraxObjView(tuileEnMain));
-                    tuileEnMain = new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)));
-                    tuileEnMainObjView.tuileTrax = tuileEnMain;
-                    cout << plateau << endl;
-                    cout << *tuileEnMain << endl;
-                   // cout << "############ placeTuile: " << test << " ############\n";
-                }else{
-                   // cout << "############ placeTuile: " << test << " ############\n";
-                }
-          //  cout << "-----------------------------------------------££" << endl;
+            if(test == true){
+                parent.addDrawable(mousePosGrid.x *151 +75, mousePosGrid.y *151 +75, new TuileTraxObjView(tuileEnMain));
+                tuileEnMain = new TuileTrax(*(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)), *(new FragmentSolo<colorTrax>(colorTrax::NOIR)), *(new FragmentSolo<colorTrax>(colorTrax::BLANC)));
+                tuileEnMainObjView.tuileTrax = tuileEnMain;
+                // cout << "############ placeTuile: " << test << " ############\n";
+            }else{
+                // cout << "############ placeTuile: " << test << " ############\n";
+            }
+            //  cout << "-----------------------------------------------££" << endl;
         }
 
 
@@ -151,13 +140,13 @@ void PlateauTraxStateView::update() {
 }
 
 void PlateauTraxStateView::drawView() {
-        app.clear(sf::Color::Magenta);
-        app.draw(parent);
-        app.draw(shape);
-        app.draw(tuileEnMainObjView);
-        app.draw(textMaTuile);
-        app.draw(boutton_flip);
-        app.draw(positionText);
-        app.draw(bouton);
-        app.draw(bouton_defausser);
+    app.clear(sf::Color::Magenta);
+    app.draw(parent);
+    app.draw(shape);
+    app.draw(tuileEnMainObjView);
+    app.draw(textMaTuile);
+    app.draw(boutton_flip);
+    app.draw(positionText);
+    app.draw(bouton);
+    //app.draw(bouton_defausser);
 }

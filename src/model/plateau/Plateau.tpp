@@ -25,11 +25,11 @@ bool Plateau<TF>::placeTuile(TF * t, int x, int y) {
     bool flag = this->compareTuile(t, tuileUp, tuileDown, tuileRight, tuileLeft);
     if (flag) {
         if(y >= 0){
-            if(y >= this->listTuile.getPositif().size()){
+            if(y >= (int) this->listTuile.getPositif().size()){
                 this->listTuile.addElement(y, new AxeVector<TF>());
             }
         }else{
-            if((y*-1)-1 >= this->listTuile.getNegatif().size()){
+            if((y*-1)-1 >= (int) this->listTuile.getNegatif().size()){
                 this->listTuile.addElement(y, new AxeVector<TF>());
             }
         }
@@ -63,7 +63,6 @@ template<typename TF>
 const TF * Plateau<TF>::getTuileAt(int x, int y) const{
     AxeVector<TF> * ligne = getListTuile().getAt(y);
     if(ligne == nullptr) {
-        //cout << "#####Plateau getTuileAt NullPtr ######" << endl;
         return nullptr;
     }
     return (ligne->getAt(x));
@@ -72,8 +71,8 @@ const TF * Plateau<TF>::getTuileAt(int x, int y) const{
 template<typename TF>
 ostream & Plateau<TF>::operator<<(ostream &os) {
     string res;
-    for (int i = 0; i < listTuile.size(); ++i) {
-        for (int j = 0; j < listTuile.at(i).size(); ++j) {
+    for (int i = 0; i < (int) listTuile.size(); ++i) {
+        for (int j = 0; j <(int) listTuile.at(i).size(); ++j) {
             os << "[X,X,X,X]";
         }
         os << "\n";

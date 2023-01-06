@@ -7,7 +7,7 @@ TuileCarcassonneObjView::TuileCarcassonneObjView(TuileCarcassonne *tuileCarcasso
     pion{*new PionObjView()}{
     texture.setSmooth(true);
     pion.setPosition(-500, -500);
-    texture.loadFromFile("../ressources/img/menu/image_bg_menu.png");
+    texture.loadFromFile("ressources/img/menu/image_bg_menu.png");
     bg_tuile.setTexture(texture);
     bg_tuile.setTextureRect(IntRect(1280*2+ tuileCarcassonne->x_pos_view,720 +tuileCarcassonne->y_pos_view, 150, 150));
     bg_tuile.setOrigin(75,75);

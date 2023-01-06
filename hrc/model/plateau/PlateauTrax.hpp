@@ -32,6 +32,4 @@ public:
     bool isLine(int x, int y, colorTrax color, int startX, int startY, int from, int cpt=0);
 };
 
-ostream & operator<<(ostream& os, PlateauTrax & plateauTrax);
-
 #endif

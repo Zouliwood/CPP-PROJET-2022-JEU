@@ -15,7 +15,7 @@ TuileTraxObjView::~TuileTraxObjView() {
 }
 
 TuileTraxObjView::TuileTraxObjView(TuileTrax * trax) : tuileTrax{trax}, bg_tuile{*(new Sprite())}, texture{*new Texture()}{
-    texture.loadFromFile("../ressources/img/plateau/tuileTrax.png");
+    texture.loadFromFile("ressources/img/plateau/tuileTrax.png");
     texture.setSmooth(true);
     bg_tuile.setTexture(texture);
 

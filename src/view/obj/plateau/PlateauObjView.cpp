@@ -10,7 +10,7 @@ PlateauObjView::PlateauObjView():
         hover.setPosition(-300, -300); // faire dispairaitre
         y_back = 2000;
         x_back = 2000;
-        texture_background.loadFromFile("../ressources/img/plateau/bg_game.png");
+        texture_background.loadFromFile("ressources/img/plateau/bg_game.png");
         texture_background.setRepeated(true);
         background_plateau.setTexture(texture_background);
         background_plateau.setTextureRect(IntRect(0,0,x_back, y_back));

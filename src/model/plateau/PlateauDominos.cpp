@@ -8,7 +8,6 @@ int PlateauDominos::calculPoint(const TuileDominos * t, int x, int y) {
 
 PlateauDominos::PlateauDominos(int nombre_joueur, int nombre_tuile): Plateau(nombre_joueur, nombre_tuile) {
     for(int i = 0; i < nbr_player; i++){
-        //cout << " on ajoute joueur " +  << endl;
         string s = " Player " + to_string(i);
         listPlayer.push_back(new PlayerDominos(*new string (s)));
     }
@@ -44,7 +43,7 @@ bool PlateauDominos::compareTuile(const TuileDominos * courant, const TuileDomin
 }
 
 bool PlateauDominos::checkVictory() {
-    return (listPlayer.size() >= 2); //TODO: && ());
+    return (listPlayer.size() >= 2);
 }
 
 TuileDominos *PlateauDominos::getFirstTuilePose() {

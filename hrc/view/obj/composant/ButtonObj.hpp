@@ -18,7 +18,7 @@ class ButtonObj final: public ComposantView {
     short unsigned button_status;
 
 public:
-    ButtonObj(string string);
+    ButtonObj(const string string);
     ~ButtonObj();
     void update(Vector2f mouse);
     void draw(RenderTarget &target, RenderStates states) const;

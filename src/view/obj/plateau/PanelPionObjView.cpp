@@ -19,7 +19,7 @@ PanelPionObjView::PanelPionObjView(TuileCarcassonneObjView * tuileCarcassonneObj
     texture{*new Texture()},
     text{createText("     Placement d'un partisant \n Utilisez Up ou Down pour choisir", 16, Color::White)},
     position{createText("0", 20, Color::White)}{
-    texture.loadFromFile("../ressources/img/menu/image_bg_menu.png");
+    texture.loadFromFile("ressources/img/menu/image_bg_menu.png");
     zone.setTexture(texture);
     zone.setTextureRect(IntRect(0, 850, 150,150));
     zone.setPosition(-500, -500);
@@ -102,11 +102,6 @@ void PanelPionObjView::updateAction(Vector2f mouse, Event & event) {
                 hide();
             } else if (valider->isPressed()) {
                 environment env = controllerCarcassonne.getTuileJoueurQuiJoue()->transformNumToEnv(position_value);
-
-                cout << endl;
-                cout << "x:" << posx << " y:" << posy << " pos:" << position_value << " env:" << envToStrings(env) << endl;
-                cout << endl;
-
                 if (!controllerCarcassonne.getPlateau()->pionPresent(posx, posy, position_value,env)){
                     Pion * p = controllerCarcassonne.getJoueurQuiJoue()->getPionLibre();
                     if (p != nullptr) {

@@ -100,7 +100,7 @@ void SettingsStateView::drawView() {
 void SettingsStateView::init() {
     Texture * textureBg = new Texture();
     textureBg->setSmooth(true);
-    if(textureBg->loadFromFile("../ressources/img/setting/bg_settings.png")){
+    if(textureBg->loadFromFile("ressources/img/setting/bg_settings.png")){
         background.setTexture(*textureBg);
     }else{
         cout << "erreur chargement des textures" << endl;

@@ -26,11 +26,11 @@ Text ComposantView::createText(const string& text, string font, unsigned size_fo
 }
 
 Text ComposantView::createText(const string& text) {
-    return createText(text, "../ressources/font/8bits.ttf", 40, Color::Black);
+    return createText(text, "ressources/font/8bits.ttf", 40, Color::Black);
 }
 
 Text ComposantView::createText(const string& text, unsigned size_font, Color color) {
-    return createText(text, "../ressources/font/8bits.ttf", size_font, color);
+    return createText(text, "ressources/font/8bits.ttf", size_font, color);
 }
 
 ComposantView::~ComposantView() {

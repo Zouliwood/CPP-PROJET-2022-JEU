@@ -16,63 +16,6 @@ PlateauTrax::PlateauTrax(): Plateau(2, 64){
     courant = listPlayer.at(current_player);
 }
 
-
-ostream & operator<<(ostream& os, PlateauTrax & plateauTrax) {
-    auto pos = plateauTrax.getListTuile().getPositif();
-    auto neg = plateauTrax.getListTuile().getNegatif();
-
-    cout << "Coter positif grand tableau Positif " <<  pos.size() << endl;
-    os << endl;
-    for (int i = 0; i < pos.size(); ++i) { // colonne
-        for (int j = pos.at(i)->getNegatif().size()-1; j>= 0; --j) { //les lignes* NOLINT(cppcoreguidelines-narrowing-conversions)
-            auto tuile = ((TuileTrax *) pos.at(i)->getNegatif().at(j));
-            if (tuile == nullptr) {
-                os << "(x:" << j  << ":y:"<< i << ")" << "[U:NONE, R:NONE, D:NONE, L:NONE]";
-            } else {
-                os << "(x:" << j  << ":y:"<< i << ")" << *tuile;
-            }
-        }
-        os <<"|";
-        for (int j =  0; j < pos.at(i)->getPositif().size(); ++j) {
-            auto tuile = ((TuileTrax *) pos.at(i)->getPositif().at(j));
-            if(tuile == nullptr){
-                os << "(x:" << j  << ":y:"<< i << ")" << "[U:NONE, R:NONE, D:NONE, L:NONE]";
-            }else {
-                os << "(x:" << j  << ":y:"<< i << ")" << *tuile;
-            }
-        }
-        os << endl;
-    }
-    os << endl;
-    cout << "Coter Grand tableau Negatif : " <<  neg.size() << endl;
-    os << endl;
-    for (int i = neg.size()-1; i >= 0; --i) { // NOLINT(cppcoreguidelines-narrowing-conversions)
-        for (int j = neg.at(i)->getNegatif().size()-1; j >= 0; --j) { // NOLINT(cppcoreguidelines-narrowing-conversions)
-            auto tuile = ((TuileTrax*)neg.at(i)->getNegatif().at(j));
-            if(tuile == nullptr){
-                os << "(x:" << j  << ":y:"<< i << ")" << "[U:NONE, R:NONE, D:NONE, L:NONE]";
-            }else{
-                os << "(x:" << j  << ":y:"<< i << ")" << *tuile;
-            }
-        }
-        os << "|";
-        for (int j = 0; j < neg.at(i)->getPositif().size(); ++j) {
-            auto tuile = ((TuileTrax*)neg.at(i)->getPositif().at(j));
-            if(tuile == nullptr){
-                os << "(x:" << j  << ":y:"<< i << ")" << "[U:NONE, R:NONE, D:NONE, L:NONE]";
-            }else{
-                os << "(x:" << j  << ":y:"<< i << ")" << *tuile;
-            }
-        }
-        os << endl;
-        //os << plateauDominos.getListTuile().getNegatif().at(i);
-    }
-
-    os << "- affichage terminé - ";
-
-    return os << endl;
-}
-
 bool PlateauTrax::compareTuile(const TuileTrax *courant, const TuileTrax *tuileUp, const TuileTrax *tuileDown,
                                const TuileTrax *tuileRight, const TuileTrax *tuileLeft) {
     return (!tuileUp || *(&(FragmentSolo<colorTrax> &)courant->getUp()) == *(&(FragmentSolo<colorTrax> &)tuileUp->getDown()))

@@ -1,15 +1,7 @@
-#include "../../hrc/model/joueurs/PlayerCarcassonne.hpp"
+#include "../../../hrc/model/joueurs/PlayerCarcassonne.hpp"
 
 
-PlayerCarcassonne::~PlayerCarcassonne(){
-
-}
-
-/*
-template<typename TF>
-vector<Pion> PlayerCarcassonne<TF>::getListPions() {
-    return listePionsJoueur;
-}*/
+PlayerCarcassonne::~PlayerCarcassonne(){}
 
 PlayerCarcassonne::PlayerCarcassonne(string & pseudo): Player(pseudo), r{(rand()%255)}, g{(rand()%255)}, b{(rand()%255)}{
     for (int i = 0; i < 8; ++i) {

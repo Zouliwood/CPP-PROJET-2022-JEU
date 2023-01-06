@@ -16,14 +16,11 @@ void ControllerCarcassonne::generateRandomTuilePlateau() {
 }
 
 void ControllerCarcassonne::suivantJoueur(){
-    cout << "Au suivant " << plateauCourant->getListPlayer().at(plateauCourant->getCurrentPlayer())->getName() << endl;
-    cout << " current " << plateauCourant->getCurrentPlayer();
-    cout << "TuileRestante" << plateauCourant->nombreCarteRestant();
     if(plateauCourant->canPlay()) {
         plateauCourant->nextPlayer();
         piocheCarte();
     }else{
-        cout << "fin de partie" << endl;
+        cout << "Fin de partie" << endl;
     }
 }
 
