@@ -79,7 +79,7 @@ FragmentTriple.o: $(HRC)model/tuile/fragment/FragmentTriple.hpp $(SRC)model/tuil
 FragmentTuile.o: $(HRC)model/tuile/fragment/FragmentTuile.hpp $(SRC)model/tuile/fragment/FragmentTuile.tpp
 		$(CCO)
 
-Tuile.o: $(HRC)model/tuile/Tuile.hpp $(SRC)model/tuile/Tuile.cpp
+Tuile.o: $(HRC)model/tuile/Tuile.hpp $(SRC)model/tuile/Tuile.tpp
 		$(CCO)
 
 TuileCarcassonne.o: $(HRC)model/tuile/TuileCarcassonne.hpp $(SRC)model/tuile/TuileCarcassonne.cpp
@@ -94,7 +94,7 @@ TuileTrax.o: $(HRC)model/tuile/TuileTrax.hpp $(SRC)model/tuile/TuileTrax.cpp
 AxeVector.o: $(HRC)model/vector/AxeVector.hpp $(SRC)model/vector/AxeVector.tpp
 		$(CCO)
 
-Sac.o: $(HRC)model/Sac.hpp $(SRC)model/Sac.cpp
+Sac.o: $(SRC)model/Sac.cpp $(HRC)model/Sac.hpp
 		$(CCO)
 
 BackGroundObjView.o: $(HRC)view/obj/composant/BackGroundObjView.hpp $(SRC)view/obj/composant/BackGroundObjView.cpp

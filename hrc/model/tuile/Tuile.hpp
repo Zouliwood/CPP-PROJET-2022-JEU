@@ -39,5 +39,6 @@ public:
 
 };
 
+#include "../../../src/model/tuile/Tuile.tpp"
 
 #endif //CPP_PROJET_2022_JEU_TUILE_HPP
