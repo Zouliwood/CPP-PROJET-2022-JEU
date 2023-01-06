@@ -23,6 +23,11 @@ public:
 
     /* other function */
    // vector<Pion> getListPions();
+    int getR();
+    int getG();
+    int getB();
+
+    Pion * getPionLibre();
 
 };
 #endif

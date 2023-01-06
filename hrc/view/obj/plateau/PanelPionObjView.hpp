@@ -26,6 +26,7 @@ public:
     void show(TuileCarcassonne *tuile);
     void hide();
     void updateAction(Vector2f mouse, Event &event);
-    int getPartisantPos();
+    void updatePosition(int x, int y);
+    void updateTuile(TuileCarcassonneObjView * tuiledejaplace);
 };
 #endif

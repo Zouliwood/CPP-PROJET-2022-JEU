@@ -39,7 +39,8 @@ bool PlateauCarcassonne::compareTuile(const TuileCarcassonne *courant, const Tui
 bool PlateauCarcassonne::pionPresent(int x, int y, int posFrag, environment env){
     bool reponse = pionPresentAux(x, y, posFrag, env);
     dejaVu.clear();
-    return reponse;
+    cout << "SIZE" << dejaVu.size() << endl;
+    return solution;
 }
 
 bool PlateauCarcassonne::isDejaVu(int x, int y, int pos){
@@ -47,17 +48,29 @@ bool PlateauCarcassonne::isDejaVu(int x, int y, int pos){
     return false;
 }
 
-bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment env){
-
+void PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment env){
+    if(solution)return;
     TuileCarcassonne * currTuile = const_cast<TuileCarcassonne *>(this->getTuileAt(x, y));
     //TODO: vérifier si un pion est présent sur la Tuile courante en position posFrag - return true -
 
     if (currTuile){
 
+
         for (int i = 0; i < listPlayer.size(); ++i) {
+            //cout << "_ _ _ _ listPlayer.size() " << ((PlayerCarcassonne *) listPlayer.at(i))->listPion.size() << " " << endl;
             for (int j = 0; j < ((PlayerCarcassonne *) listPlayer.at(i))->listPion.size(); ++j) {
                 Pion * p = ((PlayerCarcassonne *) listPlayer.at(i))->listPion.at(j);
-                if (p->getX() == x && p->getY() == y && p->getPos() == posFrag)return true;
+                if(p->getIsPlaced()){
+                    cout << endl;
+                    cout << p->getX() << " " << x << endl;
+                    cout << p->getY() << " " << y << endl;
+                    cout << p->getPos() << " " << posFrag << endl;
+                }
+                if (p->getIsPlaced() && p->getX() == x && p->getY() == y && p->getPos() == posFrag){
+                    cout << "TRUEEEEEEEEEEEEEEEEEEEEEEEEE" << endl;
+                    solution = true;
+                    return;
+                }
             }
         }
         //TODO: fermé - herbe et ville - si les voisins ne sont pas nuls.
@@ -70,26 +83,31 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             /* centre */
             if (((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentTop()==env
                 && !isDejaVu(x, y, 4)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 4, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 4, env);
             }
             if (((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentLeft()==env
                 && !isDejaVu(x, y, 7)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 7, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 7, env);
             }
             /* top */
             if (((FragmentTriple<environment>) currTuile->getUp()).getFragmentCentre()==env
                 && !isDejaVu(x, y, 1)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 1, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 1, env);
             }
             /* gauche */
             if (((FragmentTriple<environment>) currTuile->getLeft()).getFragmentGauche()==env
                 && !isDejaVu(x, y, 3)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 3, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 3, env);
             }
             /* ext */
             auto getExt=this->getTuileAt(x, y+1);
             if (getExt && ((FragmentTriple<environment>) getExt->getDown()).getFragmentGauche()==env
-                && !isDejaVu(x, y, 13)){
+                && !isDejaVu(x, y+1, 13)){
+                cout << "[REC] ext: " << envToString(env) << ", numeros: 13, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y+1, 13, env);
             }
         }
@@ -100,21 +118,25 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             /* centre */
             if (((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentTop()==env
                 && !isDejaVu(x, y, 4)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 4, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 4, env);
             }
             /* top */
             if (((FragmentTriple<environment>) currTuile->getUp()).getFragmentGauche()==env
                 && !isDejaVu(x, y, 2)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 2, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 2, env);
             }
             if (((FragmentTriple<environment>) currTuile->getUp()).getFragmentDroit()==env
                 && !isDejaVu(x, y, 0)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 0, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 0, env);
             }
             /* ext */
             auto getExt=this->getTuileAt(x, y+1);
             if (getExt && ((FragmentTriple<environment>) getExt->getDown()).getFragmentCentre()==env
-                && !isDejaVu(x, y, 14)){
+                && !isDejaVu(x, y+1, 14)){
+                cout << "[REC] ext: " << envToString(env) << ", numeros: 14, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y+1, 14, env);
             }
         }
@@ -125,26 +147,31 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             /* centre */
             if (((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentTop()==env
                 && !isDejaVu(x, y, 4)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 4, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 4, env);
             }
             if (((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentRight()==env
                 && !isDejaVu(x, y, 8)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 8, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 8, env);
             }
             /* top */
             if (((FragmentTriple<environment>) currTuile->getUp()).getFragmentCentre()==env
                 && !isDejaVu(x, y, 1)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 1, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 1, env);
             }
             /* droit */
             if (((FragmentTriple<environment>) currTuile->getRight()).getFragmentDroit() == env
                 && !isDejaVu(x, y, 5)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 5, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 5, env);
             }
             /* ext */
             auto getExt=this->getTuileAt(x, y+1);
             if (getExt && ((FragmentTriple<environment>) getExt->getDown()).getFragmentDroit()==env
-                && !isDejaVu(x, y, 15)){
+                && !isDejaVu(x, y+1, 15)){
+                cout << "[REC] ext: " << envToString(env) << ", numeros: 15, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y+1, 15, env);
             }
         }
@@ -155,26 +182,31 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             /* centre */
             if (((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentTop()==env
                 && !isDejaVu(x, y, 4)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 4, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 4, env);
             }
             if (((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentLeft()==env
                 && !isDejaVu(x, y, 7)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 7, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 7, env);
             }
             /* haut */
             if (((FragmentTriple<environment>) currTuile->getUp()).getFragmentDroit()==env
                 && !isDejaVu(x, y, 0)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 0, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 0, env);
             }
             /* gauche */
             if (((FragmentTriple<environment>) currTuile->getLeft()).getFragmentCentre() ==env
                 && !isDejaVu(x, y, 6)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 6, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 6, env);
             }
             /* ext */
             auto getExt=this->getTuileAt(x-1, y);
             if (getExt && ((FragmentTriple<environment>) getExt->getRight()).getFragmentDroit()==env
-                && !isDejaVu(x, y, 5)){
+                && !isDejaVu(x-1, y, 5)){
+                cout << "[REC] ext: " << envToString(env) << ", numeros: 5, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x-1, y, 5, env);
             }
         }
@@ -185,33 +217,40 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             /* centre */
             if (((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentRight()==env
                 && !isDejaVu(x, y, 8)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 8, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 8, env);
             }
             if (((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentLeft()==env
                 && !isDejaVu(x, y, 7)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 7, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 7, env);
             }
             /* haut */
             if (((FragmentTriple<environment>) currTuile->getUp()).getFragmentGauche()==env
                 && !isDejaVu(x, y, 2)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 2, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 2, env);
             }
             if (((FragmentTriple<environment>) currTuile->getUp()).getFragmentCentre()==env
                 && !isDejaVu(x, y, 1)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 1, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 1, env);
             }
             if (((FragmentTriple<environment>) currTuile->getUp()).getFragmentDroit()==env
                 && !isDejaVu(x, y, 0)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 0, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 0, env);
             }
             /* gauche */
             if (((FragmentTriple<environment>) currTuile->getLeft()).getFragmentGauche()==env
                 && !isDejaVu(x, y, 3)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 3, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 3, env);
             }
             /* droit */
             if (((FragmentTriple<environment>) currTuile->getRight()).getFragmentDroit()==env
                 && !isDejaVu(x, y, 5)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 5, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 5, env);
             }
         }
@@ -222,26 +261,31 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             /* centre */
             if (((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentTop()==env
                 && !isDejaVu(x, y, 4)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 4, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 4, env);
             }
             if (((FragmentQuadruple<environment>) currTuile->getCentre()).getFragmentRight()==env
                 && !isDejaVu(x, y, 8)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 8, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 8, env);
             }
             /* haut */
             if (((FragmentTriple<environment>) currTuile->getUp()).getFragmentGauche()==env
                 && !isDejaVu(x, y, 2)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 2, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 2, env);
             }
             /* droit */
             if (((FragmentTriple<environment>) currTuile->getRight()).getFragmentCentre()==env
                 && !isDejaVu(x, y, 9)){
+                cout << "[REC] env: " << envToString(env) << ", numeros: 9, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x, y, 9, env);
             }
             /* ext */
             auto getExt=this->getTuileAt(x+1, y);
             if (getExt && ((FragmentTriple<environment>) getExt->getLeft()).getFragmentGauche()==env
-                && !isDejaVu(x, y, 3)){
+                && !isDejaVu(x+1, y, 3)){
+                cout << "[REC] ext: " << envToString(env) << ", numeros: 3, posfrag:" << posFrag << "x: " << x << ", y:" << y << endl;
                 pionPresentAux(x+1, y, 3, env);
             }
         }
@@ -364,6 +408,7 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
             /* ext */
             auto getExt=this->getTuileAt(x+1, y);
+            cout << "BOOL" << (getExt && ((FragmentTriple<environment>) getExt->getLeft()).getFragmentCentre()==env) << !isDejaVu(x, y, 6) << endl;
             if (getExt && ((FragmentTriple<environment>) getExt->getLeft()).getFragmentCentre()==env
                 && !isDejaVu(x, y, 6)){
                 pionPresentAux(x+1, y, 6, env);
@@ -551,7 +596,6 @@ bool PlateauCarcassonne::pionPresentAux(int x, int y, int posFrag, environment e
             }
         }
     }
-    return false;
 }
 
 PlateauCarcassonne::~PlateauCarcassonne() = default;

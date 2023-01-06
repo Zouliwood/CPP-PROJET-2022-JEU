@@ -45,9 +45,7 @@ public:
     bool checkVictory() override;
 
     bool pionPresent(int x, int y, int posFrag, environment env);
-
-    bool pionPresentAux(int x, int y, int posFrag, environment env);
-
+    void pionPresentAux(int x, int y, int posFrag, environment env);
     bool isDejaVu(int x, int y, int pos);
 
     TuileCarcassonne * getFirstTuilePose() override;

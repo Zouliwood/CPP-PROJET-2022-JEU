@@ -8,8 +8,9 @@ PanelPionObjView::PanelPionObjView(TuileCarcassonneObjView * tuileCarcassonneObj
     position_value{0},
     isWantToPos{false},
     isOpenStatus{false},
-    pressedGame{false},
-zone{*new Sprite()},
+    pressedGame{true},
+    pressedGameMouse{true},
+    zone{*new Sprite()},
     texture{*new Texture()},
     text{createText("     Placement d'un partisant \n Utilisez Up ou Down pour choisir", 16, Color::White)},
     position{createText("0", 20, Color::White)}{

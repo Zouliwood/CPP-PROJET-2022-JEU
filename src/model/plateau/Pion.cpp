@@ -12,10 +12,41 @@ int Pion::getPos() const{
     return this->pos;
 }
 
-Pion::Pion(int x, int y, int pos_frag, roleCarcassonne role):
-    x{x}, y{y}, pos{pos_frag}, role{role}{
-}
-
 Pion::~Pion() {
 
+}
+
+Pion::Pion(roleCarcassonne role, bool isPlaced, int x, int y, int pos_frag): role{role}, isPlaced{isPlaced}, x{x}, y{y}, pos{pos_frag} {
+
+}
+
+bool Pion::getIsPlaced() const {
+    return this->isPlaced;
+}
+
+roleCarcassonne Pion::getRole() const {
+    return this->role;
+}
+
+void Pion::updatePion(environment env, bool isPlaced, int x, int y, int pos_frag) {
+    this->role=getRoleByEnv(env);
+    this->isPlaced=isPlaced;
+    this->x=x;
+    this->y=y;
+    this->pos=pos_frag;
+}
+
+roleCarcassonne Pion::getRoleByEnv(environment env) const{
+    switch (env) {
+        case environment::VILLAGE:
+            return roleCarcassonne::CHEVALIER;
+        case environment::ROUTE:
+            return roleCarcassonne::VOLEUR;
+        case environment::CHAMPS:
+            return roleCarcassonne::PAYSAN;
+        case environment::ABAYES:
+            return roleCarcassonne::MOINE;
+        default:
+            return roleCarcassonne::PARTISAN;
+    }
 }

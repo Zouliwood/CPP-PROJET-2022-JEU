@@ -20,6 +20,27 @@ void TuileCarcassonne::rotate() {
     delete tmp;
 }
 
+environment TuileCarcassonne::transformNumToEnv(int pos) {
+    switch (pos) {
+        case 0: return up.getFragmentGauche();
+        case 1: return up.getFragmentCentre();
+        case 2: return up.getFragmentDroit();
+        case 3: return left.getFragmentGauche();
+        case 4: return centre.getFragmentTop();
+        case 5: return right.getFragmentGauche();
+        case 6: return left.getFragmentCentre();
+        case 7: return centre.getFragmentLeft();
+        case 8: return centre.getFragmentRight();
+        case 9: return  right.getFragmentCentre();
+        case 10: return left.getFragmentGauche();
+        case 11: return centre.getFragmentDown();
+        case 12: return right.getFragmentDroit();
+        case 13: return down.getFragmentGauche();
+        case 14: return down.getFragmentCentre();
+        default : return down.getFragmentDroit();
+    }
+}
+
 const FragmentQuadruple<environment> &TuileCarcassonne::getCentre() const {
     return this->centre;
 }
