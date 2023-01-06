@@ -39,7 +39,7 @@ environment.o: $(ENUM)environment.hpp #ici on a un noeud avec ses deux fils coup
 roleCarcassonne.o: $(ENUM)roleCarcassonne.hpp #ici on a un noeud avec ses deux fils couple (cpp, hpp)
 		$(CCO)
 
-Player.o: $(HRC)model/joueurs/Player.hpp $(SRC)model/joueurs/Player.cpp
+Player.o: $(HRC)model/joueurs/Player.hpp $(SRC)model/joueurs/Player.tpp
 		$(CCO)
 
 PlayerCarcassonne.o: $(HRC)model/joueurs/PlayerCarcassonne.hpp $(SRC)model/joueurs/PlayerCarcassonne.cpp
@@ -54,7 +54,7 @@ PlayerTrax.o: $(HRC)model/joueurs/PlayerTrax.hpp $(SRC)model/joueurs/PlayerTrax.
 Pion.o: $(HRC)model/plateau/Pion.hpp $(SRC)model/plateau/Pion.cpp
 		$(CCO)
 
-Plateau.o: $(HRC)model/plateau/Plateau.hpp $(SRC)model/plateau/Plateau.cpp
+Plateau.o: $(HRC)model/plateau/Plateau.hpp $(SRC)model/plateau/Plateau.tpp
 		$(CCO)
 
 PlateauCarcassonne.o: $(HRC)model/plateau/PlateauCarcassonne.hpp $(SRC)model/plateau/PlateauCarcassonne.cpp
@@ -66,16 +66,16 @@ PlateauDominos.o: $(HRC)model/plateau/PlateauDominos.hpp $(SRC)model/plateau/Pla
 PlateauTrax.o: $(HRC)model/plateau/PlateauTrax.hpp $(SRC)model/plateau/PlateauTrax.cpp
 		$(CCO)
 
-FragmentQuadruple.o: $(HRC)model/tuile/fragment/FragmentQuadruple.hpp $(SRC)model/tuile/fragment/FragmentQuadruple.cpp
+FragmentQuadruple.o: $(HRC)model/tuile/fragment/FragmentQuadruple.hpp $(SRC)model/tuile/fragment/FragmentQuadruple.tpp
 		$(CCO)
 
-FragmentSolo.o: $(HRC)model/tuile/fragment/FragmentSolo.hpp $(SRC)model/tuile/fragment/FragmentSolo.cpp
+FragmentSolo.o: $(HRC)model/tuile/fragment/FragmentSolo.hpp $(SRC)model/tuile/fragment/FragmentSolo.tpp
 		$(CCO)
 
-FragmentTriple.o: $(HRC)model/tuile/fragment/FragmentTriple.hpp $(SRC)model/tuile/fragment/FragmentTriple.cpp
+FragmentTriple.o: $(HRC)model/tuile/fragment/FragmentTriple.hpp $(SRC)model/tuile/fragment/FragmentTriple.tpp
 		$(CCO)
 
-FragmentTuile.o: $(HRC)model/tuile/fragment/FragmentTuile.hpp $(SRC)model/tuile/fragment/FragmentTuile.cpp
+FragmentTuile.o: $(HRC)model/tuile/fragment/FragmentTuile.hpp $(SRC)model/tuile/fragment/FragmentTuile.tpp
 		$(CCO)
 
 Tuile.o: $(HRC)model/tuile/Tuile.hpp $(SRC)model/tuile/Tuile.cpp
